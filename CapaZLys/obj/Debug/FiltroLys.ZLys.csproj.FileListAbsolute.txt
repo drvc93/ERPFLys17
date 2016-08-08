@@ -191,3 +191,6 @@ D:\Proyectos\ERPFLys\CapaZLys\obj\Debug\FiltroLys.ZLys.exe.licenses
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\bin\Debug\FiltroLys.ZLys.exe.config
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.exe
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.pdb
+D:\DVILLANUEVA\ERPLysRed\ERPFLys17\CapaZLys\bin\Debug\FiltroLys.ZLys.exe.config
+D:\DVILLANUEVA\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.exe
+D:\DVILLANUEVA\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.pdb

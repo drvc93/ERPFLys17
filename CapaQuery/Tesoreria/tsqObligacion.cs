@@ -22,7 +22,7 @@ namespace FiltroLys.Query.Tesoreria
                    "and c_estadodoc like @estadodoc " +
                    "order by d_fechaemision desc ";
 
-            xsql = "mi sql no esta bien, ya lo fregaron";
+            xsql = " test";
             return xsql;
         }
 
