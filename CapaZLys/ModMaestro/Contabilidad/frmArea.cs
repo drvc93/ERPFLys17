@@ -70,7 +70,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
         private void fxCargarLista()
         {
             if (!fnAcceso.ExisteAcceso(GlobalVar.UsuarioLogeo, Modulo, Niveles, fnEnum.AccesoOpcion.Acceso)) { return; }
-            List<entArea> Lst = negArea.ListAreaForm();
+            List<entArea> Lst = negArea.ListaFormID();
             grControl.DataSource = Lst;
         }
 
@@ -145,7 +145,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
 
         private void fxCargarReg()
         {
-            entMain = negArea.GetAreaFormID(xArea);
+            entMain = negArea.GetFormID(xArea);
             entMain.OperMantenimiento = fnEnum.OperacionMant.Modificar;
             if (entMain.ResultadoBusqueda){
                 txtArea.Text = entMain.Areas.Trim();
@@ -208,6 +208,8 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             entMain.Descripcion = sDescripcion;
             entMain.Estado = sEstado;
             entMain.UsuarioSys = GlobalVar.UsuarioLogeo;
+            entMain.EstacionSys = GlobalVar.EstacionLogeo;
+            entMain.FechaSys = DateTime.Now;
             xArea = sArea;
 
             bOk = true;
@@ -228,7 +230,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
                     break;
             }
 
-            oErr = negArea.MantAreaForm(entMain);
+            oErr = negArea.MantFormID(entMain);
             if (oErr.Errores.Count > 0){
                 fnMensaje.MensajeInfo(oErr.Errores[0].Descripcion);
                 bOK = false;
@@ -280,10 +282,13 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             if (gvDatos.DataRowCount == 0) { return; }
             if (gvDatos.SelectedRowsCount == 0) { return; }
             entArea oEnt = (entArea)gvDatos.GetRow(gvDatos.FocusedRowHandle);
+            oEnt.UsuarioSys = GlobalVar.UsuarioLogeo;
+            oEnt.EstacionSys = GlobalVar.EstacionLogeo;
+            oEnt.FechaSys = DateTime.Now;
 
             oEnt.OperMantenimiento = fnEnum.OperacionMant.Eliminar;
             entErrores oErr = new entErrores();
-            oErr = negArea.MantAreaForm(oEnt);
+            oErr = negArea.MantFormID(oEnt);
             if (oErr.Errores.Count > 0){
                 fnMensaje.MensajeInfo(oErr.Errores[0].Descripcion);
             }

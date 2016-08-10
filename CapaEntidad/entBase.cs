@@ -10,6 +10,7 @@ namespace FiltroLys.Model
     public class entBase
     {
         private String c_usuarioSys;
+        private String c_estacionSys;
         private DateTime d_fechaSys;
         private String c_accionSys;
         private fnEnum.RegExistente c_regexiste = fnEnum.RegExistente.Si;
@@ -18,12 +19,18 @@ namespace FiltroLys.Model
         private fnEnum.RegEditado c_editado = fnEnum.RegEditado.No;
         private Boolean c_resultadoBusq = false;
         private Boolean bFooterList = false;
-        private String c_opcion;
+        private String c_opcion = "ID";
 
         public String UsuarioSys
         {
             get { return c_usuarioSys; }
             set { c_usuarioSys = value; }
+        }
+
+        public String EstacionSys
+        {
+            get { return c_estacionSys; }
+            set { c_estacionSys = value; }
         }
 
         public DateTime FechaSys

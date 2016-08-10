@@ -48,7 +48,7 @@ namespace FiltroLys.ZLys.ModContabilidad
                 return;
             }
 
-            String sper = negPeriodoCia.GetPerTrabajo(scia, fnConst.ModContabilidadCod);
+            String sper = negPeriodoCia.GetPeriodoTrabajo(scia, fnConst.ModContabilidadCod);
             if (sper == null || sper.Equals(String.Empty))
             {
                 Funciones.fnMensaje.MensajeInfo("No se pudo obtener periodo de trabajo actual. Asignar uno válido.");
@@ -378,7 +378,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         private void fxCargarCombos()
         {
             //Compania
-            List<entCompania> Lst = negCompania.ListCiaComboXAppXUsu(fnConst.ModContabilidadCod, GlobalVar.UsuarioLogeo, fnConst.StringN, fnConst.TextSeleccioneNom);
+            List<entCompania> Lst = negCompania.ListaXUsuario(fnConst.ModContabilidadCod, GlobalVar.UsuarioLogeo, fnConst.StringN, new String[] { fnConst.TextNingunoCod, fnConst.TextNingunoNom });
             cmbCompania.EditValueChanged -= new System.EventHandler(this.cmbCompania_EditValueChanged);
             cmbCompania.Properties.DataSource = Lst;
             cmbCompania.Properties.DisplayMember = "Nombres";
@@ -446,7 +446,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         {
             int nCont = ((List<entCompania>)cmbCompania.Properties.DataSource).Count(x => x.Compania == GlobalVar.Compania);
             cmbCompania.EditValue = (nCont > 0) ? GlobalVar.Compania : fnConst.TextVacio;
-            String sPeriodo = negPeriodoCia.GetPerTrabajo(GlobalVar.Compania, fnConst.ModContabilidadCod);
+            String sPeriodo = negPeriodoCia.GetPeriodoTrabajo(GlobalVar.Compania, fnConst.ModContabilidadCod);
             txtPeriodo.Text = sPeriodo;
             cmbEstado.EditValue = fnConst.StringT;
         }

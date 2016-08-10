@@ -811,7 +811,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         private void fxCargarCombos()
         {
             //Compania
-            List<entCompania> LstA = negCompania.ListCompaniaForm(fnConst.StringT, fnConst.StringT, fnConst.StringPorc);
+            List<entCompania> LstA = negCompania.ListaCombo(fnConst.StringPorc, new String[] { fnConst.TextNingunoCod, fnConst.TextNingunoNom });
             cmbCompania.Properties.DataSource = LstA;
             cmbCompania.Properties.DisplayMember = "Nombres";
             cmbCompania.Properties.ValueMember = "Compania";
@@ -940,7 +940,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         
         private void fxNuevoReg()
         {
-            String sPerTrab = negPeriodoCia.GetPerTrabajo(GlobalVar.Compania, fnConst.ModContabilidadCod);
+            String sPerTrab = negPeriodoCia.GetPeriodoTrabajo(GlobalVar.Compania, fnConst.ModContabilidadCod);
             String sPerHoy = fnGeneral.FormatoDateTime(DateTime.Now, fnEnum.FormatFecha.FechaPeriodo);
             String sPerTemp = "";
             DateTime dFecha = DateTime.MinValue;
@@ -1121,7 +1121,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         
         private void fxCopiarReg()
         {
-            String sPerTrab = negPeriodoCia.GetPerTrabajo(GlobalVar.Compania, fnConst.ModContabilidadCod);
+            String sPerTrab = negPeriodoCia.GetPeriodoTrabajo(GlobalVar.Compania, fnConst.ModContabilidadCod);
             String sPerHoy = fnGeneral.FormatoDateTime(DateTime.Now, fnEnum.FormatFecha.FechaPeriodo);
             String sPerTemp = "";
             DateTime dFecha = DateTime.MinValue;
@@ -1411,12 +1411,12 @@ namespace FiltroLys.ZLys.ModContabilidad
                 case "AN":
                     oEntVoucher.OperMantenimiento = fnEnum.OperacionMant.Modificar;
                     break;
-                case "AP":
+                /*case "AP":
                     oEntVoucher.OperMantenimiento = fnEnum.OperacionMant.Aprobar;
                     break;
                 case "PE":
                     oEntVoucher.OperMantenimiento = fnEnum.OperacionMant.Pendiente;
-                    break;
+                    break;*/
             }
             
             oErr = negVoucher.MantVoucher(oEntVoucher);

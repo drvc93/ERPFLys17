@@ -162,6 +162,7 @@ namespace FiltroLys.ZLys.ModMaestro.General
                 txtDescripcion.Text = entMain.Descripcion.Trim();
                 cmbEstado.EditValue = entMain.Estado;
                 txtCodAduana.Text = (!String.IsNullOrEmpty(entMain.CodAduana))?entMain.CodAduana.Trim():String.Empty;
+                txtCodSunat.Text = (!String.IsNullOrEmpty(entMain.CodSunat)) ? entMain.CodSunat.Trim() : String.Empty;
                 txtUltimoUsuario.Text = entMain.UltimoUsuario;
                 txtUltimoUsuarioNombre.Text = entMain.UserNombreForm;
                 txtUltimaFecha.Text = fnGeneral.FormatoDateTime(entMain.UltimaFechaModificacion);
@@ -179,6 +180,7 @@ namespace FiltroLys.ZLys.ModMaestro.General
             txtPais.ReadOnly = !sHabilitado;
             txtDescripcion.ReadOnly = !sHabilitado;
             txtCodAduana.ReadOnly = !sHabilitado;
+            txtCodSunat.ReadOnly = !sHabilitado;
             cmbEstado.ReadOnly = !sHabilitado;
             btnGuardar.Enabled = true;
             txtUltimoUsuario.ReadOnly = true;
@@ -205,6 +207,7 @@ namespace FiltroLys.ZLys.ModMaestro.General
             String sDescripcion = txtDescripcion.Text.ToString().Trim();
             String sEstado = cmbEstado.EditValue.ToString();
             String sCodAdu = txtCodAduana.Text.ToString().Trim();
+            String sCodSun = txtCodSunat.Text.ToString().Trim();
 
             if (String.IsNullOrEmpty(sPais)){
                 fnMensaje.MensajeInfo("Debe ingresar Código de País por favor.");
@@ -223,8 +226,10 @@ namespace FiltroLys.ZLys.ModMaestro.General
             entMain.Descripcion = sDescripcion;
             entMain.Estado = sEstado;
             entMain.CodAduana = sCodAdu;
+            entMain.CodSunat = sCodSun;
             entMain.UsuarioSys = GlobalVar.UsuarioLogeo;
-
+            entMain.EstacionSys = GlobalVar.EstacionLogeo;
+            entMain.FechaSys = DateTime.Now;
             xPais = sPais;
 
             bOk = true;
@@ -297,6 +302,9 @@ namespace FiltroLys.ZLys.ModMaestro.General
             if (gvDatos.DataRowCount == 0) { return; }
             if (gvDatos.SelectedRowsCount == 0) { return; }
             entPaises oEnt = (entPaises)gvDatos.GetRow(gvDatos.FocusedRowHandle);
+            oEnt.UsuarioSys = GlobalVar.UsuarioLogeo;
+            oEnt.EstacionSys = GlobalVar.EstacionLogeo;
+            oEnt.FechaSys = DateTime.Now;
 
             oEnt.OperMantenimiento = fnEnum.OperacionMant.Eliminar;
             entErrores oErr = new entErrores();

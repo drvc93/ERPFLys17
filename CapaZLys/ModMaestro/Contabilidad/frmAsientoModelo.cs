@@ -110,7 +110,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
         private void fxCargarCombos()
         {
             //Compania
-            List<entCompania> Lst = negCompania.ListCiaComboXEstado(fnConst.EstadoActivoCod, fnConst.TextRaya3, fnConst.TextSeleccioneNom);
+            List<entCompania> Lst = negCompania.ListaCombo(fnConst.EstadoActivoCod, new String[] { fnConst.TextNingunoCod, fnConst.TextSeleccioneNom});
             cmbCompania.Properties.DataSource = Lst;
             cmbCompania.Properties.DisplayMember = "Nombres";
             cmbCompania.Properties.ValueMember = "Compania";
@@ -498,7 +498,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             if (gvDetalle.RowCount == 0) { return; }
             entAsientoModeloDet oEnt = (entAsientoModeloDet)gvDetalle.GetRow(gvDetalle.FocusedRowHandle);
             oEnt.RegVer = fnEnum.RegVer.No;
-            oEnt.OperMantenimiento = (oEnt.OperMantenimiento == fnEnum.OperacionMant.Insertar) ? fnEnum.OperacionMant.Ninguno : fnEnum.OperacionMant.Eliminar;
+            //oEnt.OperMantenimiento = (oEnt.OperMantenimiento == fnEnum.OperacionMant.Insertar) ? fnEnum.OperacionMant.Ninguno : fnEnum.OperacionMant.Eliminar;
             fxLinkDet();
         }
 

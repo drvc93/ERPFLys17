@@ -49,6 +49,8 @@
             this.CodAduana = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtCodAduana = new DevExpress.XtraEditors.TextEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.txtCodSunat = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.pnlMain)).BeginInit();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grControl)).BeginInit();
@@ -66,11 +68,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.riceFlags)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUltimoUsuarioNombre.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodAduana.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCodSunat.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
             // 
             this.pnlMain.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel1;
+            
             // 
             // grControl
             // 
@@ -103,8 +107,13 @@
             this.lblTitulo.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.lblTitulo.Size = new System.Drawing.Size(0, 35);
             // 
+            // btnCancelar
+            
+            // 
             // pnlCuerpo
             // 
+            this.pnlCuerpo.Controls.Add(this.txtCodSunat);
+            this.pnlCuerpo.Controls.Add(this.labelControl7);
             this.pnlCuerpo.Controls.Add(this.txtCodAduana);
             this.pnlCuerpo.Controls.Add(this.labelControl6);
             this.pnlCuerpo.Controls.Add(this.txtUltimoUsuarioNombre);
@@ -120,6 +129,7 @@
             this.pnlCuerpo.Controls.Add(this.labelControl1);
             this.pnlCuerpo.Size = new System.Drawing.Size(0, 0);
             // 
+            
             // Descripcion
             // 
             this.Descripcion.Caption = "Descripcion";
@@ -179,7 +189,7 @@
             // txtPais
             // 
             this.txtPais.Location = new System.Drawing.Point(87, 15);
-            this.txtPais.Name = "txtPais";
+            this.txtPais.Name = "txtPais";            
             this.txtPais.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPais.Properties.MaxLength = 3;
             this.txtPais.Size = new System.Drawing.Size(90, 20);
@@ -204,6 +214,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(87, 50);
+            this.txtDescripcion.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Properties.MaxLength = 50;
             this.txtDescripcion.Size = new System.Drawing.Size(288, 20);
@@ -222,7 +233,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(10, 149);
+            this.labelControl4.Location = new System.Drawing.Point(10, 182);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(72, 13);
             this.labelControl4.TabIndex = 15;
@@ -230,7 +241,7 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(10, 183);
+            this.labelControl5.Location = new System.Drawing.Point(10, 216);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(65, 13);
             this.labelControl5.TabIndex = 16;
@@ -238,17 +249,17 @@
             // 
             // txtUltimoUsuario
             // 
-            this.txtUltimoUsuario.Location = new System.Drawing.Point(87, 153);
+            this.txtUltimoUsuario.Location = new System.Drawing.Point(87, 186);
             this.txtUltimoUsuario.Name = "txtUltimoUsuario";
             this.txtUltimoUsuario.Size = new System.Drawing.Size(113, 20);
-            this.txtUltimoUsuario.TabIndex = 5;
+            this.txtUltimoUsuario.TabIndex = 7;
             // 
             // txtUltimaFecha
             // 
-            this.txtUltimaFecha.Location = new System.Drawing.Point(87, 188);
+            this.txtUltimaFecha.Location = new System.Drawing.Point(87, 221);
             this.txtUltimaFecha.Name = "txtUltimaFecha";
             this.txtUltimaFecha.Size = new System.Drawing.Size(150, 20);
-            this.txtUltimaFecha.TabIndex = 7;
+            this.txtUltimaFecha.TabIndex = 9;
             // 
             // Pais
             // 
@@ -268,10 +279,10 @@
             // 
             // txtUltimoUsuarioNombre
             // 
-            this.txtUltimoUsuarioNombre.Location = new System.Drawing.Point(203, 154);
+            this.txtUltimoUsuarioNombre.Location = new System.Drawing.Point(203, 187);
             this.txtUltimoUsuarioNombre.Name = "txtUltimoUsuarioNombre";
             this.txtUltimoUsuarioNombre.Size = new System.Drawing.Size(172, 20);
-            this.txtUltimoUsuarioNombre.TabIndex = 6;
+            this.txtUltimoUsuarioNombre.TabIndex = 8;
             // 
             // CodAduana
             // 
@@ -289,7 +300,7 @@
             this.txtCodAduana.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodAduana.Properties.MaxLength = 5;
             this.txtCodAduana.Size = new System.Drawing.Size(90, 20);
-            this.txtCodAduana.TabIndex = 18;
+            this.txtCodAduana.TabIndex = 5;
             // 
             // labelControl6
             // 
@@ -298,6 +309,23 @@
             this.labelControl6.Size = new System.Drawing.Size(64, 13);
             this.labelControl6.TabIndex = 17;
             this.labelControl6.Text = "Cod.Aduana:";
+            // 
+            // txtCodSunat
+            // 
+            this.txtCodSunat.Location = new System.Drawing.Point(87, 153);
+            this.txtCodSunat.Name = "txtCodSunat";
+            this.txtCodSunat.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCodSunat.Properties.MaxLength = 4;
+            this.txtCodSunat.Size = new System.Drawing.Size(90, 20);
+            this.txtCodSunat.TabIndex = 6;
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Location = new System.Drawing.Point(10, 152);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(55, 13);
+            this.labelControl7.TabIndex = 19;
+            this.labelControl7.Text = "Cod.Sunat:";
             // 
             // frmPaises
             // 
@@ -325,6 +353,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.riceFlags)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUltimoUsuarioNombre.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodAduana.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCodSunat.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -352,5 +381,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn CodAduana;
         private DevExpress.XtraEditors.TextEdit txtCodAduana;
         private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.TextEdit txtCodSunat;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
     }
 }

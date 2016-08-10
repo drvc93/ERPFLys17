@@ -31,10 +31,10 @@ namespace FiltroLys.Domain.Maestro.General
             return EObj;
         }
 
-        public static List<entPeriodoCia> ListaCombo(String Compania, String Periodo, String Sistema, String Estado, String[] Def = null)
+        public static List<entPeriodoCia> ListaCombo(String Compania, String Sistema, String Estado, String[] Def = null)
         {
             List<entPeriodoCia> ListObj = new List<entPeriodoCia>();
-            ListObj = datPeriodoCia.ListaCombo(Compania, Periodo, Sistema, Estado).ToList<entPeriodoCia>();
+            ListObj = datPeriodoCia.ListaCombo(Compania, Sistema, Estado).ToList<entPeriodoCia>();
             if (Def != null){
                 ListObj.Insert(0, new entPeriodoCia() { Periodo = Def[1] });
             }
@@ -53,9 +53,21 @@ namespace FiltroLys.Domain.Maestro.General
             return datPeriodoCia.MantFormID(Data);
         }
 
-        public static String GetPerTrabajo(String Compania, String Sistema)
+        public static entErrores MantBloqueoPeriodo(List<entPeriodoCia> Data)
         {
-            return datPeriodoCia.GetPeriodoTrabajo(Compania, Sistema);
+            return datPeriodoCia.MantBloqueoPeriodo(Data);
+        }
+                
+        public static String GetPeriodoTrabajo(String Compania, String Sistema)
+        {
+            String sPer = "";
+            List<entPeriodoCia> ListObj = new List<entPeriodoCia>();
+            ListObj = datPeriodoCia.ListaPeriodoTrabajo(Compania, Sistema).ToList<entPeriodoCia>();
+            if (ListObj.Count > 0){
+                sPer = ListObj[0].Periodo;
+            }
+            ListObj = null;
+            return sPer;
         }
 
         public static Int32 GetValidaPeriodoCia(String Compania, String Periodo, String Sistema)
@@ -68,10 +80,6 @@ namespace FiltroLys.Domain.Maestro.General
             }
             EObj = null;
             return nFound;
-        }
-
-        public static entErrores MantBloqueoPeriodo(List<entPeriodoCia> Data){
-            return datPeriodoCia.MantBloqueoPeriodo(Data);
         }
 
     }

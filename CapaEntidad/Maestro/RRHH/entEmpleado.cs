@@ -20,6 +20,7 @@ namespace FiltroLys.Model.Maestro.RRHH
         private String c_CentroFormacion, c_FlagMadreRF = "N", c_FlagBeneficiarioCD = "N", c_FotoCheck, c_UsuarioEvaluacion;
         private String c_FlagEssaludVida = "N", c_CodigoVia, c_CodigoZona, c_FlagPensionista = "N", c_Ocupacion, c_RegimenPensionario;
         private String c_SctrSalud, c_TipoModalidadFormativa, c_CodEstablecimiento, c_CategoriaEsp, c_ObsCts, c_ComisionVarMixta = "N";
+        private String c_FlagOtroCuentaBanco = "N";
         private int n_Empleado, n_CodigoAnterior, n_Postulante, n_Perfil;
         private DateTime d_FechaNacimiento, d_FechaUltimoIngreso, d_FechaInicioPension, d_FechaFinPension, d_FechaUltimoCese;
         private DateTime d_FechaRegistro = DateTime.Now, d_UltimaFechaModificacion = DateTime.Now;
@@ -563,6 +564,12 @@ namespace FiltroLys.Model.Maestro.RRHH
         {
             get { return c_ComisionVarMixta; }
             set { c_ComisionVarMixta = value; }
+        }
+
+        public String FlagOtroCuentaBanco
+        {
+            get { return c_FlagOtroCuentaBanco; }
+            set { c_FlagOtroCuentaBanco = value; }
         }
 
         public String UserNombreForm

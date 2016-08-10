@@ -102,7 +102,7 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
         private void fxCargarCombos()
         {
             //Compania
-            List<entCompania> LstA = negCompania.ListCiaComboXEstado(fnConst.StringT,fnConst.TextRaya3,fnConst.TextSeleccioneNom);
+            List<entCompania> LstA = negCompania.ListaCombo(fnConst.StringPorc, new String[] { fnConst.TextRaya3, fnConst.TextSeleccioneNom });
             cmbCompania.Properties.DataSource = LstA;
             cmbCompania.Properties.DisplayMember = "Nombres";
             cmbCompania.Properties.ValueMember = "Compania";
@@ -243,6 +243,8 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
             entMain.Descripcion = sDescripcion;
             entMain.Estado = sEstado;
             entMain.UsuarioSys = GlobalVar.UsuarioLogeo;
+            entMain.EstacionSys = GlobalVar.EstacionLogeo;
+            entMain.FechaSys = DateTime.Now;
 
             xCompania = sCia;
             xClasificacion = sClasif;
@@ -318,6 +320,9 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
             if (gvDatos.DataRowCount == 0) { return; }
             if (gvDatos.SelectedRowsCount == 0) { return; }
             entClasificacionCentroCosto oEnt = (entClasificacionCentroCosto)gvDatos.GetRow(gvDatos.FocusedRowHandle);
+            oEnt.UsuarioSys = GlobalVar.UsuarioLogeo;
+            oEnt.EstacionSys = GlobalVar.EstacionLogeo;
+            oEnt.FechaSys = DateTime.Now;
 
             oEnt.OperMantenimiento = fnEnum.OperacionMant.Eliminar;
             entErrores oErr = new entErrores();

@@ -102,7 +102,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
         private void fxCargarCombos()
         {
             //Compania
-            List<entCompania> LstA = negCompania.ListCiaComboXEstado(fnConst.StringT, fnConst.TextRaya3, fnConst.TextSeleccioneNom);
+            List<entCompania> LstA = negCompania.ListaCombo(fnConst.StringPorc, new String[] { fnConst.TextNingunoCod, fnConst.TextSeleccioneNom });
             cmbCompania.Properties.DataSource = LstA;
             cmbCompania.Properties.DisplayMember = "Nombres";
             cmbCompania.Properties.ValueMember = "Compania";

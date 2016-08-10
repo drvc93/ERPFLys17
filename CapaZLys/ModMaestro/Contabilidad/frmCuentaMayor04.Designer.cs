@@ -84,8 +84,8 @@
             this.gvDatos.Appearance.HeaderPanel.Options.UseTextOptions = true;
             this.gvDatos.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gvDatos.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.CuentaMayor04,
             this.CuentaMayor,
+            this.CuentaMayor04,
             this.Descripcion,
             this.Estado,
             this.UltimoUsuario,
@@ -127,7 +127,7 @@
             this.CuentaMayor04.FieldName = "CuentaMayor04";
             this.CuentaMayor04.Name = "CuentaMayor04";
             this.CuentaMayor04.Visible = true;
-            this.CuentaMayor04.VisibleIndex = 0;
+            this.CuentaMayor04.VisibleIndex = 1;
             this.CuentaMayor04.Width = 77;
             // 
             // Descripcion
@@ -215,6 +215,7 @@
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(87, 75);
             this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescripcion.Properties.MaxLength = 100;
             this.txtDescripcion.Size = new System.Drawing.Size(407, 20);
             this.txtDescripcion.TabIndex = 3;
@@ -266,7 +267,7 @@
             this.CuentaMayor.FieldName = "CuentaMayor";
             this.CuentaMayor.Name = "CuentaMayor";
             this.CuentaMayor.Visible = true;
-            this.CuentaMayor.VisibleIndex = 1;
+            this.CuentaMayor.VisibleIndex = 0;
             this.CuentaMayor.Width = 72;
             // 
             // riceFlags

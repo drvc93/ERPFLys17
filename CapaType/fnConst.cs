@@ -193,7 +193,16 @@ namespace FiltroLys.Type
         public const String RepVersionLBContableV500Cod = "V500";
         public const String RepVersionLBContableV500Nom = "PLE V.5.0.0";
 
-        public const String OperMantID = "ID";
+        public const String OperLstMaestra = "LSTMAE";
+        public const String OperLstID = "GETID";
+        public const String OperLstCombo = "LSTCMB";
+        public const String OperLstBusqueda = "LSTBUS";
+        public const String OperMantGenID = "ID";
+
+        public const String OperaAccionLst = "LST";
+        public const String OperaAccionIns = "INS";
+        public const String OperaAccionUpd = "UPD";
+        public const String OperaAccionDel = "DEL";
 
         public const String MensajeDeleteMaestro = "Se eliminará el registro seleccionado, desea continuar";
 

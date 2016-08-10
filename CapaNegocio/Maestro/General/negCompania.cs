@@ -13,18 +13,18 @@ namespace FiltroLys.Domain.Maestro.General
 {
     public class negCompania
     {
-        public static List<entCompania> ListCompaniaForm(String Compania, String Estado, String Nombre)
+        public static List<entCompania> ListaFormID()
         {
             List<entCompania> ListObj = new List<entCompania>();
-            ListObj = datCompania.ListCompaniaForm(Compania, Estado, Nombre).ToList<entCompania>();
+            ListObj = datCompania.ListaFormID().ToList<entCompania>();
             return ListObj;
         }
 
-        public static entCompania GetCompaniaFormID(String Compania)
+        public static entCompania GetFormID(String Compania)
         {
             entCompania EObj = new entCompania();
             List<entCompania> ListObj = new List<entCompania>();
-            ListObj = datCompania.GetCompaniaFormID(Compania).ToList<entCompania>();
+            ListObj = datCompania.GetFormID(Compania).ToList<entCompania>();
             if (ListObj.Count > 0){
                 EObj = ListObj[0]; EObj.ResultadoBusqueda = true;
             }
@@ -32,29 +32,41 @@ namespace FiltroLys.Domain.Maestro.General
             return EObj;
         }
 
-        public static List<entCompania> ListCiaComboXAppXUsu(String App, String Usuario, String SoloActivo, String opc = "")
+        public static List<entCompania> ListaCombo(String Estado, String[] Def = null)
         {
             List<entCompania> ListObj = new List<entCompania>();
-            ListObj = datCompania.ListCiaComboXAppXUsu(App,Usuario,SoloActivo).ToList<entCompania>();
-            if(opc.Length>0){
-                ListObj.Insert(0,new entCompania() { Compania = "", Nombres = opc });
+            ListObj = datCompania.ListaCombo(Estado).ToList<entCompania>();
+            if (Def != null){
+                ListObj.Insert(0, new entCompania() { Compania = Def[0], Nombres = Def[1] });
             }
             return ListObj;
         }
 
-        public static List<entCompania> ListCiaComboXEstado(String Estado, String OtroCod = fnConst.TextVacio, String OtroNom = fnConst.TextVacio)
+        public static List<entCompania> ListaSearch(String Compania, String Nombre, String DocumentoFiscal, String Estado)
         {
             List<entCompania> ListObj = new List<entCompania>();
-            ListObj = datCompania.ListCompaniaForm(fnConst.StringT, Estado, fnConst.StringPorc).ToList<entCompania>();
-            if (OtroCod.Length > 0){
-                ListObj.Insert(0, new entCompania() { Compania = OtroCod, Nombres = OtroNom });
+            ListObj = datCompania.ListaSearch(Compania, Nombre, DocumentoFiscal,Estado).ToList<entCompania>();
+            return ListObj;
+        }
+
+        public static List<entCompania> ListaXUsuario(String App, String Usuario, String SoloActivo, String[] Def = null)
+        {
+            List<entCompania> ListObj = new List<entCompania>();
+            ListObj = datCompania.ListaXUsuario(App, Usuario, SoloActivo).ToList<entCompania>();
+            if (Def != null){
+                ListObj.Insert(0, new entCompania() { Compania = Def[0], Nombres = Def[1] });
             }
             return ListObj;
         }
 
-        public static String getNombreCia(String Compania){
+        public static entErrores MantCompania(entCompania Data)
+        {
+            return datCompania.MantCompania(Data);
+        }
+
+        public static String GetDatosNombre(String Compania){
             String sCiaNombre = "";
-            entCompania oEnt = GetCompaniaFormID(Compania);
+            entCompania oEnt = GetFormID(Compania);
             if(oEnt.ResultadoBusqueda){
                 sCiaNombre = oEnt.Nombres;
             }
@@ -62,19 +74,15 @@ namespace FiltroLys.Domain.Maestro.General
             return sCiaNombre;
         }
 
-        public static String getDocFiscalCia(String Compania)
+        public static String GetDatosDocFiscal(String Compania)
         {
             String sDocFiscal = "";
-            entCompania oEnt = GetCompaniaFormID(Compania);
+            entCompania oEnt = GetFormID(Compania);
             if (oEnt.ResultadoBusqueda){
                 sDocFiscal = oEnt.DocumentoFiscal;
             }
             oEnt = null;
             return sDocFiscal;
-        }
-
-        public static entErrores MantCompania(entCompania Data) {
-            return datCompania.MantCompania(Data);
         }
 
     }

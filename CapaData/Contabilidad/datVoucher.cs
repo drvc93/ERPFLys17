@@ -262,7 +262,7 @@ namespace FiltroLys.Repository.Contabilidad
                                 }
                             }
                             break;
-                        case fnEnum.OperacionMant.Aprobar:
+                        /*case fnEnum.OperacionMant.Aprobar:
                             Cmd.CommandType = CommandType.StoredProcedure;
                             Cmd.Parameters.Clear();
                             Cmd.CommandText = tsqVoucher.UP_AprobarVoucher();
@@ -287,7 +287,7 @@ namespace FiltroLys.Repository.Contabilidad
                             Cmd.Parameters.Add(new SqlParameter("@Mensaje", SqlDbType.VarChar, 250)).Value = "";
                             Cmd.Parameters["@Mensaje"].Direction = ParameterDirection.Output;
                             Cmd.ExecuteNonQuery();
-                            break;
+                            break;*/
                     }
                     if (bOk){
                         Trs.Commit();
@@ -295,17 +295,17 @@ namespace FiltroLys.Repository.Contabilidad
                         entErr.CodigoGeneradoText = Data.NumeroVoucher;
                         
                         //Caso Aprobado
-                        if (Data.OperMantenimiento == fnEnum.OperacionMant.Aprobar){
+                        /*if (Data.OperMantenimiento == fnEnum.OperacionMant.Aprobar){
                             sMens = Cmd.Parameters["@Mensaje"].Value.ToString();
                             if (!sMens.Equals("OK")){
                                 entErr.Resultado = false;
                                 entErr.Errores.Add(new entFail() { Codigo = "SQL", Descripcion = sMens });
                             }
-                        }
+                        }*/
                     }
-                    else { 
+                    /*else { 
                         if (!(Data.OperMantenimiento == fnEnum.OperacionMant.Aprobar || Data.OperMantenimiento == fnEnum.OperacionMant.Pendiente)){ Trs.Rollback(); }
-                    }
+                    }*/
                 }
                 catch (Exception ex)
                 {
@@ -334,8 +334,8 @@ namespace FiltroLys.Repository.Contabilidad
             fnEnum.OperacionMant Operacion = Data[0].OperMantenimiento;
             int reg = 1, regtot = Data.Count;
 
-            if (Operacion == fnEnum.OperacionMant.Aprobar) { query = tsqVoucher.UP_AprobarVoucher(); }
-            if (Operacion == fnEnum.OperacionMant.Pendiente) { query = tsqVoucher.UP_PasarPendienteVoucher(); }
+            /*if (Operacion == fnEnum.OperacionMant.Aprobar) { query = tsqVoucher.UP_AprobarVoucher(); }
+            if (Operacion == fnEnum.OperacionMant.Pendiente) { query = tsqVoucher.UP_PasarPendienteVoucher(); }*/
 
             using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
             {

@@ -267,7 +267,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
 
         private void fxCargarCombosDetalle() {
             //Compania
-            List<entCompania> LstA = negCompania.ListCiaComboXEstado(fnConst.StringT, fnConst.TextRaya3, fnConst.TextSeleccioneNom);
+            List<entCompania> LstA = negCompania.ListaCombo(fnConst.StringPorc,new String[] { fnConst.TextNingunoCod, fnConst.TextSeleccioneNom });
             rilueCompaniaDet.DataSource = LstA;
             rilueCompaniaDet.DisplayMember = "Nombres";
             rilueCompaniaDet.ValueMember = "Compania";
@@ -1050,7 +1050,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             Boolean bFlagTCia = chkFlagTodasCompania.Checked;
 
             if (bFlagTCia) {
-                List<entCompania> LstA = negCompania.ListCiaComboXEstado(fnConst.StringT, fnConst.TextRaya3, fnConst.TextSeleccioneNom);
+                List<entCompania> LstA = negCompania.ListaCombo(fnConst.StringPorc, new String[] { fnConst.TextNingunoCod, fnConst.TextSeleccioneNom });
                 foreach (entCompania oEnt in LstA){
                     if (LstDet.Where(x => x.RegVer == fnEnum.RegVer.Si && x.Compania.Equals(oEnt.Compania)).Count() == 0){
                         Int64 nLinea = 0;
@@ -1071,7 +1071,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
                         objE = null;
                     }else{
                         oEnt.RegVer = fnEnum.RegVer.No;
-                        oEnt.OperMantenimiento = (oEnt.OperMantenimiento == fnEnum.OperacionMant.Insertar) ? fnEnum.OperacionMant.Ninguno : fnEnum.OperacionMant.Eliminar;
+                        //oEnt.OperMantenimiento = (oEnt.OperMantenimiento == fnEnum.OperacionMant.Insertar) ? fnEnum.OperacionMant.Ninguno : fnEnum.OperacionMant.Eliminar;
                     }
                 }
                 fxLinkDet();

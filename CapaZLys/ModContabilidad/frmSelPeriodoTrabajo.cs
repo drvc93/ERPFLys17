@@ -41,7 +41,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         private void fxCargarCombos()
         {
             //Compania
-            List<entCompania> Lst = negCompania.ListCiaComboXAppXUsu(fnConst.ModContabilidadCod, GlobalVar.UsuarioLogeo, fnConst.StringN, fnConst.TextSeleccioneNom);
+            List<entCompania> Lst = negCompania.ListaXUsuario(fnConst.ModContabilidadCod, GlobalVar.UsuarioLogeo, fnConst.StringN, new String[] { fnConst.StringN, fnConst.TextNingunoNom });
             cmbCompania.Properties.DataSource = Lst;
             cmbCompania.Properties.DisplayMember = "Nombres";
             cmbCompania.Properties.ValueMember = "Compania";
@@ -52,7 +52,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         {
             int nCont = ((List<entCompania>)cmbCompania.Properties.DataSource).Count(x => x.Compania == GlobalVar.Compania);
             cmbCompania.EditValue = (nCont > 0) ? GlobalVar.Compania : "";
-            txtPeriodo.Text = negPeriodoCia.GetPerTrabajo(GlobalVar.Compania, fnConst.ModContabilidadCod);
+            txtPeriodo.Text = negPeriodoCia.GetPeriodoTrabajo(GlobalVar.Compania, fnConst.ModContabilidadCod);
             txtPeriodo.Focus();
         } 
 

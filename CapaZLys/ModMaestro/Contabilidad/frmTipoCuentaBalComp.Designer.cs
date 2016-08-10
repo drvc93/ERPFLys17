@@ -175,6 +175,7 @@
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(89, 51);
             this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescripcion.Properties.MaxLength = 50;
             this.txtDescripcion.Size = new System.Drawing.Size(288, 20);
             this.txtDescripcion.TabIndex = 2;

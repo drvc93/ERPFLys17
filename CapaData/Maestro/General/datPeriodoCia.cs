@@ -24,13 +24,14 @@ namespace FiltroLys.Repository.Maestro.General
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = tsqPeriodoCia.QR_ListaFormID();
+                Cmd.CommandText = fnQuery.tsqPeriodoCierreCia;
                 Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstMaestra;
                 Cmd.Parameters.Add(new SqlParameter("@Sistema", SqlDbType.VarChar)).Value = Sistema;
+
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = Cmd;
-                adapter.SelectCommand.Parameters.AddWithValue("@Accion", Constans.LISTA);
-                adapter.SelectCommand.Parameters.AddWithValue("@Opcion", Constans.OPCION_1);
                 adapter.Fill(dt);
                 if (Cmd.Connection.State == ConnectionState.Open)
                 {
@@ -53,10 +54,10 @@ namespace FiltroLys.Repository.Maestro.General
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = tsqPeriodoCia.QR_GetFormID();
+                Cmd.CommandText = fnQuery.tsqPeriodoCierreCia;
                 Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.LISTA;
-                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = Constans.OPCION_2;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstID;
                 Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Compania;
                 Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Periodo;
                 Cmd.Parameters.Add(new SqlParameter("@Sistema", SqlDbType.VarChar)).Value = Sistema;
@@ -76,7 +77,7 @@ namespace FiltroLys.Repository.Maestro.General
             return dt;
         }
 
-        public static DataTable ListaCombo(String Compania, String Periodo, String Sistema, String Estado)
+        public static DataTable ListaCombo(String Compania, String Sistema, String Estado)
         {
             DataTable dt = new DataTable();
             SqlCommand Cmd = new SqlCommand();
@@ -85,12 +86,11 @@ namespace FiltroLys.Repository.Maestro.General
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = tsqPeriodoCia.QR_ListaCombo();
+                Cmd.CommandText = fnQuery.tsqPeriodoCierreCia;
                 Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.LISTA;
-                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = Constans.OPCION_3;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstCombo;
                 Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Compania;
-                Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Periodo;
                 Cmd.Parameters.Add(new SqlParameter("@Sistema", SqlDbType.VarChar)).Value = Sistema;
                 Cmd.Parameters.Add(new SqlParameter("@Estado", SqlDbType.VarChar)).Value = Estado;
                 SqlDataAdapter adapter = new SqlDataAdapter();
@@ -117,10 +117,10 @@ namespace FiltroLys.Repository.Maestro.General
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = tsqPeriodoCia.QR_ListaSearch();
+                Cmd.CommandText = fnQuery.tsqPeriodoCierreCia;
                 Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.LISTA;
-                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = Constans.OPCION_4;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstBusqueda;
                 Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Compania;
                 Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Periodo;
                 Cmd.Parameters.Add(new SqlParameter("@Sistema", SqlDbType.VarChar)).Value = Sistema;
@@ -142,16 +142,46 @@ namespace FiltroLys.Repository.Maestro.General
             return dt;
         }
 
+        public static DataTable ListaPeriodoTrabajo(String Compania, String Sistema)
+        {
+            DataTable dt = new DataTable();
+            SqlCommand Cmd = new SqlCommand();
+
+            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
+            {
+                Cmd.Connection = Cnx;
+                Cmd.Connection.Open();
+                Cmd.CommandText = fnQuery.tsqPeriodoCierreCia;
+                Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = "LSTTRB";
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstID;
+                Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Compania;
+                Cmd.Parameters.Add(new SqlParameter("@Sistema", SqlDbType.VarChar)).Value = Sistema;
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = Cmd;
+                adapter.Fill(dt);
+                if (Cmd.Connection.State == ConnectionState.Open)
+                {
+                    Cmd.Connection.Close();
+                    Cmd.Connection.Dispose();
+                    Cnx.Close();
+                    Cnx.Dispose();
+                    GC.SuppressFinalize(Cnx);
+                }
+            }
+            return dt;
+        }
+
         public static entErrores MantFormID(entPeriodoCia Data)
         {
             SqlCommand Cmd = new SqlCommand();
             entErrores entErr = new entErrores();
+            String sMsj = "";
 
-            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
-            {
+            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion())){
                 SqlTransaction Trs = null;
-                try
-                {
+                try{
                     Cmd.Connection = Cnx;
                     Cmd.Connection.Open();
                     Trs = Cnx.BeginTransaction();
@@ -159,46 +189,29 @@ namespace FiltroLys.Repository.Maestro.General
 
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.Clear();
-                    Cmd.CommandText = tsqPeriodoCia.QR_MantFormID(Data.OperMantenimiento);
+                    Cmd.CommandText = fnQuery.tsqPeriodoCierreCia;
 
-                    if (Data.OperMantenimiento == fnEnum.OperacionMant.Insertar || Data.OperMantenimiento == fnEnum.OperacionMant.Modificar)
-                    {
-                        if (Data.OperMantenimiento == fnEnum.OperacionMant.Insertar)
-                        {
-                            Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.INSERTAR;
-                        }
-                        else if (Data.OperMantenimiento == fnEnum.OperacionMant.Modificar)
-                        {
-                            Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.ACTUALIZAR;
-                            Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = Constans.OPCION_1;
-                        }
-                   
-                        Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Data.Compania;
-                        Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Data.Periodo;
-                        Cmd.Parameters.Add(new SqlParameter("@Sistema", SqlDbType.VarChar)).Value = Data.Sistema;
-                        Cmd.Parameters.Add(new SqlParameter("@Estado", SqlDbType.VarChar)).Value = Data.Estado;
-                        Cmd.Parameters.Add(new SqlParameter("@UltimoUsuario", SqlDbType.VarChar)).Value = Data.UsuarioSys;
-                        Cmd.Parameters.Add(new SqlParameter("@FlagBloqueo", SqlDbType.VarChar)).Value = Data.FlagBloqueo;
-                        Cmd.Parameters.Add(new SqlParameter("@FlagTrabajo", SqlDbType.VarChar)).Value = Data.FlagTrabajo;
-                        Cmd.ExecuteNonQuery();
-                        
-                    }
-                    else if (Data.OperMantenimiento == fnEnum.OperacionMant.Eliminar)
-                    {
-                        Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.ELIMINAR;
-                        Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Data.Compania;
-                        Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Data.Periodo;
-                        Cmd.Parameters.Add(new SqlParameter("@Sistema", SqlDbType.VarChar)).Value = Data.Sistema;
-                        Cmd.ExecuteNonQuery();
-                    }
-
+                    Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnGetOpera.getOperacion(Data.OperMantenimiento);
+                    Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = Data.Opcion;
+                    Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Data.Compania;
+                    Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Data.Periodo;
+                    Cmd.Parameters.Add(new SqlParameter("@Sistema", SqlDbType.VarChar)).Value = Data.Sistema;
+                    Cmd.Parameters.Add(new SqlParameter("@Estado", SqlDbType.VarChar)).Value = Data.Estado;
+                    Cmd.Parameters.Add(new SqlParameter("@UltimoUsuario", SqlDbType.VarChar)).Value = Data.UsuarioSys;
+                    Cmd.Parameters.Add(new SqlParameter("@FlagBloqueo", SqlDbType.VarChar)).Value = Data.FlagBloqueo;
+                    Cmd.Parameters.Add(new SqlParameter("@FlagTrabajo", SqlDbType.VarChar)).Value = Data.FlagTrabajo;
+                    Cmd.Parameters.Add(new SqlParameter("@AudEstacion", SqlDbType.VarChar)).Value = Data.EstacionSys;
+                    Cmd.Parameters.Add(new SqlParameter("@AudFechaEst", SqlDbType.DateTime)).Value = Data.FechaSys;
+                    Cmd.ExecuteNonQuery();                        
+                    
                     Trs.Commit();
                     entErr.Resultado = true;
                 }
                 catch (Exception ex)
                 {
                     Trs.Rollback();
-                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = ex.Message });
+                    sMsj = ex.Message;
+                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = sMsj });
                 }
                 finally
                 {
@@ -213,67 +226,35 @@ namespace FiltroLys.Repository.Maestro.General
             }
             return entErr;
         }
-
-        public static String GetPeriodoTrabajo(String Compania, String Sistema)
-        {
-            String sPeriodo = "";
-            SqlDataReader dr = null;
-            SqlCommand Cmd = new SqlCommand();
-            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
-            {
-                Cmd.Connection = Cnx;
-                Cmd.Connection.Open();
-                Cmd.CommandText = tsqPeriodoCia.QR_GetPeriodoTrabajo();
-                Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.LISTA;
-                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = Constans.OPCION_5;
-                Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Compania;
-                Cmd.Parameters.Add(new SqlParameter("@Sistema", SqlDbType.VarChar)).Value = Sistema;                
-                dr = Cmd.ExecuteReader();
-                if (dr.Read())
-                {
-                    sPeriodo = dr.GetString(0);
-                }
-                dr.Close();
-                if (Cmd.Connection.State == ConnectionState.Open)
-                {
-                    Cmd.Connection.Close();
-                    Cmd.Connection.Dispose();
-                    Cnx.Close();
-                    Cnx.Dispose();
-                    GC.SuppressFinalize(Cnx);
-                }
-                Cmd = null;                
-                dr = null;
-            }
-            return sPeriodo;
-        }
-
+        
         public static entErrores MantBloqueoPeriodo(List<entPeriodoCia> Data)
         {
             SqlCommand Cmd = new SqlCommand();
-            entErrores entErr = new entErrores();            
-            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
-            {
+            entErrores entErr = new entErrores();
+            String sMsj = "";
+
+            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion())){
                 SqlTransaction Trs = null;
-                try
-                {
+                try{
                     Cmd.Connection = Cnx;
                     Cmd.Connection.Open();
                     Trs = Cnx.BeginTransaction();
                     Cmd.Transaction = Trs;
-                    Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.CommandText = tsqPeriodoCia.QR_MantBloqueoPeriodo();
 
-                    foreach (entPeriodoCia objE in Data)
-                    {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.Clear();
+                    Cmd.CommandText = fnQuery.tsqPeriodoCierreCia;
+
+                    foreach (entPeriodoCia objE in Data){
                         Cmd.Parameters.Clear();
-                        Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.ACTUALIZAR;
-                        Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = Constans.OPCION_2;
+                        Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnGetOpera.getOperacion(fnEnum.OperacionMant.Modificar);
+                        Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = "BLOQUEO";
                         Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = objE.Compania;
                         Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = objE.Periodo;
                         Cmd.Parameters.Add(new SqlParameter("@Sistema", SqlDbType.VarChar)).Value = objE.Sistema;
                         Cmd.Parameters.Add(new SqlParameter("@FlagBloqueo", SqlDbType.VarChar)).Value = objE.FlagBloqueo;
+                        Cmd.Parameters.Add(new SqlParameter("@AudEstacion", SqlDbType.VarChar)).Value = objE.EstacionSys;
+                        Cmd.Parameters.Add(new SqlParameter("@AudFechaEst", SqlDbType.DateTime)).Value = objE.FechaSys;
                         Cmd.ExecuteNonQuery();                        
                     }
 
@@ -283,7 +264,8 @@ namespace FiltroLys.Repository.Maestro.General
                 catch (Exception ex)
                 {
                     Trs.Rollback();
-                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = ex.Message });
+                    sMsj = ex.Message;
+                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = sMsj });
                 }
                 finally
                 {
@@ -292,7 +274,8 @@ namespace FiltroLys.Repository.Maestro.General
                     Cnx.Close();
                     Cnx.Dispose();
                     Trs.Dispose();
-                    GC.SuppressFinalize(Cnx);                    
+                    Data = null;
+                    GC.SuppressFinalize(Cnx);
                 }
             }
             return entErr;

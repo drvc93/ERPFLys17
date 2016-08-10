@@ -31,23 +31,6 @@ namespace FiltroLys.Domain.Maestro.Contabilidad
             return EObj;
         }
 
-        public static List<entCuentaContableRel> ListaCombo(String Estado, String[] Def = null)
-        {
-            List<entCuentaContableRel> ListObj = new List<entCuentaContableRel>();
-            ListObj = datCuentaContableRel.ListaCombo().ToList<entCuentaContableRel>();
-            if (Def != null){
-                ListObj.Insert(0, new entCuentaContableRel() { CuentaAnt = Def[0], CuentaNvo = Def[1] });
-            }
-            return ListObj;
-        }
-
-        public static List<entCuentaContableRel> ListaSearch(String CuentaAnt, String CuentaNvo)
-        {
-            List<entCuentaContableRel> ListObj = new List<entCuentaContableRel>();
-            ListObj = datCuentaContableRel.ListaSearch(CuentaAnt, CuentaNvo).ToList<entCuentaContableRel>();
-            return ListObj;
-        }
-
         public static entErrores MantFormID(entCuentaContableRel Data)
         {
             return datCuentaContableRel.MantFormID(Data);

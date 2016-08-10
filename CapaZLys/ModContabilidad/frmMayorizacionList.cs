@@ -85,7 +85,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         private void fxCargarCombos()
         {
             //Compania
-            List<entCompania> Lst = negCompania.ListCiaComboXAppXUsu(fnConst.ModContabilidadCod, GlobalVar.UsuarioLogeo, fnConst.StringT, fnConst.TextSeleccioneNom);
+            List<entCompania> Lst = negCompania.ListaXUsuario(fnConst.ModContabilidadCod, GlobalVar.UsuarioLogeo, fnConst.StringT, new String[] { fnConst.TextNingunoCod, fnConst.TextSeleccioneNom });
             cmbCompania.Properties.DataSource = Lst;
             cmbCompania.Properties.DisplayMember = "Nombres";
             cmbCompania.Properties.ValueMember = "Compania";

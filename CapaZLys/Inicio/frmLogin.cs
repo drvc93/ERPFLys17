@@ -18,7 +18,7 @@ namespace FiltroLys.ZLys.Inicio
     public partial class frmLogin : DevExpress.XtraEditors.XtraForm
     {
         int _nroVeces = 0;
-
+        
         #region "==EventForm=="
 
         public frmLogin()
@@ -58,7 +58,7 @@ namespace FiltroLys.ZLys.Inicio
                 errorForm.SetError(txtClave, "Ingresar Clave por favor.");
                 return;
             }
-
+            
             nErr = negSeguridad.GetValidarAcceso(sUsuario, sClave);
             switch (nErr)
             {
@@ -82,7 +82,7 @@ namespace FiltroLys.ZLys.Inicio
             else
             {
                 GlobalVar.UsuarioLogeo = sUsuario;
-                GlobalVar.Estacion = Environment.MachineName;
+                GlobalVar.EstacionLogeo = Environment.MachineName;
                 GlobalVar.FechaIng = DateTime.Now;
                 entErrores objE = fxIniciarAuditoria();
                 if (objE.Resultado == false)
@@ -124,7 +124,7 @@ namespace FiltroLys.ZLys.Inicio
         private entErrores fxIniciarAuditoria()
         {
             entAuditoria objE = new entAuditoria();
-            objE.Estacion = GlobalVar.Estacion;
+            objE.Estacion = GlobalVar.EstacionLogeo;
             objE.CodigoUsuario = GlobalVar.UsuarioLogeo;
             objE.FechaPcIng = GlobalVar.FechaIng;
             objE.UltimoUsuario = GlobalVar.UsuarioLogeo;

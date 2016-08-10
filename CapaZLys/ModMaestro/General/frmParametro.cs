@@ -107,7 +107,7 @@ namespace FiltroLys.ZLys.ModMaestro.General
         private void fxCargarCombos()
         {
             //Compania
-            List<entCompania> LstA = negCompania.ListCiaComboXEstado(fnConst.StringT, fnConst.TextRaya3, fnConst.TextSeleccioneNom);
+            List<entCompania> LstA = negCompania.ListaCombo(fnConst.StringPorc, new String[] { fnConst.TextRaya3, fnConst.TextSeleccioneNom });
             cmbCompania.Properties.DataSource = LstA;
             cmbCompania.Properties.DisplayMember = "Nombres";
             cmbCompania.Properties.ValueMember = "Compania";
@@ -297,6 +297,8 @@ namespace FiltroLys.ZLys.ModMaestro.General
             entMain.Numero = nNumero;
             entMain.Fecha = dFecha;
             entMain.UsuarioSys = GlobalVar.UsuarioLogeo;
+            entMain.EstacionSys = GlobalVar.EstacionLogeo;
+            entMain.FechaSys = DateTime.Now;
 
             xCompania = sCia;
             xAplicacion = sApli;
@@ -374,6 +376,9 @@ namespace FiltroLys.ZLys.ModMaestro.General
             if (gvDatos.DataRowCount == 0) { return; }
             if (gvDatos.SelectedRowsCount == 0) { return; }
             entParametro oEnt = (entParametro)gvDatos.GetRow(gvDatos.FocusedRowHandle);
+            oEnt.UsuarioSys = GlobalVar.UsuarioLogeo;
+            oEnt.EstacionSys = GlobalVar.EstacionLogeo;
+            oEnt.FechaSys = DateTime.Now;
 
             oEnt.OperMantenimiento = fnEnum.OperacionMant.Eliminar;
             entErrores oErr = new entErrores();

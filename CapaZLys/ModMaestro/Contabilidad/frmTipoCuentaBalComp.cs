@@ -220,6 +220,8 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             entMain.Descripcion = sDescripcion;
             entMain.Estado = sEst;
             entMain.UsuarioSys = GlobalVar.UsuarioLogeo;
+            entMain.EstacionSys = GlobalVar.EstacionLogeo;
+            entMain.FechaSys = DateTime.Now;
 
             xTipoCuenta = sTCta;
             
@@ -293,6 +295,9 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             if (gvDatos.DataRowCount == 0) { return; }
             if (gvDatos.SelectedRowsCount == 0) { return; }
             entTipoCuentaBalComp oEnt = (entTipoCuentaBalComp)gvDatos.GetRow(gvDatos.FocusedRowHandle);
+            oEnt.UsuarioSys = GlobalVar.UsuarioLogeo;
+            oEnt.EstacionSys = GlobalVar.EstacionLogeo;
+            oEnt.FechaSys = DateTime.Now;
 
             oEnt.OperMantenimiento = fnEnum.OperacionMant.Eliminar;
             entErrores oErr = new entErrores();

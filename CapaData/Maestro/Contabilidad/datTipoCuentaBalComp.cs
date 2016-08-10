@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using FiltroLys.Query.Maestro.Contabilidad;
 using FiltroLys.Model.Maestro.Contabilidad;
 using FiltroLys.Model.Objeto;
+using FiltroLys.Repository.Objeto;
 using FiltroLys.Type;
 
 namespace FiltroLys.Repository.Maestro.Contabilidad
@@ -23,13 +24,13 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = tsqTipoCuentaBalComp.QR_ListaFormID();
+                Cmd.CommandText = fnQuery.tsqTipoCuentaBalance;
                 Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstMaestra;
 
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = Cmd;
-                adapter.SelectCommand.Parameters.AddWithValue("@Accion", Constans.LISTA);
-                adapter.SelectCommand.Parameters.AddWithValue("@Opcion", Constans.OPCION_1);
                 adapter.Fill(dt);
                 if (Cmd.Connection.State == ConnectionState.Open)
                 {
@@ -52,10 +53,10 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = tsqTipoCuentaBalComp.QR_GetFormID();
+                Cmd.CommandText = fnQuery.tsqTipoCuentaBalance;
                 Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.LISTA;
-                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = Constans.OPCION_2;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstID;
                 Cmd.Parameters.Add(new SqlParameter("@TipoCuenta", SqlDbType.VarChar)).Value = TipoCuenta;
 
                 SqlDataAdapter adapter = new SqlDataAdapter();
@@ -82,11 +83,10 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = tsqTipoCuentaBalComp.QR_ListaCombo();
-
+                Cmd.CommandText = fnQuery.tsqTipoCuentaBalance;
                 Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.LISTA;
-                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = Constans.OPCION_3;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstCombo;
                 Cmd.Parameters.Add(new SqlParameter("@Estado", SqlDbType.VarChar)).Value = Estado;
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = Cmd;
@@ -112,10 +112,10 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = tsqTipoCuentaBalComp.QR_ListaSearch();
+                Cmd.CommandText = fnQuery.tsqTipoCuentaBalance;
                 Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.LISTA;
-                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = Constans.OPCION_4;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstBusqueda;
                 Cmd.Parameters.Add(new SqlParameter("@TipoCuenta", SqlDbType.VarChar)).Value = TipoCuenta;
                 Cmd.Parameters.Add(new SqlParameter("@Descripcion", SqlDbType.VarChar)).Value = Descripcion;
                 Cmd.Parameters.Add(new SqlParameter("@Estado", SqlDbType.VarChar)).Value = Estado;
@@ -138,12 +138,11 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
         {
             SqlCommand Cmd = new SqlCommand();
             entErrores entErr = new entErrores();
+            String sMsj = "";
 
-            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
-            {
+            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion())){
                 SqlTransaction Trs = null;
-                try
-                {
+                try{
                     Cmd.Connection = Cnx;
                     Cmd.Connection.Open();
                     Trs = Cnx.BeginTransaction();
@@ -151,37 +150,17 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
 
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.Clear();
-                    Cmd.CommandText = tsqTipoCuentaBalComp.QR_MantFormID(Data.OperMantenimiento);
+                    Cmd.CommandText = fnQuery.tsqTipoCuentaBalance;
 
-                    if (Data.OperMantenimiento == fnEnum.OperacionMant.Insertar || Data.OperMantenimiento == fnEnum.OperacionMant.Modificar)
-                    {
-
-                        if (Data.OperMantenimiento == fnEnum.OperacionMant.Insertar)
-                        {
-                            Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.INSERTAR;
-                        }
-
-                        else if (Data.OperMantenimiento == fnEnum.OperacionMant.Modificar)
-                        {
-                            Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.ACTUALIZAR;
-
-                        }
-                        Cmd.Parameters.Add(new SqlParameter("@TipoCuenta", SqlDbType.VarChar)).Value = Data.TipoCuenta;
-                        Cmd.Parameters.Add(new SqlParameter("@Descripcion", SqlDbType.VarChar)).Value = Data.Descripcion;
-                        Cmd.Parameters.Add(new SqlParameter("@Estado", SqlDbType.VarChar)).Value = Data.Estado;
-                        Cmd.Parameters.Add(new SqlParameter("@UltimoUsuario", SqlDbType.VarChar)).Value = Data.UsuarioSys;
-                        Cmd.ExecuteNonQuery();
-
-
-                    }
-
-                    else if (Data.OperMantenimiento == fnEnum.OperacionMant.Eliminar)
-                    {
-                        Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.DELETE;
-                        Cmd.Parameters.Add(new SqlParameter("@TipoCuenta", SqlDbType.VarChar)).Value = Data.TipoCuenta;
-                        Cmd.ExecuteNonQuery();
-                    }
-
+                    Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnGetOpera.getOperacion(Data.OperMantenimiento);
+                    Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = Data.Opcion;
+                    Cmd.Parameters.Add(new SqlParameter("@TipoCuenta", SqlDbType.VarChar)).Value = Data.TipoCuenta;
+                    Cmd.Parameters.Add(new SqlParameter("@Descripcion", SqlDbType.VarChar)).Value = Data.Descripcion;
+                    Cmd.Parameters.Add(new SqlParameter("@Estado", SqlDbType.VarChar)).Value = Data.Estado;
+                    Cmd.Parameters.Add(new SqlParameter("@UltimoUsuario", SqlDbType.VarChar)).Value = Data.UsuarioSys;
+                    Cmd.Parameters.Add(new SqlParameter("@AudEstacion", SqlDbType.VarChar)).Value = Data.EstacionSys;
+                    Cmd.Parameters.Add(new SqlParameter("@AudFechaEst", SqlDbType.DateTime)).Value = Data.FechaSys;
+                    Cmd.ExecuteNonQuery();
 
                     Trs.Commit();
                     entErr.Resultado = true;
@@ -189,7 +168,8 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
                 catch (Exception ex)
                 {
                     Trs.Rollback();
-                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = ex.Message });
+                    sMsj = ex.Message;
+                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = sMsj });
                 }
                 finally
                 {

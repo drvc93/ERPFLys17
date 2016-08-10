@@ -98,7 +98,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         private void fxCargarCombos()
         {
             //Compania
-            List<entCompania> Lst = negCompania.ListCompaniaForm("T", "T", "%");
+            List<entCompania> Lst = negCompania.ListaCombo(fnConst.StringPorc,new String[] { fnConst.StringPorc, fnConst.TextNingunoNom });
             cmbCompania.Properties.DataSource = Lst;
             cmbCompania.Properties.DisplayMember = "Nombres";
             cmbCompania.Properties.ValueMember = "Compania";

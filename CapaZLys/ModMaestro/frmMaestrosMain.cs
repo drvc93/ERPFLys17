@@ -1063,6 +1063,14 @@ namespace FiltroLys.ZLys.ModMaestro
 
                     #endregion
 
+                    #region "==Tipo Cuenta Balance=="
+
+                    case "0203090000":
+                        ((ModMaestro.Contabilidad.frmTipoCuentaBalComp)pnlContenedor.Controls[0]).ue_modificar();
+                        break;
+
+                    #endregion
+
                     #region "==Tipo Activo=="
 
                     case "0203250000":
@@ -1559,6 +1567,14 @@ namespace FiltroLys.ZLys.ModMaestro
 
                     case "0203210000":
                         ((ModMaestro.General.frmPaises)pnlContenedor.Controls[0]).ue_ver();
+                        break;
+
+                    #endregion
+
+                    #region "==Parametros=="
+
+                    case "0203130000":
+                        ((ModMaestro.General.frmParametro)pnlContenedor.Controls[0]).ue_ver();
                         break;
 
                     #endregion

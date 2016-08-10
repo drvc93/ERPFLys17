@@ -38,7 +38,7 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
         private void fxCargarCombos()
         {
             //Compania
-            List<entCompania> LstA = negCompania.ListCiaComboXAppXUsu(fnConst.ModContabilidadCod, GlobalVar.UsuarioLogeo, fnConst.StringN, fnConst.TextSeleccioneNom);
+            List<entCompania> LstA = negCompania.ListaXUsuario(fnConst.ModContabilidadCod, GlobalVar.UsuarioLogeo,fnConst.StringT, new String[] { fnConst.TextNingunoCod, fnConst.TextSeleccioneNom});
             cmbCompania.Properties.DataSource = LstA;
             cmbCompania.Properties.DisplayMember = "Nombres";
             cmbCompania.Properties.ValueMember = "Compania";

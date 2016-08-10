@@ -24,6 +24,7 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
         private entSucursal entMain = new entSucursal();
         private String xOperacion = "";
         private String xCompania = "", xSucursal = "";
+        private Boolean bInicio = false;
         private entEstructForm xestruct = new entEstructForm();
 
         public entEstructForm EstructuraForm
@@ -114,7 +115,7 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
         private void fxCargarCombos()
         {
             //Compania
-            List<entCompania> LstA = negCompania.ListCiaComboXEstado(fnConst.StringT, fnConst.TextRaya3, fnConst.TextSeleccioneNom);
+            List<entCompania> LstA = negCompania.ListaCombo(fnConst.StringPorc, new String[] { fnConst.TextRaya3, fnConst.TextSeleccioneNom });
             cmbCompania.Properties.DataSource = LstA;
             cmbCompania.Properties.DisplayMember = "Nombres";
             cmbCompania.Properties.ValueMember = "Compania";
@@ -135,12 +136,11 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
 
         private void fxCargarComboDepartamento(){
             String sPais = fnConst.TextNingunoCod;
-            if (cmbPais.EditValue != null){
-                sPais = cmbPais.EditValue.ToString();
-            }
+
+            if (cmbPais.EditValue != null){ sPais = cmbPais.EditValue.ToString();}
 
             if (xOperacion.Equals("M") || xOperacion.Equals("V")){
-                if(entMain.ResultadoBusqueda){
+                if (entMain.ResultadoBusqueda && bInicio){
                     sPais = String.IsNullOrEmpty(entMain.Pais) ? fnConst.TextNingunoCod : entMain.Pais;                   
                 }
             }
@@ -158,11 +158,12 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
         {
             String sPais = fnConst.TextNingunoCod;
             String sDepa = fnConst.TextNingunoCod;
-            if (cmbPais.EditValue != null){ sPais = cmbPais.EditValue.ToString(); }
+
+            if (cmbPais.EditValue != null) { sPais = cmbPais.EditValue.ToString(); }
             if (cmbDepartamento.EditValue != null) { sDepa = cmbDepartamento.EditValue.ToString(); }
 
             if (xOperacion.Equals("M") || xOperacion.Equals("V")){
-                if (entMain.ResultadoBusqueda){
+                if (entMain.ResultadoBusqueda && bInicio){
                     sPais = String.IsNullOrEmpty(entMain.Pais) ? fnConst.TextNingunoCod : entMain.Pais;
                     sDepa = String.IsNullOrEmpty(entMain.DepartamentoCodigo) ? fnConst.TextNingunoCod : entMain.DepartamentoCodigo;
                 }
@@ -182,12 +183,13 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
             String sPais = fnConst.TextNingunoCod;
             String sDepa = fnConst.TextNingunoCod;
             String sProv = fnConst.TextNingunoCod;
+
             if (cmbPais.EditValue != null) { sPais = cmbPais.EditValue.ToString(); }
             if (cmbDepartamento.EditValue != null) { sDepa = cmbDepartamento.EditValue.ToString(); }
             if (cmbProvincia.EditValue != null) { sProv = cmbProvincia.EditValue.ToString(); }
 
             if (xOperacion.Equals("M") || xOperacion.Equals("V")){
-                if (entMain.ResultadoBusqueda){
+                if (entMain.ResultadoBusqueda && bInicio){
                     sPais = String.IsNullOrEmpty(entMain.Pais) ? fnConst.TextNingunoCod : entMain.Pais;
                     sDepa = String.IsNullOrEmpty(entMain.DepartamentoCodigo) ? fnConst.TextNingunoCod : entMain.DepartamentoCodigo;
                     sProv = String.IsNullOrEmpty(entMain.ProvinciaCodigo) ? fnConst.TextNingunoCod : entMain.ProvinciaCodigo;
@@ -208,6 +210,7 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
         private void fxSetearIni()
         {
             xOperacion = this.EstructuraForm.OperacionX;
+            bInicio = true;
             if (!(xOperacion.Equals("A"))){
                 xCompania = this.EstructuraForm.StrX[0];
                 xSucursal = this.EstructuraForm.StrX[1];
@@ -238,7 +241,10 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
             this.lblTitulo.Text = "SUCURSAL";
         }
 
-        private void fxPostOpen() { }
+        private void fxPostOpen()
+        {
+            bInicio = false;
+        }
 
         private void fxNuevoReg()
         {
@@ -253,7 +259,7 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
 
         private void fxCargarReg()
         {
-            //entMain = negSucursal.GetFormID(xCompania,xSucursal);
+            entMain = negSucursal.GetFormID(xCompania,xSucursal);
             entMain.OperMantenimiento = fnEnum.OperacionMant.Modificar;
             if (entMain.ResultadoBusqueda){
                 cmbCompania.EditValue = entMain.Compania;
@@ -349,6 +355,8 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
             entMain.DistritoCodigo = sDist;
             entMain.Estado = sEstado;
             entMain.UsuarioSys = GlobalVar.UsuarioLogeo;
+            entMain.EstacionSys = GlobalVar.EstacionLogeo;
+            entMain.FechaSys = DateTime.Now;
 
             xCompania = sCia;
             xSucursal = sSuc;
@@ -424,6 +432,9 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
             if (gvDatos.DataRowCount == 0) { return; }
             if (gvDatos.SelectedRowsCount == 0) { return; }
             entSucursal oEnt = (entSucursal)gvDatos.GetRow(gvDatos.FocusedRowHandle);
+            oEnt.UsuarioSys = GlobalVar.UsuarioLogeo;
+            oEnt.EstacionSys = GlobalVar.EstacionLogeo;
+            oEnt.FechaSys = DateTime.Now;
 
             oEnt.OperMantenimiento = fnEnum.OperacionMant.Eliminar;
             entErrores oErr = new entErrores();

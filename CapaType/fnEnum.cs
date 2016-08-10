@@ -31,11 +31,7 @@ namespace FiltroLys.Type
             Insertar = 1,
             Modificar = 2,
             Eliminar = 3,
-            EliminarTodos = 4,
-            Anular = 5,
-            Aprobar = 6,
-            Rechazar = 7,
-            Pendiente = 8
+            EliminarTodos = 4            
         }
 
         public enum FormBusqueda
@@ -60,16 +56,7 @@ namespace FiltroLys.Type
             Si = 1,
             No = 2
         }
-
-        public enum EditOcxShow { 
-            Normal = 0,
-            Int = 1,
-            Dec = 2,
-            IntNeg = 3,
-            DecNeg = 4,
-            SetUpp = 5
-        }
-
+                
         public enum RegEditado
         {
             Si = 1,

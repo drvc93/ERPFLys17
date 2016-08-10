@@ -8,7 +8,7 @@ namespace FiltroLys.Model.Maestro.General
 {
     public class entPaises : entBase
     {
-        private String c_Pais, c_Descripcion, c_Estado = "A", c_UltimoUsuario, c_CodAduana;
+        private String c_Pais, c_Descripcion, c_Estado = "A", c_UltimoUsuario, c_CodAduana,c_CodSunat;
         private DateTime d_UltimaFechaModificacion = DateTime.Now;
         private String c_UserNombreForm;
 
@@ -46,6 +46,12 @@ namespace FiltroLys.Model.Maestro.General
         {
             get { return c_CodAduana; }
             set { c_CodAduana = value; }
+        }
+
+        public String CodSunat
+        {
+            get { return c_CodSunat; }
+            set { c_CodSunat = value; }
         }
 
         public String UserNombreForm

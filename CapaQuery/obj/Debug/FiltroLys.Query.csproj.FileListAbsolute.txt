@@ -34,3 +34,12 @@ D:\Proyectos\ERPFLys\CapaQuery\bin\Debug\FiltroLys.Type.pdb
 D:\Proyectos\ERPFLys\CapaQuery\obj\Debug\FiltroLys.Query.csprojResolveAssemblyReference.cache
 D:\Proyectos\ERPFLys\CapaQuery\obj\Debug\FiltroLys.Query.dll
 D:\Proyectos\ERPFLys\CapaQuery\obj\Debug\FiltroLys.Query.pdb
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaQuery\bin\Debug\FiltroLys.Query.dll
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaQuery\bin\Debug\FiltroLys.Query.pdb
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaQuery\bin\Debug\FiltroLys.Model.dll
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaQuery\bin\Debug\FiltroLys.Type.dll
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaQuery\bin\Debug\FiltroLys.Model.pdb
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaQuery\bin\Debug\FiltroLys.Type.pdb
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaQuery\obj\Debug\FiltroLys.Query.csprojResolveAssemblyReference.cache
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaQuery\obj\Debug\FiltroLys.Query.dll
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaQuery\obj\Debug\FiltroLys.Query.pdb

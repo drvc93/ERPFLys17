@@ -15,9 +15,6 @@ namespace FiltroLys.Repository.Maestro.General
 {
     public class datDistrito
     {
-        static String sMsj = "";
-        static String sProc = "UP_MA_MANT_DISTRITO";
-
         public static DataTable ListaFormID()
         {
             DataTable dt = new DataTable();
@@ -27,10 +24,10 @@ namespace FiltroLys.Repository.Maestro.General
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = sProc;
+                Cmd.CommandText = fnQuery.tsqDistrito;
                 Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.LISTA;
-                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = "LSTMAE";
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstMaestra;
 
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = Cmd;
@@ -56,10 +53,10 @@ namespace FiltroLys.Repository.Maestro.General
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = sProc;
+                Cmd.CommandText = fnQuery.tsqDistrito;
                 Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.LISTA;
-                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = "GETID";
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstID;
                 Cmd.Parameters.Add(new SqlParameter("@Pais", SqlDbType.VarChar)).Value = Pais;
                 Cmd.Parameters.Add(new SqlParameter("@Departamento", SqlDbType.VarChar)).Value = Departamento;
                 Cmd.Parameters.Add(new SqlParameter("@Provincia", SqlDbType.VarChar)).Value = Provincia;
@@ -89,10 +86,10 @@ namespace FiltroLys.Repository.Maestro.General
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = sProc;
+                Cmd.CommandText = fnQuery.tsqDistrito;
                 Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.LISTA;
-                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = "LSTCMB";
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstCombo;
                 Cmd.Parameters.Add(new SqlParameter("@Pais", SqlDbType.VarChar)).Value = Pais;
                 Cmd.Parameters.Add(new SqlParameter("@Departamento", SqlDbType.VarChar)).Value = Departamento;
                 Cmd.Parameters.Add(new SqlParameter("@Provincia", SqlDbType.VarChar)).Value = Provincia;
@@ -121,10 +118,10 @@ namespace FiltroLys.Repository.Maestro.General
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = sProc;
+                Cmd.CommandText = fnQuery.tsqDistrito;
                 Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.LISTA;
-                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = "LSTBUS";
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstBusqueda;
                 Cmd.Parameters.Add(new SqlParameter("@Pais", SqlDbType.VarChar)).Value = Pais;
                 Cmd.Parameters.Add(new SqlParameter("@Departamento", SqlDbType.VarChar)).Value = Departamento;
                 Cmd.Parameters.Add(new SqlParameter("@Provincia", SqlDbType.VarChar)).Value = Provincia;
@@ -150,12 +147,11 @@ namespace FiltroLys.Repository.Maestro.General
         {
             SqlCommand Cmd = new SqlCommand();
             entErrores entErr = new entErrores();
+            String sMsj = "";
 
-            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
-            {
+            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion())){
                 SqlTransaction Trs = null;
-                try
-                {
+                try{
                     Cmd.Connection = Cnx;
                     Cmd.Connection.Open();
                     Trs = Cnx.BeginTransaction();
@@ -163,7 +159,7 @@ namespace FiltroLys.Repository.Maestro.General
 
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.Clear();
-                    Cmd.CommandText = sProc;
+                    Cmd.CommandText = fnQuery.tsqDistrito;
 
                     Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnGetOpera.getOperacion(Data.OperMantenimiento);
                     Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = Data.Opcion;
@@ -176,20 +172,17 @@ namespace FiltroLys.Repository.Maestro.General
                     Cmd.Parameters.Add(new SqlParameter("@UltimoUsuario", SqlDbType.VarChar)).Value = Data.UsuarioSys;
                     Cmd.Parameters.Add(new SqlParameter("@CodigoDistFedd", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(Data.CodigoDistFedd,"");
                     Cmd.Parameters.Add(new SqlParameter("@Ubigeo", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(Data.Ubigeo,"");
-                    Cmd.Parameters.Add(new SqlParameter("@Mensaje", SqlDbType.VarChar,250));
-                    Cmd.Parameters["@Mensaje"].Direction = ParameterDirection.Output;
+                    Cmd.Parameters.Add(new SqlParameter("@AudEstacion", SqlDbType.VarChar)).Value = Data.EstacionSys;
+                    Cmd.Parameters.Add(new SqlParameter("@AudFechaEst", SqlDbType.DateTime)).Value = Data.FechaSys;
                     Cmd.ExecuteNonQuery();
 
-                    sMsj = Cmd.Parameters["@Mensaje"].Value.ToString();
-                    if(sMsj.Substring(0,3).Equals("OKS")){
-                        Trs.Commit();
-                        entErr.Resultado = true;
-                    }
+                    Trs.Commit();
+                    entErr.Resultado = true;                    
                 }
                 catch (Exception ex)
                 {
                     Trs.Rollback();
-                    sMsj = (sMsj.Equals("") || sMsj==null) ? sMsj = ex.Message : sMsj;
+                    sMsj = ex.Message;
                     entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = sMsj });
                 }
                 finally

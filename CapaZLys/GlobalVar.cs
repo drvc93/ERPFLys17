@@ -22,18 +22,18 @@ namespace FiltroLys.ZLys
             set { sUsu = value; }
         }
 
-        public static String Compania
-        {
-            get { return sCia; }
-            set { sCia = value; }
-        }
-
-        public static String Estacion
+        public static String EstacionLogeo
         {
             get { return sPc; }
             set { sPc = value; }
         }
 
+        public static String Compania
+        {
+            get { return sCia; }
+            set { sCia = value; }
+        }
+        
         public static DateTime FechaIng
         {
             get { return dFechaIng; }

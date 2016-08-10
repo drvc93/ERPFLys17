@@ -274,6 +274,8 @@ namespace FiltroLys.ZLys.ModMaestro.General
             entMain.CodigoProvFedd = sCodProvf;
             entMain.Ubigeo = sUbig;
             entMain.UsuarioSys = GlobalVar.UsuarioLogeo;
+            entMain.EstacionSys = GlobalVar.EstacionLogeo;
+            entMain.FechaSys = DateTime.Now;
 
             xPais = sPais;
             xDepartamento = sDep;
@@ -351,6 +353,9 @@ namespace FiltroLys.ZLys.ModMaestro.General
             if (gvDatos.DataRowCount == 0) { return; }
             if (gvDatos.SelectedRowsCount == 0) { return; }
             entProvincia oEnt = (entProvincia)gvDatos.GetRow(gvDatos.FocusedRowHandle);
+            oEnt.UsuarioSys = GlobalVar.UsuarioLogeo;
+            oEnt.EstacionSys = GlobalVar.EstacionLogeo;
+            oEnt.FechaSys = DateTime.Now;
 
             oEnt.OperMantenimiento = fnEnum.OperacionMant.Eliminar;
             entErrores oErr = new entErrores();

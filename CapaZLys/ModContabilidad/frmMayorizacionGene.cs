@@ -211,7 +211,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         private void fxCargarCombos()
         {
             //Compania
-            List<entCompania> Lst = negCompania.ListCompaniaForm(fnConst.StringT,fnConst.StringT,fnConst.StringPorc);
+            List<entCompania> Lst = negCompania.ListaCombo(fnConst.StringPorc,new String[] { fnConst.TextNingunoCod, fnConst.TextNingunoNom });
             cmbCompania.Properties.DataSource = Lst;
             cmbCompania.Properties.DisplayMember = "Nombres";
             cmbCompania.Properties.ValueMember = "Compania";
@@ -263,7 +263,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             cmbCompania.EditValue = XCompaniaReg;            
             cmbProceso.EditValue = XProcesoFil;
             txtPeriodoProc.Text = XPeriodoReg.Substring(0, 4) + "-" + XPeriodoReg.Substring(4, 2);
-            String xPerAct = negPeriodoCia.GetPerTrabajo(XCompaniaReg, fnConst.ModContabilidadCod);
+            String xPerAct = negPeriodoCia.GetPeriodoTrabajo(XCompaniaReg, fnConst.ModContabilidadCod);
             if (xPerAct.Length > 0){
                 txtPeriodoAct.Text = xPerAct.Substring(0, 4) + "-" + xPerAct.Substring(4, 2);
             }
@@ -283,7 +283,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             int[] rowSel = gvDatos.GetSelectedRows();
             for (int i = 0; i < rowSel.Length; i++){
                 entVoucher objT = (entVoucher)gvDatos.GetRow(rowSel[i]);
-                objT.OperMantenimiento = XProcesoFil.Equals("M") ? fnEnum.OperacionMant.Aprobar : fnEnum.OperacionMant.Pendiente;
+                //objT.OperMantenimiento = XProcesoFil.Equals("M") ? fnEnum.OperacionMant.Aprobar : fnEnum.OperacionMant.Pendiente;
                 objT.UsuarioSys = GlobalVar.UsuarioLogeo;
                 objDat.Add(objT);
             }

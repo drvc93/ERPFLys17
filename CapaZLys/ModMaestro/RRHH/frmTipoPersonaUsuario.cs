@@ -271,6 +271,8 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
             entMain.FlagProveedor = sFlagProv;
             entMain.Estado = sEstado;
             entMain.UsuarioSys = GlobalVar.UsuarioLogeo;
+            entMain.EstacionSys = GlobalVar.EstacionLogeo;
+            entMain.FechaSys = DateTime.Now;
 
             xTipoPersona = sTipo;
             
@@ -344,6 +346,9 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
             if (gvDatos.DataRowCount == 0) { return; }
             if (gvDatos.SelectedRowsCount == 0) { return; }
             entTipoPersonaUsuario oEnt = (entTipoPersonaUsuario)gvDatos.GetRow(gvDatos.FocusedRowHandle);
+            oEnt.UsuarioSys = GlobalVar.UsuarioLogeo;
+            oEnt.EstacionSys = GlobalVar.EstacionLogeo;
+            oEnt.FechaSys = DateTime.Now;
 
             oEnt.OperMantenimiento = fnEnum.OperacionMant.Eliminar;
             entErrores oErr = new entErrores();

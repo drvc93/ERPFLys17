@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="fnQuery.cs" />
     <Compile Include="fnConst.cs" />
     <Compile Include="fnEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
