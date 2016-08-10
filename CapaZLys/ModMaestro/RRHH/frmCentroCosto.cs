@@ -109,7 +109,7 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
             LstA = null;
 
             //Usuario
-            List<entUsuario> LstB = negUsuario.ListUsuarioXEstCombo(fnConst.StringPorc,fnConst.TextNingunoCod,fnConst.TextNingunoNom);
+            List<entUsuario> LstB = negUsuario.ListaCombo(fnConst.StringPorc, new String[] { fnConst.TextNingunoCod, fnConst.TextNingunoNom });
             cmbUsuarioResponsable.Properties.DataSource = LstB;
             cmbUsuarioResponsable.Properties.DisplayMember = "Nombre";
             cmbUsuarioResponsable.Properties.ValueMember = "CodigoUsuario";

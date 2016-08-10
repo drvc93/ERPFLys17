@@ -31,23 +31,6 @@ namespace FiltroLys.Domain.Maestro.General
             return EObj;
         }
 
-        public static List<entTipoCambioPeriodo> ListaCombo(String Sistema, String Estado, String[] Def = null)
-        {
-            List<entTipoCambioPeriodo> ListObj = new List<entTipoCambioPeriodo>();
-            ListObj = datTipoCambioPeriodo.ListaCombo(Sistema,Estado).ToList<entTipoCambioPeriodo>();
-            if (Def != null){
-                ListObj.Insert(0, new entTipoCambioPeriodo() { Periodo = Def[0] });
-            }
-            return ListObj;
-        }
-
-        public static List<entTipoCambioPeriodo> ListaSearch(String Sistema, String Periodo, String Estado)
-        {
-            List<entTipoCambioPeriodo> ListObj = new List<entTipoCambioPeriodo>();
-            ListObj = datTipoCambioPeriodo.ListaSearch(Sistema,Periodo, Estado).ToList<entTipoCambioPeriodo>();
-            return ListObj;
-        }
-
         public static entErrores MantFormID(entTipoCambioPeriodo Data)
         {
             return datTipoCambioPeriodo.MantFormID(Data);

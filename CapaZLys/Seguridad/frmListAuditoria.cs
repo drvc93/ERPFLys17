@@ -36,7 +36,7 @@ namespace FiltroLys.ZLys.Seguridad
         private void fxCargarCombos()
         {
             //Usuario
-            List<entUsuario> Lst = negUsuario.ListUsuarioXEstCombo(fnConst.StringPorc, fnConst.StringPorc, fnConst.TextSeleccioneNom);
+            List<entUsuario> Lst = negUsuario.ListaCombo(fnConst.StringPorc, new String[] { fnConst.TextRaya3, fnConst.TextSeleccioneNom });
             cmbUsuario.Properties.DataSource = Lst;
             cmbUsuario.Properties.DisplayMember = "Nombre";
             cmbUsuario.Properties.ValueMember = "CodigoUsuario";

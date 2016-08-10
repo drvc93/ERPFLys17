@@ -27,8 +27,22 @@ namespace FiltroLys.Type
         public const String tsqEmpleado = "UP_MA_MANT_EMPLEADO";
         public const String tsqGrupoElemGasto = "UP_MA_MANT_GRUPOELEMENTOGASTO";
         public const String tsqElemGasto = "UP_MA_MANT_ELEMENTOGASTO";
+        public const String tsqTipoGasto = "UP_MA_MANT_TIPOGASTO";
         public const String tsqParametro = "UP_MA_MANT_PARAMETRO";
         public const String tsqPeriodoCierreCia = "UP_MA_MANT_PERIODOCIERRECIA";
         public const String tsqTipoPersonaUsu = "UP_MA_MANT_TIPOPERSONAUSUARIO";
+        public const String tsqProyecto = "UP_MA_MANT_PROYECTO";
+        public const String tsqRubroGasto = "UP_MA_MANT_RUBROGASTO";
+        public const String tsqTipoActivo = "UP_MA_MANT_TIPOACTIVO";
+        public const String tsqTipoCambio = "UP_MA_MANT_TIPOCAMBIO";
+        public const String tsqTipoCambioPeriodo = "UP_MA_MANT_TIPOCAMBIOPERIODO";
+        public const String tsqTipoPago = "UP_MA_MANT_TIPOPAGO";
+        public const String tsqRegimenFiscal = "UP_MA_MANT_REGIMENFISCAL";
+        public const String tsqTipoServicio = "UP_MA_MANT_TIPOSERVICIO";
+        public const String tsqTipoVoucher = "UP_MA_MANT_TIPOVOUCHER";
+        public const String tsqGrupoCCosto = "UP_MA_MANT_GRUPOCCOSTO";
+        public const String tsqClasifGCCosto = "UP_MA_MANT_CLASIFIGCCOSTO";
+        public const String tsqCargo = "UP_MA_MANT_CARGO";
+        public const String tsqUsuario = "UP_MA_MANT_USUARIO";
     }
 }

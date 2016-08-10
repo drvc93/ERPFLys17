@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using FiltroLys.Query.Maestro.Contabilidad;
 using FiltroLys.Model.Maestro.Contabilidad;
 using FiltroLys.Repository.Objeto;
 using FiltroLys.Model.Objeto;

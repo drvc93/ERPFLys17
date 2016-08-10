@@ -268,6 +268,8 @@ namespace FiltroLys.ZLys.ModMaestro.Tesoreria
             entMain.Flag2daCategoria = sFlag2da;
             entMain.Estado = sEst;
             entMain.UsuarioSys = GlobalVar.UsuarioLogeo;
+            entMain.EstacionSys = GlobalVar.EstacionLogeo;
+            entMain.FechaSys = DateTime.Now;
 
             xTipoServicio = sTServ;
             
@@ -341,6 +343,9 @@ namespace FiltroLys.ZLys.ModMaestro.Tesoreria
             if (gvDatos.DataRowCount == 0) { return; }
             if (gvDatos.SelectedRowsCount == 0) { return; }
             entTipoServicio oEnt = (entTipoServicio)gvDatos.GetRow(gvDatos.FocusedRowHandle);
+            oEnt.UsuarioSys = GlobalVar.UsuarioLogeo;
+            oEnt.EstacionSys = GlobalVar.EstacionLogeo;
+            oEnt.FechaSys = DateTime.Now;
 
             oEnt.OperMantenimiento = fnEnum.OperacionMant.Eliminar;
             entErrores oErr = new entErrores();
@@ -382,7 +387,6 @@ namespace FiltroLys.ZLys.ModMaestro.Tesoreria
         }
 
         #endregion
-
-
+        
     }
 }

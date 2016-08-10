@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using FiltroLys.Query.Maestro.RRHH;
 using FiltroLys.Model.Maestro.RRHH;
 using FiltroLys.Model.Objeto;
 using FiltroLys.Repository.Objeto;

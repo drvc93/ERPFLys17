@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using FiltroLys.Query.Maestro.RRHH;
 using FiltroLys.Model.Maestro.RRHH;
 using FiltroLys.Model.Objeto;
 using FiltroLys.Repository.Objeto;
@@ -53,7 +52,7 @@ namespace FiltroLys.Repository.Maestro.RRHH
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = fnQuery.tsqDepartCia;
+                Cmd.CommandText = fnQuery.tsqEmpleado;
                 Cmd.CommandType = CommandType.StoredProcedure;
                 Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
                 Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstID;

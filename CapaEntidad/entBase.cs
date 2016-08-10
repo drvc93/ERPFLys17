@@ -11,7 +11,7 @@ namespace FiltroLys.Model
     {
         private String c_usuarioSys;
         private String c_estacionSys;
-        private DateTime d_fechaSys;
+        private DateTime d_fechaSys = DateTime.Now;
         private String c_accionSys;
         private fnEnum.RegExistente c_regexiste = fnEnum.RegExistente.Si;
         private fnEnum.OperacionMant c_opermant = fnEnum.OperacionMant.Ninguno;

@@ -15,7 +15,7 @@ namespace FiltroLys.Model.Seguridad
         private String c_FlagModif_Eval = "N", c_Flag_TodasMarcaciones = "N", c_Flag_TodaProgVacacion = "N", c_Flag_DerivacionMC = "N", c_Flag_TodasSolicitudMtto = "N";
         private String c_Flag_Emp_Mtto = "N", c_FlagTranslado_Prod = "N", c_DocumentoIdentidad, c_Flag_AccesoProv = "T", c_Supervisor_Iso = "N", c_Conformidad_Doc = "N";
         private String c_Rd_Iso = "N", c_Ver_Todas_Area = "N", c_Flag_TodaAgenda = "N", c_AccesoRepComision = "NI", c_Flag_TodoMemo = "N", c_Anexo, c_Movil, c_Movil2;
-        private String c_Flag_TodoVisita = "N", c_CompComision, c_Flag_TodoIndicador = "N", c_AccesoRepVenta = "NI";
+        private String c_Flag_TodoVisita = "N", c_CompComision, c_Flag_TodoIndicador = "N", c_AccesoRepVenta = "NI", c_FlagAPT = "N", c_FlagSuperAPT = "N", c_FlagDerivaCotiza = "N";
         private int n_Persona, n_ParametroFormatoOrden, n_PersonaEntregaRendir, n_EmpComision;
         private DateTime d_UltimaFechaModificacion = DateTime.Now;
 
@@ -373,5 +373,22 @@ namespace FiltroLys.Model.Seguridad
             set { c_AccesoRepVenta = value; }
         }
 
+        public String FlagAPT
+        {
+            get { return c_FlagAPT; }
+            set { c_FlagAPT = value; }
+        }
+
+        public String FlagSuperAPT
+        {
+            get { return c_FlagSuperAPT; }
+            set { c_FlagSuperAPT = value; }
+        }
+
+        public String FlagDerivaCotiza
+        {
+            get { return c_FlagDerivaCotiza; }
+            set { c_FlagDerivaCotiza = value; }
+        }
     }
 }
