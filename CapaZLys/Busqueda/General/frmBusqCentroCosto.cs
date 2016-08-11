@@ -48,7 +48,7 @@ namespace FiltroLys.ZLys.Busqueda.General
             objE.Nombres = "%" + sNombre + "%";
             objE.Estado = (chkActivo.Checked) ? "A" : "%";
 
-            grControl.DataSource = negCentroCosto.ListCentroCostoSearch(objE);
+            grControl.DataSource = negCentroCosto.ListaSearch(objE.Compania,objE.CentroCosto,objE.Nombres,objE.Estado);
             objE = null;
         }
 

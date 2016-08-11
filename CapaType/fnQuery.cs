@@ -44,5 +44,6 @@ namespace FiltroLys.Type
         public const String tsqClasifGCCosto = "UP_MA_MANT_CLASIFIGCCOSTO";
         public const String tsqCargo = "UP_MA_MANT_CARGO";
         public const String tsqUsuario = "UP_MA_MANT_USUARIO";
+        public const String tsqCentroCosto = "UP_MA_MANT_CENTROCOSTO";
     }
 }

@@ -720,7 +720,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             //Centro Costo
             if (!String.IsNullOrEmpty(sCCosto))
             {
-                entCentroCosto objCos = negCentroCosto.GetCentroCostoFormID(Compania, sCCosto);
+                entCentroCosto objCos = negCentroCosto.GetFormID(Compania, sCCosto);
                 if (!objCos.ResultadoBusqueda || !objCos.Estado.Equals("A"))
                 {
                     e.Valid = false;

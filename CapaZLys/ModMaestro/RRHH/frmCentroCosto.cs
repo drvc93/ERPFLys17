@@ -75,7 +75,7 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
         private void fxCargarLista()
         {
             if (!fnAcceso.ExisteAcceso(GlobalVar.UsuarioLogeo, Modulo, Niveles, fnEnum.AccesoOpcion.Acceso)) { return; }
-            List<entCentroCosto> Lst = negCentroCosto.ListCentroCostoForm();
+            List<entCentroCosto> Lst = negCentroCosto.ListaFormID();
             grControl.DataSource = Lst;
         }
 
@@ -102,7 +102,7 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
         private void fxCargarCombos()
         {
             //Compania
-            List<entCompania> LstA = negCompania.ListaXUsuario(fnConst.StringT, fnConst.TextRaya3,fnConst.StringN, new String[] { fnConst.TextNingunoCod, fnConst.TextSeleccioneNom });
+            List<entCompania> LstA = negCompania.ListaCombo(fnConst.StringPorc,new String[] { fnConst.TextRaya3, fnConst.TextSeleccioneNom });
             cmbCompania.Properties.DataSource = LstA;
             cmbCompania.Properties.DisplayMember = "Nombres";
             cmbCompania.Properties.ValueMember = "Compania";
@@ -160,7 +160,7 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
             LstC = null;
 
             //Centro Costo Next
-            List<entCentroCosto> LstD = negCentroCosto.ListaCentroCostoCombo(sCia, fnConst.StringPorc, new String[] { fnConst.TextNingunoCod, fnConst.TextNingunoNom });
+            List<entCentroCosto> LstD = negCentroCosto.ListaCombo(sCia, fnConst.StringPorc, new String[] { fnConst.TextNingunoCod, fnConst.TextNingunoNom });
             cmbCCostoSup.Properties.DataSource = LstD;
             cmbCCostoSup.Properties.DisplayMember = "Nombres";
             cmbCCostoSup.Properties.ValueMember = "CentroCosto";
@@ -236,7 +236,7 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
 
         private void fxCargarReg()
         {
-            entMain = negCentroCosto.GetCentroCostoFormID(xCompania,xCentroCosto);
+            entMain = negCentroCosto.GetFormID(xCompania, xCentroCosto);
             entMain.OperMantenimiento = fnEnum.OperacionMant.Modificar;
             if (entMain.ResultadoBusqueda){
                 cmbCompania.EditValue = entMain.Compania.Trim();
@@ -358,6 +358,8 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
             entMain.CostoDirecto = sFlagCostDir;
             entMain.Estado = sEstado;
             entMain.UsuarioSys = GlobalVar.UsuarioLogeo;
+            entMain.EstacionSys = GlobalVar.EstacionLogeo;
+            entMain.FechaSys = DateTime.Now;
 
             xCompania = sCia;
             xCentroCosto = sCCosto;
@@ -380,7 +382,7 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
                     break;
             }
 
-            oErr = negCentroCosto.MantCentroCostoForm(entMain);
+            oErr = negCentroCosto.MantFormID(entMain);
             if (oErr.Errores.Count > 0){
                 fnMensaje.MensajeInfo(oErr.Errores[0].Descripcion);
                 bOK = false;
@@ -433,10 +435,13 @@ namespace FiltroLys.ZLys.ModMaestro.RRHH
             if (gvDatos.DataRowCount == 0) { return; }
             if (gvDatos.SelectedRowsCount == 0) { return; }
             entCentroCosto oEnt = (entCentroCosto)gvDatos.GetRow(gvDatos.FocusedRowHandle);
+            oEnt.UsuarioSys = GlobalVar.UsuarioLogeo;
+            oEnt.EstacionSys = GlobalVar.EstacionLogeo;
+            oEnt.FechaSys = DateTime.Now;
 
             oEnt.OperMantenimiento = fnEnum.OperacionMant.Eliminar;
             entErrores oErr = new entErrores();
-            oErr = negCentroCosto.MantCentroCostoForm(oEnt);
+            oErr = negCentroCosto.MantFormID(oEnt);
             if (oErr.Errores.Count > 0){
                 fnMensaje.MensajeInfo(oErr.Errores[0].Descripcion);
             }

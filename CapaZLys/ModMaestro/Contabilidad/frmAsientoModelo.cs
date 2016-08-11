@@ -352,7 +352,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
                 oCta = null;
 
                 if (!(String.IsNullOrEmpty(oEnt.CentroCosto))){
-                    entCentroCosto oCC = negCentroCosto.GetCentroCostoFormID(sCia, oEnt.CentroCosto);
+                    entCentroCosto oCC = negCentroCosto.GetFormID(sCia, oEnt.CentroCosto);
                     if (!(oCC.ResultadoBusqueda && oCC.Estado.Equals("A"))){
                         fnMensaje.MensajeInfo("Centro de costo es inválido. Linea " + oEnt.Linea.ToString());
                         oCC = null;
@@ -604,7 +604,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             //Centro Costo
             if (!String.IsNullOrEmpty(sCCosto)){
                 String sCia = cmbCompania.EditValue.ToString();
-                entCentroCosto objCos = negCentroCosto.GetCentroCostoFormID(sCia, sCCosto);
+                entCentroCosto objCos = negCentroCosto.GetFormID(sCia, sCCosto);
                 if (!objCos.ResultadoBusqueda || !objCos.Estado.Equals("A")){
                     e.Valid = false;
                     view.SetColumnError(colCCosto, "Centro de costo ingresado es inválido.");
