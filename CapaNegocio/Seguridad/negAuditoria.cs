@@ -15,6 +15,7 @@ namespace FiltroLys.Domain.Seguridad
     {
         public static List<entAuditoria> ListaFormID(String Usuario, DateTime FechaInicio, DateTime FechaTermino)
         {
+
             List<entAuditoria> ListObj = datAuditoria.ListaFormID(Usuario, FechaInicio, FechaTermino).ToList<entAuditoria>();
             return ListObj;            
         }
