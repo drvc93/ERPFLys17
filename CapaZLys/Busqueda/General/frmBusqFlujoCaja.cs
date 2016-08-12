@@ -47,7 +47,7 @@ namespace FiltroLys.ZLys.Busqueda.General
             objE.Descripcion = "%" + sNombre + "%";
             objE.Estado = (chkActivo.Checked) ? "A" : "%";
 
-            grControl.DataSource = negFlujoCaja.ListFlujoCajaSearch(objE);
+            grControl.DataSource = negFlujoCaja.ListaSearch(objE.FlujoCaja, objE.Descripcion, objE.Estado);
             objE = null;
         }
 

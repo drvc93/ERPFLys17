@@ -708,7 +708,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             //Persona
             if (nPerson != 0)
             {
-                entPersona objPer = negPersona.GetPersonaFormID(Compania, nPerson);
+                entPersona objPer = negPersona.GetFormID(Compania, nPerson);
                 if (!objPer.ResultadoBusqueda || !objPer.Estado.Equals("A"))
                 {
                     e.Valid = false;
@@ -732,7 +732,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             //Flujo Caja
             if (!String.IsNullOrEmpty(sFlCaja))
             {
-                entFlujoCaja objFcj = negFlujoCaja.GetFlujoCajaFormID(sFlCaja);
+                entFlujoCaja objFcj = negFlujoCaja.GetFormID(sFlCaja);
                 if (!objFcj.ResultadoBusqueda || !objFcj.Estado.Equals("A"))
                 {
                     e.Valid = false;

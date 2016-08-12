@@ -54,9 +54,15 @@ namespace FiltroLys.Domain.Maestro.Contabilidad
             return datCorrelativoVoucher.MantFormID(Data);
         }
 
-        public static Int32 GetUltimoCorrelativo(String Compania, String Periodo, String Tipo) {
-            Int32 nCorrelativo = datCorrelativoVoucher.GetUltimoCorrelativo(Compania,Periodo,Tipo);
+        public static Int32 GetUltimoCorrelativo(String Compania, String Periodo, String TipoVoucher)
+        {
+            Int32 nCorrelativo = datCorrelativoVoucher.GetUltimoCorrelativo(Compania, Periodo, TipoVoucher);
             return nCorrelativo;
+        }
+
+        public static entErrores SetUltimoCorrelativo(entCorrelativoVoucher Data)
+        {
+            return datCorrelativoVoucher.SetUltimoCorrelativo(Data);
         }
 
     }

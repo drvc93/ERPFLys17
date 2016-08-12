@@ -20,7 +20,7 @@ namespace FiltroLys.Model.Maestro.General
         private int n_Persona, n_PersonaAnterior;
         private DateTime d_FechaNacimiento, d_FechaRegistro = DateTime.Now, d_UltimaFechaModificacion = DateTime.Now, d_FechaValidoRet;
         private DateTime d_FechaNoHabido, d_FechaActNoHabido, d_FechaActNoHallado;
-        private String c_UserNombreForm;
+        private String c_CompaniaNombre, c_UserNombreForm;
 
         public String Compania
         {
@@ -404,6 +404,12 @@ namespace FiltroLys.Model.Maestro.General
         {
             get { return d_FechaActNoHallado; }
             set { d_FechaActNoHallado = value; }
+        }
+
+        public String CompaniaNombre
+        {
+            get { return c_CompaniaNombre; }
+            set { c_CompaniaNombre = value; }
         }
 
         public String UserNombreForm

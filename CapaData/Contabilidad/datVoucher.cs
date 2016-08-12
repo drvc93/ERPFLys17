@@ -185,7 +185,7 @@ namespace FiltroLys.Repository.Contabilidad
                                 entCorrelativoVoucher oA = new entCorrelativoVoucher() { 
                                     Compania=Data.Compania,Periodo=Data.Periodo,TipoVoucher=Data.TipoVoucher,Correlativo=nUltCorr,UsuarioSys=Data.UsuarioSys
                                 };
-                                entErrores oETmp = datCorrelativoVoucher.SetUltimoCorrelativo(oA,Cmd);
+                                entErrores oETmp = datCorrelativoVoucher.SetUltimoCorrelativo(oA);
                                 bOk = oETmp.Resultado;
                                 entErr.Errores.AddRange(oETmp.Errores);
                                 if (bOk) { Data.NumeroVoucher = nUltCorr.ToString("0000"); }

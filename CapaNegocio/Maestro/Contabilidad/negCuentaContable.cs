@@ -104,7 +104,7 @@ namespace FiltroLys.Domain.Maestro.Contabilidad
                                 }
 
                                 if (oCta.TipoPersonaEsp != null && !oCta.TipoPersonaEsp.Trim().Equals("")){
-                                    entPersona oPers = negPersona.GetPersonaFormID(Compania, oVC.Persona);
+                                    entPersona oPers = negPersona.GetFormID(Compania, oVC.Persona);
                                     if (!oPers.TipoPersonaUsuario.Equals(oCta.TipoPersonaEsp)){
                                         entTipoPersonaUsuario oTPers = negTipoPersonaUsuario.GetFormID(oCta.TipoPersonaEsp);
                                         oErr.Errores.Add(new entFail() { IdReg = oVC.Linea, Descripcion = "Persona debe ser del tipo : " + oTPers.Descripcion.Trim() });

@@ -18,7 +18,7 @@ namespace FiltroLys.Model.Maestro.RRHH
         private String c_RutaFoto, c_SituacionEmpleado, c_Estado = "A", c_UsuarioRegistro, c_UltimoUsuario, c_DocumentoMilitarFA;
         private String c_TipoCarnetAsistencia, c_CarnetAsistencia, c_ReferenciaDireccion, c_Grupo, c_NivelEducativo, c_Seguro;
         private String c_CentroFormacion, c_FlagMadreRF = "N", c_FlagBeneficiarioCD = "N", c_FotoCheck, c_UsuarioEvaluacion;
-        private String c_FlagEssaludVida = "N", c_CodigoVia, c_CodigoZona, c_FlagPensionista = "N", c_Ocupacion, c_RegimenPensionario;
+        private String c_FlagEsSaludVida = "N", c_CodigoVia, c_CodigoZona, c_FlagPensionista = "N", c_Ocupacion, c_RegimenPensionario;
         private String c_SctrSalud, c_TipoModalidadFormativa, c_CodEstablecimiento, c_CategoriaEsp, c_ObsCts, c_ComisionVarMixta = "N";
         private String c_FlagOtroCuentaBanco = "N";
         private int n_Empleado, n_CodigoAnterior, n_Postulante, n_Perfil;
@@ -494,10 +494,10 @@ namespace FiltroLys.Model.Maestro.RRHH
             set { c_UsuarioEvaluacion = value; }
         }
 
-        public String FlagEssaludVida
+        public String FlagEsSaludVida
         {
-            get { return c_FlagEssaludVida; }
-            set { c_FlagEssaludVida = value; }
+            get { return c_FlagEsSaludVida; }
+            set { c_FlagEsSaludVida = value; }
         }
 
         public String CodigoVia

@@ -70,13 +70,7 @@ namespace FiltroLys.ZLys.Seguridad
             dFechaIni = txtFechaIni.DateTime;
             dFechaFin = txtFechaFin.DateTime.AddDays(1).AddSeconds(-1);
 
-            List<entAuditoria> Ls = negAuditoria.ListAuditoria(new entAuditoria()
-            {
-                CodigoUsuario = sUsuario,
-                FechaInicio = dFechaIni,
-                FechaTermino = dFechaFin
-            });
-
+            List<entAuditoria> Ls = negAuditoria.ListaFormID(sUsuario,dFechaIni,dFechaFin);
             grControl.DataSource = Ls;     
             
         }

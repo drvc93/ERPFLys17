@@ -99,7 +99,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
         private void fxCargarCombos()
         {
             //Compania
-            List<entCompania> LstA = negCompania.ListaXUsuario(fnConst.StringT, fnConst.TextRaya3, fnConst.StringN, new String[] { fnConst.TextNingunoCod, fnConst.TextNingunoNom });
+            List<entCompania> LstA = negCompania.ListaCombo(fnConst.StringPorc, new String[] { fnConst.TextRaya3, fnConst.TextNingunoNom });
             cmbCompania.Properties.DataSource = LstA;
             cmbCompania.Properties.DisplayMember = "Nombres";
             cmbCompania.Properties.ValueMember = "Compania";
@@ -241,6 +241,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             if (xOperacion.Equals("M")){
                 cmbCompania.ReadOnly = true;
                 txtAnual.ReadOnly = true;
+                cmbTipoVoucher.ReadOnly = true;
             }
 
             if (xOperacion.Equals("V")) { btnGuardar.Enabled = false; }
@@ -405,6 +406,8 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             entMain.Mes13 = nMes13;
             entMain.Mes14 = nMes14;
             entMain.UsuarioSys = GlobalVar.UsuarioLogeo;
+            entMain.EstacionSys = GlobalVar.EstacionLogeo;
+            entMain.FechaSys = DateTime.Now;
 
             xCompania = sCia;
             xAnual = Int32.Parse(sAnual);
@@ -482,6 +485,10 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             if (gvDatos.DataRowCount == 0) { return; }
             if (gvDatos.SelectedRowsCount == 0) { return; }
             entCorrelativoVoucher oEnt = (entCorrelativoVoucher)gvDatos.GetRow(gvDatos.FocusedRowHandle);
+            oEnt.UsuarioSys = GlobalVar.UsuarioLogeo;
+            oEnt.EstacionSys = GlobalVar.EstacionLogeo;
+            oEnt.FechaSys = DateTime.Now;
+
 
             oEnt.OperMantenimiento = fnEnum.OperacionMant.Eliminar;
             entErrores oErr = new entErrores();

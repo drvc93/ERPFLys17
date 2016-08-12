@@ -42,6 +42,8 @@
     <Compile Include="Contabilidad\entCierreMesCuenta.cs" />
     <Compile Include="Logistica\entOrdenes.cs" />
     <Compile Include="Logistica\entOrdenesDet.cs" />
+    <Compile Include="Maestro\General\entProveedor.cs" />
+    <Compile Include="Maestro\General\entCliente.cs" />
     <Compile Include="Maestro\Contabilidad\entCompCContable.cs" />
     <Compile Include="Maestro\Contabilidad\entRubroCtaContable.cs" />
     <Compile Include="Maestro\General\entTipoCambioPeriodo.cs" />
@@ -110,6 +112,7 @@
       <Name>FiltroLys.Type</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

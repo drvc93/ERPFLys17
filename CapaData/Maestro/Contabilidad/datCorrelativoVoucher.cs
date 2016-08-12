@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using FiltroLys.Query.Maestro.Contabilidad;
 using FiltroLys.Model.Maestro.Contabilidad;
 using FiltroLys.Model.Objeto;
+using FiltroLys.Repository.Objeto;
 using FiltroLys.Type;
 
 namespace FiltroLys.Repository.Maestro.Contabilidad
@@ -23,13 +24,13 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = tsqCorrelativoVoucher.QR_ListaFormID();
+                Cmd.CommandText = fnQuery.tsqCorrVoucher;
                 Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstMaestra;
 
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = Cmd;
-                adapter.SelectCommand.Parameters.AddWithValue("@Accion", Constans.LISTA);
-                adapter.SelectCommand.Parameters.AddWithValue("@Opcion", Constans.OPCION_1);
                 adapter.Fill(dt);
                 if (Cmd.Connection.State == ConnectionState.Open)
                 {
@@ -52,10 +53,10 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = tsqCorrelativoVoucher.QR_GetFormID();
+                Cmd.CommandText = fnQuery.tsqCorrVoucher;
                 Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.LISTA;
-                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = Constans.OPCION_2;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstID;
                 Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Compania;
                 Cmd.Parameters.Add(new SqlParameter("@Anual", SqlDbType.Int)).Value = Anual;
                 Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = TipoVoucher;
@@ -84,10 +85,10 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = tsqCorrelativoVoucher.QR_ListaCombo();
+                Cmd.CommandText = fnQuery.tsqCorrVoucher;
                 Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.LISTA;
-                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = Constans.OPCION_3;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstCombo;
                 Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Compania;
                 Cmd.Parameters.Add(new SqlParameter("@Anual", SqlDbType.Int)).Value = Anual;
                 SqlDataAdapter adapter = new SqlDataAdapter();
@@ -114,10 +115,10 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = tsqCorrelativoVoucher.QR_ListaSearch();
+                Cmd.CommandText = fnQuery.tsqCorrVoucher;
                 Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.LISTA;
-                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = Constans.OPCION_4;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstBusqueda;
                 Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Compania;
                 Cmd.Parameters.Add(new SqlParameter("@Anual", SqlDbType.Int)).Value = Anual;
                 Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = TipoVoucher;
@@ -140,12 +141,11 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
         {
             SqlCommand Cmd = new SqlCommand();
             entErrores entErr = new entErrores();
+            String sMsj = "";
 
-            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
-            {
+            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion())){
                 SqlTransaction Trs = null;
-                try
-                {
+                try{
                     Cmd.Connection = Cnx;
                     Cmd.Connection.Open();
                     Trs = Cnx.BeginTransaction();
@@ -153,47 +153,32 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
 
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.Clear();
-                    Cmd.CommandText = tsqCorrelativoVoucher.QR_MantFormID(Data.OperMantenimiento);
+                    Cmd.CommandText = fnQuery.tsqCorrVoucher;
 
-                    if (Data.OperMantenimiento == fnEnum.OperacionMant.Insertar || Data.OperMantenimiento == fnEnum.OperacionMant.Modificar)
-                    {
-                        if (Data.OperMantenimiento == fnEnum.OperacionMant.Insertar)
-                        { /**/
-                            Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.INSERTAR;
-                        }
-                        if (Data.OperMantenimiento == fnEnum.OperacionMant.Modificar)
-                        { /**/
-                            Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.ACTUALIZAR;
-                        }
-                        Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Data.Compania;
-                        Cmd.Parameters.Add(new SqlParameter("@Anual", SqlDbType.Int)).Value = Data.Anio;
-                        Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = Data.TipoVoucher;
-                        Cmd.Parameters.Add(new SqlParameter("@Mes00", SqlDbType.Int)).Value = Data.Mes00;
-                        Cmd.Parameters.Add(new SqlParameter("@Mes01", SqlDbType.Int)).Value = Data.Mes01;
-                        Cmd.Parameters.Add(new SqlParameter("@Mes02", SqlDbType.Int)).Value = Data.Mes02;
-                        Cmd.Parameters.Add(new SqlParameter("@Mes03", SqlDbType.Int)).Value = Data.Mes03;
-                        Cmd.Parameters.Add(new SqlParameter("@Mes04", SqlDbType.Int)).Value = Data.Mes04;
-                        Cmd.Parameters.Add(new SqlParameter("@Mes05", SqlDbType.Int)).Value = Data.Mes05;
-                        Cmd.Parameters.Add(new SqlParameter("@Mes06", SqlDbType.Int)).Value = Data.Mes06;
-                        Cmd.Parameters.Add(new SqlParameter("@Mes07", SqlDbType.Int)).Value = Data.Mes07;
-                        Cmd.Parameters.Add(new SqlParameter("@Mes08", SqlDbType.Int)).Value = Data.Mes08;
-                        Cmd.Parameters.Add(new SqlParameter("@Mes09", SqlDbType.Int)).Value = Data.Mes09;
-                        Cmd.Parameters.Add(new SqlParameter("@Mes10", SqlDbType.Int)).Value = Data.Mes10;
-                        Cmd.Parameters.Add(new SqlParameter("@Mes11", SqlDbType.Int)).Value = Data.Mes11;
-                        Cmd.Parameters.Add(new SqlParameter("@Mes12", SqlDbType.Int)).Value = Data.Mes12;
-                        Cmd.Parameters.Add(new SqlParameter("@Mes13", SqlDbType.Int)).Value = Data.Mes13;
-                        Cmd.Parameters.Add(new SqlParameter("@Mes14", SqlDbType.Int)).Value = Data.Mes14;
-                        Cmd.Parameters.Add(new SqlParameter("@UltimoUsuario", SqlDbType.VarChar)).Value = Data.UsuarioSys;
-                        Cmd.ExecuteNonQuery();
-                    }
-                    else if (Data.OperMantenimiento == fnEnum.OperacionMant.Eliminar)
-                    { /**/
-                        Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = Constans.DELETE;
-                        Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Data.Compania;
-                        Cmd.Parameters.Add(new SqlParameter("@Anual", SqlDbType.Int)).Value = Data.Anio;
-                        Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = Data.TipoVoucher;
-                        Cmd.ExecuteNonQuery();
-                    }
+                    Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnGetOpera.getOperacion(Data.OperMantenimiento);
+                    Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = Data.Opcion;
+                    Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Data.Compania;
+                    Cmd.Parameters.Add(new SqlParameter("@Anual", SqlDbType.Int)).Value = Data.Anio;
+                    Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = Data.TipoVoucher;
+                    Cmd.Parameters.Add(new SqlParameter("@Mes00", SqlDbType.Int)).Value = Data.Mes00;
+                    Cmd.Parameters.Add(new SqlParameter("@Mes01", SqlDbType.Int)).Value = Data.Mes01;
+                    Cmd.Parameters.Add(new SqlParameter("@Mes02", SqlDbType.Int)).Value = Data.Mes02;
+                    Cmd.Parameters.Add(new SqlParameter("@Mes03", SqlDbType.Int)).Value = Data.Mes03;
+                    Cmd.Parameters.Add(new SqlParameter("@Mes04", SqlDbType.Int)).Value = Data.Mes04;
+                    Cmd.Parameters.Add(new SqlParameter("@Mes05", SqlDbType.Int)).Value = Data.Mes05;
+                    Cmd.Parameters.Add(new SqlParameter("@Mes06", SqlDbType.Int)).Value = Data.Mes06;
+                    Cmd.Parameters.Add(new SqlParameter("@Mes07", SqlDbType.Int)).Value = Data.Mes07;
+                    Cmd.Parameters.Add(new SqlParameter("@Mes08", SqlDbType.Int)).Value = Data.Mes08;
+                    Cmd.Parameters.Add(new SqlParameter("@Mes09", SqlDbType.Int)).Value = Data.Mes09;
+                    Cmd.Parameters.Add(new SqlParameter("@Mes10", SqlDbType.Int)).Value = Data.Mes10;
+                    Cmd.Parameters.Add(new SqlParameter("@Mes11", SqlDbType.Int)).Value = Data.Mes11;
+                    Cmd.Parameters.Add(new SqlParameter("@Mes12", SqlDbType.Int)).Value = Data.Mes12;
+                    Cmd.Parameters.Add(new SqlParameter("@Mes13", SqlDbType.Int)).Value = Data.Mes13;
+                    Cmd.Parameters.Add(new SqlParameter("@Mes14", SqlDbType.Int)).Value = Data.Mes14;
+                    Cmd.Parameters.Add(new SqlParameter("@UltimoUsuario", SqlDbType.VarChar)).Value = Data.UsuarioSys;
+                    Cmd.Parameters.Add(new SqlParameter("@AudEstacion", SqlDbType.VarChar)).Value = Data.EstacionSys;
+                    Cmd.Parameters.Add(new SqlParameter("@AudFechaEst", SqlDbType.DateTime)).Value = Data.FechaSys;
+                    Cmd.ExecuteNonQuery();
 
                     Trs.Commit();
                     entErr.Resultado = true;
@@ -201,7 +186,8 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
                 catch (Exception ex)
                 {
                     Trs.Rollback();
-                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = ex.Message });
+                    sMsj = ex.Message;
+                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = sMsj });
                 }
                 finally
                 {
@@ -217,7 +203,7 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
             return entErr;
         }
 
-        public static Int32 GetUltimoCorrelativo(String Compania, String Periodo, String Tipo)
+        public static Int32 GetUltimoCorrelativo(String Compania, String Periodo, String TipoVoucher)
         {
             Int32 nCorrelativo = 0;
             SqlCommand Cmd = new SqlCommand();
@@ -225,11 +211,11 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = tsqCorrelativoVoucher.UP_GetUltimoCorrelativo();
+                Cmd.CommandText = fnQuery.tsqCorrVoucherGet;
                 Cmd.CommandType = CommandType.StoredProcedure;
                 Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Compania;
                 Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Periodo;
-                Cmd.Parameters.Add(new SqlParameter("@Tipo", SqlDbType.VarChar)).Value = Tipo;
+                Cmd.Parameters.Add(new SqlParameter("@Tipo", SqlDbType.VarChar)).Value = TipoVoucher;
                 Cmd.Parameters.Add(new SqlParameter("@Correlativo", SqlDbType.Int));
                 Cmd.Parameters["@Correlativo"].Direction = ParameterDirection.Output;
 
@@ -263,7 +249,7 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
                     Cmd.Transaction = Trs;
                     
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.CommandText = tsqCorrelativoVoucher.UP_SetUltimoCorrelativo();
+                    Cmd.CommandText = fnQuery.tsqCorrVoucherSet;
 
                     Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = oEnt.Compania;
                     Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = oEnt.Periodo;
@@ -303,38 +289,5 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
             return entErr;
         }
 
-        public static entErrores SetUltimoCorrelativo(entCorrelativoVoucher oEnt, SqlCommand oCmd)
-        {
-            entErrores entErr = new entErrores();
-            oCmd.CommandType = CommandType.StoredProcedure;
-            oCmd.CommandText = tsqCorrelativoVoucher.UP_SetUltimoCorrelativo();
-
-            oCmd.Parameters.Clear();
-            oCmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = oEnt.Compania;
-            oCmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = oEnt.Periodo;
-            oCmd.Parameters.Add(new SqlParameter("@Tipo", SqlDbType.VarChar)).Value = oEnt.TipoVoucher;
-            oCmd.Parameters.Add(new SqlParameter("@Correlativo", SqlDbType.Int)).Value = oEnt.Correlativo;
-            oCmd.Parameters.Add(new SqlParameter("@Usuario", SqlDbType.VarChar)).Value = oEnt.UsuarioSys;
-            oCmd.Parameters.Add(new SqlParameter("@Mensaje", SqlDbType.VarChar, 50)).Value = "";
-            oCmd.Parameters["@Mensaje"].Direction = ParameterDirection.Output;
-
-            try
-            {
-                oCmd.ExecuteNonQuery();
-                if (!oCmd.Parameters["@Mensaje"].Value.ToString().Equals("OK"))
-                {
-                    entErr.Errores.Add(new entFail() { Codigo = "ER", Descripcion = oCmd.Parameters["@Mensaje"].Value.ToString() });
-                }
-                else
-                {
-                    entErr.Resultado = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = ex.Message });
-            }
-            return entErr;
-        }
     }
 }

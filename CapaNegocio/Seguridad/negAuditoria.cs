@@ -13,18 +13,27 @@ namespace FiltroLys.Domain.Seguridad
 {
     public class negAuditoria
     {
-        public static List<entAuditoria> ListAuditoria(entAuditoria Data)
+        public static List<entAuditoria> ListaFormID(String Usuario, DateTime FechaInicio, DateTime FechaTermino)
         {
-            List<entAuditoria> ListObj = datAuditoria.ListAuditoria(Data).ToList<entAuditoria>();
+            List<entAuditoria> ListObj = datAuditoria.ListaFormID(Usuario, FechaInicio, FechaTermino).ToList<entAuditoria>();
             return ListObj;            
         }
 
-        public static DateTime GetFechaServidor(){
-            return datAuditoria.GetFechaServidor();
+        public static entAuditoria GetFormID(String Estacion, String CodigoUsuario, DateTime FechaPcIng)
+        {
+            entAuditoria EObj = new entAuditoria();
+            List<entAuditoria> ListObj = new List<entAuditoria>();
+            ListObj = datAuditoria.GetFormID(Estacion, CodigoUsuario, FechaPcIng).ToList<entAuditoria>();
+            if (ListObj.Count > 0){
+                EObj = ListObj[0]; EObj.ResultadoBusqueda = true;
+            }
+            ListObj = null;
+            return EObj;
         }
 
-        public static entErrores MantAuditoria(fnEnum.OperacionMant Operacion, entAuditoria Data) {
-            return datAuditoria.MantAuditoria(Operacion, Data);
+        public static entErrores MantFormID(entAuditoria Data)
+        {
+            return datAuditoria.MantFormID(Data);
         }
 
     }

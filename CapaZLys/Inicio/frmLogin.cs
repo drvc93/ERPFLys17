@@ -127,8 +127,12 @@ namespace FiltroLys.ZLys.Inicio
             objE.Estacion = GlobalVar.EstacionLogeo;
             objE.CodigoUsuario = GlobalVar.UsuarioLogeo;
             objE.FechaPcIng = GlobalVar.FechaIng;
-            objE.UltimoUsuario = GlobalVar.UsuarioLogeo;
-            entErrores entErr = negAuditoria.MantAuditoria(fnEnum.OperacionMant.Insertar, objE);
+            objE.UsuarioSys = GlobalVar.UsuarioLogeo;
+            objE.EstacionSys = GlobalVar.EstacionLogeo;
+            objE.FechaSys = DateTime.Now;
+            objE.OperMantenimiento = fnEnum.OperacionMant.Insertar;
+
+            entErrores entErr = negAuditoria.MantFormID(objE);
             objE = null;
             return entErr;
         }

@@ -45,5 +45,16 @@ namespace FiltroLys.Type
         public const String tsqCargo = "UP_MA_MANT_CARGO";
         public const String tsqUsuario = "UP_MA_MANT_USUARIO";
         public const String tsqCentroCosto = "UP_MA_MANT_CENTROCOSTO";
+        public const String tsqCorrVoucher = "UP_MA_MANT_CORRELATIVOVOUCHER";
+        public const String tsqCorrVoucherGet = "SP_CB_GETULTIMOCORRELATIVO";
+        public const String tsqCorrVoucherSet = "SP_CB_SETULTIMOCORRELATIVO";
+        public const String tsqLineaProducto = "UP_MA_MANT_LINEAPRODUCTO";
+        public const String tsqFlujoCajaCB = "UP_MA_MANT_FLUJOCAJACB";
+        public const String tsqRubroCtaContable = "UP_MA_MANT_RUBROCTACONTABLE";
+        public const String tsqCliente = "UP_MA_MANT_CLIENTE";
+        public const String tsqPersona = "UP_MA_MANT_PERSONA";
+        public const String tsqProveedor = "UP_MA_MANT_PROVEEDOR";
+        public const String tsqFechaServidor = "USP_FECHASERVIDOR";
+        public const String tsqAuditoria = "UP_MA_MANT_AUDITORIA";
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using FiltroLys.Query.Maestro.General;
+using FiltroLys.Type;
 
 namespace FiltroLys.Repository.Maestro.General
 {
@@ -20,7 +20,7 @@ namespace FiltroLys.Repository.Maestro.General
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = tsqGeneral.QR_GetFechaServidor();
+                Cmd.CommandText = fnQuery.tsqFechaServidor;
                 Cmd.CommandType = CommandType.Text;
 
                 SqlDataReader dr = Cmd.ExecuteReader();

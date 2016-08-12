@@ -133,7 +133,7 @@ namespace FiltroLys.ZLys.Busqueda.General
             oEntP.EsCliente = sVerClie;
             oEntP.Estado = sEstado;
 
-            grControl.DataSource = negPersona.ListPersonaSearch(oEntP);
+            grControl.DataSource = negPersona.ListaSearch(Compania, nCodigo, sNombre, sDocIden, sDocFisc, sEstado, sVerEmpl, sVerProv, sVerClie);
             oEntP = null;
         }
 
