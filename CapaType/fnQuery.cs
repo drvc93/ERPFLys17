@@ -56,5 +56,7 @@ namespace FiltroLys.Type
         public const String tsqProveedor = "UP_MA_MANT_PROVEEDOR";
         public const String tsqFechaServidor = "USP_FECHASERVIDOR";
         public const String tsqAuditoria = "UP_MA_MANT_AUDITORIA";
+        public const String tsqCuentaContable = "UP_MA_MANT_CUENTACONTABLE";
+        public const String tsqCompCContable = "UP_MA_MANT_COMPCCONTABLE";
     }
 }

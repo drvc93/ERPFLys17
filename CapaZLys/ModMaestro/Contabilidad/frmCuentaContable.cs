@@ -267,7 +267,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
 
         private void fxCargarCombosDetalle() {
             //Compania
-            List<entCompania> LstA = negCompania.ListaCombo(fnConst.StringPorc,new String[] { fnConst.TextNingunoCod, fnConst.TextSeleccioneNom });
+            List<entCompania> LstA = negCompania.ListaCombo(fnConst.StringPorc,new String[] { fnConst.TextRaya3, fnConst.TextSeleccioneNom });
             rilueCompaniaDet.DataSource = LstA;
             rilueCompaniaDet.DisplayMember = "Nombres";
             rilueCompaniaDet.ValueMember = "Compania";
@@ -775,8 +775,9 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             entMain.ReqDescripcion = sReqDesc;
             entMain.FlagSaldoDocumento = sFlagSaldDoc;
             entMain.Estado = sEstado;
-            entMain.Estado = sEstado;
             entMain.UsuarioSys = GlobalVar.UsuarioLogeo;
+            entMain.EstacionSys = GlobalVar.EstacionLogeo;
+            entMain.FechaSys = DateTime.Now;
             entMain.DetalleCuentaxCompania = LstDet;
 
             xCuentaContable = sCuenta;
@@ -789,15 +790,6 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
         {
             entErrores oErr = new entErrores();
             Boolean bOK = true;
-
-            switch (xOperacion){
-                case "A":
-                    entMain.OperMantenimiento = fnEnum.OperacionMant.Insertar;
-                    break;
-                case "M":
-                    entMain.OperMantenimiento = fnEnum.OperacionMant.Modificar;
-                    break;
-            }
 
             oErr = negCuentaContable.MantFormID(entMain);
             if (oErr.Errores.Count > 0){
@@ -827,7 +819,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
         {
             grDetalle.DataSource = null;
             if (LstDet.Count > 0){
-                grDetalle.DataSource = LstDet.FindAll(p => p.RegVer == fnEnum.RegVer.Si);
+                grDetalle.DataSource = LstDet;
             }
             gvDetalle.Focus();
         }
@@ -851,16 +843,11 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
                     }
                 }
 
-                if (oEnt.RegExistente == fnEnum.RegExistente.Si && oEnt.RegEditado == fnEnum.RegEditado.Si){
-                    oEnt.OperMantenimiento = fnEnum.OperacionMant.Modificar;
-                }
-
-                if (oEnt.OperMantenimiento == fnEnum.OperacionMant.Insertar || oEnt.OperMantenimiento == fnEnum.OperacionMant.Modificar){
-                    oEnt.Cuenta = txtCuenta.Text.Trim();
-                    oEnt.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
-                    oEnt.UsuarioSys = GlobalVar.UsuarioLogeo;
-                    oEnt.UltimaFechaMod = dFechaServ;
-                }
+                oEnt.Cuenta = txtCuenta.Text.Trim();
+                oEnt.OperMantenimiento = fnEnum.OperacionMant.Insertar;
+                entMain.UsuarioSys = GlobalVar.UsuarioLogeo;
+                entMain.EstacionSys = GlobalVar.EstacionLogeo;
+                entMain.FechaSys = DateTime.Now;
             }
 
             bOk = true;
@@ -905,6 +892,9 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             if (gvDatos.DataRowCount == 0) { return; }
             if (gvDatos.SelectedRowsCount == 0) { return; }
             entCuentaContable oEnt = (entCuentaContable)gvDatos.GetRow(gvDatos.FocusedRowHandle);
+            oEnt.UsuarioSys = GlobalVar.UsuarioLogeo;
+            oEnt.EstacionSys = GlobalVar.EstacionLogeo;
+            oEnt.FechaSys = DateTime.Now;
 
             oEnt.OperMantenimiento = fnEnum.OperacionMant.Eliminar;
             entErrores oErr = new entErrores();
@@ -1007,17 +997,14 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             Int64 nLinea = 0;
-            if (LstDet.Where(x => x.RegVer == fnEnum.RegVer.Si).Count() > 0){
-                nLinea = (Int64) LstDet.Where(x => x.RegVer == fnEnum.RegVer.Si).Max(p => p.Linea);
+            if (LstDet.Count() > 0){
+                nLinea = (Int64) LstDet.Max(p => p.Linea);
             }
             nLinea++;
             entCompCContable objE = new entCompCContable();            
             objE.Linea = nLinea;
             objE.Compania = fnConst.TextRaya3;
-            objE.Estado = fnConst.EstadoActivoCod;
-            objE.OperMantenimiento = fnEnum.OperacionMant.Insertar;
-            objE.RegExistente = fnEnum.RegExistente.No;
-            objE.UsuarioSys = GlobalVar.UsuarioLogeo;
+            objE.Estado = fnConst.EstadoActivoCod;            
             objE.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
             objE.UltimaFechaMod = DateTime.Now;
             LstDet.Add(objE);
@@ -1032,15 +1019,16 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
         {
             if (gvDetalle.RowCount == 0) { return; }
             entCompCContable oEnt = (entCompCContable)gvDetalle.GetRow(gvDetalle.FocusedRowHandle);
-            oEnt.RegVer = fnEnum.RegVer.No;
-            oEnt.OperMantenimiento = (oEnt.OperMantenimiento == fnEnum.OperacionMant.Insertar) ? fnEnum.OperacionMant.Ninguno : fnEnum.OperacionMant.Eliminar;
+            LstDet.Remove(oEnt);
+            oEnt = null;
             fxLinkDet();
         }
 
         private void gvDetalle_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             entCompCContable objE = (entCompCContable)gvDetalle.GetRow(gvDetalle.FocusedRowHandle);
-            objE.RegEditado = fnEnum.RegEditado.Si;
+            objE.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
+            objE.UltimaFechaMod = DateTime.Now;
             gvDetalle.UpdateCurrentRow();
             objE = null;
         }
@@ -1048,37 +1036,29 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
         private void chkFlagTodasCompania_CheckedChanged(object sender, EventArgs e)
         {
             Boolean bFlagTCia = chkFlagTodasCompania.Checked;
+            Int32 nLinea = 0;
 
+            //Remove All
+            LstDet.Clear();
             if (bFlagTCia) {
-                List<entCompania> LstA = negCompania.ListaCombo(fnConst.StringPorc, new String[] { fnConst.TextNingunoCod, fnConst.TextSeleccioneNom });
+                List<entCompania> LstA = negCompania.ListaCombo(fnConst.StringPorc, new String[] { fnConst.TextRaya3, fnConst.TextSeleccioneNom });
                 foreach (entCompania oEnt in LstA){
-                    if (LstDet.Where(x => x.RegVer == fnEnum.RegVer.Si && x.Compania.Equals(oEnt.Compania)).Count() == 0){
-                        Int64 nLinea = 0;
-                        if (LstDet.Where(x => x.RegVer == fnEnum.RegVer.Si).Count() > 0){
-                            nLinea = (Int64)LstDet.Where(x => x.RegVer == fnEnum.RegVer.Si).Max(p => p.Linea);
-                        }
-                        nLinea++;
-                        entCompCContable objE = new entCompCContable();
-                        objE.Linea = nLinea;
-                        objE.Compania = oEnt.Compania.Trim();
-                        objE.Estado = oEnt.Estado;
-                        objE.OperMantenimiento = fnEnum.OperacionMant.Insertar;
-                        objE.RegExistente = fnEnum.RegExistente.No;
-                        objE.UsuarioSys = GlobalVar.UsuarioLogeo;
-                        objE.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
-                        objE.UltimaFechaMod = DateTime.Now;
-                        LstDet.Add(objE);
-                        objE = null;
-                    }else{
-                        oEnt.RegVer = fnEnum.RegVer.No;
-                        //oEnt.OperMantenimiento = (oEnt.OperMantenimiento == fnEnum.OperacionMant.Insertar) ? fnEnum.OperacionMant.Ninguno : fnEnum.OperacionMant.Eliminar;
+                    if (LstDet.Count() > 0){
+                        nLinea = (Int32)LstDet.Max(p => p.Linea);
                     }
-                }
-                fxLinkDet();
+                    nLinea++;
+                    entCompCContable objE = new entCompCContable();
+                    objE.Linea = nLinea;
+                    objE.Compania = oEnt.Compania.Trim();
+                    objE.Estado = oEnt.Estado;
+                    objE.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
+                    objE.UltimaFechaMod = DateTime.Now;
+                    LstDet.Add(objE);
+                    objE = null;                   
+                }                
                 LstA = null;
             }
-
-            
+            fxLinkDet();
         }
 
         #endregion
