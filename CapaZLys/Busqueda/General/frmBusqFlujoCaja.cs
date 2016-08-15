@@ -41,14 +41,11 @@ namespace FiltroLys.ZLys.Busqueda.General
         private void fxCargarLista() {
             String sCodigo = txtCodigo.Text.Trim();
             String sNombre = txtDescripcion.Text.Trim();
+            String sEstado = (chkActivo.Checked) ? "A" : "%";
 
-            entFlujoCaja objE = new entFlujoCaja();
-            objE.FlujoCaja = (sCodigo.Length > 0) ? sCodigo + "%" : "%";
-            objE.Descripcion = "%" + sNombre + "%";
-            objE.Estado = (chkActivo.Checked) ? "A" : "%";
-
-            grControl.DataSource = negFlujoCaja.ListaSearch(objE.FlujoCaja, objE.Descripcion, objE.Estado);
-            objE = null;
+            sCodigo = (sCodigo.Length > 0) ? sCodigo + "%" : "%";
+            sNombre = "%" + sNombre + "%";
+            grControl.DataSource = negFlujoCaja.ListaSearch(sCodigo, sNombre, sEstado);           
         }
 
         private void fxRecuperarData(){

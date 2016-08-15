@@ -87,7 +87,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
         private void fxCargarLista()
         {
             if (!fnAcceso.ExisteAcceso(GlobalVar.UsuarioLogeo, Modulo, Niveles, fnEnum.AccesoOpcion.Acceso)) { return; }
-            List<entAsientoModelo> Lst = negAsientoModelo.ListAsientoModeloForm();
+            List<entAsientoModelo> Lst = negAsientoModelo.ListaFormID();
             grControl.DataSource = Lst;
         }
 
@@ -110,7 +110,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
         private void fxCargarCombos()
         {
             //Compania
-            List<entCompania> Lst = negCompania.ListaCombo(fnConst.EstadoActivoCod, new String[] { fnConst.TextNingunoCod, fnConst.TextSeleccioneNom});
+            List<entCompania> Lst = negCompania.ListaCombo(fnConst.EstadoActivoCod, new String[] { fnConst.TextRaya3, fnConst.TextSeleccioneNom});
             cmbCompania.Properties.DataSource = Lst;
             cmbCompania.Properties.DisplayMember = "Nombres";
             cmbCompania.Properties.ValueMember = "Compania";
@@ -171,7 +171,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
 
         private void fxCargarReg()
         {
-            entMain = negAsientoModelo.GetAsientoModeloFormID(xCompania,xModelo);
+            entMain = negAsientoModelo.GetFormID(xCompania,xModelo);
             entMain.OperMantenimiento = fnEnum.OperacionMant.Modificar;
             if (entMain.ResultadoBusqueda){
                 cmbCompania.EditValue = entMain.Compania;
@@ -192,12 +192,15 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
                 sHabilitado = true;
             }
 
+            cmbCompania.ReadOnly = !sHabilitado;
             txtModelo.ReadOnly = !sHabilitado;
             txtDescripcion.ReadOnly = !sHabilitado;
             cmbEstado.ReadOnly = !sHabilitado;
             txtDesde.ReadOnly = !sHabilitado;
             txtUltimoUsuario.ReadOnly = true;
             txtUltimaFecha.ReadOnly = true;
+            gvDetalle.OptionsBehavior.Editable = sHabilitado;
+            gvDetalle.OptionsBehavior.ReadOnly = !sHabilitado;
 
             btnGuardar.Enabled = true;
             btnAgregar.Enabled = true;
@@ -215,8 +218,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
                 btnAgregar.Enabled = false;
                 btnEliminar.Enabled = false;
                 btnCuenta.Enabled = false;
-                btnCCosto.Enabled = false;
-                grDetalle.Enabled = false;
+                btnCCosto.Enabled = false;                
             }
         }
 
@@ -248,7 +250,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             }
 
             if (String.IsNullOrEmpty(sDes)){
-                fnMensaje.MensajeInfo("Debe ingresar el Nombre de Area.");
+                fnMensaje.MensajeInfo("Debe ingresar Descripción por favor.");
                 txtDescripcion.Focus();
                 return bOk;
             }
@@ -267,8 +269,8 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             entMain.Estado = sEstado;
             entMain.Anual = sAnual;
             entMain.UsuarioSys = GlobalVar.UsuarioLogeo;
-            entMain.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
-            entMain.UltimaFechaMod = dFechaServ;
+            entMain.EstacionSys = GlobalVar.EstacionLogeo;
+            entMain.FechaSys = DateTime.Now;
             entMain.DetalleAsientoModelo = LstDet;
 
             xCompania = sCia;
@@ -283,16 +285,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             entErrores oErr = new entErrores();
             Boolean bOK = true;
 
-            switch (xOperacion){
-                case "A":
-                    entMain.OperMantenimiento = fnEnum.OperacionMant.Insertar;
-                    break;
-                case "M":
-                    entMain.OperMantenimiento = fnEnum.OperacionMant.Modificar;
-                    break;
-            }
-
-            oErr = negAsientoModelo.MantAsientoModelo(entMain);
+            oErr = negAsientoModelo.MantFormID(entMain);
             if (oErr.Errores.Count > 0){
                 fnMensaje.MensajeInfo(oErr.Errores[0].Descripcion);
                 bOK = false;
@@ -312,7 +305,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
 
         private void fxCargarDet()
         {
-            LstDet = negAsientoModelo.GetAsientoModeloDetFormID(xCompania, xModelo);
+            LstDet = negAsientoModeloDet.GetFormID(xCompania, xModelo);
             fxLinkDet();
         }
 
@@ -320,7 +313,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
         {
             grDetalle.DataSource = null;
             if (LstDet.Count > 0) {
-                grDetalle.DataSource = LstDet.FindAll(p => p.RegVer == fnEnum.RegVer.Si);
+                grDetalle.DataSource = LstDet;
             }            
             gvDetalle.Focus();                
         }
@@ -330,19 +323,20 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             Boolean bOk = false;
             String sCia = cmbCompania.EditValue.ToString();
             String sMod = txtModelo.Text.Trim();
+            DateTime dFechaServ = DateTime.MinValue;
 
             if (LstDet.Count == 0){
                 fnMensaje.MensajeInfo("Debe ingresar al menos un registro en el detalle.");
                 return bOk;
             }
 
-            DateTime dFechaServ = negGeneral.GetFechaServidor();
+            dFechaServ = negGeneral.GetFechaServidor();
             foreach (entAsientoModeloDet oEnt in LstDet){
                 if (String.IsNullOrEmpty(oEnt.Cuenta)){
                     fnMensaje.MensajeInfo("Ingresar cuenta contable en Detalle por favor. Linea " + oEnt.Linea.ToString());
                     return bOk;
                 }
-
+                
                 entCuentaContable oCta = negCuentaContable.GetFormID(oEnt.Cuenta);
                 if (!(oCta.ResultadoBusqueda && oCta.Estado.Equals("A"))){
                     fnMensaje.MensajeInfo("Cuenta contable es inválido. Linea " + oEnt.Linea.ToString());
@@ -366,17 +360,13 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
                     return bOk;
                 }
 
-                if (oEnt.RegExistente == fnEnum.RegExistente.Si && oEnt.RegEditado == fnEnum.RegEditado.Si) {
-                    oEnt.OperMantenimiento = fnEnum.OperacionMant.Modificar;
-                }
-
                 oEnt.Compania = sCia;
                 oEnt.Modelo = sMod;
-                if (oEnt.OperMantenimiento == fnEnum.OperacionMant.Insertar || oEnt.OperMantenimiento == fnEnum.OperacionMant.Modificar){
-                    oEnt.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
-                    oEnt.UsuarioSys = GlobalVar.UsuarioLogeo;
-                    oEnt.UltimaFechaMod = dFechaServ;
-                }
+
+                oEnt.OperMantenimiento = fnEnum.OperacionMant.Insertar;
+                oEnt.UsuarioSys = GlobalVar.UsuarioLogeo;
+                oEnt.EstacionSys = GlobalVar.EstacionLogeo;
+                oEnt.FechaSys = DateTime.Now;
             }
 
             bOk = true;
@@ -422,10 +412,13 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             if (gvDatos.DataRowCount == 0) { return; }
             if (gvDatos.SelectedRowsCount == 0) { return; }
             entAsientoModelo oEnt = (entAsientoModelo)gvDatos.GetRow(gvDatos.FocusedRowHandle);
+            oEnt.UsuarioSys = GlobalVar.UsuarioLogeo;
+            oEnt.EstacionSys = GlobalVar.EstacionLogeo;
+            oEnt.FechaSys = DateTime.Now;
 
             oEnt.OperMantenimiento = fnEnum.OperacionMant.Eliminar;
             entErrores oErr = new entErrores();
-            oErr = negAsientoModelo.MantAsientoModelo(oEnt);
+            oErr = negAsientoModelo.MantFormID(oEnt);
             if (oErr.Errores.Count > 0){
                 fnMensaje.MensajeInfo(oErr.Errores[0].Descripcion);
             }
@@ -471,18 +464,15 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             int nLinea = 0;
-            if (LstDet.Where(x => x.RegVer == fnEnum.RegVer.Si).Count() > 0){
-                nLinea = LstDet.Where(x => x.RegVer == fnEnum.RegVer.Si).Max(p => p.Linea);
+            if (LstDet.Count() > 0){
+                nLinea = LstDet.Max(p => p.Linea);
             }
             nLinea++;
             entAsientoModeloDet objE = new entAsientoModeloDet();
             objE.Compania = xCompania;
             objE.Modelo = xModelo;
             objE.Linea = nLinea;
-            objE.Porcentaje = 0;
-            objE.OperMantenimiento = fnEnum.OperacionMant.Insertar;
-            objE.RegExistente = fnEnum.RegExistente.No;
-            objE.UsuarioSys = GlobalVar.UsuarioLogeo;
+            objE.Porcentaje = 0;           
             objE.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
             objE.UltimaFechaMod = DateTime.Now;
             LstDet.Add(objE);
@@ -497,8 +487,7 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
         {
             if (gvDetalle.RowCount == 0) { return; }
             entAsientoModeloDet oEnt = (entAsientoModeloDet)gvDetalle.GetRow(gvDetalle.FocusedRowHandle);
-            oEnt.RegVer = fnEnum.RegVer.No;
-            //oEnt.OperMantenimiento = (oEnt.OperMantenimiento == fnEnum.OperacionMant.Insertar) ? fnEnum.OperacionMant.Ninguno : fnEnum.OperacionMant.Eliminar;
+            LstDet.Remove(oEnt);
             fxLinkDet();
         }
 
@@ -511,7 +500,8 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             frm.SoloActivo = true;
             if (frm.ShowDialog() == DialogResult.OK){
                 objE.Cuenta = fnConvert.ObjectToEntity<entCuentaContable>(frm.EstructuraForm.ObjX)[0].Cuenta;
-                objE.RegEditado = fnEnum.RegEditado.Si;
+                objE.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
+                objE.UltimaFechaMod = DateTime.Now;
                 gvDetalle.UpdateCurrentRow();
                 gvDetalle.Focus();
                 gvDetalle.FocusedColumn = gvDetalle.Columns["CuentaDet"];
@@ -536,7 +526,8 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
             frm.EstructuraForm.StrX.Insert(0, sCia);
             if (frm.ShowDialog() == DialogResult.OK){
                 objE.CentroCosto = fnConvert.ObjectToEntity<entCentroCosto>(frm.EstructuraForm.ObjX)[0].CentroCosto;
-                objE.RegEditado = fnEnum.RegEditado.Si;
+                objE.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
+                objE.UltimaFechaMod = DateTime.Now;
                 gvDetalle.UpdateCurrentRow();
                 gvDetalle.Focus();
                 gvDetalle.FocusedColumn = gvDetalle.Columns["CentroCostoDet"];
@@ -574,7 +565,8 @@ namespace FiltroLys.ZLys.ModMaestro.Contabilidad
         private void gvDetalle_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             entAsientoModeloDet objE = (entAsientoModeloDet)gvDetalle.GetRow(gvDetalle.FocusedRowHandle);
-            objE.RegEditado = fnEnum.RegEditado.Si;
+            objE.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
+            objE.UltimaFechaMod = DateTime.Now;
             gvDetalle.UpdateCurrentRow();
             objE = null;
         }

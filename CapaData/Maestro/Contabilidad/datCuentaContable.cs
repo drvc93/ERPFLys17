@@ -206,6 +206,7 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
                         Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = "DEL";
                         Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = "ALL";
                         Cmd.Parameters.Add(new SqlParameter("@Cuenta", SqlDbType.VarChar)).Value = Data.Cuenta;
+                        Cmd.Parameters.Add(new SqlParameter("@UltimoUsuario", SqlDbType.VarChar)).Value = Data.UsuarioSys;
                         Cmd.Parameters.Add(new SqlParameter("@AudEstacion", SqlDbType.VarChar)).Value = Data.EstacionSys;
                         Cmd.Parameters.Add(new SqlParameter("@AudFechaEst", SqlDbType.DateTime)).Value = Data.FechaSys;
                         Cmd.ExecuteNonQuery();

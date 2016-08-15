@@ -45,6 +45,7 @@
     <Compile Include="Contabilidad\datReporteCB.cs" />
     <Compile Include="Contabilidad\datCierreMesCuenta.cs" />
     <Compile Include="Logistica\datOrdenes.cs" />
+    <Compile Include="Maestro\Contabilidad\datAsientoModeloDet.cs" />
     <Compile Include="Maestro\Contabilidad\datCompCContable.cs" />
     <Compile Include="Maestro\Contabilidad\datRubroCtaContable.cs" />
     <Compile Include="Maestro\Contabilidad\datTipoGasto.cs" />

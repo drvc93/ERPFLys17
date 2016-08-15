@@ -42,6 +42,7 @@
     <Compile Include="Contabilidad\negReporteCB.cs" />
     <Compile Include="Contabilidad\negCierreMesCuenta.cs" />
     <Compile Include="Logistica\negOrdenes.cs" />
+    <Compile Include="Maestro\Contabilidad\negAsientoModeloDet.cs" />
     <Compile Include="Maestro\Contabilidad\negCompCContable.cs" />
     <Compile Include="Maestro\Contabilidad\negRubroCtaContable.cs" />
     <Compile Include="Maestro\Contabilidad\negTipoGasto.cs" />

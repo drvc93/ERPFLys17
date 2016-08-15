@@ -13,17 +13,18 @@ namespace FiltroLys.Domain.Maestro.Contabilidad
 {
     public class negAsientoModelo
     {
-        public static entAsientoModelo GetAsientoModeloFormID(String Compania,String Modelo)
+        public static List<entAsientoModelo> ListaFormID()
+        {
+            List<entAsientoModelo> ListObj = new List<entAsientoModelo>();
+            ListObj = datAsientoModelo.ListaFormID().ToList<entAsientoModelo>();
+            return ListObj;
+        }
+
+        public static entAsientoModelo GetFormID(String Compania,String Modelo)
         {
             entAsientoModelo EObj = new entAsientoModelo();
-            EObj.Compania = Compania;
-          //  EObj.AccionSys = "LST!";
-           // eoj. omopcio n= "XID""
-            EObj.Modelo = Modelo;
-            EObj.Descripcion = fnConst.StringPorc;
-            EObj.Estado = fnConst.StringPorc;
             List<entAsientoModelo> ListObj = new List<entAsientoModelo>();
-            ListObj = datAsientoModelo.ListAsientoModelo(EObj).ToList<entAsientoModelo>();
+            ListObj = datAsientoModelo.GetFormID(Compania, Modelo).ToList<entAsientoModelo>();
             if (ListObj.Count > 0){
                 EObj = ListObj[0]; EObj.ResultadoBusqueda = true;
             }
@@ -31,66 +32,26 @@ namespace FiltroLys.Domain.Maestro.Contabilidad
             return EObj;
         }
 
-        public static entAsientoModelo LISTCOMBO(String Compania,String Modelo,string ESTOAD)
+        public static List<entAsientoModelo> ListaCombo(String Compania, String Estado, String[] Def = null)
         {
-            entAsientoModelo EObj = new entAsientoModelo();
-            EObj.Compania = Compania;
-            EObj.AccionSys = "LST!";
-            //eoj. omopcio n= "COMBOX""
-            EObj.Modelo = Modelo;
-            EObj.Descripcion = fnConst.StringPorc;
-            EObj.Estado = fnConst.StringPorc;
             List<entAsientoModelo> ListObj = new List<entAsientoModelo>();
-            ListObj = datAsientoModelo.ListAsientoModelo(EObj).ToList<entAsientoModelo>();
-            if (ListObj.Count > 0){
-                EObj = ListObj[0]; EObj.ResultadoBusqueda = true;
+            ListObj = datAsientoModelo.ListaCombo(Compania,Estado).ToList<entAsientoModelo>();
+            if (Def != null){
+                ListObj.Insert(0, new entAsientoModelo() { Modelo = Def[0], Descripcion = Def[1] });
             }
-            ListObj = null;
-            return EObj;
-        }
-
-        public static List<entAsientoModeloDet> GetAsientoModeloDetFormID(String Compania, String Modelo)
-        {
-            entAsientoModeloDet oEnt = new entAsientoModeloDet();
-            oEnt.Compania = Compania;
-            oEnt.Modelo = Modelo;
-            oEnt.Descripcion = fnConst.StringPorc;
-            List<entAsientoModeloDet> ListObj = new List<entAsientoModeloDet>();
-            ListObj = datAsientoModelo.ListAsientoModeloDet(oEnt).ToList<entAsientoModeloDet>();
-            oEnt = null;
             return ListObj;
         }
 
-        public static List<entAsientoModelo> ListAsientoModeloForm()
-        {
-            entAsientoModelo oEnt = new entAsientoModelo();
-            oEnt.Compania = fnConst.StringPorc;
-            oEnt.Modelo = fnConst.StringPorc;
-            oEnt.Descripcion = fnConst.StringPorc;
-            oEnt.Estado = fnConst.StringPorc;
-            List<entAsientoModelo> ListObj = new List<entAsientoModelo>();
-            ListObj = datAsientoModelo.ListAsientoModelo(oEnt).ToList<entAsientoModelo>();
-            oEnt = null;
-            return ListObj;
-        }
-
-        public static List<entAsientoModelo> ListAsientoModeloSearch(String compania)
+        public static List<entAsientoModelo> ListaSearch(String Compania,String Modelo, String Descripcion, String Estado)
         {
             List<entAsientoModelo> ListObj = new List<entAsientoModelo>();
-            ListObj = datAsientoModelo.ListAsientoModeloSearch(compania).ToList<entAsientoModelo>();
+            ListObj = datAsientoModelo.ListaSearch(Compania, Modelo, Descripcion, Estado).ToList<entAsientoModelo>();
             return ListObj;
         }
 
-        public static List<entAsientoModeloDet> ListAsientoModeloDetSearch(String compania, String modelo)
+        public static entErrores MantFormID(entAsientoModelo Data)
         {
-            List<entAsientoModeloDet> ListObj = new List<entAsientoModeloDet>();
-            ListObj = datAsientoModelo.ListAsientoModeloDetSearch(compania, modelo).ToList<entAsientoModeloDet>();
-            return ListObj;
-        }
-
-        public static entErrores MantAsientoModelo(entAsientoModelo Data)
-        {
-            return datAsientoModelo.MantAsientoModelo(Data);
+            return datAsientoModelo.MantFormID(Data);
         }
 
     }

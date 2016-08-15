@@ -67,14 +67,14 @@ namespace FiltroLys.ZLys.Busqueda.Contabilidad
         private void fxCargarLista()
         {
             if (fxValidarCriterio() == false) { return; }
-            grControl.DataSource = negAsientoModelo.ListAsientoModeloSearch(Compania);            
+            grControl.DataSource = negAsientoModelo.ListaSearch(Compania,fnConst.StringPorc,fnConst.StringPorc,fnConst.StringA);
         }
 
         private void fxCargarListaDet()
         {
             if (gvDatos.DataRowCount == 0) { return; }
-            entAsientoModelo objE = (entAsientoModelo)gvDatos.GetRow(gvDatos.FocusedRowHandle);
-            grControlDet.DataSource = negAsientoModelo.ListAsientoModeloDetSearch(Compania, objE.Modelo);
+            entAsientoModeloDet objE = (entAsientoModeloDet)gvDatos.GetRow(gvDatos.FocusedRowHandle);
+            grControlDet.DataSource = negAsientoModeloDet.ListaSearch(Compania, objE.Modelo);
             objE = null;
         }
 

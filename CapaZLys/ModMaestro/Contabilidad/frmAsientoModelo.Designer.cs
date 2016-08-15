@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CiaNombreList = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CompaniaList = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ModeloList = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Estado = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rilueEstado = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -99,19 +99,21 @@
             // 
             // pnlMain
             // 
-            this.pnlMain.Size = new System.Drawing.Size(549, 454);
+            this.pnlMain.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel1;
+            
             // 
             // grControl
             // 
             this.grControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.rilueEstado});
+            
             // 
             // gvDatos
             // 
             this.gvDatos.Appearance.HeaderPanel.Options.UseTextOptions = true;
             this.gvDatos.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gvDatos.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.CiaNombreList,
+            this.CompaniaList,
             this.ModeloList,
             this.DescripcionList,
             this.Estado,
@@ -128,9 +130,8 @@
             this.lblTitulo.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.lblTitulo.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            // 
-            // pnlCuerpo
-            // 
+            this.lblTitulo.Size = new System.Drawing.Size(0, 35);
+            
             this.pnlCuerpo.Controls.Add(this.txtDesde);
             this.pnlCuerpo.Controls.Add(this.labelControl7);
             this.pnlCuerpo.Controls.Add(this.grDetalle);
@@ -150,20 +151,16 @@
             this.pnlCuerpo.Controls.Add(this.labelControl2);
             this.pnlCuerpo.Controls.Add(this.txtModelo);
             this.pnlCuerpo.Controls.Add(this.labelControl1);
-            this.pnlCuerpo.Size = new System.Drawing.Size(546, 419);
+            this.pnlCuerpo.Size = new System.Drawing.Size(0, 0);
             // 
-            // pnMain
+            
             // 
-            this.pnMain.Size = new System.Drawing.Size(553, 458);
-            // 
-            // CiaNombreList
-            // 
-            this.CiaNombreList.Caption = "Compania";
-            this.CiaNombreList.FieldName = "CiaNombre";
-            this.CiaNombreList.Name = "CiaNombreList";
-            this.CiaNombreList.Visible = true;
-            this.CiaNombreList.VisibleIndex = 0;
-            this.CiaNombreList.Width = 139;
+            this.CompaniaList.Caption = "Compania";
+            this.CompaniaList.FieldName = "CompaniaNombre";
+            this.CompaniaList.Name = "CompaniaList";
+            this.CompaniaList.Visible = true;
+            this.CompaniaList.VisibleIndex = 0;
+            this.CompaniaList.Width = 139;
             // 
             // ModeloList
             // 
@@ -205,17 +202,17 @@
             // UltimaFechaModificacion
             // 
             this.UltimaFechaModificacion.Caption = "Ult.Fec.Mod";
-            this.UltimaFechaModificacion.FieldName = "UltimaFechaMod";
-            this.UltimaFechaModificacion.Name = "UltimaFechaModificacion";
             this.UltimaFechaModificacion.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss";
             this.UltimaFechaModificacion.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.UltimaFechaModificacion.FieldName = "UltimaFechaMod";
+            this.UltimaFechaModificacion.Name = "UltimaFechaModificacion";
             this.UltimaFechaModificacion.Visible = true;
             this.UltimaFechaModificacion.VisibleIndex = 5;
             this.UltimaFechaModificacion.Width = 126;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(12, 35);
+            this.labelControl1.Location = new System.Drawing.Point(10, 33);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(38, 13);
             this.labelControl1.TabIndex = 0;
@@ -232,7 +229,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(12, 58);
+            this.labelControl2.Location = new System.Drawing.Point(10, 56);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(58, 13);
             this.labelControl2.TabIndex = 2;
@@ -240,7 +237,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(12, 80);
+            this.labelControl3.Location = new System.Drawing.Point(10, 78);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(37, 13);
             this.labelControl3.TabIndex = 3;
@@ -267,7 +264,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(326, 13);
+            this.labelControl4.Location = new System.Drawing.Point(324, 11);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(72, 13);
             this.labelControl4.TabIndex = 15;
@@ -275,7 +272,7 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(326, 35);
+            this.labelControl5.Location = new System.Drawing.Point(324, 33);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(65, 13);
             this.labelControl5.TabIndex = 16;
@@ -306,7 +303,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(12, 13);
+            this.labelControl6.Location = new System.Drawing.Point(10, 11);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(51, 13);
             this.labelControl6.TabIndex = 19;
@@ -366,7 +363,7 @@
             this.grDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grDetalle.Location = new System.Drawing.Point(10, 128);
+            this.grDetalle.Location = new System.Drawing.Point(8, 126);
             this.grDetalle.MainView = this.gvDetalle;
             this.grDetalle.Name = "grDetalle";
             this.grDetalle.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -377,7 +374,7 @@
             this.riteMayus,
             this.rideFecha,
             this.riteMonto});
-            this.grDetalle.Size = new System.Drawing.Size(529, 235);
+            this.grDetalle.Size = new System.Drawing.Size(0, 0);
             this.grDetalle.TabIndex = 26;
             this.grDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDetalle});
@@ -500,10 +497,10 @@
             // UltimaFechaModDet
             // 
             this.UltimaFechaModDet.Caption = "Ult.Fec.Mod";
-            this.UltimaFechaModDet.FieldName = "UltimaFechaMod";
-            this.UltimaFechaModDet.Name = "UltimaFechaModDet";
             this.UltimaFechaModDet.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss";
             this.UltimaFechaModDet.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.UltimaFechaModDet.FieldName = "UltimaFechaMod";
+            this.UltimaFechaModDet.Name = "UltimaFechaModDet";
             this.UltimaFechaModDet.OptionsColumn.AllowEdit = false;
             this.UltimaFechaModDet.OptionsColumn.ReadOnly = true;
             this.UltimaFechaModDet.Visible = true;
@@ -555,7 +552,7 @@
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(433, 80);
+            this.labelControl7.Location = new System.Drawing.Point(431, 78);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(34, 13);
             this.labelControl7.TabIndex = 27;
@@ -604,7 +601,7 @@
         #endregion
 
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit rilueEstado;
-        private DevExpress.XtraGrid.Columns.GridColumn CiaNombreList;
+        private DevExpress.XtraGrid.Columns.GridColumn CompaniaList;
         private DevExpress.XtraGrid.Columns.GridColumn ModeloList;
         private DevExpress.XtraGrid.Columns.GridColumn Estado;
         private DevExpress.XtraGrid.Columns.GridColumn UltimoUsuario;

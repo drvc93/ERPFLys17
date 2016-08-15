@@ -10,6 +10,7 @@ using DevExpress.XtraSplashScreen;
 namespace FiltroLys.ZLys.Inicio
 {
     public partial class frmSplash : SplashScreen {
+
         public frmSplash()
         {
             InitializeComponent();
@@ -27,5 +28,6 @@ namespace FiltroLys.ZLys.Inicio
 
         public enum SplashScreenCommand {
         }
+
     }
 }

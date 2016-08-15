@@ -58,5 +58,7 @@ namespace FiltroLys.Type
         public const String tsqAuditoria = "UP_MA_MANT_AUDITORIA";
         public const String tsqCuentaContable = "UP_MA_MANT_CUENTACONTABLE";
         public const String tsqCompCContable = "UP_MA_MANT_COMPCCONTABLE";
+        public const String tsqAsientoModelo = "UP_MA_MANT_ASIENTOMODELO";
+        public const String tsqAsientoModeloDet = "UP_MA_MANT_ASIENTOMODELODET";
     }
 }

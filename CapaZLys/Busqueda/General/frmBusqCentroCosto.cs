@@ -39,17 +39,14 @@ namespace FiltroLys.ZLys.Busqueda.General
         }
 
         private void fxCargarLista() {
+            String sCia = EstructuraForm.StrX[0];
             String sCodigo = txtCodigo.Text.Trim();
             String sNombre = txtDescripcion.Text.Trim();
+            String sEstado = (chkActivo.Checked) ? "A" : "%";
 
-            entCentroCosto objE = new entCentroCosto();
-            objE.Compania = EstructuraForm.StrX[0];
-            objE.CentroCosto = (sCodigo.Length > 0) ? sCodigo + "%" : "%";
-            objE.Nombres = "%" + sNombre + "%";
-            objE.Estado = (chkActivo.Checked) ? "A" : "%";
-
-            grControl.DataSource = negCentroCosto.ListaSearch(objE.Compania,objE.CentroCosto,objE.Nombres,objE.Estado);
-            objE = null;
+            sCodigo = (sCodigo.Length > 0) ? sCodigo + "%" : "%";
+            sNombre = "%" + sNombre + "%";
+            grControl.DataSource = negCentroCosto.ListaSearch(sCia, sCodigo, sNombre, sEstado);            
         }
 
         private void fxRecuperarData(){

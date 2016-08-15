@@ -10,7 +10,7 @@ namespace FiltroLys.Model.Maestro.Contabilidad
     {
         private String c_Compania, c_Modelo, c_Descripcion, c_Estado, c_UltimoUsuarioMod, c_Anual;
         private DateTime d_UltimaFechaMod;
-        private String c_CiaNombre;
+        private String c_CompaniaNombre;
         private List<entAsientoModeloDet> xDetAsientoMod = new List<entAsientoModeloDet>();
         private String c_UserNombreForm;
 
@@ -56,10 +56,10 @@ namespace FiltroLys.Model.Maestro.Contabilidad
             set { d_UltimaFechaMod = value; }
         }
 
-        public String CiaNombre
+        public String CompaniaNombre
         {
-            get { return c_CiaNombre; }
-            set { c_CiaNombre = value; }
+            get { return c_CompaniaNombre; }
+            set { c_CompaniaNombre = value; }
         }
 
         public List<entAsientoModeloDet> DetalleAsientoModelo

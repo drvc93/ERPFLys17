@@ -121,20 +121,7 @@ namespace FiltroLys.ZLys.Busqueda.General
                     sDocFisc = sCampo;
                     break;
             }
-
-            entPersona oEntP = new entPersona();
-            oEntP.Compania = Compania;
-            oEntP.Persona = nCodigo;
-            oEntP.NombreCompleto = sNombre;
-            oEntP.DocumentoIdentidad = sDocIden;
-            oEntP.DocumentoFiscal = sDocFisc;
-            oEntP.EsEmpleado = sVerEmpl;
-            oEntP.EsProveedor = sVerProv;
-            oEntP.EsCliente = sVerClie;
-            oEntP.Estado = sEstado;
-
-            grControl.DataSource = negPersona.ListaSearch(Compania, nCodigo, sNombre, sDocIden, sDocFisc, sEstado, sVerEmpl, sVerProv, sVerClie);
-            oEntP = null;
+            grControl.DataSource = negPersona.ListaSearch(Compania, nCodigo, sNombre, sDocIden, sDocFisc, sEstado, sVerEmpl, sVerProv, sVerClie);           
         }
 
         private void fxRecuperarData(){
