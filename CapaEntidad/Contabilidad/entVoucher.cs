@@ -10,7 +10,7 @@ namespace FiltroLys.Model.Contabilidad
     {
         private String c_Compania, c_Periodo, c_TipoVoucher, c_NumeroVoucher, c_Departamento, c_Moneda;
         private String c_Descripcion,c_UsuarioRegistro,c_UsuarioAprobacion,c_Origen,c_FlagModManual="N";
-        private String c_FlagModRestringida="N",c_Estado,c_UltimoUsuarioMod;
+        private String c_FlagModRestringida="N",c_Estado="PE",c_UltimoUsuarioMod;
         private String c_DepartNombre;
         private DateTime d_Fecha,d_FechaRegistro,d_FechaAprobacion,d_UltimaFechaMod;
         private Decimal n_TipoCambio=0;

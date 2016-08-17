@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Configuracion.cs" />
     <Compile Include="Constans.cs" />
+    <Compile Include="Contabilidad\datVoucherDet.cs" />
     <Compile Include="Contabilidad\datReporteCB.cs" />
     <Compile Include="Contabilidad\datCierreMesCuenta.cs" />
     <Compile Include="Logistica\datOrdenes.cs" />

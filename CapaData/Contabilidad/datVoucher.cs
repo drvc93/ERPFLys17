@@ -19,7 +19,7 @@ namespace FiltroLys.Repository.Contabilidad
 {
     public class datVoucher{
 
-        public static DataTable ListVoucherForm(String Cia, String FlagDepartCia, String DepartCia, String FlagPeriodo,
+        public static DataTable ListaFormID(String Compania, String FlagDepartCia, String DepartCia, String FlagPeriodo,
         String Periodo,String FlagEstado,String Estado,String FlagVoucher,String TipoVoucher,String VoucherIni,String VoucherFin)
         {
             DataTable dt=new DataTable();
@@ -29,35 +29,22 @@ namespace FiltroLys.Repository.Contabilidad
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = tsqVoucher.QR_ListVoucherForm(Cia, FlagDepartCia, DepartCia, FlagPeriodo, Periodo, FlagEstado, 
-                                                             Estado, FlagVoucher, TipoVoucher, VoucherIni, VoucherFin);
-                Cmd.CommandType = CommandType.Text;
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                adapter.SelectCommand = Cmd;
-                adapter.Fill(dt);                
-                if (Cmd.Connection.State == ConnectionState.Open)
-                {
-                    Cmd.Connection.Close();
-                    Cmd.Connection.Dispose();
-                    Cnx.Close();
-                    Cnx.Dispose();
-                    GC.SuppressFinalize(Cnx);
-                }
-            }
-            return dt;
-        }
-
-        public static DataTable GetVoucherFormID(String Cia, String Periodo, String TipoVoucher, String NroVoucher)
-        {
-            DataTable dt = new DataTable();
-            SqlCommand Cmd = new SqlCommand();
-
-            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
-            {
-                Cmd.Connection = Cnx;
-                Cmd.Connection.Open();
-                Cmd.CommandText = tsqVoucher.QR_GetVoucherFormID(Cia, Periodo, TipoVoucher, NroVoucher);
-                Cmd.CommandType = CommandType.Text;
+                Cmd.CommandText = fnQuery.tsqVoucher;
+                Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstMaestra;
+                Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Compania;
+                Cmd.Parameters.Add(new SqlParameter("@FlagDepartCia", SqlDbType.VarChar)).Value = FlagDepartCia;
+                Cmd.Parameters.Add(new SqlParameter("@Departamento", SqlDbType.VarChar)).Value = DepartCia;
+                Cmd.Parameters.Add(new SqlParameter("@FlagPeriodo", SqlDbType.VarChar)).Value = FlagPeriodo;
+                Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Periodo;
+                Cmd.Parameters.Add(new SqlParameter("@FlagEstado", SqlDbType.VarChar)).Value = FlagEstado;
+                Cmd.Parameters.Add(new SqlParameter("@Estado", SqlDbType.VarChar)).Value = Estado;
+                Cmd.Parameters.Add(new SqlParameter("@FlagVoucher", SqlDbType.VarChar)).Value = FlagVoucher;
+                Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = TipoVoucher;
+                Cmd.Parameters.Add(new SqlParameter("@VoucherIni", SqlDbType.VarChar)).Value = VoucherIni;
+                Cmd.Parameters.Add(new SqlParameter("@VoucherFin", SqlDbType.VarChar)).Value = VoucherFin;
+                
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = Cmd;
                 adapter.Fill(dt);
@@ -73,7 +60,7 @@ namespace FiltroLys.Repository.Contabilidad
             return dt;
         }
 
-        public static DataTable GetVoucherFormIDDet(String Cia, String Periodo, String TipoVoucher, String NroVoucher)
+        public static DataTable GetFormID(String Compania, String Periodo, String TipoVoucher, String NumeroVoucher)
         {
             DataTable dt = new DataTable();
             SqlCommand Cmd = new SqlCommand();
@@ -82,8 +69,15 @@ namespace FiltroLys.Repository.Contabilidad
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = tsqVoucher.QR_ListVoucherFormIDDet(Cia, Periodo, TipoVoucher, NroVoucher);
-                Cmd.CommandType = CommandType.Text;
+                Cmd.CommandText = fnQuery.tsqVoucher;
+                Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstID;
+                Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Compania;
+                Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Periodo;
+                Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = TipoVoucher;
+                Cmd.Parameters.Add(new SqlParameter("@NumeroVoucher", SqlDbType.VarChar)).Value = NumeroVoucher;
+
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = Cmd;
                 adapter.Fill(dt);
@@ -99,7 +93,7 @@ namespace FiltroLys.Repository.Contabilidad
             return dt;
         }
 
-        public static DataTable ListVoucherToMayor(String Compania, String Periodo, String Estado)
+        public static DataTable LstSaldoMayor(String Compania, String Periodo, String Estado)
         {
             DataTable dt = new DataTable();
             SqlCommand Cmd = new SqlCommand();
@@ -108,11 +102,14 @@ namespace FiltroLys.Repository.Contabilidad
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = tsqVoucher.QR_ListVoucherToMayor();
-                Cmd.CommandType = CommandType.Text;
-                Cmd.Parameters.Add(new SqlParameter("@compania", SqlDbType.VarChar)).Value = Compania;
-                Cmd.Parameters.Add(new SqlParameter("@periodo", SqlDbType.VarChar)).Value = Periodo;
-                Cmd.Parameters.Add(new SqlParameter("@estado", SqlDbType.VarChar)).Value = Estado;
+                Cmd.CommandText = fnQuery.tsqVoucher;
+                Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = "RESMAY";
+                Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Compania;
+                Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Periodo;
+                Cmd.Parameters.Add(new SqlParameter("@Estado", SqlDbType.VarChar)).Value = Estado;
+                
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = Cmd;
                 adapter.Fill(dt);
@@ -128,189 +125,119 @@ namespace FiltroLys.Repository.Contabilidad
             return dt;
         }
 
-        public static DataTable ListVoucherDetCiaPerCuenta(String Compania, String Periodo, String Cuenta)
-        {
-            DataTable dt = new DataTable();
-            SqlCommand Cmd = new SqlCommand();
-
-            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
-            {
-                Cmd.Connection = Cnx;
-                Cmd.Connection.Open();
-                Cmd.CommandText = tsqVoucher.QR_ListVoucherDetCiaPerCuenta();
-                Cmd.CommandType = CommandType.Text;
-                Cmd.Parameters.Add(new SqlParameter("@compania", SqlDbType.VarChar)).Value = Compania;
-                Cmd.Parameters.Add(new SqlParameter("@periodo", SqlDbType.VarChar)).Value = Periodo;
-                Cmd.Parameters.Add(new SqlParameter("@cuenta", SqlDbType.VarChar)).Value = Cuenta;
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                adapter.SelectCommand = Cmd;
-                adapter.Fill(dt);
-                if (Cmd.Connection.State == ConnectionState.Open)
-                {
-                    Cmd.Connection.Close();
-                    Cmd.Connection.Dispose();
-                    Cnx.Close();
-                    Cnx.Dispose();
-                    GC.SuppressFinalize(Cnx);
-                }
-            }
-            return dt;
-        }
-
-        public static entErrores MantVoucher(entVoucher Data)
+        public static entErrores MantFormID(entVoucher Data)
         {
             SqlCommand Cmd = new SqlCommand();
-            entErrores entErr = new entErrores();
-            Boolean bOk = true;
-            int nUltCorr = 0; String sMens = "";
+            entErrores entErr = new entErrores();            
+            String sMsj = "",sCod = "";
 
-            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
-            {
+            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion())){
                 SqlTransaction Trs = null;
-                try
-                {
+                try{
                     Cmd.Connection = Cnx;
-                    Cmd.Connection.Open();                    
+                    Cmd.Connection.Open();
                     Trs = Cnx.BeginTransaction();
                     Cmd.Transaction = Trs;
-                    
-                    switch(Data.OperMantenimiento){
-                        case fnEnum.OperacionMant.Insertar: 
-                        case fnEnum.OperacionMant.Modificar:
-                            //Actualizando Nvo Correlativo Voucher
-                            if(Data.OperMantenimiento == fnEnum.OperacionMant.Insertar){
-                                nUltCorr = datCorrelativoVoucher.GetUltimoCorrelativo(Data.Compania, Data.Periodo, Data.TipoVoucher);
-                                nUltCorr++;
 
-                                entCorrelativoVoucher oA = new entCorrelativoVoucher() { 
-                                    Compania=Data.Compania,Periodo=Data.Periodo,TipoVoucher=Data.TipoVoucher,Correlativo=nUltCorr,UsuarioSys=Data.UsuarioSys
-                                };
-                                entErrores oETmp = datCorrelativoVoucher.SetUltimoCorrelativo(oA);
-                                bOk = oETmp.Resultado;
-                                entErr.Errores.AddRange(oETmp.Errores);
-                                if (bOk) { Data.NumeroVoucher = nUltCorr.ToString("0000"); }
-                                oA = null;
-                                oETmp = null;
-                            }
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.Clear();
+                    Cmd.CommandText = fnQuery.tsqVoucher;
 
-                            if(bOk){
-                                //Grabando Cabecera Voucher
-                                Cmd.CommandType = CommandType.Text;
-                                Cmd.Parameters.Clear();
-                                Cmd.CommandText = tsqVoucher.QR_MantVoucherCabecera(Data.OperMantenimiento);
-                                Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Data.Compania;
-                                Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Data.Periodo;
-                                Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = Data.TipoVoucher;
-                                Cmd.Parameters.Add(new SqlParameter("@NumeroVoucher", SqlDbType.VarChar)).Value = Data.NumeroVoucher;
-                                Cmd.Parameters.Add(new SqlParameter("@Departamento", SqlDbType.VarChar)).Value = Data.Departamento;
-                                Cmd.Parameters.Add(new SqlParameter("@Moneda", SqlDbType.VarChar)).Value = Data.Moneda;
-                                Cmd.Parameters.Add(new SqlParameter("@Fecha", SqlDbType.DateTime)).Value = Data.Fecha;
-                                Cmd.Parameters.Add(new SqlParameter("@TipoCambio", SqlDbType.Decimal)).Value = Data.TipoCambio;
-                                Cmd.Parameters.Add(new SqlParameter("@Descripcion", SqlDbType.VarChar)).Value = Data.Descripcion;
-                                Cmd.Parameters.Add(new SqlParameter("@UsuarioRegistro", SqlDbType.VarChar)).Value = Data.UsuarioRegistro;
-                                Cmd.Parameters.Add(new SqlParameter("@FechaRegistro", SqlDbType.DateTime)).Value = Data.FechaRegistro;
-                                Cmd.Parameters.Add(new SqlParameter("@UsuarioAprobacion", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(Data.UsuarioAprobacion,"");
-                                Cmd.Parameters.Add(new SqlParameter("@FechaAprobacion", SqlDbType.DateTime)).Value = fnParmCmd.DatDBNull(Data.FechaAprobacion);
-                                Cmd.Parameters.Add(new SqlParameter("@Origen", SqlDbType.VarChar)).Value = Data.Origen;
-                                Cmd.Parameters.Add(new SqlParameter("@FlagModManual", SqlDbType.VarChar)).Value = Data.FlagModManual;
-                                Cmd.Parameters.Add(new SqlParameter("@FlagModRestringida", SqlDbType.VarChar)).Value = Data.FlagModRestringida;
-                                Cmd.Parameters.Add(new SqlParameter("@Estado", SqlDbType.VarChar)).Value = Data.Estado;
-                                Cmd.Parameters.Add(new SqlParameter("@UltimoUsuarioMod", SqlDbType.VarChar)).Value = Data.UltimoUsuarioMod;
-                                Cmd.Parameters.Add(new SqlParameter("@UltimaFechaMod", SqlDbType.DateTime)).Value = Data.UltimaFechaMod;
-                                Cmd.ExecuteNonQuery();
+                    //Grabando Cabecera Cuenta Contable
+                    Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnGetOpera.getOperacion(Data.OperMantenimiento);
+                    Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = Data.Opcion;
+                    Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Data.Compania;
+                    Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Data.Periodo;
+                    Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = Data.TipoVoucher;
+                    Cmd.Parameters.Add(new SqlParameter("@NumeroVoucher", SqlDbType.VarChar,4)).Value = Data.NumeroVoucher;
+                    Cmd.Parameters.Add(new SqlParameter("@Departamento", SqlDbType.VarChar)).Value = Data.Departamento;
+                    Cmd.Parameters.Add(new SqlParameter("@Moneda", SqlDbType.VarChar)).Value = Data.Moneda;
+                    Cmd.Parameters.Add(new SqlParameter("@Fecha", SqlDbType.DateTime)).Value = Data.Fecha;
+                    Cmd.Parameters.Add(new SqlParameter("@TipoCambio", SqlDbType.Decimal)).Value = Data.TipoCambio;
+                    Cmd.Parameters.Add(new SqlParameter("@Descripcion", SqlDbType.VarChar)).Value = Data.Descripcion;
+                    Cmd.Parameters.Add(new SqlParameter("@UsuarioRegistro", SqlDbType.VarChar)).Value = Data.UsuarioRegistro;
+                    Cmd.Parameters.Add(new SqlParameter("@FechaRegistro", SqlDbType.DateTime)).Value = Data.FechaRegistro;
+                    Cmd.Parameters.Add(new SqlParameter("@UsuarioAprobacion", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(Data.UsuarioAprobacion,"");
+                    Cmd.Parameters.Add(new SqlParameter("@FechaAprobacion", SqlDbType.DateTime)).Value = fnParmCmd.DatDBNull(Data.FechaAprobacion);
+                    Cmd.Parameters.Add(new SqlParameter("@Origen", SqlDbType.VarChar)).Value = Data.Origen;
+                    Cmd.Parameters.Add(new SqlParameter("@FlagModManual", SqlDbType.VarChar)).Value = Data.FlagModManual;
+                    Cmd.Parameters.Add(new SqlParameter("@FlagModRestringida", SqlDbType.VarChar)).Value = Data.FlagModRestringida;
+                    Cmd.Parameters.Add(new SqlParameter("@Estado", SqlDbType.VarChar)).Value = Data.Estado;
+                    Cmd.Parameters.Add(new SqlParameter("@UltimoUsuario", SqlDbType.VarChar)).Value = Data.UsuarioSys;
+                    Cmd.Parameters.Add(new SqlParameter("@AudEstacion", SqlDbType.VarChar)).Value = Data.EstacionSys;
+                    Cmd.Parameters.Add(new SqlParameter("@AudFechaEst", SqlDbType.DateTime)).Value = Data.FechaSys;
+                    Cmd.Parameters["@NumeroVoucher"].Direction = ParameterDirection.InputOutput;
+                    Cmd.ExecuteNonQuery();
 
-                                //Eliminando Detalle Voucher
-                                Cmd.Parameters.Clear();
-                                Cmd.CommandType = CommandType.Text;
-                                Cmd.CommandText = tsqVoucher.QR_MantVoucherDetalle(fnEnum.OperacionMant.EliminarTodos);
-                                Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Data.Compania;
-                                Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Data.Periodo;
-                                Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = Data.TipoVoucher;
-                                Cmd.Parameters.Add(new SqlParameter("@NumeroVoucher", SqlDbType.VarChar)).Value = Data.NumeroVoucher;
-                                Cmd.ExecuteNonQuery();
+                    sCod = Cmd.Parameters["@NumeroVoucher"].Value.ToString();
+                    Data.NumeroVoucher = sCod;
+                    entErr.CodigoGeneradoText = sCod;
 
-                                //Grabando Detalle Voucher
-                                Cmd.CommandType = CommandType.Text;
-                                foreach (entVoucherDet oEnt in Data.DetalleVoucher)
-                                {
-                                    Cmd.Parameters.Clear();
-                                    Cmd.CommandText = tsqVoucher.QR_MantVoucherDetalle(fnEnum.OperacionMant.Insertar);
-                                    Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Data.Compania;
-                                    Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Data.Periodo;
-                                    Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = Data.TipoVoucher;
-                                    Cmd.Parameters.Add(new SqlParameter("@NumeroVoucher", SqlDbType.VarChar)).Value = Data.NumeroVoucher;
-                                    Cmd.Parameters.Add(new SqlParameter("@Linea", SqlDbType.Int)).Value = oEnt.Linea;
-                                    Cmd.Parameters.Add(new SqlParameter("@Cuenta", SqlDbType.VarChar)).Value = oEnt.Cuenta;
-                                    Cmd.Parameters.Add(new SqlParameter("@Persona", SqlDbType.Int)).Value = fnParmCmd.intDBNull(oEnt.Persona,0);
-                                    Cmd.Parameters.Add(new SqlParameter("@CentroCosto", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.CentroCosto,"");
-                                    Cmd.Parameters.Add(new SqlParameter("@FlujoCaja", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.FlujoCaja,"");
-                                    Cmd.Parameters.Add(new SqlParameter("@OrigenDoc", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.OrigenDoc,String.Empty);
-                                    Cmd.Parameters.Add(new SqlParameter("@CodigoDoc", SqlDbType.Int)).Value = fnParmCmd.DecDBNull(oEnt.CodigoDoc,0);
-                                    Cmd.Parameters.Add(new SqlParameter("@Documento", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.Documento);
-                                    Cmd.Parameters.Add(new SqlParameter("@Fecha", SqlDbType.DateTime)).Value = fnParmCmd.DatDBNull(oEnt.Fecha);
-                                    Cmd.Parameters.Add(new SqlParameter("@Proyecto", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.Proyecto,"");
-                                    Cmd.Parameters.Add(new SqlParameter("@OrdenCompra", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.OrdenCompra,"");
-                                    Cmd.Parameters.Add(new SqlParameter("@Secuencia_OC", SqlDbType.Int)).Value = fnParmCmd.intDBNull(oEnt.Secuencia_OC,0);
-                                    Cmd.Parameters.Add(new SqlParameter("@MontoLocal", SqlDbType.Decimal)).Value = oEnt.MontoLocal;
-                                    Cmd.Parameters.Add(new SqlParameter("@MontoExt", SqlDbType.Decimal)).Value = oEnt.MontoExt;
-                                    Cmd.Parameters.Add(new SqlParameter("@Descripcion", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.Descripcion);
-                                    Cmd.Parameters.Add(new SqlParameter("@FlagAutomatico", SqlDbType.VarChar)).Value = oEnt.FlagAutomatico;
-                                    Cmd.Parameters.Add(new SqlParameter("@UltimoUsuarioMod", SqlDbType.VarChar)).Value = oEnt.UltimoUsuarioMod;
-                                    Cmd.Parameters.Add(new SqlParameter("@UltimaFechaMod", SqlDbType.DateTime)).Value = oEnt.UltimaFechaMod;
-                                    Cmd.Parameters.Add(new SqlParameter("@CodMaquina", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.CodMaquina,"");
-                                    Cmd.ExecuteNonQuery();
-                                }
-                            }
-                            break;
-                        /*case fnEnum.OperacionMant.Aprobar:
-                            Cmd.CommandType = CommandType.StoredProcedure;
-                            Cmd.Parameters.Clear();
-                            Cmd.CommandText = tsqVoucher.UP_AprobarVoucher();
-                            Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Data.Compania;
-                            Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Data.Periodo;
-                            Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = Data.TipoVoucher;
-                            Cmd.Parameters.Add(new SqlParameter("@NumeroVoucher", SqlDbType.VarChar)).Value = Data.NumeroVoucher;
-                            Cmd.Parameters.Add(new SqlParameter("@Usuario", SqlDbType.VarChar)).Value = Data.UsuarioSys;
-                            Cmd.Parameters.Add(new SqlParameter("@Mensaje", SqlDbType.VarChar, 250)).Value = "";
-                            Cmd.Parameters["@Mensaje"].Direction = ParameterDirection.Output;
-                            Cmd.ExecuteNonQuery();
-                            break;
-                        case fnEnum.OperacionMant.Pendiente:
-                            Cmd.CommandType = CommandType.StoredProcedure;
-                            Cmd.Parameters.Clear();
-                            Cmd.CommandText = tsqVoucher.UP_PasarPendienteVoucher();
-                            Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Data.Compania;
-                            Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Data.Periodo;
-                            Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = Data.TipoVoucher;
-                            Cmd.Parameters.Add(new SqlParameter("@NumeroVoucher", SqlDbType.VarChar)).Value = Data.NumeroVoucher;
-                            Cmd.Parameters.Add(new SqlParameter("@Usuario", SqlDbType.VarChar)).Value = Data.UsuarioSys;
-                            Cmd.Parameters.Add(new SqlParameter("@Mensaje", SqlDbType.VarChar, 250)).Value = "";
-                            Cmd.Parameters["@Mensaje"].Direction = ParameterDirection.Output;
-                            Cmd.ExecuteNonQuery();
-                            break;*/
+                    //Quitando Detalle por Compañia
+                    if (Data.OperMantenimiento == fnEnum.OperacionMant.Insertar || Data.OperMantenimiento == fnEnum.OperacionMant.Modificar){
+                        Cmd.CommandType = CommandType.StoredProcedure;
+                        Cmd.Parameters.Clear();
+                        Cmd.CommandText = fnQuery.tsqVoucherDet;
+
+                        Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = "DEL";
+                        Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = "ALL";
+                        Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Data.Compania;
+                        Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Data.Periodo;
+                        Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = Data.TipoVoucher;
+                        Cmd.Parameters.Add(new SqlParameter("@NumeroVoucher", SqlDbType.VarChar)).Value = Data.NumeroVoucher;
+                        Cmd.Parameters.Add(new SqlParameter("@UltimoUsuario", SqlDbType.VarChar)).Value = Data.UsuarioSys;
+                        Cmd.Parameters.Add(new SqlParameter("@AudEstacion", SqlDbType.VarChar)).Value = Data.EstacionSys;
+                        Cmd.Parameters.Add(new SqlParameter("@AudFechaEst", SqlDbType.DateTime)).Value = Data.FechaSys;
+                        Cmd.ExecuteNonQuery();
                     }
-                    if (bOk){
-                        Trs.Commit();
-                        entErr.Resultado = true;
-                        entErr.CodigoGeneradoText = Data.NumeroVoucher;
-                        
-                        //Caso Aprobado
-                        /*if (Data.OperMantenimiento == fnEnum.OperacionMant.Aprobar){
-                            sMens = Cmd.Parameters["@Mensaje"].Value.ToString();
-                            if (!sMens.Equals("OK")){
-                                entErr.Resultado = false;
-                                entErr.Errores.Add(new entFail() { Codigo = "SQL", Descripcion = sMens });
-                            }
-                        }*/
+
+                    //Grabando Detalle Voucher                    
+                    foreach (entVoucherDet oEnt in Data.DetalleVoucher)
+                    {
+                        Cmd.CommandType = CommandType.StoredProcedure;
+                        Cmd.Parameters.Clear();
+                        Cmd.CommandText = fnQuery.tsqVoucherDet;
+
+                        Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnGetOpera.getOperacion(oEnt.OperMantenimiento);
+                        Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = oEnt.Opcion;
+                        Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Data.Compania;
+                        Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Data.Periodo;
+                        Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = Data.TipoVoucher;
+                        Cmd.Parameters.Add(new SqlParameter("@NumeroVoucher", SqlDbType.VarChar)).Value = Data.NumeroVoucher;
+                        Cmd.Parameters.Add(new SqlParameter("@Linea", SqlDbType.Int)).Value = oEnt.Linea;
+                        Cmd.Parameters.Add(new SqlParameter("@Cuenta", SqlDbType.VarChar)).Value = oEnt.Cuenta;
+                        Cmd.Parameters.Add(new SqlParameter("@Persona", SqlDbType.Int)).Value = fnParmCmd.intDBNull(oEnt.Persona,0);
+                        Cmd.Parameters.Add(new SqlParameter("@CentroCosto", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.CentroCosto,"");
+                        Cmd.Parameters.Add(new SqlParameter("@FlujoCaja", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.FlujoCaja,"");
+                        Cmd.Parameters.Add(new SqlParameter("@OrigenDoc", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.OrigenDoc,String.Empty);
+                        Cmd.Parameters.Add(new SqlParameter("@CodigoDoc", SqlDbType.Int)).Value = fnParmCmd.DecDBNull(oEnt.CodigoDoc,0);
+                        Cmd.Parameters.Add(new SqlParameter("@Documento", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.Documento);
+                        Cmd.Parameters.Add(new SqlParameter("@Fecha", SqlDbType.DateTime)).Value = fnParmCmd.DatDBNull(oEnt.Fecha);
+                        Cmd.Parameters.Add(new SqlParameter("@Proyecto", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.Proyecto,"");
+                        Cmd.Parameters.Add(new SqlParameter("@OrdenCompra", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.OrdenCompra,"");
+                        Cmd.Parameters.Add(new SqlParameter("@Secuencia_OC", SqlDbType.Int)).Value = fnParmCmd.intDBNull(oEnt.Secuencia_OC,0);
+                        Cmd.Parameters.Add(new SqlParameter("@MontoLocal", SqlDbType.Decimal)).Value = oEnt.MontoLocal;
+                        Cmd.Parameters.Add(new SqlParameter("@MontoExt", SqlDbType.Decimal)).Value = oEnt.MontoExt;
+                        Cmd.Parameters.Add(new SqlParameter("@Descripcion", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.Descripcion);
+                        Cmd.Parameters.Add(new SqlParameter("@FlagAutomatico", SqlDbType.VarChar)).Value = oEnt.FlagAutomatico;
+                        Cmd.Parameters.Add(new SqlParameter("@UltimoUsuarioMod", SqlDbType.VarChar)).Value = oEnt.UltimoUsuarioMod;
+                        Cmd.Parameters.Add(new SqlParameter("@UltimaFechaMod", SqlDbType.DateTime)).Value = oEnt.UltimaFechaMod;
+                        Cmd.Parameters.Add(new SqlParameter("@CodMaquina", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.CodMaquina,"");
+                        Cmd.Parameters.Add(new SqlParameter("@GrupoCC", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.GrupoCC,"");
+                        Cmd.Parameters.Add(new SqlParameter("@ClasificacionGCC", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.ClasificacionGCC,"");
+                        Cmd.Parameters.Add(new SqlParameter("@AudEstacion", SqlDbType.VarChar)).Value = Data.EstacionSys;
+                        Cmd.Parameters.Add(new SqlParameter("@AudFechaEst", SqlDbType.DateTime)).Value = Data.FechaSys;
+                        Cmd.ExecuteNonQuery();
                     }
-                    /*else { 
-                        if (!(Data.OperMantenimiento == fnEnum.OperacionMant.Aprobar || Data.OperMantenimiento == fnEnum.OperacionMant.Pendiente)){ Trs.Rollback(); }
-                    }*/
+
+                    Trs.Commit();                    
+                    entErr.Resultado = true;
                 }
                 catch (Exception ex)
                 {
-                    Trs.Rollback();                    
-                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = ex.Message });
+                    Trs.Rollback();
+                    sMsj = ex.Message;
+                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = sMsj });
                 }
                 finally
                 {
@@ -319,23 +246,70 @@ namespace FiltroLys.Repository.Contabilidad
                     Cnx.Close();
                     Cnx.Dispose();
                     Trs.Dispose();
+                    Data = null;
                     GC.SuppressFinalize(Cnx);
                 }
             }
             return entErr;
         }
 
-        public static entErrores MantVoucher(List<entVoucher> Data, ref BackgroundWorker worker)
+        public static entErrores AnularReg(entVoucher Data)
         {
             SqlCommand Cmd = new SqlCommand();
             entErrores entErr = new entErrores();
-            Boolean bOk = true;
-            String sMens = "", query = "";
-            fnEnum.OperacionMant Operacion = Data[0].OperMantenimiento;
-            int reg = 1, regtot = Data.Count;
+            String sMsj = "";
 
-            /*if (Operacion == fnEnum.OperacionMant.Aprobar) { query = tsqVoucher.UP_AprobarVoucher(); }
-            if (Operacion == fnEnum.OperacionMant.Pendiente) { query = tsqVoucher.UP_PasarPendienteVoucher(); }*/
+            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion())){
+                SqlTransaction Trs = null;
+                try{
+                    Cmd.Connection = Cnx;
+                    Cmd.Connection.Open();
+                    Trs = Cnx.BeginTransaction();
+                    Cmd.Transaction = Trs;
+
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.Clear();
+                    Cmd.CommandText = fnQuery.tsqVoucher;
+
+                    Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = "UPD";
+                    Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = "ANUL";
+                    Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Data.Compania;
+                    Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Data.Periodo;
+                    Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = Data.TipoVoucher;
+                    Cmd.Parameters.Add(new SqlParameter("@NumeroVoucher", SqlDbType.VarChar)).Value = Data.NumeroVoucher;
+                    Cmd.Parameters.Add(new SqlParameter("@UltimoUsuario", SqlDbType.VarChar)).Value = Data.UsuarioSys;
+                    Cmd.Parameters.Add(new SqlParameter("@AudEstacion", SqlDbType.VarChar)).Value = Data.EstacionSys;
+                    Cmd.Parameters.Add(new SqlParameter("@AudFechaEst", SqlDbType.DateTime)).Value = Data.FechaSys;                 
+                    Cmd.ExecuteNonQuery();
+
+                    Trs.Commit();
+                    entErr.Resultado = true;                    
+                }
+                catch (Exception ex)
+                {
+                    Trs.Rollback();
+                    sMsj = ex.Message;
+                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = sMsj });
+                }
+                finally
+                {
+                    Cmd.Connection.Close();
+                    Cmd.Connection.Dispose();
+                    Cnx.Close();
+                    Cnx.Dispose();
+                    Trs.Dispose();
+                    Data = null;
+                    GC.SuppressFinalize(Cnx);
+                }
+            }
+            return entErr;
+        }
+
+        public static entErrores AprobarReg(entVoucher Data)
+        {
+            SqlCommand Cmd = new SqlCommand();
+            entErrores entErr = new entErrores();
+            String sMsj = "";
 
             using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
             {
@@ -346,11 +320,129 @@ namespace FiltroLys.Repository.Contabilidad
                     Cmd.Connection.Open();
                     Trs = Cnx.BeginTransaction();
                     Cmd.Transaction = Trs;
-                    Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.CommandText = query;
 
-                    reg = 1;
-                    foreach(entVoucher objE in Data){
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.Clear();
+                    Cmd.CommandText = fnQuery.tsqVoucherAprob;
+
+                    //Grabando Cabecera Cuenta Contable
+                    Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Data.Compania;
+                    Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Data.Periodo;
+                    Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = Data.TipoVoucher;
+                    Cmd.Parameters.Add(new SqlParameter("@NumeroVoucher", SqlDbType.VarChar)).Value = Data.NumeroVoucher;
+                    Cmd.Parameters.Add(new SqlParameter("@Usuario", SqlDbType.VarChar)).Value = Data.UsuarioSys;
+                    Cmd.Parameters.Add(new SqlParameter("@Mensaje", SqlDbType.VarChar,255)).Value = "";
+                    Cmd.Parameters["@Mensaje"].Direction = ParameterDirection.InputOutput;
+                    Cmd.ExecuteNonQuery();
+
+                    sMsj = Cmd.Parameters["@Mensaje"].Value.ToString();
+                    if (sMsj.Equals("OK")) {
+                        Trs.Commit();
+                        entErr.Resultado = true;
+                    }else{
+                        entErr.Errores.Add(new entFail() { Codigo = "X1", Descripcion = sMsj });
+                        Trs.Rollback();
+                        entErr.Resultado = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Trs.Rollback();
+                    sMsj = ex.Message;
+                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = sMsj });
+                }
+                finally
+                {
+                    Cmd.Connection.Close();
+                    Cmd.Connection.Dispose();
+                    Cnx.Close();
+                    Cnx.Dispose();
+                    Trs.Dispose();
+                    Data = null;
+                    GC.SuppressFinalize(Cnx);
+                }
+            }
+            return entErr;
+        }
+
+        public static entErrores PasarPendienteReg(entVoucher Data)
+        {
+            SqlCommand Cmd = new SqlCommand();
+            entErrores entErr = new entErrores();
+            String sMsj = "";
+
+            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion())){
+                SqlTransaction Trs = null;
+                try{
+                    Cmd.Connection = Cnx;
+                    Cmd.Connection.Open();
+                    Trs = Cnx.BeginTransaction();
+                    Cmd.Transaction = Trs;
+
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.Clear();
+                    Cmd.CommandText = fnQuery.tsqVoucherPend;
+
+                    //Grabando Cabecera Cuenta Contable
+                    Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Data.Compania;
+                    Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = Data.Periodo;
+                    Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = Data.TipoVoucher;
+                    Cmd.Parameters.Add(new SqlParameter("@NumeroVoucher", SqlDbType.VarChar)).Value = Data.NumeroVoucher;
+                    Cmd.Parameters.Add(new SqlParameter("@Usuario", SqlDbType.VarChar)).Value = Data.UsuarioSys;
+                    Cmd.Parameters.Add(new SqlParameter("@Mensaje", SqlDbType.VarChar,250)).Value = "";
+                    Cmd.Parameters["@Mensaje"].Direction = ParameterDirection.InputOutput;
+                    Cmd.ExecuteNonQuery();
+
+                    sMsj = Cmd.Parameters["@Mensaje"].Value.ToString();
+                    if (sMsj.Equals("OK")){
+                        Trs.Commit();
+                        entErr.Resultado = true;
+                    }else{
+                        entErr.Errores.Add(new entFail() { Codigo = "X1", Descripcion = sMsj });
+                        Trs.Rollback();
+                        entErr.Resultado = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Trs.Rollback();
+                    sMsj = ex.Message;
+                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = sMsj });
+                }
+                finally
+                {
+                    Cmd.Connection.Close();
+                    Cmd.Connection.Dispose();
+                    Cnx.Close();
+                    Cnx.Dispose();
+                    Trs.Dispose();
+                    Data = null;
+                    GC.SuppressFinalize(Cnx);
+                }
+            }
+            return entErr;
+        }
+
+        public static entErrores AprobarMasivo(List<entVoucher> Data, ref BackgroundWorker worker)
+        {
+            SqlCommand Cmd = new SqlCommand();
+            entErrores entErr = new entErrores();
+            Boolean bOk = true;
+            String sMsj = "";
+            int nReg = 1, nRegTot = Data.Count;
+            
+            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion())){
+                SqlTransaction Trs = null;
+                try{
+                    Cmd.Connection = Cnx;
+                    Cmd.Connection.Open();
+                    Trs = Cnx.BeginTransaction();
+                    Cmd.Transaction = Trs;
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.CommandText = fnQuery.tsqVoucherAprob;
+
+                    nReg = 1;
+                    foreach (entVoucher objE in Data){
                         Cmd.Parameters.Clear();
                         Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = objE.Compania;
                         Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = objE.Periodo;
@@ -360,18 +452,18 @@ namespace FiltroLys.Repository.Contabilidad
                         Cmd.Parameters.Add(new SqlParameter("@Mensaje", SqlDbType.VarChar, 250)).Value = "";
                         Cmd.Parameters["@Mensaje"].Direction = ParameterDirection.Output;
                         Cmd.ExecuteNonQuery();
-                        sMens = Cmd.Parameters["@Mensaje"].Value.ToString();
-                        if (!sMens.Equals("OK")){
+                        sMsj = Cmd.Parameters["@Mensaje"].Value.ToString();
+                        if (!sMsj.Equals("OK")){
                             entErr.Resultado = false;
-                            entErr.Errores.Add(new entFail() { Codigo = "SQL", Descripcion = sMens });
+                            entErr.Errores.Add(new entFail() { Codigo = "SQL", Descripcion = sMsj });
                             bOk = false;
                             break;
                         }
-                        Int32 nporc = (reg * 100) / regtot;
-                        String sstatus = nporc.ToString();
-                        worker.ReportProgress(nporc, sstatus);
+                        Int32 nPorc = (nReg * 100) / nRegTot;
+                        String sStatus = nPorc.ToString();
+                        worker.ReportProgress(nPorc, sStatus);
                         System.Threading.Thread.Sleep(25);
-                        reg++;
+                        nReg++;
                     }
 
                     if (bOk){
@@ -381,20 +473,89 @@ namespace FiltroLys.Repository.Contabilidad
                         Trs.Rollback();
                     }
                 }
-                catch (Exception ex)
-                {
+                catch (Exception ex){
                     Trs.Rollback();
-                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = ex.Message });
+                    sMsj = ex.Message;
+                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = sMsj });
                 }
-                finally
-                {
+                finally{
                     Cmd.Connection.Close();
                     Cmd.Connection.Dispose();
                     Cnx.Close();
                     Cnx.Dispose();
                     Trs.Dispose();
                     GC.SuppressFinalize(Cnx);
-                    reg = Data.Count;
+                    nReg = Data.Count;
+                    Data = null;
+                }
+            }
+            return entErr;
+        }
+
+        public static entErrores PasarPendienteMasivo(List<entVoucher> Data, ref BackgroundWorker worker)
+        {
+            SqlCommand Cmd = new SqlCommand();
+            entErrores entErr = new entErrores();
+            Boolean bOk = true;
+            String sMsj = "";
+            int nReg = 1, nRegTot = Data.Count;
+
+            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion())){
+                SqlTransaction Trs = null;
+                try{
+                    Cmd.Connection = Cnx;
+                    Cmd.Connection.Open();
+                    Trs = Cnx.BeginTransaction();
+                    Cmd.Transaction = Trs;
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.CommandText = fnQuery.tsqVoucherPend;
+
+                    nReg = 1;
+                    foreach (entVoucher objE in Data){
+                        Cmd.Parameters.Clear();
+                        Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = objE.Compania;
+                        Cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar)).Value = objE.Periodo;
+                        Cmd.Parameters.Add(new SqlParameter("@TipoVoucher", SqlDbType.VarChar)).Value = objE.TipoVoucher;
+                        Cmd.Parameters.Add(new SqlParameter("@NumeroVoucher", SqlDbType.VarChar)).Value = objE.NumeroVoucher;
+                        Cmd.Parameters.Add(new SqlParameter("@Usuario", SqlDbType.VarChar)).Value = objE.UsuarioSys;
+                        Cmd.Parameters.Add(new SqlParameter("@Mensaje", SqlDbType.VarChar, 250)).Value = "";
+                        Cmd.Parameters["@Mensaje"].Direction = ParameterDirection.Output;
+                        Cmd.ExecuteNonQuery();
+                        sMsj = Cmd.Parameters["@Mensaje"].Value.ToString();
+                        if (!sMsj.Equals("OK")){
+                            entErr.Resultado = false;
+                            entErr.Errores.Add(new entFail() { Codigo = "SQL", Descripcion = sMsj });
+                            bOk = false;
+                            break;
+                        }
+                        Int32 nPorc = (nReg * 100) / nRegTot;
+                        String sStatus = nPorc.ToString();
+                        worker.ReportProgress(nPorc, sStatus);
+                        System.Threading.Thread.Sleep(25);
+                        nReg++;
+                    }
+
+                    if (bOk){
+                        Trs.Commit();
+                        entErr.Resultado = true;
+                    }else{
+                        Trs.Rollback();
+                    }
+                }
+                catch (Exception ex){
+                    Trs.Rollback();
+                    sMsj = ex.Message;
+                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = sMsj });
+                }
+                finally{
+                    Cmd.Connection.Close();
+                    Cmd.Connection.Dispose();
+                    Cnx.Close();
+                    Cnx.Dispose();
+                    Trs.Dispose();
+                    GC.SuppressFinalize(Cnx);
+                    nReg = Data.Count;
+                    Data = null;
                 }
             }
             return entErr;

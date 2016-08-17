@@ -63,7 +63,7 @@ namespace FiltroLys.Domain.Maestro.General
             String sPer = "";
             List<entPeriodoCia> ListObj = new List<entPeriodoCia>();
             ListObj = datPeriodoCia.ListaPeriodoTrabajo(Compania, Sistema).ToList<entPeriodoCia>();
-            if (ListObj.Count > 0){
+            if (ListObj.Count == 1){
                 sPer = ListObj[0].Periodo;
             }
             ListObj = null;

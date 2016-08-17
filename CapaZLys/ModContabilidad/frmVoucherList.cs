@@ -43,14 +43,13 @@ namespace FiltroLys.ZLys.ModContabilidad
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             String scia = cmbCompania.EditValue.ToString();
-            if (scia == null || scia.Equals(String.Empty)){
+            if (scia == null || scia.Equals(fnConst.TextRaya3)){
                 Funciones.fnMensaje.MensajeInfo("Seleccionar Compañia por favor.");
                 return;
             }
-
+            
             String sper = negPeriodoCia.GetPeriodoTrabajo(scia, fnConst.ModContabilidadCod);
-            if (sper == null || sper.Equals(String.Empty))
-            {
+            if (sper == null || sper.Equals(String.Empty)){
                 Funciones.fnMensaje.MensajeInfo("No se pudo obtener periodo de trabajo actual. Asignar uno válido.");
                 return;
             }
@@ -77,18 +76,15 @@ namespace FiltroLys.ZLys.ModContabilidad
             sCia = objT.Compania;
             sPer = objT.Periodo;
             sTV = objT.TipoVoucher;
-            sNro = objT.NumeroVoucher;
-            sModRes = objT.FlagModRestringida;
+            sNro = objT.NumeroVoucher;            
             objT = null;
 
-            entVoucher objX = negVoucher.GetVoucherFormID(sCia, sPer, sTV, sNro);
-            if (objX.ResultadoBusqueda) { sEstado = objX.Estado; }
+            entVoucher objX = negVoucher.GetFormID(sCia, sPer, sTV, sNro);
+            if (objX.ResultadoBusqueda) { sEstado = objX.Estado; sModRes = objX.FlagModRestringida; }
             objX = null;
 
-            if (sEstado.Equals("PE"))
-            {
-                if (sModRes.Equals("S"))
-                {
+            if (sEstado.Equals("PE")){
+                if (sModRes.Equals("S")){
                     fnMensaje.MensajeInfo("La modificación de este voucher se encuentra restringida.");
                     return;
                 }
@@ -120,12 +116,11 @@ namespace FiltroLys.ZLys.ModContabilidad
             sCia = objT.Compania;
             sPer = objT.Periodo;
             sTV = objT.TipoVoucher;
-            sNro = objT.NumeroVoucher;
-            sModRes = objT.FlagModRestringida;
+            sNro = objT.NumeroVoucher;            
             objT = null;
 
-            entVoucher objX = negVoucher.GetVoucherFormID(sCia, sPer, sTV, sNro);
-            if (objX.ResultadoBusqueda) { sEstado = objX.Estado; }
+            entVoucher objX = negVoucher.GetFormID(sCia, sPer, sTV, sNro);
+            if (objX.ResultadoBusqueda) { sEstado = objX.Estado; sModRes = objX.FlagModRestringida; }
             objX = null;
 
             if (sEstado.Equals("PE")){
@@ -139,7 +134,7 @@ namespace FiltroLys.ZLys.ModContabilidad
                 frm.Periodo = sPer;
                 frm.TipoVoucher = sTV;
                 frm.NumeroVoucher = sNro;
-                tagFrm = "Aprobar";                
+                tagFrm = "Aprobar";         
                 fnAddTab.FormOpen(frm, tagFrm);
             }
             else
@@ -161,12 +156,11 @@ namespace FiltroLys.ZLys.ModContabilidad
             sCia = objT.Compania;
             sPer = objT.Periodo;
             sTV = objT.TipoVoucher;
-            sNro = objT.NumeroVoucher;
-            sModRes = objT.FlagModRestringida;
+            sNro = objT.NumeroVoucher;            
             objT = null;
 
-            entVoucher objX = negVoucher.GetVoucherFormID(sCia, sPer, sTV, sNro);
-            if (objX.ResultadoBusqueda) { sEstado = objX.Estado; }
+            entVoucher objX = negVoucher.GetFormID(sCia, sPer, sTV, sNro);
+            if (objX.ResultadoBusqueda) { sEstado = objX.Estado; sModRes = objX.FlagModRestringida; }
             objX = null;
 
             if (sEstado.Equals("AP")){
@@ -203,16 +197,14 @@ namespace FiltroLys.ZLys.ModContabilidad
             sPer = objT.Periodo;
             sTV = objT.TipoVoucher;
             sNro = objT.NumeroVoucher;
-            sModRes = objT.FlagModRestringida;
             objT = null;
 
-            entVoucher objX = negVoucher.GetVoucherFormID(sCia, sPer, sTV, sNro);
-            if (objX.ResultadoBusqueda) { sEstado = objX.Estado; }
+            entVoucher objX = negVoucher.GetFormID(sCia, sPer, sTV, sNro);
+            if (objX.ResultadoBusqueda) { sEstado = objX.Estado; sModRes = objX.FlagModRestringida; }
             objX = null;
 
             if (sEstado.Equals("PE")){
-                if (sModRes.Equals("S"))
-                {
+                if (sModRes.Equals("S")){
                     fnMensaje.MensajeInfo("La modificación de este voucher se encuentra restringida.");
                     return;
                 }
@@ -283,7 +275,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             sVoucherFin = txtVoucherFin.Text;
             sPeriodo = sPeriodo.Replace("-", "").Trim();
 
-            List<entVoucher> Ls = negVoucher.ListVoucherForm(sCia, sFlagDepartCia, sDepartCia, sFlagPeriodo,
+            List<entVoucher> Ls = negVoucher.ListaFormID(sCia, sFlagDepartCia, sDepartCia, sFlagPeriodo,
                 sPeriodo, sFlagEstado, sEstado, sFlagVoucher, sTipoVoucher, sVoucherIni, sVoucherFin);
 
             grControl.DataSource = Ls;
@@ -378,7 +370,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         private void fxCargarCombos()
         {
             //Compania
-            List<entCompania> Lst = negCompania.ListaXUsuario(fnConst.ModContabilidadCod, GlobalVar.UsuarioLogeo, fnConst.StringN, new String[] { fnConst.TextNingunoCod, fnConst.TextNingunoNom });
+            List<entCompania> Lst = negCompania.ListaXUsuario(fnConst.ModContabilidadCod, GlobalVar.UsuarioLogeo, fnConst.StringN, new String[] { fnConst.TextRaya3, fnConst.TextNingunoNom });
             cmbCompania.EditValueChanged -= new System.EventHandler(this.cmbCompania_EditValueChanged);
             cmbCompania.Properties.DataSource = Lst;
             cmbCompania.Properties.DisplayMember = "Nombres";

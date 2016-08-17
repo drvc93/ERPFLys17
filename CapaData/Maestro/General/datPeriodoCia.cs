@@ -152,8 +152,8 @@ namespace FiltroLys.Repository.Maestro.General
                 Cmd.Connection.Open();
                 Cmd.CommandText = fnQuery.tsqPeriodoCierreCia;
                 Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = "LSTTRB";
-                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstID;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = "LSTTRB";
                 Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Compania;
                 Cmd.Parameters.Add(new SqlParameter("@Sistema", SqlDbType.VarChar)).Value = Sistema;
 

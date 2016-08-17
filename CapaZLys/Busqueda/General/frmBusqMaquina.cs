@@ -41,15 +41,13 @@ namespace FiltroLys.ZLys.Busqueda.General
         private void fxCargarLista() {
             String sCodigo = txtCodigo.Text.Trim();
             String sNombre = txtDescripcion.Text.Trim();
-            
-            entMaquina objE = new entMaquina();
-            objE.Compania = EstructuraForm.StrX[0];
-            objE.Maquina = (sCodigo.Length > 0) ? sCodigo + "%" : "%";
-            objE.Descripcion = "%" + sNombre + "%";
-            objE.Estado = (chkActivo.Checked) ? "A" : "%";
+            String sCia = EstructuraForm.StrX[0];
+            String sEstado = (chkActivo.Checked) ? "A" : "%";
 
-            grControl.DataSource = negMaquina.ListMaquinaSearch(objE);
-            objE = null;
+            sCodigo = (sCodigo.Length > 0) ? sCodigo + "%" : "%";
+            sNombre = "%" + sNombre + "%";
+            
+            grControl.DataSource = negMaquina.ListaSearch(sCia,sCodigo,sNombre,sEstado);            
         }
 
         private void fxRecuperarData(){

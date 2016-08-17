@@ -15,21 +15,21 @@ namespace FiltroLys.Domain.Contabilidad
 {
     public class negVoucher
     {
-        public static List<entVoucher> ListVoucherForm(String Cia, String FlagDepartCia, String DepartCia, String FlagPeriodo,
+        public static List<entVoucher> ListaFormID(String Compania, String FlagDepartCia, String DepartCia, String FlagPeriodo,
         String Periodo, String FlagEstado, String Estado, String FlagVoucher, String TipoVoucher, String VoucherIni, String VoucherFin)
         {
             List<entVoucher> ListObj = new List<entVoucher>();
-            ListObj = datVoucher.ListVoucherForm(Cia, FlagDepartCia, DepartCia, FlagPeriodo, Periodo, FlagEstado,
+            ListObj = datVoucher.ListaFormID(Compania, FlagDepartCia, DepartCia, FlagPeriodo, Periodo, FlagEstado,
                                                  Estado, FlagVoucher, TipoVoucher, VoucherIni, VoucherFin).ToList<entVoucher>();
             
             return ListObj;
         }
 
-        public static entVoucher GetVoucherFormID(String Cia, String Periodo, String TipoVoucher, String NroVoucher)
+        public static entVoucher GetFormID(String Compania, String Periodo, String TipoVoucher, String NumeroVoucher)
         {
             entVoucher EObj = new entVoucher();
             List<entVoucher> ListObj = new List<entVoucher>();
-            ListObj = datVoucher.GetVoucherFormID(Cia, Periodo, TipoVoucher, NroVoucher).ToList<entVoucher>();
+            ListObj = datVoucher.GetFormID(Compania, Periodo, TipoVoucher, NumeroVoucher).ToList<entVoucher>();
             if (ListObj.Count > 0) {
                 EObj = ListObj[0]; EObj.ResultadoBusqueda = true;
             }
@@ -37,43 +37,41 @@ namespace FiltroLys.Domain.Contabilidad
             return EObj;
         }
 
-        public static List<entVoucherDet> GetVoucherFormIDDet(String Cia, String Periodo, String TipoVoucher, String NroVoucher)
-        {
-            List<entVoucherDet> ListObj = new List<entVoucherDet>();
-            ListObj = datVoucher.GetVoucherFormIDDet(Cia, Periodo, TipoVoucher, NroVoucher).ToList<entVoucherDet>();
-            return ListObj;
-        }
-
-        public static String GetEstadoVoucher(String Cia, String Periodo, String TipoVoucher, String NroVoucher)
-        {
-            String sEst = "";
-            entVoucher EObj = GetVoucherFormID(Cia, Periodo, TipoVoucher, NroVoucher);
-            sEst = (EObj.ResultadoBusqueda) ? EObj.Estado : "";
-            EObj = null;
-            return sEst;
-        }
-
-        public static List<entVoucher> ListVoucherToMayor(String Cia, String Periodo, String Estado)
+        public static List<entVoucher> LstSaldoMayor(String Compania, String Periodo, String Estado)
         {
             List<entVoucher> ListObj = new List<entVoucher>();
-            ListObj = datVoucher.ListVoucherToMayor(Cia, Periodo, Estado).ToList<entVoucher>();
+            ListObj = datVoucher.LstSaldoMayor(Compania, Periodo, Estado).ToList<entVoucher>();
             return ListObj;
         }
 
-        public static List<entVoucherDet> ListVoucherDetCiaPerCuenta(String Cia, String Periodo, String Cuenta)
+        public static entErrores MantFormID(entVoucher Data)
         {
-            List<entVoucherDet> ListObj = new List<entVoucherDet>();
-            ListObj = datVoucher.ListVoucherDetCiaPerCuenta(Cia, Periodo, Cuenta).ToList<entVoucherDet>();
-            return ListObj;
+            return datVoucher.MantFormID(Data);
         }
 
-        public static entErrores MantVoucher(entVoucher Data)
+        public static entErrores AnularReg(entVoucher Data)
         {
-            return datVoucher.MantVoucher(Data);
+            return datVoucher.AnularReg(Data);
         }
 
-        public static entErrores MantVoucher(List<entVoucher> Data, ref BackgroundWorker worker){
-            return datVoucher.MantVoucher(Data, ref worker);
+        public static entErrores AprobarReg(entVoucher Data)
+        {
+            return datVoucher.AprobarReg(Data);
+        }
+
+        public static entErrores PasarPendienteReg(entVoucher Data)
+        {
+            return datVoucher.PasarPendienteReg(Data);
+        }
+
+        public static entErrores AprobarMasivo(List<entVoucher> Data, ref BackgroundWorker worker)
+        {
+            return datVoucher.AprobarMasivo(Data, ref worker);
+        }
+
+        public static entErrores PasarPendienteMasivo(List<entVoucher> Data, ref BackgroundWorker worker)
+        {
+            return datVoucher.PasarPendienteMasivo(Data, ref worker);
         }
 
     }

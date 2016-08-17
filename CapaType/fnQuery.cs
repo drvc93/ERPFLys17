@@ -60,5 +60,10 @@ namespace FiltroLys.Type
         public const String tsqCompCContable = "UP_MA_MANT_COMPCCONTABLE";
         public const String tsqAsientoModelo = "UP_MA_MANT_ASIENTOMODELO";
         public const String tsqAsientoModeloDet = "UP_MA_MANT_ASIENTOMODELODET";
+        public const String tsqVoucher = "UP_MA_MANT_VOUCHER";
+        public const String tsqVoucherDet = "UP_MA_MANT_VOUCHERDET";
+        public const String tsqVoucherAprob = "SP_CB_VOUCHER_APROBACION";
+        public const String tsqVoucherPend = "SP_CB_VOUCHER_PENDIENTE";
+        public const String tsqMaquina = "UP_MA_MANT_MAQUINA";
     }
 }

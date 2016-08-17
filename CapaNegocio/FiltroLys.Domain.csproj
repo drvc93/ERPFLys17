@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contabilidad\negVoucherDet.cs" />
     <Compile Include="Contabilidad\negReporteCB.cs" />
     <Compile Include="Contabilidad\negCierreMesCuenta.cs" />
     <Compile Include="Logistica\negOrdenes.cs" />

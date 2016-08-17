@@ -144,43 +144,37 @@ namespace FiltroLys.ZLys.ModContabilidad
         private void cmbTipoVoucher_EditValueChanged(object sender, EventArgs e)
         {
             String sTipo = cmbTipoVoucher.EditValue.ToString();
-            if (sTipo.Equals(fnConst.TextSeleccioneNomF2))
-                return;
+            if (sTipo.Equals(fnConst.TextSeleccioneNomF2)) { return; }
             entTipoVoucher oEnt = negTipoVoucher.GetFormID(sTipo);
-            oEntVoucher.NumeroManual = oEnt.CorrelativoManual;
+            oEntVoucher.NumeroManual = oEnt.CorrelativoManual;            
             oEnt = null;
         }
         
         private void cmbMoneda_EditValueChanged(object sender, EventArgs e)
         {
             String sMoneda = cmbMoneda.EditValue.ToString();
-            if (sMoneda.Equals(fnConst.TextSeleccioneNomF2))
-                return;
-            if (chkConvAutomatica.Checked)
-            {
-                Decimal nTipoCamb = oEntVoucher.TipoCambio;
+            if (sMoneda.Equals(fnConst.TextSeleccioneNomF2)) { return; }
+            if (chkConvAutomatica.Checked){
+                Decimal nTipoCamb = oEntVoucher.TipoCambio;                
                 fxConvertirDetalle(sMoneda, nTipoCamb);
             }
         }
         
         private void chkConvAutomatica_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkConvAutomatica.Checked)
-            {
+            if (chkConvAutomatica.Checked){
                 String sMoneda = cmbMoneda.EditValue.ToString();
                 Decimal nTipoCamb = 0;
                 Decimal.TryParse(txtTC.Text, out nTipoCamb);
                 String sTexto = (sMoneda.Equals("L")) ? "Extranjero" : "Local";
                 if (MessageBox.Show("La información del Monto " + sTexto + " será modificada, ¿Desea continuar?", "Aviso",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                {
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes){
                     fxConvertirDetalle(sMoneda, nTipoCamb);
                 }
             }
-            else
-            {
-                gvDetalle.Columns["MontoLocal"].ColumnEdit.ReadOnly = false;
-                gvDetalle.Columns["MontoExt"].ColumnEdit.ReadOnly = false;                
+            else{
+                gvDetalle.Columns["MontoLocal"].OptionsColumn.ReadOnly = false;
+                gvDetalle.Columns["MontoExt"].OptionsColumn.ReadOnly = false;
             }
         }
         
@@ -189,8 +183,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             Decimal nTipoCamb = 0;
             Decimal.TryParse(txtTC.Text, out nTipoCamb);
             txtTC.Text = nTipoCamb.ToString("N3");
-            if (chkConvAutomatica.Checked)
-            {
+            if (chkConvAutomatica.Checked){
                 String sMoneda = cmbMoneda.EditValue.ToString();
                 fxConvertirDetalle(sMoneda, nTipoCamb);
             }
@@ -201,19 +194,16 @@ namespace FiltroLys.ZLys.ModContabilidad
             Decimal nTipoCamb = 0;
             DateTime dFecha = DateTime.MinValue;
             DateTime.TryParse(txtFecha.Text, out dFecha);
-            if (dFecha != DateTime.MinValue)
-            {
+            if (dFecha != DateTime.MinValue){
                 nTipoCamb = negTipoCambio.GetTipoCambioXTipo(dFecha, "V");
             }
             
-            if (nTipoCamb <= 0)
-            {
+            if (nTipoCamb <= 0){
                 fnMensaje.MensajeInfo("No se pudo obtener el tipo de cambio del día.");
             }
             
             txtTC.Text = nTipoCamb.ToString("N3");
-            if (chkConvAutomatica.Checked)
-            {
+            if (chkConvAutomatica.Checked){
                 String sMoneda = cmbMoneda.EditValue.ToString();
                 fxConvertirDetalle(sMoneda, nTipoCamb);
             }
@@ -232,7 +222,6 @@ namespace FiltroLys.ZLys.ModContabilidad
             objE.TipoVoucher = sTipoVoucher;
             objE.NumeroVoucher = sNumeroVoucher;
             objE.Linea = nLinea;
-            objE.RegEditado = fnEnum.RegEditado.Si;
             LstDetVoucher.Add(objE);
             objE = null;
             fxLinkDet();
@@ -244,10 +233,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (gvDetalle.RowCount == 0)
-            {
-                return;
-            }
+            if (gvDetalle.RowCount == 0){return;}
             entVoucherDet objE = (entVoucherDet)gvDetalle.GetRow(gvDetalle.FocusedRowHandle);
             LstDetVoucher.Remove(objE);
             objE = null;
@@ -257,23 +243,18 @@ namespace FiltroLys.ZLys.ModContabilidad
         
         private void btnMaquina_Click(object sender, EventArgs e)
         {
-            if (gvDetalle.RowCount == 0)
-            {
-                return;
-            }
-            if (!(Operacion.Equals("M") || Operacion.Equals("A")))
-            {
-                return;
-            }
+            if (gvDetalle.RowCount == 0){return;}
+            if (!(Operacion.Equals("M") || Operacion.Equals("A"))){return;}
+
             entVoucherDet objE = (entVoucherDet)gvDetalle.GetRow(gvDetalle.FocusedRowHandle);
             frmBusqMaquina frm = new frmBusqMaquina();
             frm.MultipleSelect = false;
             frm.SoloActivo = true;
             frm.EstructuraForm.StrX.Insert(0, sCompania);
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
+            if (frm.ShowDialog() == DialogResult.OK){
                 objE.CodMaquina = fnConvert.ObjectToEntity<entMaquina>(frm.EstructuraForm.ObjX)[0].Maquina;
-                objE.RegEditado = fnEnum.RegEditado.Si;
+                objE.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
+                objE.UltimaFechaMod = DateTime.Now;
                 gvDetalle.UpdateCurrentRow();
                 gvDetalle.Focus();
                 gvDetalle.FocusedColumn = gvDetalle.Columns["CodMaquina"];
@@ -284,22 +265,17 @@ namespace FiltroLys.ZLys.ModContabilidad
         
         private void btnCuenta_Click(object sender, EventArgs e)
         {
-            if (gvDetalle.RowCount == 0)
-            {
-                return;
-            }
-            if (!(Operacion.Equals("M") || Operacion.Equals("A")))
-            {
-                return;
-            }
+            if (gvDetalle.RowCount == 0){return;}
+            if (!(Operacion.Equals("M") || Operacion.Equals("A"))){return;}
+
             entVoucherDet objE = (entVoucherDet)gvDetalle.GetRow(gvDetalle.FocusedRowHandle);
             frmBusqCtaContable frm = new frmBusqCtaContable();
             frm.MultipleSelect = false;
             frm.SoloActivo = true;
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
+            if (frm.ShowDialog() == DialogResult.OK){
                 objE.Cuenta = fnConvert.ObjectToEntity<entCuentaContable>(frm.EstructuraForm.ObjX)[0].Cuenta;
-                objE.RegEditado = fnEnum.RegEditado.Si;
+                objE.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
+                objE.UltimaFechaMod = DateTime.Now;
                 gvDetalle.UpdateCurrentRow();
                 gvDetalle.Focus();
                 gvDetalle.FocusedColumn = gvDetalle.Columns["Cuenta"];                
@@ -310,14 +286,9 @@ namespace FiltroLys.ZLys.ModContabilidad
         
         private void btnPersona_Click(object sender, EventArgs e)
         {
-            if (gvDetalle.RowCount == 0)
-            {
-                return;
-            }
-            if (!(Operacion.Equals("M") || Operacion.Equals("A")))
-            {
-                return;
-            }
+            if (gvDetalle.RowCount == 0){return;}
+            if (!(Operacion.Equals("M") || Operacion.Equals("A"))){return;}
+
             entVoucherDet objE = (entVoucherDet)gvDetalle.GetRow(gvDetalle.FocusedRowHandle);
             frmBusqPersona frm = new frmBusqPersona();
             frm.MultipleSelect = false;
@@ -327,10 +298,10 @@ namespace FiltroLys.ZLys.ModContabilidad
             frm.VerCliente = true;
             frm.VerProveedor = true;
             frm.SoloActivo = true;
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
+            if (frm.ShowDialog() == DialogResult.OK){
                 objE.Persona = fnConvert.ObjectToEntity<entPersona>(frm.EstructuraForm.ObjX)[0].Persona;
-                objE.RegEditado = fnEnum.RegEditado.Si;
+                objE.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
+                objE.UltimaFechaMod = DateTime.Now;
                 gvDetalle.UpdateCurrentRow();
                 gvDetalle.Focus();
                 gvDetalle.FocusedColumn = gvDetalle.Columns["Persona"];
@@ -341,23 +312,18 @@ namespace FiltroLys.ZLys.ModContabilidad
         
         private void btnCCosto_Click(object sender, EventArgs e)
         {
-            if (gvDetalle.RowCount == 0)
-            {
-                return;
-            }
-            if (!(Operacion.Equals("M") || Operacion.Equals("A")))
-            {
-                return;
-            }
+            if (gvDetalle.RowCount == 0){return;}
+            if (!(Operacion.Equals("M") || Operacion.Equals("A"))){return;}
+
             entVoucherDet objE = (entVoucherDet)gvDetalle.GetRow(gvDetalle.FocusedRowHandle);
             frmBusqCentroCosto frm = new frmBusqCentroCosto();
             frm.MultipleSelect = false;
             frm.SoloActivo = true;
             frm.EstructuraForm.StrX.Insert(0, sCompania);
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
+            if (frm.ShowDialog() == DialogResult.OK){
                 objE.CentroCosto = fnConvert.ObjectToEntity<entCentroCosto>(frm.EstructuraForm.ObjX)[0].CentroCosto;
-                objE.RegEditado = fnEnum.RegEditado.Si;
+                objE.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
+                objE.UltimaFechaMod = DateTime.Now;
                 gvDetalle.UpdateCurrentRow();
                 gvDetalle.Focus();
                 gvDetalle.FocusedColumn = gvDetalle.Columns["CentroCosto"];
@@ -368,14 +334,9 @@ namespace FiltroLys.ZLys.ModContabilidad
         
         private void btnFlujoCaja_Click(object sender, EventArgs e)
         {
-            if (gvDetalle.RowCount == 0)
-            {
-                return;
-            }
-            if (!(Operacion.Equals("M") || Operacion.Equals("A")))
-            {
-                return;
-            }
+            if (gvDetalle.RowCount == 0){return;}
+            if (!(Operacion.Equals("M") || Operacion.Equals("A"))){return;}
+
             entVoucherDet objE = (entVoucherDet)gvDetalle.GetRow(gvDetalle.FocusedRowHandle);
             frmBusqFlujoCaja frm = new frmBusqFlujoCaja();
             frm.MultipleSelect = false;
@@ -383,7 +344,8 @@ namespace FiltroLys.ZLys.ModContabilidad
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 objE.FlujoCaja = fnConvert.ObjectToEntity<entFlujoCaja>(frm.EstructuraForm.ObjX)[0].FlujoCaja;
-                objE.RegEditado = fnEnum.RegEditado.Si;
+                objE.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
+                objE.UltimaFechaMod = DateTime.Now;
                 gvDetalle.UpdateCurrentRow();
                 gvDetalle.Focus();
                 gvDetalle.FocusedColumn = gvDetalle.Columns["FlujoCaja"];
@@ -394,24 +356,17 @@ namespace FiltroLys.ZLys.ModContabilidad
         
         private void btnDocumento_Click(object sender, EventArgs e)
         {
-            if (gvDetalle.RowCount == 0)
-            {
-                return;
-            }
-            if (!(Operacion.Equals("M") || Operacion.Equals("A")))
-            {
-                return;
-            }
+            if (gvDetalle.RowCount == 0){return;}
+            if (!(Operacion.Equals("M") || Operacion.Equals("A"))){return;}
+
             entVoucherDet objE = (entVoucherDet)gvDetalle.GetRow(gvDetalle.FocusedRowHandle);
-            if (objE.OrigenDoc.Equals("MN"))
-            {
+            if (objE.OrigenDoc.Equals("MN")){
                 fnMensaje.MensajeInfo("Esta opción sólo puede utilizarse para buscar documentos de origen diferente de manual.");
                 objE = null;
                 return;
             }
             
-            if (objE.Persona == 0)
-            {
+            if (objE.Persona == 0){
                 fnMensaje.MensajeInfo("Primero debe ingresar un código de persona válido.");
                 objE = null;
                 return;
@@ -420,12 +375,12 @@ namespace FiltroLys.ZLys.ModContabilidad
             frmBusqObligacion frm = new frmBusqObligacion();
             frm.Compania = sCompania;
             frm.Proveedor = objE.Persona;
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
+            if (frm.ShowDialog() == DialogResult.OK){
                 entObligacion objX = fnConvert.ObjectToEntity<entObligacion>(frm.EstructuraForm.ObjX)[0];
                 objE.CodigoDoc = objX.Obligacion;
                 objE.Documento = objX.DocumentoCompleto;
-                objE.RegEditado = fnEnum.RegEditado.Si;
+                objE.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
+                objE.UltimaFechaMod = DateTime.Now;
                 gvDetalle.UpdateCurrentRow();
                 gvDetalle.Focus();
                 gvDetalle.FocusedColumn = gvDetalle.Columns["Documento"];
@@ -437,23 +392,18 @@ namespace FiltroLys.ZLys.ModContabilidad
         
         private void btnProyecto_Click(object sender, EventArgs e)
         {
-            if (gvDetalle.RowCount == 0)
-            {
-                return;
-            }
-            if (!(Operacion.Equals("M") || Operacion.Equals("A")))
-            {
-                return;
-            }
+            if (gvDetalle.RowCount == 0){return;}
+            if (!(Operacion.Equals("M") || Operacion.Equals("A"))){return;}
+
             entVoucherDet objE = (entVoucherDet)gvDetalle.GetRow(gvDetalle.FocusedRowHandle);
             frmBusqProyecto frm = new frmBusqProyecto();
             frm.MultipleSelect = false;
             frm.SoloActivo = true;
             frm.EstructuraForm.StrX.Insert(0, sCompania);
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
+            if (frm.ShowDialog() == DialogResult.OK){
                 objE.Proyecto = fnConvert.ObjectToEntity<entProyecto>(frm.EstructuraForm.ObjX)[0].ProyectoCodigo;
-                objE.RegEditado = fnEnum.RegEditado.Si;
+                objE.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
+                objE.UltimaFechaMod = DateTime.Now;
                 gvDetalle.UpdateCurrentRow();
                 gvDetalle.Focus();
                 gvDetalle.FocusedColumn = gvDetalle.Columns["Proyecto"];
@@ -464,26 +414,21 @@ namespace FiltroLys.ZLys.ModContabilidad
         
         private void btnOC_Click(object sender, EventArgs e)
         {
-            if (gvDetalle.RowCount == 0)
-            {
-                return;
-            }
-            if (!(Operacion.Equals("M") || Operacion.Equals("A")))
-            {
-                return;
-            }
+            if (gvDetalle.RowCount == 0){return;}
+            if (!(Operacion.Equals("M") || Operacion.Equals("A"))){return;}
+
             entVoucherDet objE = (entVoucherDet)gvDetalle.GetRow(gvDetalle.FocusedRowHandle);
             
             frmBusqImportacion frm = new frmBusqImportacion();
             frm.Compania = sCompania;
             frm.MultipleSelect = false;
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
+            if (frm.ShowDialog() == DialogResult.OK){
                 entOrdenes objX = fnConvert.ObjectToEntity<entOrdenes>(frm.EstructuraForm.ObjX)[0];
                 objE.OrdenCompra = objX.NumeroOrden;
                 objE.Secuencia_OC = objX.Ampliacion;
                 objE.OCompraID = objX.NumeroOrden + "-" + objX.Ampliacion.ToString();
-                objE.RegEditado = fnEnum.RegEditado.Si;
+                objE.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
+                objE.UltimaFechaMod = DateTime.Now;
                 gvDetalle.UpdateCurrentRow();
                 gvDetalle.Focus();
                 gvDetalle.FocusedColumn = gvDetalle.Columns["OCompraID"];
@@ -499,37 +444,28 @@ namespace FiltroLys.ZLys.ModContabilidad
             Decimal nTipoCambio = 0;
             int nLinea = 1;
             Decimal nMonto = 0, nMontoLocal = 0, nMontoExt = 0;            
-            if (!(Operacion.Equals("M") || Operacion.Equals("A")))
-            {
-                return;
-            }
-            if (MessageBox.Show("Esta opción eliminará la información actual, ¿Desea continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.No)
-            {
+            if (!(Operacion.Equals("M") || Operacion.Equals("A"))){return;}
+            if (MessageBox.Show("Esta opción eliminará la información actual, ¿Desea continuar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.No){
                 return;
             }
             
             frmBusqAsientoModelo frm = new frmBusqAsientoModelo();
             frm.Compania = sCompania;
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                LstDetVoucher.RemoveAll(x => x.Linea != 0);
+            if (frm.ShowDialog() == DialogResult.OK){
+                LstDetVoucher.Clear();
                 sMoneda = cmbMoneda.EditValue.ToString();
                 nTipoCambio = Decimal.Parse(txtTC.Text);
                 
                 List<entAsientoModeloDet> Lst = fnConvert.ObjectToEntity<entAsientoModeloDet>(frm.EstructuraForm.ObjX);
-                foreach (entAsientoModeloDet objX in Lst)
-                {
+                foreach (entAsientoModeloDet objX in Lst){
                     nMonto = objX.Monto;
                     nMontoLocal = 0;
                     nMontoExt = 0;
-                    if (sMoneda.Equals("L"))
-                    {
+                    if (sMoneda.Equals("L")){
                         nMontoLocal = nMonto;
                         if (nTipoCambio > 0)
                             nMontoExt = Math.Round(nMonto / nTipoCambio, 2);
-                    }
-                    else
-                    {
+                    }else{
                         nMontoExt = nMonto;
                         if (nTipoCambio > 0)
                             nMontoLocal = Math.Round(nMonto * nTipoCambio, 2);
@@ -549,7 +485,6 @@ namespace FiltroLys.ZLys.ModContabilidad
                     objE.Descripcion = objX.Descripcion;
                     objE.MontoLocal = nMontoLocal;
                     objE.MontoExt = nMontoExt;
-                    objE.RegEditado = fnEnum.RegEditado.Si;
                     LstDetVoucher.Add(objE);
                     objE = null;
                     nLinea++;
@@ -567,11 +502,9 @@ namespace FiltroLys.ZLys.ModContabilidad
         private void gvDetalle_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
             String sColumn = e.Column.Name;
-            switch (sColumn)
-            {
+            switch (sColumn){
                 case "Persona":
-                    if ((Int32)e.Value == 0)
-                    {
+                    if ((Int32)e.Value == 0){
                         e.DisplayText = "";
                     }
                     break;
@@ -584,8 +517,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             GridView view = (GridView)sender;
             
             //Inicio Variables
-            if (e.SummaryProcess == DevExpress.Data.CustomSummaryProcess.Start)
-            {
+            if (e.SummaryProcess == DevExpress.Data.CustomSummaryProcess.Start){
                 nTotalDebeLoc = 0;
                 nTotalDebeExt = 0;
                 nTotalHaberLoc = 0;
@@ -595,8 +527,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             }
             
             //Calculado
-            if (e.SummaryProcess == DevExpress.Data.CustomSummaryProcess.Calculate)
-            {
+            if (e.SummaryProcess == DevExpress.Data.CustomSummaryProcess.Calculate){
                 Decimal xMonLoc = (Decimal)view.GetRowCellValue(e.RowHandle, "MontoLocal");
                 Decimal xMonExt = (Decimal)view.GetRowCellValue(e.RowHandle, "MontoExt");
                 
@@ -614,10 +545,8 @@ namespace FiltroLys.ZLys.ModContabilidad
             }
             
             //Finaliacion
-            if (e.SummaryProcess == DevExpress.Data.CustomSummaryProcess.Finalize)
-            {
-                switch (xColumn.FieldName)
-                {
+            if (e.SummaryProcess == DevExpress.Data.CustomSummaryProcess.Finalize){
+                switch (xColumn.FieldName){
                     case "MontoLocal":
                         e.TotalValue = nTotalDebeLoc.ToString("N2") + "\n\r" + nTotalDebeExt.ToString("N2");
                         break;
@@ -638,17 +567,14 @@ namespace FiltroLys.ZLys.ModContabilidad
         {
             int nHeight = (e.Bounds.Height * 2) - 10;
             
-            if (e.Column.FieldName == "Documento")
-            {
+            if (e.Column.FieldName == "Documento"){
                 e.Info.Appearance.BackColor = Color.Transparent;
                 e.Info.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
                 e.Info.Appearance.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 e.Info.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
                 Rectangle r = new Rectangle(e.Info.Bounds.Left, e.Info.Bounds.Top, e.Info.Bounds.Width, nHeight);
                 e.Info.BackAppearance.DrawString(e.Cache, e.Info.DisplayText, r);
-            }
-            else
-            {
+            }else{
                 e.Info.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
                 e.Info.Appearance.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 e.Info.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
@@ -666,8 +592,34 @@ namespace FiltroLys.ZLys.ModContabilidad
         
         private void gvDetalle_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
+            if (gvDetalle.DataRowCount == 0) { return; }
+            if (e.RowHandle < 0) { return; }
             entVoucherDet objE = (entVoucherDet)gvDetalle.GetRow(gvDetalle.FocusedRowHandle);
-            objE.RegEditado = fnEnum.RegEditado.Si;
+
+            if (e.Column.Name.Equals("MontoLocal")){
+                Decimal nTipoCamb = 0;                
+                Decimal.TryParse(txtTC.Text, out nTipoCamb);
+                Decimal nMonto = objE.MontoLocal;
+                
+                if (chkConvAutomatica.Checked){
+                    nMonto = (nTipoCamb <= 0) ? 0 : Math.Round(nMonto / nTipoCamb, 2);
+                    objE.MontoExt = nMonto;                    
+                }
+            }
+
+            if (e.Column.Name.Equals("MontoExt")){
+                Decimal nTipoCamb = 0;
+                Decimal.TryParse(txtTC.Text, out nTipoCamb);
+                Decimal nMonto = objE.MontoExt;
+
+                if (chkConvAutomatica.Checked){
+                    nMonto = (nTipoCamb <= 0) ? 0 : Math.Round(nMonto * nTipoCamb, 2);
+                    objE.MontoLocal = nMonto;
+                }
+            }
+
+            objE.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
+            objE.UltimaFechaMod = DateTime.Now;
             gvDetalle.UpdateCurrentRow();
             objE = null;
         }
@@ -694,11 +646,9 @@ namespace FiltroLys.ZLys.ModContabilidad
             view.SetColumnError(colFlCaja, String.Empty);
             
             //Cuenta
-            if (!String.IsNullOrEmpty(sCuenta))
-            {
+            if (!String.IsNullOrEmpty(sCuenta)){
                 entCuentaContable objCta = negCuentaContable.GetFormID(sCuenta);
-                if (!objCta.ResultadoBusqueda || !objCta.Estado.Equals("A"))
-                {
+                if (!objCta.ResultadoBusqueda || !objCta.Estado.Equals("A")){
                     e.Valid = false;
                     view.SetColumnError(colCuenta, "Cuenta contable ingresada es inválida.");
                 }
@@ -706,11 +656,9 @@ namespace FiltroLys.ZLys.ModContabilidad
             }
             
             //Persona
-            if (nPerson != 0)
-            {
+            if (nPerson != 0){
                 entPersona objPer = negPersona.GetFormID(Compania, nPerson);
-                if (!objPer.ResultadoBusqueda || !objPer.Estado.Equals("A"))
-                {
+                if (!objPer.ResultadoBusqueda || !objPer.Estado.Equals("A")){
                     e.Valid = false;
                     view.SetColumnError(colPerson, "Persona ingresada es inválida.");
                 }
@@ -718,8 +666,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             }
             
             //Centro Costo
-            if (!String.IsNullOrEmpty(sCCosto))
-            {
+            if (!String.IsNullOrEmpty(sCCosto)){
                 entCentroCosto objCos = negCentroCosto.GetFormID(Compania, sCCosto);
                 if (!objCos.ResultadoBusqueda || !objCos.Estado.Equals("A"))
                 {
@@ -730,8 +677,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             }
             
             //Flujo Caja
-            if (!String.IsNullOrEmpty(sFlCaja))
-            {
+            if (!String.IsNullOrEmpty(sFlCaja)){
                 entFlujoCaja objFcj = negFlujoCaja.GetFormID(sFlCaja);
                 if (!objFcj.ResultadoBusqueda || !objFcj.Estado.Equals("A"))
                 {
@@ -742,9 +688,8 @@ namespace FiltroLys.ZLys.ModContabilidad
             }
             
             //Maquina
-            if (!String.IsNullOrEmpty(sMaquin))
-            {
-                entMaquina objMaq = negMaquina.GetMaquinaFormID(Compania, sMaquin);
+            if (!String.IsNullOrEmpty(sMaquin)){
+                entMaquina objMaq = negMaquina.GetFormID(Compania, sMaquin);
                 if (!objMaq.ResultadoBusqueda || !objMaq.Estado.Equals("A"))
                 {
                     e.Valid = false;
@@ -762,18 +707,12 @@ namespace FiltroLys.ZLys.ModContabilidad
         private void gvDetalle_KeyDown(object sender, KeyEventArgs e)
         {
             String sNameCol = "";
-            if (e.KeyCode == Keys.F1)
-            {
-                if (!(Operacion.Equals("M") || Operacion.Equals("A")))
-                {
-                    return;
-                }
-                if (gvDetalle.FocusedRowHandle >= 0)
-                {
+            if (e.KeyCode == Keys.F1){
+                if (!(Operacion.Equals("M") || Operacion.Equals("A"))){return;}
+                if (gvDetalle.FocusedRowHandle >= 0){
                     sNameCol = gvDetalle.FocusedColumn.Name;
                     EventArgs EventClick = new EventArgs();
-                    switch (sNameCol)
-                    {
+                    switch (sNameCol){
                         case "Cuenta":
                             btnCuenta_Click(sender, EventClick);
                             break;
@@ -931,8 +870,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         
         private void fxPostOpen()
         {
-            if (Operacion.Equals("PE"))
-            {
+            if (Operacion.Equals("PE")){
                 LstDetVoucher.RemoveAll(p => p.FlagAutomatico.Equals("S"));
                 fxLinkDet();
             }
@@ -945,8 +883,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             String sPerTemp = "";
             DateTime dFecha = DateTime.MinValue;
             
-            if (sPerTrab.Equals(String.Empty))
-            {
+            if (sPerTrab.Equals(String.Empty)){
                 fnMensaje.MensajeInfo("No se pudo obtener periodo de trabajo actual. Asignar uno válido.");
                 this.Close();
             }
@@ -978,12 +915,10 @@ namespace FiltroLys.ZLys.ModContabilidad
             entParametro oEntA = new entParametro();
             //Tipo Voucher
             oEntA = negParametro.GetFormID(Compania, fnConst.ModContabilidadCod, "TVOUCHER");
-            if (oEntA.ResultadoBusqueda && oEntA.Estado.Equals("A"))
-            {
+            if (oEntA.ResultadoBusqueda && oEntA.Estado.Equals("A")){
                 String sTipoVo = oEntA.Texto;
                 entTipoVoucher oEntB = negTipoVoucher.GetFormID(sTipoVo);
-                if (oEntB.ResultadoBusqueda && oEntB.Equals("A"))
-                {
+                if (oEntB.ResultadoBusqueda && oEntB.Equals("A")){
                     cmbTipoVoucher.EditValue = sTipoVo;
                     oEntVoucher.NumeroManual = oEntB.CorrelativoManual;
                 }
@@ -993,8 +928,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             //Departamento
             String sDepart = "";
             oEntA = negParametro.GetFormID(Compania, fnConst.ModContabilidadCod, "DVOUCHER");
-            if (oEntA.ResultadoBusqueda && oEntA.Estado.Equals("A"))
-            {
+            if (oEntA.ResultadoBusqueda && oEntA.Estado.Equals("A")){
                 sDepart = oEntA.Texto;
                 cmbDepartamento.EditValue = sDepart;
             }
@@ -1002,27 +936,22 @@ namespace FiltroLys.ZLys.ModContabilidad
             //Moneda
             String sMoneda = fnConst.MonedaLocalCod;
             oEntA = negParametro.GetFormID(Compania, fnConst.ModContabilidadCod, "MVOUCHER");
-            if (oEntA.ResultadoBusqueda && oEntA.Estado.Equals("A"))
-            {
+            if (oEntA.ResultadoBusqueda && oEntA.Estado.Equals("A")){
                 sMoneda = oEntA.Texto;
                 cmbMoneda.EditValue = sMoneda;
             }
             
-            if (!sPerTrab.Equals(sPerHoy))
-            {
-                if (String.Compare(sPerTrab, sPerHoy) > 0)
-                {
+            if (!sPerTrab.Equals(sPerHoy)){
+                if (String.Compare(sPerTrab, sPerHoy) > 0){
                     dFecha = new DateTime(int.Parse(sPerTrab.Substring(0, 4)), int.Parse(sPerTrab.Substring(4, 2)), 1);
                 }
-                else
-                {
+                else{
                     sPerTemp = sPerTrab;
                     dFecha = new DateTime(int.Parse(sPerTrab.Substring(0, 4)), int.Parse(sPerTrab.Substring(4, 2)), 1).AddMonths(1).AddDays(-1);
                 }
             }
-            else
-            {
-                dFecha = DateTime.Now;
+            else{
+                dFecha = DateTime.Today;
             }
             
             Decimal nTC = negTipoCambio.GetTipoCambioXTipo(dFecha, "V");
@@ -1030,8 +959,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             txtTC.Text = nTC.ToString("N3");
             
             //Tipo Cambio
-            if (Copia.Equals("N"))
-            {
+            if (Copia.Equals("N")){
                 chkConvAutomatica.Checked = true;
             }
             
@@ -1043,7 +971,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         
         private void fxCargarReg()
         {
-            oEntVoucher = negVoucher.GetVoucherFormID(Compania, Periodo, TipoVoucher, NumeroVoucher);
+            oEntVoucher = negVoucher.GetFormID(Compania, Periodo, TipoVoucher, NumeroVoucher);
             oEntVoucher.OperMantenimiento = fnEnum.OperacionMant.Modificar;
             if (oEntVoucher.ResultadoBusqueda)
             {
@@ -1064,15 +992,15 @@ namespace FiltroLys.ZLys.ModContabilidad
                 cmbOrigen.EditValue = oEntVoucher.Origen;
                 chkModManual.Checked = (oEntVoucher.FlagModManual.Equals("S")) ? true : false;
                 chkModRestringida.Checked = (oEntVoucher.FlagModRestringida.Equals("S")) ? true : false;
+                fxConvertirDetalle(oEntVoucher.Moneda, oEntVoucher.TipoCambio);
             }
-            fxCargarDet();
+            fxCargarDet();            
         }
         
         private void fxHabilitarOCX()
         {
             Boolean sHabilitado = false;
-            if (Operacion.Equals("A") || Operacion.Equals("M") || Operacion.Equals("CP"))
-            {
+            if (Operacion.Equals("A") || Operacion.Equals("M") || Operacion.Equals("CP")){
                 sHabilitado = true;
             }
             
@@ -1112,8 +1040,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             gvDetalle.OptionsBehavior.Editable = sHabilitado;
             gvDetalle.OptionsBehavior.ReadOnly = !sHabilitado;
             
-            if (sOperacion.Equals("M"))
-            {
+            if (sOperacion.Equals("M")){
                 cmbTipoVoucher.ReadOnly = true;
                 txtPeriodo.ReadOnly = true;
             }
@@ -1126,8 +1053,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             String sPerTemp = "";
             DateTime dFecha = DateTime.MinValue;
             
-            if (sPerTrab.Equals(String.Empty))
-            {
+            if (sPerTrab.Equals(String.Empty)){
                 fnMensaje.MensajeInfo("No se pudo obtener periodo de trabajo actual. Asignar uno válido.");
                 this.Close();
             }
@@ -1144,12 +1070,12 @@ namespace FiltroLys.ZLys.ModContabilidad
             txtUserAprob.Text = String.Empty;
             txtFechaAprob.Text = String.Empty;
             txtDescripcion.Text = String.Empty;
-            
+            oEntVoucher.OperMantenimiento = fnEnum.OperacionMant.Insertar;
+
             //Departamento
             String sDepart = "";
             entParametro oEntA = negParametro.GetFormID(Compania, fnConst.ModContabilidadCod, "DVOUCHER");
-            if (oEntA.ResultadoBusqueda && oEntA.Estado.Equals("A"))
-            {
+            if (oEntA.ResultadoBusqueda && oEntA.Estado.Equals("A")){
                 sDepart = oEntA.Texto;
                 cmbDepartamento.EditValue = sDepart;
             }
@@ -1157,21 +1083,17 @@ namespace FiltroLys.ZLys.ModContabilidad
             txtFecha.DateTime = DateTime.Now;
             txtTC.Text = "0.000";
             
-            if (!sPerTrab.Equals(sPerHoy))
-            {
-                if (String.Compare(sPerTrab, sPerHoy) > 0)
-                {
+            if (!sPerTrab.Equals(sPerHoy)){
+                if (String.Compare(sPerTrab, sPerHoy) > 0){
                     dFecha = new DateTime(int.Parse(sPerTrab.Substring(0, 4)), int.Parse(sPerTrab.Substring(4, 2)), 1);
                 }
-                else
-                {
+                else{
                     sPerTemp = sPerTrab;
                     dFecha = new DateTime(int.Parse(sPerTrab.Substring(0, 4)), int.Parse(sPerTrab.Substring(4, 2)), 1).AddMonths(1).AddDays(-1);
                 }
             }
-            else
-            {
-                dFecha = DateTime.Now;
+            else{
+                dFecha = DateTime.Today;
             }
             
             Decimal nTC = negTipoCambio.GetTipoCambioXTipo(dFecha, "V");
@@ -1184,8 +1106,8 @@ namespace FiltroLys.ZLys.ModContabilidad
                 oEnt.Periodo = String.Empty;
                 oEnt.TipoVoucher = String.Empty;
                 oEnt.NumeroVoucher = String.Empty;
-                oEnt.UltimoUsuarioMod = String.Empty;
-                oEnt.UltimaFechaMod = DateTime.MinValue;
+                oEnt.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
+                oEnt.UltimaFechaMod = DateTime.Now;
             }
             Periodo = String.Empty;
             TipoVoucher = String.Empty;
@@ -1198,6 +1120,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             this.cmbTipoVoucher.EditValueChanged -= new EventHandler(cmbTipoVoucher_EditValueChanged);
             this.cmbMoneda.EditValueChanged -= new EventHandler(cmbMoneda_EditValueChanged);
             this.chkConvAutomatica.CheckedChanged -= new EventHandler(chkConvAutomatica_CheckedChanged);
+            this.txtTC.EditValueChanged -= new EventHandler(txtTC_EditValueChanged);
             this.txtFecha.EditValueChanged -= new EventHandler(txtFecha_EditValueChanged);
         }
         
@@ -1205,7 +1128,8 @@ namespace FiltroLys.ZLys.ModContabilidad
         {
             this.cmbTipoVoucher.EditValueChanged += new EventHandler(cmbTipoVoucher_EditValueChanged);
             this.cmbMoneda.EditValueChanged += new EventHandler(cmbMoneda_EditValueChanged);
-            this.chkConvAutomatica.CheckedChanged += new EventHandler(chkConvAutomatica_CheckedChanged);            
+            this.chkConvAutomatica.CheckedChanged += new EventHandler(chkConvAutomatica_CheckedChanged);
+            this.txtTC.EditValueChanged += new EventHandler(txtTC_EditValueChanged);
             this.txtFecha.EditValueChanged += new EventHandler(txtFecha_EditValueChanged);
         }
         
@@ -1228,47 +1152,45 @@ namespace FiltroLys.ZLys.ModContabilidad
             DateTime dFecha = txtFecha.DateTime;
             
             //Revisando código de compañía
-            if (sCia.Equals(fnConst.StringN))
-            {
+            if (sCia.Equals(fnConst.StringN)){
                 fnMensaje.MensajeInfo("Debe ingresar el código de compañía.");
                 cmbCompania.Focus();
                 return bOk;
             }
             
             //Revisando periodo de voucher
-            if (sPer.Equals(String.Empty))
-            {
+            if (sPer.Equals(String.Empty)){
                 fnMensaje.MensajeInfo("Debe ingresar un periodo válido.");
                 txtPeriodo.Focus();
                 return bOk;
             }
-            
-            Int32 nResult = negPeriodoCia.GetValidaPeriodoCia(fnConst.ModContabilidadCod, sCia, sPer);
-            if (nResult <= 0)
-            {
-                if (Operacion.Equals("AN"))
-                {
-                    String sEstVo = negVoucher.GetEstadoVoucher(sCia, sPer, sTipoVoucher, sNumeroVoucher);
-                    if (!sEstVo.Equals("PE"))
-                    {
+
+            Int32 nResult = negPeriodoCia.GetValidaPeriodoCia(sCia, sPer, fnConst.ModContabilidadCod);
+            String sEstVo = negVoucher.GetFormID(sCia, sPer, sTipoVoucher, sNumeroVoucher).Estado;
+            if (nResult <= 0){
+                if (Operacion.Equals("AN")){                    
+                    if (!sEstVo.Equals("PE")){
                         fnMensaje.MensajeInfo("Periodo es inválido o se encuentra cerrado.");
                         txtPeriodo.Focus();
                         return bOk;
                     }
                 }
-                else
-                {
+                else{
                     fnMensaje.MensajeInfo("Periodo es inválido o se encuentra cerrado.");
                     txtPeriodo.Focus();
                     return bOk;
                 }
             }
             
+            if (Operacion.Equals("AN") && !sEstVo.Equals("PE")){
+                fnMensaje.MensajeInfo("Estado no permite anulación de voucher.");
+                txtPeriodo.Focus();
+                return bOk;
+            }
+
             entPeriodoCia EPeri = negPeriodoCia.GetFormID(sCia, sPer, fnConst.ModContabilidadCod);
-            if (EPeri.ResultadoBusqueda)
-            {
-                if (EPeri.FlagBloqueo.Equals("S"))
-                {
+            if (EPeri.ResultadoBusqueda){
+                if (EPeri.FlagBloqueo.Equals("S")){
                     fnMensaje.MensajeInfo("Periodo se encuentra Bloqueado");
                     return bOk;
                 }
@@ -1276,56 +1198,49 @@ namespace FiltroLys.ZLys.ModContabilidad
             EPeri = null;
             
             //Revisando departamento
-            if (sDepart.Equals(fnConst.TextRaya3))
-            {
+            if (sDepart.Equals(fnConst.TextRaya3)){
                 fnMensaje.MensajeInfo("Debe ingresar un departamento válido.");
                 cmbDepartamento.Focus();
                 return bOk;
             }
             
             //Revisando tipo voucher
-            if (sTipoVO.Equals(fnConst.TextSeleccioneNomF2))
-            {
+            if (sTipoVO.Equals(fnConst.TextSeleccioneNomF2)){
                 fnMensaje.MensajeInfo("Debe ingresar un tipo de voucher.");
                 cmbTipoVoucher.Focus();
                 return bOk;
             }
             
             //Revisando Moneda
-            if (sMoneda.Equals(fnConst.TextSeleccioneCod))
-            {
+            if (sMoneda.Equals(fnConst.TextSeleccioneCod)){
                 fnMensaje.MensajeInfo("Debe ingresar una moneda para el voucher.");
                 cmbMoneda.Focus();
                 return bOk;
             }
             
             //Revisando tipo de cambio
-            if (nTcamb <= 0)
-            {
+            if (nTcamb <= 0){
                 fnMensaje.MensajeInfo("Debe ingresar un tipo de cambio válido.");
                 txtTC.Focus();
                 return bOk;
             }
             
             //Revisando fecha
-            if (dFecha == DateTime.MinValue)
-            {
+            if (dFecha == DateTime.MinValue){
                 fnMensaje.MensajeInfo("Debe ingresar una fecha.");
                 txtFecha.Focus();
                 return bOk;
             }
             
             String sPerTmp = String.Format("{0:yyyyMM}", dFecha);
-            if (!sPer.Equals(sPerTmp))
-            {
+            if (!sPer.Equals(sPerTmp)){
                 fnMensaje.MensajeInfo("Fecha debe pertenecer al periodo registrado.");
                 txtFecha.Focus();
                 return bOk;
             }
             
             //Revisando Descripcion
-            if (sDescri.Equals(String.Empty))
-            {
+            if (sDescri.Equals(String.Empty)){
                 fnMensaje.MensajeInfo("Debe ingresar una descripción.");
                 txtDescripcion.Focus();
                 return bOk;
@@ -1335,8 +1250,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             DateTime dFechaServ = negGeneral.GetFechaServidor();
             
             //Correlativo Voucher
-            if (Operacion.Equals("A"))
-            {
+            if (Operacion.Equals("A")){
                 txtUserRegistro.Text = GlobalVar.UsuarioLogeo;
                 txtFechaRegistro.Text = fnGeneral.FormatoDateTime(dFechaServ);
                 
@@ -1348,16 +1262,13 @@ namespace FiltroLys.ZLys.ModContabilidad
             }
             
             //Ingresar Detalle
-            if (LstDetVoucher.Count == 0)
-            {
+            if (LstDetVoucher.Count == 0){
                 fnMensaje.MensajeInfo("Debe ingresar el detalle del voucher. No se puede continuar.");
                 return bOk;
             }
             
-            if (!Operacion.Equals("AP"))
-            {
-                if (Operacion.Equals("PE"))
-                {
+            if (!Operacion.Equals("AP")){
+                if (Operacion.Equals("PE")){
                     sEstado = "PE";
                     txtUserAprob.Text = String.Empty;
                     txtFechaAprob.Text = String.Empty;
@@ -1365,8 +1276,7 @@ namespace FiltroLys.ZLys.ModContabilidad
                     oEntVoucher.FechaAprobacion = DateTime.MinValue;
                 }
                 
-                if (Operacion.Equals("AN"))
-                {
+                if (Operacion.Equals("AN")){
                     sEstado = "AN";
                 }
                 
@@ -1391,6 +1301,8 @@ namespace FiltroLys.ZLys.ModContabilidad
             oEntVoucher.FlagModRestringida = sModRes;
             oEntVoucher.Estado = sEstado;
             oEntVoucher.UsuarioSys = GlobalVar.UsuarioLogeo;
+            oEntVoucher.EstacionSys = GlobalVar.EstacionLogeo;
+            oEntVoucher.FechaSys = DateTime.Now;
             oEntVoucher.DetalleVoucher = LstDetVoucher;
             
             bOk = true;
@@ -1406,23 +1318,28 @@ namespace FiltroLys.ZLys.ModContabilidad
             {
                 case "A":
                     oEntVoucher.OperMantenimiento = fnEnum.OperacionMant.Insertar;
+                    oErr = negVoucher.MantFormID(oEntVoucher);
+                    NumeroVoucher = oErr.CodigoGeneradoText;
                     break;
                 case "M":
+                    oEntVoucher.OperMantenimiento = fnEnum.OperacionMant.Modificar;
+                    oErr = negVoucher.MantFormID(oEntVoucher);
+                    break;
                 case "AN":
                     oEntVoucher.OperMantenimiento = fnEnum.OperacionMant.Modificar;
+                    oErr = negVoucher.AnularReg(oEntVoucher);
                     break;
-                /*case "AP":
-                    oEntVoucher.OperMantenimiento = fnEnum.OperacionMant.Aprobar;
+                case "AP":
+                    oEntVoucher.OperMantenimiento = fnEnum.OperacionMant.Modificar;
+                    oErr = negVoucher.AprobarReg(oEntVoucher);
                     break;
                 case "PE":
-                    oEntVoucher.OperMantenimiento = fnEnum.OperacionMant.Pendiente;
-                    break;*/
-            }
-            
-            oErr = negVoucher.MantVoucher(oEntVoucher);
-            NumeroVoucher = oErr.CodigoGeneradoText;
-            if (oErr.Errores.Count > 0)
-            {
+                    oEntVoucher.OperMantenimiento = fnEnum.OperacionMant.Modificar;
+                    oErr = negVoucher.PasarPendienteReg(oEntVoucher);
+                    NumeroVoucher = oErr.CodigoGeneradoText;
+                    break;
+            }            
+            if (oErr.Errores.Count > 0){
                 fnMensaje.MensajeInfo(oErr.Errores[0].Descripcion);
                 bOK = false;
             }
@@ -1455,19 +1372,13 @@ namespace FiltroLys.ZLys.ModContabilidad
                     break;
             }
             
-            if (Operacion.Equals("AP") || Operacion.Equals("PE"))
-            {
+            if (Operacion.Equals("AP") || Operacion.Equals("PE")){
                 fxCargarReg();
                 fxCargarDet();
             }
             
             sMensaje = "Se " + sMensaje + " el voucher " + TipoVoucher + "-" + NumeroVoucher + " satisfactoriamente";
             fnMensaje.MensajeInfo(sMensaje);
-            
-            /*if (Operacion.Equals("A") || Operacion.Equals("M")) {
-            Operacion = "V";               
-            fxPreOpen();                
-            }*/
             
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
@@ -1479,15 +1390,14 @@ namespace FiltroLys.ZLys.ModContabilidad
         
         private void fxCargarDet()
         {
-            LstDetVoucher = negVoucher.GetVoucherFormIDDet(Compania, Periodo, TipoVoucher, NumeroVoucher);
+            LstDetVoucher = negVoucherDet.GetFormID(Compania, Periodo, TipoVoucher, NumeroVoucher);
             fxLinkDet();
         }
         
         private void fxLinkDet()
         {
             grControl.DataSource = null;
-            if (LstDetVoucher.Count > 0)
-            {
+            if (LstDetVoucher.Count > 0){
                 grControl.DataSource = LstDetVoucher;
             }
         }
@@ -1495,8 +1405,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         private void fxSetearLinea()
         {
             int nLin = 1;
-            foreach (entVoucherDet oEnt in LstDetVoucher)
-            {
+            foreach (entVoucherDet oEnt in LstDetVoucher){
                 oEnt.Linea = nLin;
                 nLin++;
             }
@@ -1505,7 +1414,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         
         private void fxEliminarDet()
         {
-            LstDetVoucher.RemoveAll(x => x.Linea >= -1);
+            LstDetVoucher.Clear();            
             fxLinkDet();           
         }
         
@@ -1513,32 +1422,27 @@ namespace FiltroLys.ZLys.ModContabilidad
         {
             Decimal nMonto = 0;
             
-            if (sMoneda.Equals("L"))
-            {
-                gvDetalle.Columns["MontoLocal"].ColumnEdit.ReadOnly = false;
-                gvDetalle.Columns["MontoExt"].ColumnEdit.ReadOnly = true;
+            if (sMoneda.Equals("L")){
+                gvDetalle.Columns["MontoLocal"].OptionsColumn.ReadOnly = false;
+                gvDetalle.Columns["MontoExt"].OptionsColumn.ReadOnly = true;
             }
             else
             {
-                gvDetalle.Columns["MontoLocal"].ColumnEdit.ReadOnly = true;
-                gvDetalle.Columns["MontoExt"].ColumnEdit.ReadOnly = false;
+                gvDetalle.Columns["MontoLocal"].OptionsColumn.ReadOnly = true;
+                gvDetalle.Columns["MontoExt"].OptionsColumn.ReadOnly = false;
             }
             
             foreach (entVoucherDet oEnt in LstDetVoucher)
             {
-                if (sMoneda.Equals("L"))
-                {
+                if (sMoneda.Equals("L")){
                     nMonto = oEnt.MontoLocal;
                     nMonto = (nTipoCambio <= 0) ? 0 : Math.Round(nMonto / nTipoCambio, 2);
                     oEnt.MontoExt = nMonto;
-                }
-                else
-                {
+                }else{
                     nMonto = oEnt.MontoExt;
                     nMonto = (nTipoCambio <= 0) ? 0 : Math.Round(nMonto * nTipoCambio, 2);
                     oEnt.MontoLocal = nMonto;
-                }
-                oEnt.RegEditado = fnEnum.RegEditado.Si;
+                }                
             }
             gvDetalle.RefreshData();
         }
@@ -1546,84 +1450,68 @@ namespace FiltroLys.ZLys.ModContabilidad
         private Boolean fxValidarDetalle()
         {
             Boolean bOk = false;
+
+            if (Operacion.Equals("AN")) { return true;}
+            if (Operacion.Equals("PE")) { return true;}
             
-            if (!Operacion.Equals("PE"))
-            {
-                if (LstDetVoucher.Count() == 0)
-                {
-                    fnMensaje.MensajeInfo("Debe ingresar al menos un registro en el detalle.");
-                    return bOk;
-                }
-                
-                entErrores oErr = negCuentaContable.GetValidaEstructuraCuenta(Compania, LstDetVoucher);
-                foreach (entVoucherDet oDet in LstDetVoucher)
-                {
-                    if (!oDet.OrigenDoc.Equals("MN"))
-                    {
-                        if (oDet.CodigoDoc == 0 || oDet.CodigoDoc == Int32.MinValue)
-                        {
-                            oErr.Errores.Add(new entFail() { IdReg = oDet.Linea, Descripcion = "Documento ingresado es inválido." });
-                        }
-                    }
-                }
-                
-                Decimal nMontoDebeLocal = LstDetVoucher.Where(x => x.MontoLocal > 0).Sum(y => y.MontoLocal);
-                Decimal nMontoHaberLocal = LstDetVoucher.Where(x => x.MontoLocal < 0).Sum(y => y.MontoLocal);
-                Decimal nMontoDebeExt = LstDetVoucher.Where(x => x.MontoExt > 0).Sum(y => y.MontoExt);
-                Decimal nMontoHaberExt = LstDetVoucher.Where(x => x.MontoExt < 0).Sum(y => y.MontoExt);
-                
-                nMontoDebeLocal = Math.Round(nMontoDebeLocal, 2);
-                nMontoHaberLocal = Math.Round(nMontoHaberLocal, 2);
-                nMontoDebeExt = Math.Round(nMontoDebeExt, 2);
-                nMontoHaberExt = Math.Round(nMontoHaberExt, 2);
-                
-                if (nMontoDebeLocal + nMontoHaberLocal != 0)
-                {
-                    oErr.Errores.Add(new entFail() { IdReg = 0, Descripcion = "Hay una diferencia de " + (nMontoDebeLocal + nMontoHaberLocal).ToString() + " entre los montos locales." });
-                }
-                
-                if (nMontoDebeExt + nMontoHaberExt != 0)
-                {
-                    oErr.Errores.Add(new entFail() { IdReg = 0, Descripcion = "Hay una diferencia de " + (nMontoDebeExt + nMontoHaberExt).ToString() + " entre los montos extranjeros." });
-                }
-                
-                if (oErr.Errores.Count > 0)
-                {
-                    frmErrMain oFrm = new frmErrMain();
-                    oFrm.ListErrores = oErr;
-                    oFrm.ShowDialog();
-                    return bOk;
-                }
-                
-                //Fecha Servidor
-                DateTime dFechaServ = negGeneral.GetFechaServidor();
-                if (Operacion.Equals("PE"))
-                {
-                    foreach (entVoucherDet oDet in LstDetVoucher)
-                    {
-                        if (!oDet.FlagAutomatico.Equals("S"))
-                        {
-                            LstDetVoucher.Remove(oDet);
-                        }
-                    }
-                }
-                
-                foreach (entVoucherDet oDet in LstDetVoucher)
-                {
-                    if (Operacion.Equals("A"))
-                    {
-                        oDet.Periodo = Periodo;
-                        oDet.TipoVoucher = TipoVoucher;
-                        oDet.NumeroVoucher = NumeroVoucher;
-                    }
-                    
-                    if (oDet.RegEditado == fnEnum.RegEditado.Si)
-                    {
-                        oDet.UltimoUsuarioMod = GlobalVar.UsuarioLogeo;
-                        oDet.UltimaFechaMod = dFechaServ;
+            if (LstDetVoucher.Count() == 0){
+                fnMensaje.MensajeInfo("Debe ingresar al menos un registro en el detalle.");
+                return bOk;
+            }
+
+            entErrores oErr = negCuentaContable.GetValidaEstructuraCuenta(Compania, LstDetVoucher);
+            foreach (entVoucherDet oDet in LstDetVoucher){
+                if (!oDet.OrigenDoc.Equals("MN")){
+                    if (oDet.CodigoDoc == 0 || oDet.CodigoDoc == Int32.MinValue){
+                        oErr.Errores.Add(new entFail() { IdReg = oDet.Linea, Descripcion = "Documento ingresado es inválido." });
                     }
                 }
             }
+                
+            Decimal nMontoDebeLocal = LstDetVoucher.Where(x => x.MontoLocal > 0).Sum(y => y.MontoLocal);
+            Decimal nMontoHaberLocal = LstDetVoucher.Where(x => x.MontoLocal < 0).Sum(y => y.MontoLocal);
+            Decimal nMontoDebeExt = LstDetVoucher.Where(x => x.MontoExt > 0).Sum(y => y.MontoExt);
+            Decimal nMontoHaberExt = LstDetVoucher.Where(x => x.MontoExt < 0).Sum(y => y.MontoExt);
+                
+            nMontoDebeLocal = Math.Round(nMontoDebeLocal, 2);
+            nMontoHaberLocal = Math.Round(nMontoHaberLocal, 2);
+            nMontoDebeExt = Math.Round(nMontoDebeExt, 2);
+            nMontoHaberExt = Math.Round(nMontoHaberExt, 2);
+                
+            if (nMontoDebeLocal + nMontoHaberLocal != 0){
+                oErr.Errores.Add(new entFail() { IdReg = 0, Descripcion = "Hay una diferencia de " + (nMontoDebeLocal + nMontoHaberLocal).ToString() + " entre los montos locales." });
+            }
+                
+            if (nMontoDebeExt + nMontoHaberExt != 0){
+                oErr.Errores.Add(new entFail() { IdReg = 0, Descripcion = "Hay una diferencia de " + (nMontoDebeExt + nMontoHaberExt).ToString() + " entre los montos extranjeros." });
+            }
+                
+            if (oErr.Errores.Count > 0){
+                frmErrMain oFrm = new frmErrMain();
+                oFrm.ListErrores = oErr;
+                oFrm.ShowDialog();
+                return bOk;
+            }
+                
+            //Fecha Servidor
+            DateTime dFechaServ = negGeneral.GetFechaServidor();
+            if (Operacion.Equals("PE")){
+                foreach (entVoucherDet oDet in LstDetVoucher){
+                    if (!oDet.FlagAutomatico.Equals("S")){
+                        LstDetVoucher.Remove(oDet);
+                    }
+                }
+            }
+                
+            foreach (entVoucherDet oDet in LstDetVoucher){
+                if (Operacion.Equals("A") || Operacion.Equals("M")){
+                    oDet.Periodo = Periodo;
+                    oDet.TipoVoucher = TipoVoucher;
+                    oDet.NumeroVoucher = NumeroVoucher;
+                    oDet.OperMantenimiento = fnEnum.OperacionMant.Insertar;
+                }
+            }
+            
             
             bOk = true;
             return bOk;
@@ -1644,21 +1532,9 @@ namespace FiltroLys.ZLys.ModContabilidad
         
         public override void ue_guardar()
         {
-            if (!fxValidar())
-            {
-                return;
-            }
-            ;
-            if (!fxValidarDetalle())
-            {
-                return;
-            }
-            ;
-            if (!fxPreUpdate())
-            {
-                return;
-            }
-            ;
+            if (!fxValidar()){return;};
+            if (!fxValidarDetalle()){return;};
+            if (!fxPreUpdate()){return;};
             fxPostUpdate();
             DialogResult = System.Windows.Forms.DialogResult.OK;
         }

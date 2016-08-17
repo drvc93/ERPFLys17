@@ -8,11 +8,11 @@ namespace FiltroLys.Model.Maestro.Mantenimiento
 {
     public class entMaquina:entBase
     {
-        private String c_Compania, c_Maquina, c_Descripcion, c_TipoMaquina, c_CentroCosto, c_CodMarca, c_CodModelo, c_NumeroDerie;
+        private String c_Compania, c_Maquina, c_Descripcion, c_TipoMaquina, c_CentroCosto, c_CodMarca, c_CodModelo, c_NumeroSerie;
         private String c_MonedaCosto, c_MonedaCostoParada, c_Criticidad, c_TiempoGarantia, c_InformacionTecnica, c_Planos;
         private String c_CaracteristicasOperacion, c_Estado = "A", c_UltimoUsuario, c_Gas = "N", c_OtroRepresentante, c_Critica = "N";
         private String c_Paralelo = "N", c_Alquiler = "N", c_OpAU = "N", c_OpSA = "N", c_OpMN = "N", c_CodigoBarra, c_FamiliaInspeccion;
-        private int n_PiezasMax, n_AnoGabricacion, n_AnoPuestaMarcha, n_ProvFabricante, n_ProvRepresentante, n_NivelCriticidad = 0;
+        private int n_PiezasMax, n_AnoFabricacion, n_AnoPuestaMarcha, n_ProvFabricante, n_ProvRepresentante, n_NivelCriticidad = 0;
         private Decimal n_Potencia = 0, n_CostoMaquinaHora = 0, n_PesoTotal = 0, n_Largo = 0, n_Ancho = 0, n_Altura = 0, n_PotencialTotal = 0;
         private Decimal n_PromedioHoraDia = 0, n_Costo = 0, n_CostoParada = 0, n_Turno1 = 0, n_Turno2 = 0, n_Turno3 = 0, n_TiempoPreparacion = 0;
         private Decimal n_TiempoRegulacion = 0;
@@ -79,16 +79,16 @@ namespace FiltroLys.Model.Maestro.Mantenimiento
             set { c_CodModelo = value; }
         }
 
-        public String NumeroDerie
+        public String NumeroSerie
         {
-            get { return c_NumeroDerie; }
-            set { c_NumeroDerie = value; }
+            get { return c_NumeroSerie; }
+            set { c_NumeroSerie = value; }
         }
 
-        public Int32 AnoGabricacion
+        public Int32 AnoFabricacion
         {
-            get { return n_AnoGabricacion; }
-            set { n_AnoGabricacion = value; }
+            get { return n_AnoFabricacion; }
+            set { n_AnoFabricacion = value; }
         }
 
         public Int32 AnoPuestaMarcha

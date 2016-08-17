@@ -13,7 +13,7 @@ namespace FiltroLys.Model.Contabilidad
         private int n_Linea, n_Persona, n_Secuencia_OC;
         private Decimal n_CodigoDoc, n_MontoLocal = 0, n_MontoExt = 0;
         private DateTime d_Fecha, d_UltimaFechaMod;
-        private String c_OCompraID, c_DescripcionCab;
+        private String c_OCompraID, c_DescripcionCab, c_GrupoCC, c_ClasificacionGCC;
         private DateTime d_FechaAprobacion;
 
         public String Compania
@@ -172,6 +172,18 @@ namespace FiltroLys.Model.Contabilidad
             set { d_FechaAprobacion = value; }
         }
 
+        public String GrupoCC
+        {
+            get { return c_GrupoCC; }
+            set { c_GrupoCC = value; }
+        }
+
+        public String ClasificacionGCC
+        {
+            get { return c_ClasificacionGCC; }
+            set { c_ClasificacionGCC = value; }
+        }
+        
         public String IdVoucher
         {
             get { return c_TipoVoucher + "-" + c_NumeroVoucher; }

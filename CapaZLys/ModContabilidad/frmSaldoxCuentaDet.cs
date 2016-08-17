@@ -111,7 +111,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             String sper = txtPeriodo.Text.Replace("-", "");
             String scta = txtCuenta.Text.Trim();
 
-            List<entVoucherDet> Lst = negVoucher.ListVoucherDetCiaPerCuenta(scia, sper, scta);
+            List<entVoucherDet> Lst = negVoucherDet.LstSaldoCuenta(scia, sper, scta);
             grControl.DataSource = Lst;
             Lst = null;
         }

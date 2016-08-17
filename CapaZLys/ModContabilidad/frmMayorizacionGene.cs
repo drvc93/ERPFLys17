@@ -272,7 +272,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         private void fxCargarLista()
         {
             String sEst = XProcesoFil.Equals("M") ? "PE" : "AP";
-            List<entVoucher> Lst = negVoucher.ListVoucherToMayor(XCompaniaReg, XPeriodoReg, sEst);
+            List<entVoucher> Lst = negVoucher.LstSaldoMayor(XCompaniaReg, XPeriodoReg, sEst);
             grControl.DataSource = Lst;
             gvDatos.UnselectRow(0);            
         }
@@ -290,8 +290,10 @@ namespace FiltroLys.ZLys.ModContabilidad
 
             if (objDat.Count > 0){
                 BackgroundWorker worker = sender as BackgroundWorker;
-                entErrores err = negVoucher.MantVoucher(objDat, ref worker);
-                if (err.Resultado == false){
+                entErrores err = new entErrores();
+                if(XProcesoFil.Equals(fnConst.MayorizacionCod)){negVoucher.AprobarMasivo(objDat, ref worker);}
+                if(XProcesoFil.Equals(fnConst.DesMayorizacionCod)) { negVoucher.PasarPendienteMasivo(objDat, ref worker); }
+                if(err.Resultado == false){
                     fnMensaje.MensajeInfo(err.Errores[0].Descripcion);
                     return;
                 }
