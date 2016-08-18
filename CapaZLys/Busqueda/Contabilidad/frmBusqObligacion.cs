@@ -120,15 +120,7 @@ namespace FiltroLys.ZLys.Busqueda.Contabilidad
             String sNroDoc = (chkNroDoc.Checked) ? "%" : txtNroDoc.Text.Trim();
             String sEstado = (chkEstado.Checked) ? "%" : cmbEstado.EditValue.ToString();
 
-            entObligacion oEntP = new entObligacion();
-            oEntP.Compania = Compania;
-            oEntP.CodProveedor = Proveedor;
-            oEntP.TipoDocumento = sTipoDoc;
-            oEntP.NumeroDocumento = sNroDoc;
-            oEntP.EstadoDoc = sEstado;
-
-            grControl.DataSource = negObligacion.ListObligacionToMantVoucherSearch(oEntP);
-            oEntP = null;
+            grControl.DataSource = negObligacion.ListaToVoucher(Compania, Proveedor, sTipoDoc, sNroDoc, sEstado);            
         }
 
         private void fxRecuperarData(){

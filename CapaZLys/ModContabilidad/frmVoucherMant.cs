@@ -1451,6 +1451,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         {
             Boolean bOk = false;
 
+            if (Operacion.Equals("V")) { return true; }
             if (Operacion.Equals("AN")) { return true;}
             if (Operacion.Equals("PE")) { return true;}
             
@@ -1460,13 +1461,13 @@ namespace FiltroLys.ZLys.ModContabilidad
             }
 
             entErrores oErr = negCuentaContable.GetValidaEstructuraCuenta(Compania, LstDetVoucher);
-            foreach (entVoucherDet oDet in LstDetVoucher){
+            /*foreach (entVoucherDet oDet in LstDetVoucher){
                 if (!oDet.OrigenDoc.Equals("MN")){
                     if (oDet.CodigoDoc == 0 || oDet.CodigoDoc == Int32.MinValue){
                         oErr.Errores.Add(new entFail() { IdReg = oDet.Linea, Descripcion = "Documento ingresado es inválido." });
                     }
                 }
-            }
+            }*/
                 
             Decimal nMontoDebeLocal = LstDetVoucher.Where(x => x.MontoLocal > 0).Sum(y => y.MontoLocal);
             Decimal nMontoHaberLocal = LstDetVoucher.Where(x => x.MontoLocal < 0).Sum(y => y.MontoLocal);

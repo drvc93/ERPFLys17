@@ -65,5 +65,8 @@ namespace FiltroLys.Type
         public const String tsqVoucherAprob = "SP_CB_VOUCHER_APROBACION";
         public const String tsqVoucherPend = "SP_CB_VOUCHER_PENDIENTE";
         public const String tsqMaquina = "UP_MA_MANT_MAQUINA";
+        public const String tsqObligacion = "UP_TR_MANT_OBLIGACION";
+        public const String tsqOrdenesCompra = "UP_LO_MANT_ORDENCOMPRA";
+        public const String tsqOrdenesCompraDet = "UP_LO_MANT_ORDENCOMPRADET";
     }
 }

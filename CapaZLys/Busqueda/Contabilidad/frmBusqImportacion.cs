@@ -73,14 +73,14 @@ namespace FiltroLys.ZLys.Busqueda.Contabilidad
         private void fxCargarLista()
         {
             if (fxValidarCriterio() == false) { return; }
-            grControl.DataSource = negOrdenes.ListOrdenesToMantVoucherSearch(Compania);            
+            grControl.DataSource = negOrdenes.ListaToVoucher(Compania);            
         }
 
         private void fxCargarListaDet()
         {
             if (gvDatos.DataRowCount == 0) { return; }
             entOrdenes objE = (entOrdenes)gvDatos.GetRow(gvDatos.FocusedRowHandle);
-            grControlDet.DataSource = negOrdenes.ListOrdenesDetToMantVoucherSearch(Compania, objE.NumeroOrden, objE.Ampliacion);
+            grControlDet.DataSource = negOrdenesDet.ListaToVoucher(Compania, objE.NumeroOrden, objE.Ampliacion);
             objE = null;
         }
 

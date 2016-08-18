@@ -12,19 +12,19 @@ namespace FiltroLys.Model.Tesoreria
         private String c_CodAPrueba, c_MonedaDoc, c_TipoServicio, c_MonedaPago, c_TipoPago, c_FlujoCaja, c_FlujoCajaPago, c_Compania_Rel;
         private String c_TipoDocumento_Rel, c_NumeroDoc_Rel, c_BancoCodigoPago, c_CtaBancariaPago, c_CptoContable, c_BancoCodigoCobro;
         private String c_CAgenciaCobro, c_FlagGenPago = "N", c_FlagAgruparPago, c_FlagPagoDiferido, c_FlagContabilizado, c_FlagAdelanto;
-        private String c_PeriodoVoucher, c_Voucher, c_PeriodoVoucherAn, c_VoucherAnulacion, c_Origen, c_PeriodoRegCompra, c_EstadoDoc;
+        private String c_PeriodoVoucher, c_Voucher, c_PeriodoVoucherAN, c_VoucherAnulacion, c_Origen, c_PeriodoRegCompra, c_EstadoDoc;
         private String c_GlosaVoucher, c_CObservacion, c_ObsAnulacion, c_FlagImportacion = "N", c_BancoCustodia, c_NumeroBanco, c_TipoNegociacion;
         private String c_VoucherPend, c_ObsPendiente, c_FlagPercepcion = "N", c_NumeroImportacion, c_FlagDetraccion = "N", c_FlagMontoRefDet = "N";
         private String c_UltimoUsuarioMod, c_FlagHabilitaVisto = "N", c_FlagVisto = "N", c_FlagRecepcionDoc = "N", c_PeriodoPlanilla;
         private String c_FactoryAnt = "N", c_DocSunatDet, c_UsuarioConstDetraccion, c_FlagConstancia = "N", c_DocSunatDet_Otro;
-        private String c_UsuarioConstDetraccion_Otro, c_FlagConstancia_Otro = "N", c_FlagFactorIng = "N", c_TipoDocumento_Fact;
-        private String c_NumeroDocumento_Fact, c_UsuarioSubida_Fact;
+        private String c_UsuarioConstDetraccion_Otro, c_FlagConstancia_Otro = "N", c_FlagFactoring = "N", c_TipoDocumento_Fact;
+        private String c_NumeroDocumento_Fact, c_UsuarioSubida_Fact, c_ClasificacionBienServ, c_FlagAutoDetraccion = "N";
         private Decimal n_Obligacion;
-        private Int32 n_CodProveedor, n_CodPagaraNombre, n_SecuenciaPago, n_CodBienServDet, n_CodTipoOpeDet;
+        private Int32 n_CodProveedor, n_CodPagarANombre, n_SecuenciaPago, n_CodBienServDet, n_CodTipoOpeDet;
         private Decimal n_TipoCambio, n_MontoAfecto, n_MontoNoAfecto, n_MontoIgv, n_MontoOtroImpuesto, n_MontoTotal;
         private Decimal n_MontoAdelanto, n_MontoPagoParcial, n_Mora, n_SaldoAPagar, n_Saldo = 0, n_Obligacion_Rel, n_NumeroPago;
-        private Decimal n_TipoCambioProv, n_Advalorem = 0, n_RegistroOb = 0, n_PorcentajeDet, n_MontoRefDet, n_BaseImponible = 0;
-        private Decimal n_MontoIvgImp = 0, n_MontoRetencion = 0, n_DiasPlazo, n_MontoFactorIng, n_ImporteSunatDet = 0, n_ImporteSunatDet_otro = 0;
+        private Decimal n_TipoCambioProv, n_Advalorem = 0, n_RegistroOB = 0, n_PorcentajeDet, n_MontoRefDet, n_BaseImponible = 0;
+        private Decimal n_MontoIvgImp = 0, n_MontoRetencion = 0, n_DiasPlazo, n_MontoFactoring, n_ImporteSunatDet = 0, n_ImporteSunatDet_Otro = 0;
         private DateTime d_FechaRegistro, d_FechaEmision, d_FechaRecepcion, d_FechaVencimiento, d_FechaPago, d_FechaAprobacion;
         private DateTime d_FechaVencOrigen, d_FechaProvision, d_FechaEnvioBanco, d_UltimaFechaMod, d_FechaConstDetraccion;
         private DateTime d_FechaConstDetraccion_Otro, d_FechaSunatDet, d_FechaSunatDet_Otro, d_FechaVencimiento_Fact, d_FechaRecepcion_Fact;
@@ -62,10 +62,10 @@ namespace FiltroLys.Model.Tesoreria
             set { n_CodProveedor = value; }
         }
 
-        public Int32 CodPagaraNombre
+        public Int32 CodPagarANombre
         {
-            get { return n_CodPagaraNombre; }
-            set { n_CodPagaraNombre = value; }
+            get { return n_CodPagarANombre; }
+            set { n_CodPagarANombre = value; }
         }
 
         public String NumDocFiscal
@@ -368,10 +368,10 @@ namespace FiltroLys.Model.Tesoreria
             set { c_Voucher = value; }
         }
 
-        public String PeriodoVoucherAn
+        public String PeriodoVoucherAN
         {
-            get { return c_PeriodoVoucherAn; }
-            set { c_PeriodoVoucherAn = value; }
+            get { return c_PeriodoVoucherAN; }
+            set { c_PeriodoVoucherAN = value; }
         }
 
         public String VoucherAnulacion
@@ -452,10 +452,10 @@ namespace FiltroLys.Model.Tesoreria
             set { d_FechaEnvioBanco = value; }
         }
 
-        public Decimal RegistroOb
+        public Decimal RegistroOB
         {
-            get { return n_RegistroOb; }
-            set { n_RegistroOb = value; }
+            get { return n_RegistroOB; }
+            set { n_RegistroOB = value; }
         }
 
         public String VoucherPend
@@ -638,10 +638,10 @@ namespace FiltroLys.Model.Tesoreria
             set { d_FechaSunatDet_Otro = value; }
         }
 
-        public String FlagFactorIng
+        public String FlagFactoring
         {
-            get { return c_FlagFactorIng; }
-            set { c_FlagFactorIng = value; }
+            get { return c_FlagFactoring; }
+            set { c_FlagFactoring = value; }
         }
 
         public Decimal DiasPlazo
@@ -656,10 +656,10 @@ namespace FiltroLys.Model.Tesoreria
             set { d_FechaVencimiento_Fact = value; }
         }
 
-        public Decimal MontoFactorIng
+        public Decimal MontoFactoring
         {
-            get { return n_MontoFactorIng; }
-            set { n_MontoFactorIng = value; }
+            get { return n_MontoFactoring; }
+            set { n_MontoFactoring = value; }
         }
 
         public DateTime FechaRecepcion_Fact
@@ -698,10 +698,22 @@ namespace FiltroLys.Model.Tesoreria
             set { n_ImporteSunatDet = value; }
         }
 
-        public Decimal ImporteSunatDet_otro
+        public Decimal ImporteSunatDet_Otro
         {
-            get { return n_ImporteSunatDet_otro; }
-            set { n_ImporteSunatDet_otro = value; }
+            get { return n_ImporteSunatDet_Otro; }
+            set { n_ImporteSunatDet_Otro = value; }
+        }
+
+        public String ClasificacionBienServ
+        {
+            get { return c_ClasificacionBienServ; }
+            set { c_ClasificacionBienServ = value; }
+        }
+
+        public String FlagAutoDetraccion
+        {
+            get { return c_FlagAutoDetraccion; }
+            set { c_FlagAutoDetraccion = value; }
         }
 
         public String DocumentoCompleto
@@ -715,6 +727,5 @@ namespace FiltroLys.Model.Tesoreria
             get { return c_UserNombreForm; }
             set { c_UserNombreForm = value; }
         }
-
     }
 }

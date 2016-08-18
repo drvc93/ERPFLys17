@@ -155,10 +155,10 @@ namespace FiltroLys.Domain.Maestro.Contabilidad
                                 if (oVC.OrigenDoc.Equals("TR")){
                                     entObligacion oOB = new entObligacion();
                                     oOB.Compania = Compania;
-                                    oOB.CodProveedor = oVC.Persona;
-                                    oOB.TipoDocumento = oVC.Documento.Substring(0, 2);
-                                    oOB.NumeroDocumento = oVC.Documento.Substring(2, oVC.Documento.Length - 2);
-                                    Decimal nOb = negObligacion.GetCodigoObligacion(oOB);
+                                    Int32 nPer = oVC.Persona;
+                                    String sTip = oVC.Documento.Substring(0, 2);
+                                    String sNro = oVC.Documento.Substring(2, oVC.Documento.Length - 2);
+                                    Decimal nOb = negObligacion.GetNumObligacion(Compania, nPer,sTip,sNro);
                                     if (nOb == 0){
                                         oErr.Errores.Add(new entFail() { IdReg = oVC.Linea, Descripcion = "Documento de Tesorería es inválido." });
                                     }

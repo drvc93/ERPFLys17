@@ -13,11 +13,11 @@ namespace FiltroLys.Model.Logistica
         private String c_PermisoAprobado = "N", c_ObservacionesPermiso, c_ObservacionesAprobacionP, c_UsuarioPermiso, c_FlagCambioPrecio = "N";
         private String c_MotivoCambio, c_UsuarioCambio, c_FlagSaldoNoPendiente = "N", c_ObsSaldoNoPendiente, c_UsuarioSaldoNoPendiente;
         private String c_Procedencia, c_Garantias, c_UsuarioCierre, c_TipoCierre, c_MotivoCierre, c_Muestra = "N", c_LoteMuestra;
-        private String c_UsuarioSaldoNp_Rev, c_ObsSaldoNp_Rev;
+        private String c_UsuarioSaldoNP_Rev, c_ObsSaldoNP_Rev;
         private int n_Ampliacion, n_Secuencia, n_Embarque;
         private Decimal n_CantidadPedida = 0, n_CantidadRecibida = 0, n_PrecioUnitario = 0, n_PrecioAnterior, n_PrecioImp_Ant = 0;
         private DateTime d_FechaEntrega, d_FechaEntregaReal, d_UltimaFechaModificacion = DateTime.Now, d_FechaAprobacionDesv;
-        private DateTime d_FechaModificacion, d_FechaSaldoNoPendiente, d_FechaCierre, d_FechaSaldoNp_Rev;
+        private DateTime d_FechaModificacion, d_FechaSaldoNoPendiente, d_FechaCierre, d_FechaSaldoNP_Rev;
         private Decimal n_MontoTotal;
 
         public String Compania
@@ -296,22 +296,22 @@ namespace FiltroLys.Model.Logistica
             set { c_LoteMuestra = value; }
         }
 
-        public String UsuarioSaldoNp_Rev
+        public String UsuarioSaldoNP_Rev
         {
-            get { return c_UsuarioSaldoNp_Rev; }
-            set { c_UsuarioSaldoNp_Rev = value; }
+            get { return c_UsuarioSaldoNP_Rev; }
+            set { c_UsuarioSaldoNP_Rev = value; }
         }
 
-        public DateTime FechaSaldoNp_Rev
+        public DateTime FechaSaldoNP_Rev
         {
-            get { return d_FechaSaldoNp_Rev; }
-            set { d_FechaSaldoNp_Rev = value; }
+            get { return d_FechaSaldoNP_Rev; }
+            set { d_FechaSaldoNP_Rev = value; }
         }
 
-        public String ObsSaldoNp_Rev
+        public String ObsSaldoNP_Rev
         {
-            get { return c_ObsSaldoNp_Rev; }
-            set { c_ObsSaldoNp_Rev = value; }
+            get { return c_ObsSaldoNP_Rev; }
+            set { c_ObsSaldoNP_Rev = value; }
         }
 
         public Decimal MontoTotal
@@ -319,6 +319,8 @@ namespace FiltroLys.Model.Logistica
             get { return n_MontoTotal; }
             set { n_MontoTotal = value; }
         }
+
+
 
     }
 }

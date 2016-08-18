@@ -209,7 +209,7 @@ namespace FiltroLys.Repository.Contabilidad
                         Cmd.Parameters.Add(new SqlParameter("@Persona", SqlDbType.Int)).Value = fnParmCmd.intDBNull(oEnt.Persona,0);
                         Cmd.Parameters.Add(new SqlParameter("@CentroCosto", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.CentroCosto,"");
                         Cmd.Parameters.Add(new SqlParameter("@FlujoCaja", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.FlujoCaja,"");
-                        Cmd.Parameters.Add(new SqlParameter("@OrigenDoc", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.OrigenDoc,String.Empty);
+                        Cmd.Parameters.Add(new SqlParameter("@OrigenDoc", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.OrigenDoc,fnConst.StrNull);
                         Cmd.Parameters.Add(new SqlParameter("@CodigoDoc", SqlDbType.Int)).Value = fnParmCmd.DecDBNull(oEnt.CodigoDoc,0);
                         Cmd.Parameters.Add(new SqlParameter("@Documento", SqlDbType.VarChar)).Value = fnParmCmd.StrDBNull(oEnt.Documento);
                         Cmd.Parameters.Add(new SqlParameter("@Fecha", SqlDbType.DateTime)).Value = fnParmCmd.DatDBNull(oEnt.Fecha);

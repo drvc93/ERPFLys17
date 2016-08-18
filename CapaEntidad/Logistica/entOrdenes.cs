@@ -8,12 +8,12 @@ namespace FiltroLys.Model.Logistica
 {
     public class entOrdenes : entBase
     {
-        private String c_Compania, c_NumeroOrden, c_Razonsocial, c_DocumentoFiscal, c_ClasificacionCodigo, c_FormaPago, c_FlagAdelanto = "N";
+        private String c_Compania, c_NumeroOrden, c_RazonSocial, c_DocumentoFiscal, c_ClasificacionCodigo, c_FormaPago, c_FlagAdelanto = "N";
         private String c_TipoServicio, c_Procedencia, c_AlmacenCodigo, c_Moneda, c_RazonAnulacion, c_Observacion, c_Contrato, c_Estado, c_PreparadoPor;
         private String c_AprobadoPor, c_UltimoUsuario, c_FlagImpresion, c_UsuarioImpresion, c_FlagImpresionAdelanto, c_UsuarioImpresionAdelanto;
         private String c_IncotermCodigo, c_RazonCierre, c_TipoCierre, c_FlagFlete = "N", c_UsuarioFlete, c_FlagOrigen = "O", c_FlagReplicado = "N";
         private String c_CompaniaRep, c_NumeroOrdenRep, c_RazonOriginal, c_Garantia_Cab, c_Operatividad_Cab, c_EstadoFirma = "PE", c_UsuarioFirma;
-        private String c_Via;
+        private String c_Via, c_FlagSimOC = "N";
         private int n_Ampliacion, n_Proveedor, n_NumeroAdelanto, n_Proveedor_Original, n_OrdenFirma;
         private Decimal n_MontoBruto = 0, n_MontoIGV = 0, n_MontoTotal = 0, n_MontoGastado = 0, n_TipoDeCambio = 0, n_MontoFlete = 0;
         private Decimal n_AdelantoFlete, n_FleteInt_Imp = 0, n_Flete_Imp = 0, n_Seguro_Imp = 0;
@@ -45,10 +45,10 @@ namespace FiltroLys.Model.Logistica
             set { n_Proveedor = value; }
         }
 
-        public String Razonsocial
+        public String RazonSocial
         {
-            get { return c_Razonsocial; }
-            set { c_Razonsocial = value; }
+            get { return c_RazonSocial; }
+            set { c_RazonSocial = value; }
         }
 
         public String DocumentoFiscal
@@ -403,6 +403,12 @@ namespace FiltroLys.Model.Logistica
         {
             get { return d_FechaPagoIni; }
             set { d_FechaPagoIni = value; }
+        }
+
+        public String FlagSimOC
+        {
+            get { return c_FlagSimOC; }
+            set { FlagSimOC = value; }
         }
 
     }
