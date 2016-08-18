@@ -65,7 +65,7 @@ namespace FiltroLys.ZLys.ModContabilidad
                 String scia = cmbCompania.EditValue.ToString();
                 String sper = txtPeriodo.Text.Replace("-", "");
 
-                List<entCierreMesCuenta> Lst = negCierreMesCuenta.ListSaldoCtaMayor(scia, sper);
+                List<entCierreMesCuenta> Lst = negCierreMesCuenta.ListSaldoToMayor(scia, sper);
                 grControlMayor.DataSource = Lst;
                 Lst = null;                
                 grControlCuenta.DataSource = null;
@@ -79,7 +79,7 @@ namespace FiltroLys.ZLys.ModContabilidad
             if (regs.Length == 0) { return; }
 
             entCierreMesCuenta objE = (entCierreMesCuenta)gvDatosMayor.GetRow(regs[0]);
-            List<entCierreMesCuenta> Lst = negCierreMesCuenta.ListSaldoCtaMayorDet(objE.Compania, objE.Periodo, objE.Cuenta);
+            List<entCierreMesCuenta> Lst = negCierreMesCuenta.ListSaldoToCuenta(objE.Compania, objE.Periodo, objE.Cuenta);
 
             grControlCuenta.DataSource = Lst;
             Lst = null;

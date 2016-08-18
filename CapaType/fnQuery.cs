@@ -68,5 +68,12 @@ namespace FiltroLys.Type
         public const String tsqObligacion = "UP_TR_MANT_OBLIGACION";
         public const String tsqOrdenesCompra = "UP_LO_MANT_ORDENCOMPRA";
         public const String tsqOrdenesCompraDet = "UP_LO_MANT_ORDENCOMPRADET";
+        public const String tsqCierreMensualCB = "UP_CB_MANT_CIERREMENSUAL";
+        public const String tsqSaldoContableMay = "SP_SALDO_CONTABLE_MAYOR";
+        public const String tsqSaldoContableCta = "SP_SALDO_CONTABLE_MAYOR1";
+        public const String tsqCierreMensualRevision = "SP_CB_CIERREMENSUAL_REVISION";
+        public const String tsqCierreMensualProcesar = "SP_CB_CIERREMENSUAL_CUENTA";
+        public const String tsqPeriodoSiguienteCB = "SP_CB_PERIODOSIGUIENTE";
+
     }
 }

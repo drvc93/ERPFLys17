@@ -9,6 +9,7 @@ using FiltroLys.Model.Maestro.General;
 using FiltroLys.Domain.Maestro.General;
 using FiltroLys.Domain.Contabilidad;
 using FiltroLys.Type;
+using FiltroLys.Model.Objeto;
 using FiltroLys.ZLys.Funciones;
 using System.Linq;
 
@@ -77,25 +78,35 @@ namespace FiltroLys.ZLys.ModContabilidad
                 return;
             }
 
-            nResult = negPeriodoCia.GetValidaPeriodoCia(fnConst.ModContabilidadCod, sCia, sPer);
+            nResult = negPeriodoCia.GetValidaPeriodoCia(sCia, sPer, fnConst.ModContabilidadCod);
             if (nResult <= 0){
                 fnMensaje.MensajeInfo("Periodo no existe o se encuentra cerrado. No se puede asignar periodo de trabajo.");
                 return;
             }
 
-            nResult = negCierreMesCuenta.SetPeriodoTrabajo(sCia, sPer);
-            switch (nResult){
-                case 1:
-                    fnMensaje.MensajeInfo("Asignación de periodo de trabajo fue exitoso.");
-                    this.Close();
-                    break;
-                case 0:
-                    fnMensaje.MensajeInfo("Periodo de trabajo no existe o se encuentra cerrado.");
-                    break;
-                case -1:
-                    fnMensaje.MensajeInfo("Ocurrio un error actualizando periodo de trabajo.");
-                    break;
+            //Estableciendo Flag Trabajo
+            entErrores oErr = new entErrores();
+            entPeriodoCia oData = new entPeriodoCia();
+            oData.Compania = sCia;
+            oData.Periodo = sPer;
+            oData.Sistema = fnConst.ModContabilidadCod;
+            oData.UltimoUsuario = GlobalVar.UsuarioLogeo;
+            oData.UsuarioSys = GlobalVar.UsuarioLogeo;
+            oData.EstacionSys = GlobalVar.EstacionLogeo;
+            oData.FechaSys = DateTime.Now;
+
+            oErr = negPeriodoCia.SetPeriodoTrabajo(oData);
+            if (oErr.Errores.Count > 0){
+                fnMensaje.MensajeInfo(oErr.Errores[0].Descripcion);                
+                oData = null;
+                oErr = null;
+                return;
             }
+            oData = null;
+            oErr = null;
+
+            fnMensaje.MensajeInfo("Se ha asignado periodo de trabajo correctamente.");
+            this.Close();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

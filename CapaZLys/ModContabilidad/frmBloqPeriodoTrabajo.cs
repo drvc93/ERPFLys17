@@ -98,15 +98,12 @@ namespace FiltroLys.ZLys.ModContabilidad
 
         private Boolean fxPreUpdate()
         {
-            for(int i=1;i<gvDatos.DataRowCount;i++){
-                entPeriodoCia oEnt = (entPeriodoCia)gvDatos.GetRow(i);
-                if (oEnt.FlagBloqueo.Equals("S")){
-                    int nResult = negPeriodoCia.GetValidaPeriodoCia(fnConst.ModContabilidadCod, oEnt.Compania, oEnt.Periodo);
-                    if (nResult <= 0){
-                        fnMensaje.MensajeInfo("Periodo no existe o se encuentra cerrado " + oEnt.Periodo.Substring(0, 4) + "-" + oEnt.Periodo.Substring(4, 2) + ". No se puede continuar.");
-                        return false;
-                    }
-                }
+            List<entPeriodoCia> GetList = (List<entPeriodoCia>)(gvDatos.DataSource);
+            entErrores oErr = negPeriodoCia.GetValidarPeriodoBloqueo(GetList);
+            if(!oErr.Resultado){
+                String sPer = oErr.CodigoGeneradoText;
+                fnMensaje.MensajeInfo("Periodo no existe o se encuentra cerrado " + sPer.Substring(0, 4) + "-" + sPer.Substring(4, 2) + ". No se puede continuar.");
+                return false;
             }
             return true;
         }

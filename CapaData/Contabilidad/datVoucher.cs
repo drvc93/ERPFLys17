@@ -428,7 +428,7 @@ namespace FiltroLys.Repository.Contabilidad
             SqlCommand Cmd = new SqlCommand();
             entErrores entErr = new entErrores();
             Boolean bOk = true;
-            String sMsj = "";
+            String sMsj = "",sVoucher="";
             int nReg = 1, nRegTot = Data.Count;
             
             using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion())){
@@ -451,11 +451,13 @@ namespace FiltroLys.Repository.Contabilidad
                         Cmd.Parameters.Add(new SqlParameter("@Usuario", SqlDbType.VarChar)).Value = objE.UsuarioSys;
                         Cmd.Parameters.Add(new SqlParameter("@Mensaje", SqlDbType.VarChar, 250)).Value = "";
                         Cmd.Parameters["@Mensaje"].Direction = ParameterDirection.Output;
+                        sVoucher = objE.TipoVoucher + "-" + objE.NumeroVoucher;
+
                         Cmd.ExecuteNonQuery();
                         sMsj = Cmd.Parameters["@Mensaje"].Value.ToString();
                         if (!sMsj.Equals("OK")){
                             entErr.Resultado = false;
-                            entErr.Errores.Add(new entFail() { Codigo = "SQL", Descripcion = sMsj });
+                            entErr.Errores.Add(new entFail() { Codigo = "SQL", Descripcion = sVoucher + ": " +sMsj });
                             bOk = false;
                             break;
                         }
@@ -476,7 +478,7 @@ namespace FiltroLys.Repository.Contabilidad
                 catch (Exception ex){
                     Trs.Rollback();
                     sMsj = ex.Message;
-                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = sMsj });
+                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = sVoucher + ": " + sMsj });
                 }
                 finally{
                     Cmd.Connection.Close();
@@ -497,7 +499,7 @@ namespace FiltroLys.Repository.Contabilidad
             SqlCommand Cmd = new SqlCommand();
             entErrores entErr = new entErrores();
             Boolean bOk = true;
-            String sMsj = "";
+            String sMsj = "", sVoucher="";
             int nReg = 1, nRegTot = Data.Count;
 
             using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion())){
@@ -520,11 +522,13 @@ namespace FiltroLys.Repository.Contabilidad
                         Cmd.Parameters.Add(new SqlParameter("@Usuario", SqlDbType.VarChar)).Value = objE.UsuarioSys;
                         Cmd.Parameters.Add(new SqlParameter("@Mensaje", SqlDbType.VarChar, 250)).Value = "";
                         Cmd.Parameters["@Mensaje"].Direction = ParameterDirection.Output;
+                        sVoucher = objE.TipoVoucher + "-" + objE.NumeroVoucher;
+
                         Cmd.ExecuteNonQuery();
                         sMsj = Cmd.Parameters["@Mensaje"].Value.ToString();
                         if (!sMsj.Equals("OK")){
                             entErr.Resultado = false;
-                            entErr.Errores.Add(new entFail() { Codigo = "SQL", Descripcion = sMsj });
+                            entErr.Errores.Add(new entFail() { Codigo = "SQL", Descripcion = sVoucher + ": " + sMsj });
                             bOk = false;
                             break;
                         }
@@ -545,7 +549,7 @@ namespace FiltroLys.Repository.Contabilidad
                 catch (Exception ex){
                     Trs.Rollback();
                     sMsj = ex.Message;
-                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = sMsj });
+                    entErr.Errores.Add(new entFail() { Codigo = ex.GetHashCode().ToString(), Descripcion = sVoucher + ": " + sMsj });
                 }
                 finally{
                     Cmd.Connection.Close();

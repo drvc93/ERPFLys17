@@ -53,5 +53,9 @@ namespace FiltroLys.Domain.Seguridad
             return datUsuario.MantFormID(Data);
         }
 
+        public static Int32 GetValidarAcceso(String Usuario, String Clave) {
+            return datUsuario.GetValidarAcceso(Usuario, Clave);
+        }
+
     }
 }

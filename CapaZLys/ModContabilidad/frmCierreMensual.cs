@@ -67,7 +67,7 @@ namespace FiltroLys.ZLys.ModContabilidad
                 return;
             }
 
-            nResult = negPeriodoCia.GetValidaPeriodoCia(fnConst.ModContabilidadCod, sCia, sPer);
+            nResult = negPeriodoCia.GetValidaPeriodoCia(sCia, sPer, fnConst.ModContabilidadCod);
             if (nResult <= 0){
                 fnMensaje.MensajeInfo("Periodo no existe o se encuentra cerrado. No se puede realizar el cierre mensual.");
                 return;
@@ -76,42 +76,59 @@ namespace FiltroLys.ZLys.ModContabilidad
             /************************/
             /* Ejecutando el cierre */
             /************************/
-            sProceso.Append("Iniciando proceso de cierre ...\n");
-            sProceso.Append("Revisando información\n");
+            sProceso.Append("Iniciando proceso de cierre ...").AppendLine();
+            sProceso.Append("Revisando información").AppendLine();
+            txtProceso.Text = sProceso.ToString();
 
             //Revisando Cierre
-            List<entFail> oFail = negCierreMesCuenta.GetCierreMensualRev(sCia, sPer, "C");
+            List<entFail> oFail = negCierreMesCuenta.GetRevisionMensual(sCia, sPer, "C");
             OErrores.Errores = oFail;
-            if (oFail.Count > 0)
-            {
-                sProceso.Append("   Se han encontrado problemas.\n");
-                sProceso.Append("Fin de proceso con errores, revisar detalle.\n");
+            if (oFail.Count > 0){
+                sProceso.Append("   Se han encontrado problemas.").AppendLine();
+                sProceso.Append("Fin de proceso con errores, revisar detalle.").AppendLine();
+                txtProceso.Text = sProceso.ToString();
                 btnDetalle.Enabled = true;
                 return;
             }
-
+            
             //Generando saldo de cuentas contables
-            sProceso.Append("Generando saldo de cuentas ...\n");
-            sResult = negCierreMesCuenta.SetCierreMensualGen(sCia, sPer, GlobalVar.UsuarioLogeo);
+            sProceso.Append("Generando saldo de cuentas ...").AppendLine(); ;
+            sResult = negCierreMesCuenta.SetProcesoMensual(sCia, sPer, GlobalVar.UsuarioLogeo);
             if (!sResult.Equals("OK")){
                 OErrores.Errores.Add(new entFail() { Linea = 1, Mensaje = sResult });
-                sProceso.Append("Ocurrio un error generando saldo de cuentas ...\n");
-                sProceso.Append("Fin de proceso con errores, revisar detalle.\n");
+                sProceso.Append("Ocurrio un error generando saldo de cuentas ...").AppendLine();
+                sProceso.Append("Fin de proceso con errores, revisar detalle.").AppendLine();
+                txtProceso.Text = sProceso.ToString();
                 btnDetalle.Enabled = true;
                 return;
             }
 
-            //Cerrando Periodo//            
-            sResult = negCierreMesCuenta.SetModificaPeriodo(sCia, sPer, GlobalVar.UsuarioLogeo, "C");
-            if (!sResult.Equals("OK")){
-                OErrores.Errores.Add(new entFail() { Linea = 1, Mensaje = sResult });
-                sProceso.Append("Ocurrio un error cerrando periodo ...\n");
-                sProceso.Append("Fin de proceso con errores, revisar detalle.\n");
+            //Cerrando Periodo//
+            entErrores oErrT = new entErrores();
+            entPeriodoCia oData = new entPeriodoCia();
+            oData.Compania = sCia;
+            oData.Periodo = sPer;
+            oData.Sistema = fnConst.ModContabilidadCod;
+            oData.UltimoUsuario = GlobalVar.UsuarioLogeo;
+            oData.UsuarioSys = GlobalVar.UsuarioLogeo;
+            oData.EstacionSys = GlobalVar.EstacionLogeo;
+            oData.FechaSys = DateTime.Now;
+
+            oErrT = negPeriodoCia.CerrarPeriodoCB(oData);
+            if (oErrT.Errores.Count > 0){
+                OErrores.Errores.Add(new entFail() { Linea = 1, Mensaje = oErrT.Errores[0].Descripcion });
+                sProceso.Append("Ocurrio un error cerrando periodo ...").AppendLine(); ;
+                sProceso.Append("Fin de proceso con errores, revisar detalle.").AppendLine(); ;
+                txtProceso.Text = sProceso.ToString();
                 btnDetalle.Enabled = true;
+                oData = null;
+                oErrT = null;
                 return;
             }
+            oData = null;
+            oErrT = null;
 
-            sProceso.Append("Proceso finalizado.\n");
+            sProceso.Append("Proceso finalizado.").AppendLine();
             txtProceso.Text = sProceso.ToString();
         }
 
@@ -119,7 +136,7 @@ namespace FiltroLys.ZLys.ModContabilidad
         {
             String sCia = cmbCompania.EditValue.ToString();
             String sPer = txtPeriodo.Text.Replace("-", ""), sPerSig = "";
-            Int32 nResult = 0; String sResult = "";
+            Int32 nResult = 0;
             StringBuilder sProceso = new StringBuilder();
             OErrores = new entErrores();
 
@@ -137,19 +154,19 @@ namespace FiltroLys.ZLys.ModContabilidad
                 return;
             }
 
-            nResult = negPeriodoCia.GetValidaPeriodoCia(fnConst.ModContabilidadCod, sCia, sPer);
+            nResult = negPeriodoCia.GetValidaPeriodoCia(sCia, sPer, fnConst.ModContabilidadCod);
             if (nResult == 1 || nResult < 0){
                 fnMensaje.MensajeInfo("Periodo no existe o ya se encuentra abierto. No se puede realizar la apertura del periodo.");
                 return;
             }
 
-            sPerSig = negCierreMesCuenta.GetPeriodoSig(sPer);
+            sPerSig = negCierreMesCuenta.GetPeriodoSiguiente(sPer);
             if (String.IsNullOrEmpty(sPerSig)){
                 fnMensaje.MensajeInfo("Error obteniendo periodo siguiente.");
                 return;
             }
 
-            nResult = negPeriodoCia.GetValidaPeriodoCia(fnConst.ModContabilidadCod, sCia, sPerSig);
+            nResult = negPeriodoCia.GetValidaPeriodoCia(sCia, sPerSig, fnConst.ModContabilidadCod);
             if (nResult == 0){
                 fnMensaje.MensajeInfo("Periodo siguiente esta cerrado. No se puede realizar la apertura del periodo.");
                 return;
@@ -158,31 +175,47 @@ namespace FiltroLys.ZLys.ModContabilidad
             /************************/
             /* Ejecutando el cierre */
             /************************/
-
-
-            sProceso.Append("Iniciando proceso de apertura ...\n");
-            sProceso.Append("Revisando información\n");
+            sProceso.Append("Iniciando proceso de apertura ...").AppendLine();
+            sProceso.Append("Revisando información.").AppendLine();
+            txtProceso.Text = sProceso.ToString();
 
             //Revisando Cierre
-            List<entFail> oFail = negCierreMesCuenta.GetCierreMensualRev(sCia, sPer, "A");
+            List<entFail> oFail = negCierreMesCuenta.GetRevisionMensual(sCia, sPer, "A");
             OErrores.Errores = oFail;
             if (oFail.Count > 0){
-                sProceso.Append("   Se han encontrado problemas.\n");
-                sProceso.Append("Fin de proceso con errores, revisar detalle.\n");
+                sProceso.Append("   Se han encontrado problemas.").AppendLine();
+                sProceso.Append("Fin de proceso con errores, revisar detalle.").AppendLine();
+                txtProceso.Text = sProceso.ToString();
                 btnDetalle.Enabled = true;
                 return;
             }
 
-            //Cerrando Periodo//            
-            sResult = negCierreMesCuenta.SetModificaPeriodo(sCia, sPer, GlobalVar.UsuarioLogeo, "A");
-            if (!sResult.Equals("OK")){
-                OErrores.Errores.Add(new entFail() { Linea = 1, Mensaje = sResult });
-                sProceso.Append("Ocurrio un error cerrando periodo ...\n");
-                sProceso.Append("Fin de proceso con errores, revisar detalle.\n");
+            //Abriendo Periodo//
+            entErrores oErrT = new entErrores();
+            entPeriodoCia oData = new entPeriodoCia();
+            oData.Compania = sCia;
+            oData.Periodo = sPer;
+            oData.Sistema = fnConst.ModContabilidadCod;
+            oData.UltimoUsuario = GlobalVar.UsuarioLogeo;
+            oData.UsuarioSys = GlobalVar.UsuarioLogeo;
+            oData.EstacionSys = GlobalVar.EstacionLogeo;
+            oData.FechaSys = DateTime.Now;
+
+            oErrT = negPeriodoCia.AbrirPeriodoCB(oData);
+            if (oErrT.Errores.Count > 0){
+                OErrores.Errores.Add(new entFail() { Linea = 1, Mensaje = oErrT.Errores[0].Descripcion });
+                sProceso.Append("Ocurrio un error abriendo periodo ...").AppendLine();
+                sProceso.Append("Fin de proceso con errores, revisar detalle.").AppendLine();
+                txtProceso.Text = sProceso.ToString();
                 btnDetalle.Enabled = true;
+                oData = null;
+                oErrT = null;
                 return;
             }
-            sProceso.Append("Proceso finalizado.\n");
+            oData = null;
+            oErrT = null;
+
+            sProceso.Append("Proceso finalizado.").AppendLine();
             txtProceso.Text = sProceso.ToString();
         }
 

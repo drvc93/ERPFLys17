@@ -46,22 +46,19 @@ namespace FiltroLys.ZLys.Inicio
             sUsuario = txtUsuario.Text.Trim().ToUpper();
             sClave = txtClave.Text.Trim().ToUpper();
 
-            if (String.IsNullOrWhiteSpace(sUsuario))
-            {
+            if (String.IsNullOrWhiteSpace(sUsuario)){
                 errorForm.SetError(txtUsuario, "Ingresar Usuario por favor.");
                 return;
             }
             errorForm.SetError(txtUsuario, null);
 
-            if (String.IsNullOrWhiteSpace(sClave))
-            {
+            if (String.IsNullOrWhiteSpace(sClave)){
                 errorForm.SetError(txtClave, "Ingresar Clave por favor.");
                 return;
             }
             
-            nErr = negSeguridad.GetValidarAcceso(sUsuario, sClave);
-            switch (nErr)
-            {
+            nErr = negUsuario.GetValidarAcceso(sUsuario, sClave);
+            switch (nErr){
                 case -1:
                     sErr = "Usuario No Existe";
                     break;
@@ -73,20 +70,16 @@ namespace FiltroLys.ZLys.Inicio
                     break;
             }
 
-            if (sErr.Length > 0)
-            {
+            if (sErr.Length > 0){
                 lblError.Text = sErr.ToUpper();
                 _nroVeces++;
                 if (_nroVeces > 3) { this.Close(); }
-            }
-            else
-            {
+            }else{
                 GlobalVar.UsuarioLogeo = sUsuario;
                 GlobalVar.EstacionLogeo = Environment.MachineName;
                 GlobalVar.FechaIng = DateTime.Now;
                 entErrores objE = fxIniciarAuditoria();
-                if (objE.Resultado == false)
-                {
+                if (objE.Resultado == false){
                     lblError.Text = objE.Errores[0].Codigo + "-" + objE.Errores[0].Descripcion;
                     objE = null;
                     return;

@@ -244,5 +244,38 @@ namespace FiltroLys.Repository.Seguridad
             return entErr;
         }
 
+        public static Int32 GetValidarAcceso(String Usuario, String Clave)
+        {
+            Int32 nResult = -1;
+            SqlCommand Cmd = new SqlCommand();
+            String sClave = "";
+            sClave = datEncriptar.fnEncriptar(Clave);
+
+            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
+            {
+                Cmd.Connection = Cnx;
+                Cmd.Connection.Open();
+                Cmd.CommandText = fnQuery.tsqUsuario;
+                Cmd.CommandType = CommandType.StoredProcedure;
+
+                Cmd.Parameters.Clear();
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = "VALIDA";
+                Cmd.Parameters.Add(new SqlParameter("@CodigoUsuario", SqlDbType.VarChar)).Value = Usuario;
+                Cmd.Parameters.Add(new SqlParameter("@Clave", SqlDbType.VarChar)).Value = sClave;
+                nResult = (Int32)(Cmd.ExecuteScalar());
+
+                if (Cmd.Connection.State == ConnectionState.Open)
+                {
+                    Cmd.Connection.Close();
+                    Cmd.Connection.Dispose();
+                    Cnx.Close();
+                    Cnx.Dispose();
+                    GC.SuppressFinalize(Cnx);
+                }
+            }
+            return nResult;
+        }
+
     }
 }

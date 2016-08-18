@@ -105,12 +105,12 @@ namespace FiltroLys.Model.Contabilidad
             set { n_SalExt = value; }
         }
 
-        public Decimal SalLocalFin
+        public Decimal SalLocalFinFX
         {
             get { return n_SalLocal + n_ImpLocal; }            
         }
 
-        public Decimal SalExtFin
+        public Decimal SalExtFinFX
         {
             get { return n_SalExt + n_ImpExt; }            
         }

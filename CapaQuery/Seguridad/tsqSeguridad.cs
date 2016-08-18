@@ -10,31 +10,6 @@ namespace FiltroLys.Query.Seguridad
     {
         static String xsql = "";
 
-        public static String QR_GetUsuarioClaveSi(String Usuario,String Clave){
-            xsql = "select count(1) " +
-                   "from ma_usuario " +
-                   "where c_codigousuario ='" + Usuario + "' " +
-                   "and c_clave = '" + Clave + "'";
-            return xsql;
-        }
-
-        public static String QR_GetUsuarioExiste(String Usuario)
-        {
-            xsql = "select count(1) " +
-                   "from ma_usuario " +
-                   "where c_codigousuario ='" + Usuario + "'";
-            return xsql;
-        }
-
-        public static String QR_GetUsuarioActivo(String Usuario)
-        {
-            xsql = "select count(1) " +
-                   "from ma_usuario " +
-                   "where c_codigousuario ='" + Usuario + "' " +
-                   "and c_estado ='A'";
-            return xsql;
-        }
-
         public static String QR_ListAccesoUsuApp(String Usuario,String Aplicacion)
         {
             switch (Aplicacion)

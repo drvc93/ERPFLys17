@@ -57,7 +57,17 @@ namespace FiltroLys.Domain.Maestro.General
         {
             return datPeriodoCia.MantBloqueoPeriodo(Data);
         }
-                
+
+        public static entErrores AbrirPeriodoCB(entPeriodoCia Data)
+        {
+            return datPeriodoCia.AbrirPeriodoCB(Data);
+        }
+
+        public static entErrores CerrarPeriodoCB(entPeriodoCia Data)
+        {
+            return datPeriodoCia.CerrarPeriodoCB(Data);
+        }
+
         public static String GetPeriodoTrabajo(String Compania, String Sistema)
         {
             String sPer = "";
@@ -71,15 +81,23 @@ namespace FiltroLys.Domain.Maestro.General
         }
 
         public static Int32 GetValidaPeriodoCia(String Compania, String Periodo, String Sistema)
-        {             
-            Int32 nFound = 0;
-            entPeriodoCia EObj = GetFormID(Compania, Periodo, Sistema);
-            if (EObj.ResultadoBusqueda == false) { nFound = -1; }
-            else {
-                if (EObj.Estado.Equals("A")) { nFound = 1; }
-            }
-            EObj = null;
-            return nFound;
+        {
+            return datPeriodoCia.GetValidaPeriodoCia(Compania, Periodo, Sistema);
+        }
+
+        public static entErrores GetValidarPeriodoMasivo(List<entPeriodoCia> Data)
+        {
+            return datPeriodoCia.GetValidarPeriodoMasivo(Data);
+        }
+
+        public static entErrores GetValidarPeriodoBloqueo(List<entPeriodoCia> Data)
+        {
+            return datPeriodoCia.GetValidarPeriodoBloqueo(Data);
+        }
+
+        public static entErrores SetPeriodoTrabajo(entPeriodoCia Data)
+        {
+            return datPeriodoCia.SetPeriodoTrabajo(Data);
         }
 
     }

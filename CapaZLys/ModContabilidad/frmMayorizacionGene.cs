@@ -282,17 +282,18 @@ namespace FiltroLys.ZLys.ModContabilidad
             List<entVoucher> objDat = new List<entVoucher>();
             int[] rowSel = gvDatos.GetSelectedRows();
             for (int i = 0; i < rowSel.Length; i++){
-                entVoucher objT = (entVoucher)gvDatos.GetRow(rowSel[i]);
-                //objT.OperMantenimiento = XProcesoFil.Equals("M") ? fnEnum.OperacionMant.Aprobar : fnEnum.OperacionMant.Pendiente;
+                entVoucher objT = (entVoucher)gvDatos.GetRow(rowSel[i]);                
                 objT.UsuarioSys = GlobalVar.UsuarioLogeo;
+                objT.EstacionSys = GlobalVar.EstacionLogeo;
+                objT.FechaSys = DateTime.Now;
                 objDat.Add(objT);
             }
 
             if (objDat.Count > 0){
                 BackgroundWorker worker = sender as BackgroundWorker;
                 entErrores err = new entErrores();
-                if(XProcesoFil.Equals(fnConst.MayorizacionCod)){negVoucher.AprobarMasivo(objDat, ref worker);}
-                if(XProcesoFil.Equals(fnConst.DesMayorizacionCod)) { negVoucher.PasarPendienteMasivo(objDat, ref worker); }
+                if (XProcesoFil.Equals(fnConst.MayorizacionCod)) { err = negVoucher.AprobarMasivo(objDat, ref worker); }
+                if (XProcesoFil.Equals(fnConst.DesMayorizacionCod)) { err = negVoucher.PasarPendienteMasivo(objDat, ref worker); }
                 if(err.Resultado == false){
                     fnMensaje.MensajeInfo(err.Errores[0].Descripcion);
                     return;

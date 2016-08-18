@@ -206,7 +206,7 @@
             this.SalLocalFinG.Caption = "Saldo Final Local";
             this.SalLocalFinG.DisplayFormat.FormatString = "#,##0.00;(#,##0.00)";
             this.SalLocalFinG.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.SalLocalFinG.FieldName = "SalLocalFin";
+            this.SalLocalFinG.FieldName = "SalLocalFinFX";
             this.SalLocalFinG.Name = "SalLocalFinG";
             this.SalLocalFinG.Visible = true;
             this.SalLocalFinG.VisibleIndex = 6;
@@ -217,7 +217,7 @@
             this.SalExtFinG.Caption = "Saldo Final US$";
             this.SalExtFinG.DisplayFormat.FormatString = "#,##0.00;(#,##0.00)";
             this.SalExtFinG.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.SalExtFinG.FieldName = "SalExtFin";
+            this.SalExtFinG.FieldName = "SalExtFinFX";
             this.SalExtFinG.Name = "SalExtFinG";
             this.SalExtFinG.Visible = true;
             this.SalExtFinG.VisibleIndex = 7;
@@ -413,10 +413,10 @@
             this.SalLocalFinG2.Caption = "Saldo Final Local";
             this.SalLocalFinG2.DisplayFormat.FormatString = "#,##0.00;(#,##0.00)";
             this.SalLocalFinG2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.SalLocalFinG2.FieldName = "SalLocalFin";
+            this.SalLocalFinG2.FieldName = "SalLocalFinFX";
             this.SalLocalFinG2.Name = "SalLocalFinG2";
             this.SalLocalFinG2.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SalLocalFin", "{0:#,##0.00;(#,##0.00)}")});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SalLocalFinFX", "{0:#,##0.00;(#,##0.00)}")});
             this.SalLocalFinG2.Visible = true;
             this.SalLocalFinG2.VisibleIndex = 6;
             this.SalLocalFinG2.Width = 91;
@@ -426,10 +426,10 @@
             this.SalExtFinG2.Caption = "Saldo Final US$";
             this.SalExtFinG2.DisplayFormat.FormatString = "#,##0.00;(#,##0.00)";
             this.SalExtFinG2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.SalExtFinG2.FieldName = "SalExtFin";
+            this.SalExtFinG2.FieldName = "SalExtFinFX";
             this.SalExtFinG2.Name = "SalExtFinG2";
             this.SalExtFinG2.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SalExtFin", "{0:#,##0.00;(#,##0.00)}")});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SalExtFinFX", "{0:#,##0.00;(#,##0.00)}")});
             this.SalExtFinG2.Visible = true;
             this.SalExtFinG2.VisibleIndex = 7;
             this.SalExtFinG2.Width = 90;
