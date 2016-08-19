@@ -5,68 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using FiltroLys.Query.Seguridad;
+using FiltroLys.Repository.Sistema;
+using FiltroLys.Model.Objeto;
+using FiltroLys.Repository.Objeto;
+using FiltroLys.Type;
 
-namespace FiltroLys.Repository.Seguridad
+namespace FiltroLys.Repository.Sistema
 {
-    public class datSeguridad{
-
-        public static DataTable ListAccesoUsuApp(String Usuario, String Aplicacion)
-        {
-            DataTable dt=new DataTable();
-            SqlCommand Cmd = new SqlCommand();
-            
-            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
-            {
-                Cmd.Connection = Cnx;
-                Cmd.Connection.Open();
-                Cmd.CommandText = tsqSeguridad.QR_ListAccesoUsuApp(Usuario, Aplicacion);
-                Cmd.CommandType = CommandType.Text;
-
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                adapter.SelectCommand = Cmd;
-                adapter.Fill(dt);                
-                if (Cmd.Connection.State == ConnectionState.Open)
-                {
-                    Cmd.Connection.Close();
-                    Cmd.Connection.Dispose();
-                    Cnx.Close();
-                    Cnx.Dispose();
-                    GC.SuppressFinalize(Cnx);
-                }
-            }
-            return dt;
-        }
-
-        public static DataTable ListMenuMaestros(String Usuario)
-        {
-            DataTable dt=new DataTable();
-            SqlCommand Cmd = new SqlCommand();
-            
-            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
-            {
-                Cmd.Connection = Cnx;
-                Cmd.Connection.Open();
-                Cmd.CommandText = tsqSeguridad.UP_ListMenuMaestros();
-                Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.Add(new SqlParameter("@Usuario", SqlDbType.VarChar)).Value = Usuario;
-
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                adapter.SelectCommand = Cmd;
-                adapter.Fill(dt);                
-                if (Cmd.Connection.State == ConnectionState.Open)
-                {
-                    Cmd.Connection.Close();
-                    Cmd.Connection.Dispose();
-                    Cnx.Close();
-                    Cnx.Dispose();
-                    GC.SuppressFinalize(Cnx);
-                }
-            }
-            return dt;
-        }
-
-        public static DataTable ListMenuReportes(String Usuario)
+    public class datBaseDatos
+    {
+        public static DataTable ListaBaseDatos()
         {
             DataTable dt = new DataTable();
             SqlCommand Cmd = new SqlCommand();
@@ -75,9 +23,40 @@ namespace FiltroLys.Repository.Seguridad
             {
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
-                Cmd.CommandText = tsqSeguridad.UP_ListMenuReportes();
+                Cmd.CommandText = fnQuery.tsqSchemaBDSys;
                 Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.Add(new SqlParameter("@Usuario", SqlDbType.VarChar)).Value = Usuario;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = "LSTBD";
+                
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = Cmd;
+                adapter.Fill(dt);
+                if (Cmd.Connection.State == ConnectionState.Open)
+                {
+                    Cmd.Connection.Close();
+                    Cmd.Connection.Dispose();
+                    Cnx.Close();
+                    Cnx.Dispose();
+                    GC.SuppressFinalize(Cnx);
+                }
+            }
+            return dt;
+        }
+
+        public static DataTable ListaTablas(String BaseDatos)
+        {
+            DataTable dt = new DataTable();
+            SqlCommand Cmd = new SqlCommand();
+
+            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
+            {
+                Cmd.Connection = Cnx;
+                Cmd.Connection.Open();
+                Cmd.CommandText = fnQuery.tsqSchemaBDSys;
+                Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = "LSTTABLE";
+                Cmd.Parameters.Add(new SqlParameter("@BaseDatos", SqlDbType.VarChar)).Value = BaseDatos;
 
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = Cmd;
@@ -93,6 +72,37 @@ namespace FiltroLys.Repository.Seguridad
             }
             return dt;
         }
+
+        public static DataTable ListaColumnas(String BaseDatos,String Tabla)
+        {
+            DataTable dt = new DataTable();
+            SqlCommand Cmd = new SqlCommand();
+
+            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
+            {
+                Cmd.Connection = Cnx;
+                Cmd.Connection.Open();
+                Cmd.CommandText = fnQuery.tsqSchemaBDSys;
+                Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = "LSTCOLUMN";
+                Cmd.Parameters.Add(new SqlParameter("@BaseDatos", SqlDbType.VarChar)).Value = "BaseDatos";
+                Cmd.Parameters.Add(new SqlParameter("@Tabla", SqlDbType.VarChar)).Value = Tabla;
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = Cmd;
+                adapter.Fill(dt);
+                if (Cmd.Connection.State == ConnectionState.Open)
+                {
+                    Cmd.Connection.Close();
+                    Cmd.Connection.Dispose();
+                    Cnx.Close();
+                    Cnx.Dispose();
+                    GC.SuppressFinalize(Cnx);
+                }
+            }
+            return dt;
+        }        
 
     }
 }

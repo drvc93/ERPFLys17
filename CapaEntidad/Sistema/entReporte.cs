@@ -3,39 +3,75 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FiltroLys.Type;
 
 namespace FiltroLys.Model.Sistema
 {
-    public class entReporte
+    public class entReporte : entBase
     {
-        private String sParametro, sSubRpt;
-        private Object sValue;
-        private fnEnum.ParameterCRTipo sTipoParm = fnEnum.ParameterCRTipo.Campo;
+        private String c_Aplicacion, c_Ventana, c_Descripcion, ulTimoUsuario, c_NombreMenu, c_FormNet;
+        private int n_Menu, n_Reporte;
+        private DateTime ulTimaFechaModificacion = DateTime.Now;
+        private String c_NombreAplicacion;
 
-        public String Parametro
+        public String Aplicacion
         {
-            get { return sParametro; }
-            set { sParametro = value; }
+            get { return c_Aplicacion; }
+            set { c_Aplicacion = value; }
         }
 
-        public Object Value
+        public Int32 Menu
         {
-            get { return sValue; }
-            set { sValue = value; }
+            get { return n_Menu; }
+            set { n_Menu = value; }
         }
 
-        public String SubReport
+        public Int32 Reporte
         {
-            get { return sSubRpt; }
-            set { sSubRpt = value; }
+            get { return n_Reporte; }
+            set { n_Reporte = value; }
         }
 
-        public fnEnum.ParameterCRTipo ParmTipo{
-            get { return sTipoParm; }
-            set { sTipoParm = value; }
+        public String Ventana
+        {
+            get { return c_Ventana; }
+            set { c_Ventana = value; }
+        }
+
+        public String Descripcion
+        {
+            get { return c_Descripcion; }
+            set { c_Descripcion = value; }
+        }
+
+        public String TimoUsuario
+        {
+            get { return ulTimoUsuario; }
+            set { ulTimoUsuario = value; }
+        }
+
+        public DateTime TimaFechaModificacion
+        {
+            get { return ulTimaFechaModificacion; }
+            set { ulTimaFechaModificacion = value; }
+        }
+
+        public String NombreMenu
+        {
+            get { return c_NombreMenu; }
+            set { c_NombreMenu = value; }
+        }
+
+        public String FormNet
+        {
+            get { return c_FormNet; }
+            set { c_FormNet = value; }
+        }
+
+        public String NombreAplicacion
+        {
+            get { return c_NombreAplicacion; }
+            set { c_NombreAplicacion = value; }
         }
 
     }
-
 }

@@ -8,12 +8,25 @@ namespace FiltroLys.Model.Sistema
 {
     public class entColumna
     {
-        private String c_Nombre,c_Tipo,c_Propiedad,c_VB,c_Default;
-        private int n_Posicion;
+        private String c_Nombre, c_IsNull, c_Tipo, c_Default, c_Propiedad;
+        private String c_DefaultNet,c_TipoNetProp,c_TipoNetParam,c_AnchoSP,c_FlagNull,c_VB;
+        private int n_Posicion, n_QCaract, n_Precision, n_Scale;
 
         public String Nombre {
             get { return c_Nombre; }
             set { c_Nombre = value; }
+        }
+
+        public int Posicion
+        {
+            get { return n_Posicion; }
+            set { n_Posicion = value; }
+        }
+
+        public String IsNull
+        {
+            get { return c_IsNull; }
+            set { c_IsNull = value; }
         }
 
         public String Tipo
@@ -22,16 +35,22 @@ namespace FiltroLys.Model.Sistema
             set { c_Tipo = value; }
         }
 
-        public String Propiedad
+        public int QCaract
         {
-            get { return c_Propiedad; }
-            set { c_Propiedad = value; }
+            get { return n_QCaract; }
+            set { n_QCaract = value; }
         }
 
-        public String VB
+        public int Precision
         {
-            get { return c_VB; }
-            set { c_VB = value; }
+            get { return n_Precision; }
+            set { n_Precision = value; }
+        }
+
+        public int Scale
+        {
+            get { return n_Scale; }
+            set { n_Scale = value; }
         }
 
         public String Default
@@ -40,10 +59,46 @@ namespace FiltroLys.Model.Sistema
             set { c_Default = value; }
         }
 
-        public int Posicion
+        public String Propiedad
         {
-            get { return n_Posicion; }
-            set { n_Posicion = value; }
+            get { return c_Propiedad; }
+            set { c_Propiedad = value; }
+        }
+
+        public String DefaultNet
+        {
+            get { return c_DefaultNet; }
+            set { c_DefaultNet = value; }
+        }
+
+        public String TipoNetProp
+        {
+            get { return c_TipoNetProp; }
+            set { c_TipoNetProp = value; }
+        }
+
+        public String TipoNetParam
+        {
+            get { return c_TipoNetParam; }
+            set { c_TipoNetParam = value; }
+        }
+
+        public String AnchoSP
+        {
+            get { return c_AnchoSP; }
+            set { c_AnchoSP = value; }
+        }
+
+        public String FlagNull
+        {
+            get { return c_FlagNull; }
+            set { c_FlagNull = value; }
+        }
+
+        public String VB
+        {
+            get { return c_VB; }
+            set { c_VB = value; }
         }
 
     }

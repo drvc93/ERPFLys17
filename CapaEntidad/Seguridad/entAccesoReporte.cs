@@ -6,20 +6,27 @@ using System.Threading.Tasks;
 
 namespace FiltroLys.Model.Seguridad
 {
-    public class entMenReporte : entBase
+    public class entAccesoReporte : entBase
     {
-        private String c_Aplicacion, c_Ventana, c_Descripcion, c_UltimoUsuario, c_NombreMenu, c_FormNet, c_Modulo = "--";
+        private String c_Usuario, c_Aplicacion, c_Acceso = "N", c_TotalConsulta = "N",c_UltimoUsuarioMod;
         private int n_Menu, n_Reporte;
-        private DateTime d_UltimaFechaModificacion = DateTime.Now;
+        private DateTime d_UltimaFechaMod = DateTime.Now;
         private String c_NombreModulo, c_NombreReporte, c_CodReporte;
-        private String c_Nivel, c_CodReg, c_Padre;
+        private String c_Nivel, c_CodReg, c_Padre, c_NombreAplicacion;
+        private String c_Descripcion, c_FormNet, c_Modulo = "--";
+
+        public String Usuario
+        {
+            get { return c_Usuario; }
+            set { c_Usuario = value; }
+        }
 
         public String Aplicacion
         {
             get { return c_Aplicacion; }
             set { c_Aplicacion = value; }
         }
-
+        
         public Int32 Menu
         {
             get { return n_Menu; }
@@ -32,46 +39,28 @@ namespace FiltroLys.Model.Seguridad
             set { n_Reporte = value; }
         }
 
-        public String Ventana
+        public String Acceso
         {
-            get { return c_Ventana; }
-            set { c_Ventana = value; }
+            get { return c_Acceso; }
+            set { c_Acceso = value; }
         }
 
-        public String Descripcion
+        public String TotalConsulta
         {
-            get { return c_Descripcion; }
-            set { c_Descripcion = value; }
+            get { return c_TotalConsulta; }
+            set { c_TotalConsulta = value; }
         }
 
-        public String UltimoUsuario
+        public String UltimoUsuarioMod
         {
-            get { return c_UltimoUsuario; }
-            set { c_UltimoUsuario = value; }
+            get { return c_UltimoUsuarioMod; }
+            set { c_UltimoUsuarioMod = value; }
         }
 
-        public DateTime UltimaFechaModificacion
+        public DateTime UltimaFechaMod
         {
-            get { return d_UltimaFechaModificacion; }
-            set { d_UltimaFechaModificacion = value; }
-        }
-
-        public String NombreMenu
-        {
-            get { return c_NombreMenu; }
-            set { c_NombreMenu = value; }
-        }
-
-        public String FormNet
-        {
-            get { return c_FormNet; }
-            set { c_FormNet = value; }
-        }
-
-        public String Modulo
-        {
-            get { return c_Modulo; }
-            set { c_Modulo = value; }
+            get { return d_UltimaFechaMod; }
+            set { d_UltimaFechaMod = value; }
         }
 
         public String NombreModulo
@@ -109,6 +98,32 @@ namespace FiltroLys.Model.Seguridad
             get { return c_Padre; }
             set { c_Padre = value; }
         }
+
+        public String NombreAplicacion
+        {
+            get { return c_NombreAplicacion; }
+            set { c_NombreAplicacion = value; }
+        }
+
+        public String Descripcion
+        {
+            get { return c_Descripcion; }
+            set { c_Descripcion = value; }
+        }
+
+        public String FormNet
+        {
+            get { return c_FormNet; }
+            set { c_FormNet = value; }
+        }
+
+        public String Modulo
+        {
+            get { return c_Modulo; }
+            set { c_Modulo = value; }
+        }
+        
+        
 
     }
 }

@@ -24,9 +24,9 @@ namespace FiltroLys.ZLys.Funciones
 
         public void HabControl(String Usuario,String Aplicacion){
             if (ListObj == null || ListObj.Count == 0) { return; }
-            List<entAcceso> ListAcc = negSeguridad.ListAccesoUsuApp(Usuario, Aplicacion);
+            List<entAccesoMenu> ListAcc = negAccesoMenu.ListaUsuarioApp(Usuario, Aplicacion);
             foreach(Controles objC in ListObj){
-                entAcceso oEnt = ListAcc.Where(x => x.Niveles.Equals(objC.Niveles)).FirstOrDefault();
+                entAccesoMenu oEnt = ListAcc.Where(x => x.Niveles.Equals(objC.Niveles)).FirstOrDefault();
                 if(oEnt!=null){
                     switch(objC.AccesoOpcion)
                     {
@@ -56,8 +56,7 @@ namespace FiltroLys.ZLys.Funciones
 
         public static Boolean ExisteAcceso(String Usuario, String Aplicacion, String Niveles, fnEnum.AccesoOpcion AccesoOpcion) {
             Boolean valor = false;
-            List<entAcceso> ListAcc = negSeguridad.ListAccesoUsuApp(Usuario, Aplicacion);
-            entAcceso oEnt = ListAcc.Where(x => x.Niveles.Equals(Niveles)).FirstOrDefault();
+            entAccesoMenu oEnt = negAccesoMenu.GetFormID(Usuario, Aplicacion, Niveles);            
             if (oEnt != null) {
                 switch (AccesoOpcion){
                     case fnEnum.AccesoOpcion.Acceso:

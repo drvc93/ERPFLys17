@@ -96,13 +96,16 @@
     <Compile Include="Objeto\entErrores.cs" />
     <Compile Include="Objeto\entEstructForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Seguridad\entMenReporte.cs" />
+    <Compile Include="Seguridad\entAccesoReporte.cs" />
+    <Compile Include="Seguridad\entAccesoModulo.cs" />
+    <Compile Include="Sistema\entBaseDato.cs" />
+    <Compile Include="Sistema\entReporte.cs" />
     <Compile Include="Seguridad\entUsuario.cs" />
     <Compile Include="Seguridad\entAuditoria.cs" />
-    <Compile Include="Seguridad\entAcceso.cs" />
+    <Compile Include="Seguridad\entAccesoMenu.cs" />
+    <Compile Include="Sistema\entMenu.cs" />
     <Compile Include="Sistema\entConexion.cs" />
     <Compile Include="Sistema\entColumna.cs" />
-    <Compile Include="Sistema\entReporte.cs" />
     <Compile Include="Sistema\entTabla.cs" />
     <Compile Include="Tesoreria\entObligacion.cs" />
   </ItemGroup>

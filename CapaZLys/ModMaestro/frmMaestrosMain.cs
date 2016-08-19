@@ -33,9 +33,9 @@ namespace FiltroLys.ZLys.ModMaestro
 
         private void fxTreeViewMaestro()
         {
-            List<entAcceso> oList = negSeguridad.ListMenuMaestros(GlobalVar.UsuarioLogeo);
+            List<entAccesoMenu> oList = negAccesoMenu.ListaMenuMaestro(GlobalVar.UsuarioLogeo);
             tvMaestro.BeginUnboundLoad();
-            foreach (entAcceso oEnt in oList){
+            foreach (entAccesoMenu oEnt in oList){
                 if (oEnt.OrdenPk == 0){
                     TreeListNode xNodePadre = null;
                     TreeListNode xNodeHijo = tvMaestro.AppendNode(new object[] { oEnt.NombreFin }, xNodePadre);
@@ -47,11 +47,11 @@ namespace FiltroLys.ZLys.ModMaestro
             tvMaestro.EndUnboundLoad();
         }
 
-        private void fxTreeViewMaestroChild(List<entAcceso> oList, TreeListNode xNode)
+        private void fxTreeViewMaestroChild(List<entAccesoMenu> oList, TreeListNode xNode)
         {
-            foreach (entAcceso oEnt in oList){
+            foreach (entAccesoMenu oEnt in oList){
                 if (oEnt.OrdenPk > 0){
-                    entAcceso oPadre = (entAcceso)xNode.Tag;
+                    entAccesoMenu oPadre = (entAccesoMenu)xNode.Tag;
                     if (oEnt.Aplicacion.Equals(oPadre.Aplicacion)){
                         String IdnivHijo = oEnt.IdenNiv;
                         String IdnivPadr = oPadre.IdenNiv;
@@ -99,7 +99,7 @@ namespace FiltroLys.ZLys.ModMaestro
 
         private void tvMaestro_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-            entAcceso oEnt = (entAcceso)e.Node.Tag;
+            entAccesoMenu oEnt = (entAccesoMenu)e.Node.Tag;
             if (oEnt != null){
                 if (!(oEnt.Niveles.Equals("0"))){
                     fxGenerarForm(oEnt);
@@ -111,7 +111,7 @@ namespace FiltroLys.ZLys.ModMaestro
 
         #region "==FuncionesList=="
 
-        private void fxGenerarForm(entAcceso oEnt) {
+        private void fxGenerarForm(entAccesoMenu oEnt) {
             String Modulo = "", Niveles = "";
             if (pnlContenedor.Controls.Count > 0) { pnlContenedor.Controls.RemoveAt(0); }
             fxSeguridadBotones(oEnt.Aplicacion,oEnt.Niveles);
@@ -565,7 +565,7 @@ namespace FiltroLys.ZLys.ModMaestro
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             String Modulo = "", Niveles = "";            
-            entAcceso oEnt = (entAcceso)tvMaestro.FocusedNode.Tag;
+            entAccesoMenu oEnt = (entAccesoMenu)tvMaestro.FocusedNode.Tag;
             if (oEnt == null) { return; }
 
             Modulo = oEnt.Aplicacion;
@@ -853,7 +853,7 @@ namespace FiltroLys.ZLys.ModMaestro
         private void btnModificar_Click(object sender, EventArgs e)
         {
             String Modulo = "", Niveles = "";
-            entAcceso oEnt = (entAcceso)tvMaestro.FocusedNode.Tag;
+            entAccesoMenu oEnt = (entAccesoMenu)tvMaestro.FocusedNode.Tag;
             if (oEnt == null) { return; }
 
             Modulo = oEnt.Aplicacion;
@@ -1139,7 +1139,7 @@ namespace FiltroLys.ZLys.ModMaestro
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             String Modulo = "", Niveles = "";
-            entAcceso oEnt = (entAcceso)tvMaestro.FocusedNode.Tag;
+            entAccesoMenu oEnt = (entAccesoMenu)tvMaestro.FocusedNode.Tag;
             if (oEnt == null) { return; }
 
             Modulo = oEnt.Aplicacion;
@@ -1425,7 +1425,7 @@ namespace FiltroLys.ZLys.ModMaestro
         private void btnVer_Click(object sender, EventArgs e)
         {
             String Modulo = "", Niveles = "";
-            entAcceso oEnt = (entAcceso)tvMaestro.FocusedNode.Tag;
+            entAccesoMenu oEnt = (entAccesoMenu)tvMaestro.FocusedNode.Tag;
             if (oEnt == null) { return; }
 
             Modulo = oEnt.Aplicacion;

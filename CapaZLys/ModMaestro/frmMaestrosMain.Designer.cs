@@ -72,6 +72,7 @@
             // 
             // btnNuevo
             // 
+            this.btnNuevo.Enabled = false;
             this.btnNuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevo.Image")));
             this.btnNuevo.Location = new System.Drawing.Point(269, 31);
             this.btnNuevo.Name = "btnNuevo";

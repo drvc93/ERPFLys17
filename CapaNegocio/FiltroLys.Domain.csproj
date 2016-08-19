@@ -95,11 +95,15 @@
     <Compile Include="Maestro\Tesoreria\negTipoServicio.cs" />
     <Compile Include="Maestro\Tesoreria\negTipoPago.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seguridad\negAccesoReporte.cs" />
+    <Compile Include="Seguridad\negAccesoModulo.cs" />
+    <Compile Include="Seguridad\negAccesoMenu.cs" />
+    <Compile Include="Sistema\negBaseDatos.cs" />
+    <Compile Include="Sistema\negReporte.cs" />
+    <Compile Include="Sistema\negMenu.cs" />
     <Compile Include="Seguridad\negUsuario.cs" />
     <Compile Include="Seguridad\negAuditoria.cs" />
-    <Compile Include="Seguridad\negSeguridad.cs" />
     <Compile Include="Sistema\negConexion.cs" />
-    <Compile Include="Sistema\negTabla.cs" />
     <Compile Include="Tesoreria\negObligacion.cs" />
   </ItemGroup>
   <ItemGroup>

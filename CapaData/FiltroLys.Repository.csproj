@@ -97,14 +97,18 @@
     <Compile Include="Maestro\Tesoreria\datTipoPago.cs" />
     <Compile Include="Objeto\fnGetOpera.cs" />
     <Compile Include="Objeto\fnParmCmd.cs" />
+    <Compile Include="Seguridad\datAccesoReporte.cs" />
+    <Compile Include="Seguridad\datAccesoModulo.cs" />
+    <Compile Include="Seguridad\datAccesoMenu.cs" />
+    <Compile Include="Sistema\datBaseDatos.cs" />
+    <Compile Include="Sistema\datReporte.cs" />
+    <Compile Include="Sistema\datMenu.cs" />
     <Compile Include="Seguridad\datUsuario.cs" />
     <Compile Include="Seguridad\datAuditoria.cs" />
     <Compile Include="Seguridad\datEncriptar.cs" />
-    <Compile Include="Seguridad\datSeguridad.cs" />
     <Compile Include="Maestro\General\datCompania.cs" />
     <Compile Include="ReadIni.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sistema\datTabla.cs" />
     <Compile Include="Tesoreria\datObligacion.cs" />
   </ItemGroup>
   <ItemGroup>

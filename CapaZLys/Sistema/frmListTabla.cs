@@ -23,7 +23,7 @@ namespace FiltroLys.ZLys.Sistema
 
         private void frmListTabla_Load(object sender, EventArgs e)
         {
-            fxCargarCombos();
+            fxCargarBaseDatos();
             fxValoresDefault();
         }
 
@@ -41,12 +41,12 @@ namespace FiltroLys.ZLys.Sistema
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            String sTabla;
+            //String sTabla;
             if (!fxValidarCriterio()) { return; }
 
-            sTabla = ((entTabla)cmbTabla.GetSelectedDataRow()).TableName;
+            /*sTabla = ((entTabla)cmbTabla.GetSelectedDataRow()).TableName;
             List<entColumna> Ls = negTabla.ListColumna(sTabla);
-            grControl.DataSource = Ls;
+            grControl.DataSource = Ls;*/
             
         }
 
@@ -54,10 +54,20 @@ namespace FiltroLys.ZLys.Sistema
 
         #region "==FuncionesForm=="
 
-        private void fxCargarCombos()
+        private void fxCargarBaseDatos()
         {
-            //Tabla
-            List<entTabla> Lst = negTabla.ListTabla();
+            List<entBaseDato> Lst = negBaseDatos.ListaBaseDatos();
+            cmbBaseDato.Properties.DataSource = Lst;
+            cmbBaseDato.Properties.DisplayMember = "DataBase";
+            cmbBaseDato.Properties.ValueMember = "DataBase";
+            Lst = null;
+        }
+
+        private void fxCargarTabla()
+        {
+            String sBaseD = cmbBaseDato.EditValue.ToString();
+
+            List<entTabla> Lst = negBaseDatos.ListaTablas(sBaseD);
             cmbTabla.Properties.DataSource = Lst;
             cmbTabla.Properties.DisplayMember = "TableName";
             cmbTabla.Properties.ValueMember = "TableName";
@@ -68,7 +78,7 @@ namespace FiltroLys.ZLys.Sistema
         {
             txtFolder.Text = String.Empty;
             txtEntidad.Text = String.Empty;
-            cmbTabla.EditValue = fnConst.TextSeleccioneNom;
+            cmbTabla.EditValue = "LYS";            
         }
 
         private Boolean fxValidarCriterio()

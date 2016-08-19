@@ -74,6 +74,14 @@ namespace FiltroLys.Type
         public const String tsqCierreMensualRevision = "SP_CB_CIERREMENSUAL_REVISION";
         public const String tsqCierreMensualProcesar = "SP_CB_CIERREMENSUAL_CUENTA";
         public const String tsqPeriodoSiguienteCB = "SP_CB_PERIODOSIGUIENTE";
+        public const String tsqMenuSys = "UP_SYS_MANT_MENUS";
+        public const String tsqAccesoMenuSys = "UP_SYS_MANT_ACCESOMENU";
+        public const String tsqAccesoModuloSys = "UP_SYS_MANT_ACCESOMODULO";
+        public const String tsqAccesoListMaestroSys = "UP_SYS_LIST_ACCESOMENUMAESTRONET";
+        public const String tsqReporteSys = "UP_SYS_MANT_REPORTE";
+        public const String tsqAccesoReporteSys = "UP_SYS_MANT_ACCESOREPORTE";
+        public const String tsqAccesoListReporteSys = "UP_SYS_LIST_ACCESOREPORTENET";
+        public const String tsqSchemaBDSys = "UP_SYS_LIST_ESQUEMABD";
 
     }
 }

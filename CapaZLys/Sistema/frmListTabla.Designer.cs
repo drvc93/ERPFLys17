@@ -44,8 +44,12 @@
             this.Propiedad = new DevExpress.XtraGrid.Columns.GridColumn();
             this.VB = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ricVB = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.cmbBaseDato = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gpFiltrar)).BeginInit();
             this.gpFiltrar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnMain)).BeginInit();
             this.pnMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTabla.Properties)).BeginInit();
@@ -53,10 +57,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEntidad.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuery.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ricVB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbBaseDato.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gpFiltrar
             // 
+            this.gpFiltrar.Controls.Add(this.cmbBaseDato);
+            this.gpFiltrar.Controls.Add(this.labelControl4);
             this.gpFiltrar.Controls.Add(this.btnGenEntidad);
             this.gpFiltrar.Controls.Add(this.txtEntidad);
             this.gpFiltrar.Controls.Add(this.labelControl3);
@@ -64,20 +71,38 @@
             this.gpFiltrar.Controls.Add(this.cmbTabla);
             this.gpFiltrar.Controls.Add(this.labelControl2);
             this.gpFiltrar.Controls.Add(this.labelControl1);
-            this.gpFiltrar.Size = new System.Drawing.Size(558, 57);
+            this.gpFiltrar.Size = new System.Drawing.Size(634, 57);
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(570, 37);
+            this.btnBuscar.Location = new System.Drawing.Point(646, 37);
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // grControl
+            // 
+            this.grControl.Location = new System.Drawing.Point(6, 95);
+            this.grControl.Size = new System.Drawing.Size(541, 345);
             // 
             // label1
             // 
+            this.label1.Size = new System.Drawing.Size(722, 23);
             this.label1.Text = "TABLAS DE SISTEMA";
+            // 
+            // gvDatos
+            // 
+            this.gvDatos.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gvDatos.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvDatos.OptionsBehavior.Editable = false;
+            this.gvDatos.OptionsBehavior.ReadOnly = true;
+            this.gvDatos.OptionsDetail.EnableMasterViewMode = false;
+            this.gvDatos.OptionsView.ColumnAutoWidth = false;
+            this.gvDatos.OptionsView.ShowGroupPanel = false;
             // 
             // pnMain
             // 
             this.pnMain.Controls.Add(this.txtQuery);
+            this.pnMain.Size = new System.Drawing.Size(733, 445);
+            this.pnMain.Controls.SetChildIndex(this.grControl, 0);
             this.pnMain.Controls.SetChildIndex(this.btnBuscar, 0);
             this.pnMain.Controls.SetChildIndex(this.gpFiltrar, 0);
             this.pnMain.Controls.SetChildIndex(this.label1, 0);
@@ -85,7 +110,7 @@
             // 
             // cmbTabla
             // 
-            this.cmbTabla.Location = new System.Drawing.Point(46, 5);
+            this.cmbTabla.Location = new System.Drawing.Point(47, 29);
             this.cmbTabla.Name = "cmbTabla";
             this.cmbTabla.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -105,7 +130,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(11, 7);
+            this.labelControl1.Location = new System.Drawing.Point(11, 31);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(30, 13);
             this.labelControl1.TabIndex = 12;
@@ -115,19 +140,19 @@
             // 
             this.txtFolder.Location = new System.Drawing.Point(286, 5);
             this.txtFolder.Name = "txtFolder";
-            this.txtFolder.Size = new System.Drawing.Size(100, 20);
+            this.txtFolder.Size = new System.Drawing.Size(152, 20);
             this.txtFolder.TabIndex = 14;
             // 
             // txtEntidad
             // 
-            this.txtEntidad.Location = new System.Drawing.Point(447, 4);
+            this.txtEntidad.Location = new System.Drawing.Point(496, 5);
             this.txtEntidad.Name = "txtEntidad";
             this.txtEntidad.Size = new System.Drawing.Size(100, 20);
             this.txtEntidad.TabIndex = 16;
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(405, 6);
+            this.labelControl3.Location = new System.Drawing.Point(454, 6);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(36, 13);
             this.labelControl3.TabIndex = 15;
@@ -137,7 +162,7 @@
             // 
             this.btnGenEntidad.Image = ((System.Drawing.Image)(resources.GetObject("btnGenEntidad.Image")));
             this.btnGenEntidad.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
-            this.btnGenEntidad.Location = new System.Drawing.Point(11, 29);
+            this.btnGenEntidad.Location = new System.Drawing.Point(286, 27);
             this.btnGenEntidad.Name = "btnGenEntidad";
             this.btnGenEntidad.Size = new System.Drawing.Size(108, 23);
             this.btnGenEntidad.TabIndex = 17;
@@ -149,9 +174,9 @@
             this.txtQuery.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtQuery.Location = new System.Drawing.Point(508, 94);
+            this.txtQuery.Location = new System.Drawing.Point(553, 94);
             this.txtQuery.Name = "txtQuery";
-            this.txtQuery.Size = new System.Drawing.Size(137, 345);
+            this.txtQuery.Size = new System.Drawing.Size(168, 346);
             this.txtQuery.TabIndex = 11;
             // 
             // Posicion
@@ -224,17 +249,39 @@
             this.ricVB.ValueChecked = "S";
             this.ricVB.ValueUnchecked = "N";
             // 
+            // cmbBaseDato
+            // 
+            this.cmbBaseDato.Location = new System.Drawing.Point(47, 5);
+            this.cmbBaseDato.Name = "cmbBaseDato";
+            this.cmbBaseDato.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbBaseDato.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TableName", 120, "Tabla")});
+            this.cmbBaseDato.Properties.PopupWidth = 250;
+            this.cmbBaseDato.Size = new System.Drawing.Size(190, 20);
+            this.cmbBaseDato.TabIndex = 18;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(11, 7);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(33, 13);
+            this.labelControl4.TabIndex = 19;
+            this.labelControl4.Text = "BDato:";
+            // 
             // frmListTabla
             // 
             this.Appearance.BackColor = System.Drawing.SystemColors.Control;
             this.Appearance.Options.UseBackColor = true;
-            this.ClientSize = new System.Drawing.Size(657, 444);
+            this.ClientSize = new System.Drawing.Size(733, 445);
             this.Name = "frmListTabla";
             this.Text = "Tablas Sistema";
             this.Load += new System.EventHandler(this.frmListTabla_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gpFiltrar)).EndInit();
             this.gpFiltrar.ResumeLayout(false);
             this.gpFiltrar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDatos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnMain)).EndInit();
             this.pnMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cmbTabla.Properties)).EndInit();
@@ -242,6 +289,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEntidad.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuery.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ricVB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbBaseDato.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -263,5 +311,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn Propiedad;
         private DevExpress.XtraGrid.Columns.GridColumn VB;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit ricVB;
+        private DevExpress.XtraEditors.LookUpEdit cmbBaseDato;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
     }
 }

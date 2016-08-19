@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace FiltroLys.Model.Seguridad
 {
-    public class entAcceso:entBase
+    public class entAccesoMenu:entBase
     {
         private String c_Usuario, c_Aplicacion, c_Niveles;
         private String c_Acceso, c_Nuevo, c_Modificar, c_Eliminar, c_Otros;
         private String c_UltimoUsuarioMod;
         private DateTime d_UltimaFechaMod;
         private Int32 n_OrdenPk;
-        private String c_NombreFin, c_Icono, c_IdenNiv;
+        private String c_NombreFin, c_Icono, c_IdenNiv, c_NombreAplicacion;
 
         public String Usuario
         {
@@ -97,6 +97,12 @@ namespace FiltroLys.Model.Seguridad
         {
             get { return c_IdenNiv; }
             set { c_IdenNiv = value; }
+        }
+
+        public String NombreAplicacion
+        {
+            get { return c_NombreAplicacion; }
+            set { c_NombreAplicacion = value; }
         }
 
     }
