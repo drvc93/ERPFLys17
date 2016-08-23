@@ -204,6 +204,10 @@ namespace FiltroLys.Type
         public const String OperaAccionUpd = "UPD";
         public const String OperaAccionDel = "DEL";
 
+        public const String ListaCondSel = "SEL";
+        public const String ListaCondUpd = "UPD";
+        public const String ListaCondSelUpd = "SELUPD";
+
         public const String MensajeDeleteMaestro = "Se eliminará el registro seleccionado, desea continuar";
 
     }

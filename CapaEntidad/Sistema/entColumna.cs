@@ -10,6 +10,7 @@ namespace FiltroLys.Model.Sistema
     {
         private String c_Nombre, c_IsNull, c_Tipo, c_Default, c_Propiedad;
         private String c_DefaultNet,c_TipoNetProp,c_TipoNetParam,c_AnchoSP,c_FlagNull,c_VB;
+        private String c_PkId = "S", c_Sel = "N", c_Combo = "N", c_Search = "N";
         private int n_Posicion, n_QCaract, n_Precision, n_Scale;
 
         public String Nombre {
@@ -101,5 +102,29 @@ namespace FiltroLys.Model.Sistema
             set { c_VB = value; }
         }
 
+        public String PkId
+        {
+            get { return c_PkId; }
+            set { c_PkId = value; }
+        }
+
+        public String Sel
+        {
+            get { return c_Sel; }
+            set { c_Sel = value; }
+        }
+
+        public String Combo
+        {
+            get { return c_Combo; }
+            set { c_Combo = value; }
+        }
+
+        public String Search
+        {
+            get { return c_Search; }
+            set { c_Search = value; }
+        }
+        
     }
 }

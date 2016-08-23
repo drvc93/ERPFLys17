@@ -86,7 +86,7 @@ namespace FiltroLys.Repository.Sistema
                 Cmd.CommandType = CommandType.StoredProcedure;
                 Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
                 Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = "LSTCOLUMN";
-                Cmd.Parameters.Add(new SqlParameter("@BaseDatos", SqlDbType.VarChar)).Value = "BaseDatos";
+                Cmd.Parameters.Add(new SqlParameter("@BaseDatos", SqlDbType.VarChar)).Value = BaseDatos;
                 Cmd.Parameters.Add(new SqlParameter("@Tabla", SqlDbType.VarChar)).Value = Tabla;
 
                 SqlDataAdapter adapter = new SqlDataAdapter();

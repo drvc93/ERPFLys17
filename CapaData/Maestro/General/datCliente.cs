@@ -145,11 +145,9 @@ namespace FiltroLys.Repository.Maestro.General
             entErrores entErr = new entErrores();
             String sMsj = "";
 
-            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
-            {
+            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion())){
                 SqlTransaction Trs = null;
-                try
-                {
+                try{
                     Cmd.Connection = Cnx;
                     Cmd.Connection.Open();
                     Trs = Cnx.BeginTransaction();

@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.ComponentModel;
-using FiltroLys.Query.Contabilidad;
 using FiltroLys.Model.Contabilidad;
 using FiltroLys.Model.Maestro.Contabilidad;
 using FiltroLys.Repository.Maestro.Contabilidad;
 using FiltroLys.Repository.Objeto;
 using FiltroLys.Model.Objeto;
 using FiltroLys.Type;
-using System.Transactions;
 
 namespace FiltroLys.Repository.Contabilidad
 {

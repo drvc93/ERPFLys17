@@ -97,6 +97,16 @@ namespace FiltroLys.ZLys.Funciones
             return Lista;
         }
 
+        public static List<entComboList> ListSelectCondicion()
+        {
+            List<entComboList> Lista = new List<entComboList>();
+            Lista.Add(new entComboList() { Codigo = "", Nombre = "" });
+            Lista.Add(new entComboList() { Codigo = fnConst.ListaCondSel, Nombre = fnConst.ListaCondSel });
+            Lista.Add(new entComboList() { Codigo = fnConst.ListaCondUpd, Nombre = fnConst.ListaCondUpd });
+            Lista.Add(new entComboList() { Codigo = fnConst.ListaCondSelUpd, Nombre = fnConst.ListaCondSelUpd });
+            return Lista;
+        }
+
         #endregion
 
         #region "==Lista Tesoreria=="
