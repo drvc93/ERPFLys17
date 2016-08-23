@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using FiltroLys.Query.Maestro.Contabilidad;
 using FiltroLys.Model.Maestro.Contabilidad;
 using FiltroLys.Model.Objeto;
 using FiltroLys.Repository.Objeto;
@@ -142,7 +141,7 @@ namespace FiltroLys.Repository.Maestro.Contabilidad
             SqlCommand Cmd = new SqlCommand();
             entErrores entErr = new entErrores();
             String sMsj = "";
-
+            
             using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion())){
                 SqlTransaction Trs = null;
                 try{

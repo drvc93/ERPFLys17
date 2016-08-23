@@ -48,8 +48,6 @@ D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaData\obj\Debug\FiltroLys.Repository.pdb
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaData\bin\Debug\FiltroLys.Repository.dll
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaData\bin\Debug\FiltroLys.Repository.pdb
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaData\bin\Debug\FiltroLys.Model.dll
-D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaData\bin\Debug\FiltroLys.Query.dll
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaData\bin\Debug\FiltroLys.Type.dll
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaData\bin\Debug\FiltroLys.Model.pdb
-D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaData\bin\Debug\FiltroLys.Query.pdb
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaData\bin\Debug\FiltroLys.Type.pdb

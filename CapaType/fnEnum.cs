@@ -81,5 +81,12 @@ namespace FiltroLys.Type
             PanelMant = 2
         }
 
+        public enum TDatoReportParam{
+            sStrings = 1,
+            sInteger = 2,
+            sDecimal = 3,
+            sDateTim = 4            
+        }
+
     }
 }

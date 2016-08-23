@@ -102,7 +102,34 @@ namespace FiltroLys.Repository.Sistema
                 }
             }
             return dt;
-        }        
+        }
+
+        public static DataTable ListaDatosOfStoreProc(String XsqlProcedure)
+        {
+            DataTable dt = new DataTable();
+            SqlCommand Cmd = new SqlCommand();
+
+            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
+            {
+                Cmd.Connection = Cnx;
+                Cmd.Connection.Open();
+                Cmd.CommandText = XsqlProcedure;
+                Cmd.CommandType = CommandType.Text;
+                
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = Cmd;
+                adapter.Fill(dt);
+                if (Cmd.Connection.State == ConnectionState.Open)
+                {
+                    Cmd.Connection.Close();
+                    Cmd.Connection.Dispose();
+                    Cnx.Close();
+                    Cnx.Dispose();
+                    GC.SuppressFinalize(Cnx);
+                }
+            }
+            return dt;
+        }
 
     }
 }

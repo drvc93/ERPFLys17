@@ -51,6 +51,7 @@
             this.xrPersona = new DevExpress.XtraReports.UI.XRLabel();
             this.sqlConnRPT = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.pageHeaderBand1 = new DevExpress.XtraReports.UI.PageHeaderBand();
+            this.xrPeriodo = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel18 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel15 = new DevExpress.XtraReports.UI.XRLabel();
@@ -92,7 +93,8 @@
             this.xrFecha = new DevExpress.XtraReports.UI.XRLabel();
             this.xrPeriodoVoucher = new DevExpress.XtraReports.UI.XRLabel();
             this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
-            this.xrPeriodo = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -391,6 +393,8 @@
             // pageHeaderBand1
             // 
             this.pageHeaderBand1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel3,
+            this.xrLabel2,
             this.xrPeriodo,
             this.xrLabel5,
             this.xrLabel18,
@@ -413,6 +417,16 @@
             this.xrPageInfo1});
             this.pageHeaderBand1.HeightF = 115.9583F;
             this.pageHeaderBand1.Name = "pageHeaderBand1";
+            // 
+            // xrPeriodo
+            // 
+            this.xrPeriodo.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.xrPeriodo.LocationFloat = new DevExpress.Utils.PointFloat(61.45833F, 15.70832F);
+            this.xrPeriodo.Name = "xrPeriodo";
+            this.xrPeriodo.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrPeriodo.SizeF = new System.Drawing.SizeF(143.75F, 15.70834F);
+            this.xrPeriodo.StylePriority.UseFont = false;
+            this.xrPeriodo.Text = "xrPeriodo";
             // 
             // xrLabel5
             // 
@@ -939,15 +953,25 @@
             this.GroupFooter1.HeightF = 41.66667F;
             this.GroupFooter1.Name = "GroupFooter1";
             // 
-            // xrPeriodo
+            // xrLabel2
             // 
-            this.xrPeriodo.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.xrPeriodo.LocationFloat = new DevExpress.Utils.PointFloat(61.45833F, 15.70832F);
-            this.xrPeriodo.Name = "xrPeriodo";
-            this.xrPeriodo.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrPeriodo.SizeF = new System.Drawing.SizeF(143.75F, 15.70834F);
-            this.xrPeriodo.StylePriority.UseFont = false;
-            this.xrPeriodo.Text = "xrPeriodo";
+            this.xrLabel2.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBRODIARIO.ruc")});
+            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(32.29167F, 31.41667F);
+            this.xrLabel2.Name = "xrLabel2";
+            this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrLabel2.SizeF = new System.Drawing.SizeF(100F, 15.70833F);
+            this.xrLabel2.Text = "xrLabel2";
+            // 
+            // xrLabel3
+            // 
+            this.xrLabel3.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBRODIARIO.nombrecompania")});
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(97.91663F, 47.12499F);
+            this.xrLabel3.Name = "xrLabel3";
+            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrLabel3.SizeF = new System.Drawing.SizeF(182.2917F, 15.70836F);
+            this.xrLabel3.Text = "xrLabel3";
             // 
             // rptPrueba
             // 
@@ -1033,5 +1057,7 @@
         private DevExpress.XtraReports.UI.XRLabel xrPersona;
         private DevExpress.XtraReports.UI.GroupFooterBand GroupFooter1;
         private DevExpress.XtraReports.UI.XRLabel xrPeriodo;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel3;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel2;
     }
 }

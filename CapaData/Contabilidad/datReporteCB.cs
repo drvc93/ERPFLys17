@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.ComponentModel;
-using FiltroLys.Query.Contabilidad;
 using FiltroLys.Model.Contabilidad;
 using FiltroLys.Model.Maestro.Contabilidad;
 using FiltroLys.Repository.Maestro.Contabilidad;
@@ -25,7 +24,7 @@ namespace FiltroLys.Repository.Contabilidad
             SqlCommand Cmd = new SqlCommand();
             
             using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
-            {
+            {/*
                 Cmd.Connection = Cnx;
                 Cmd.Connection.Open();
                 Cmd.CommandText = tsqReporteCB.UP_RptLibroDiario();
@@ -47,7 +46,7 @@ namespace FiltroLys.Repository.Contabilidad
                     Cnx.Close();
                     Cnx.Dispose();
                     GC.SuppressFinalize(Cnx);
-                }
+                }*/
             }
             return dt;
         }
@@ -56,7 +55,7 @@ namespace FiltroLys.Repository.Contabilidad
         {
             DataTable dt = new DataTable();
             SqlCommand Cmd = new SqlCommand();
-
+            /*
             using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
             {
                 Cmd.Connection = Cnx;
@@ -83,7 +82,7 @@ namespace FiltroLys.Repository.Contabilidad
                     Cnx.Dispose();
                     GC.SuppressFinalize(Cnx);
                 }
-            }
+            }*/
             return dt;
         }
 
@@ -91,7 +90,7 @@ namespace FiltroLys.Repository.Contabilidad
         String FlagProv, String Proveedor, String FlagDatoProv, String DatoProv, String TipoRep){
             DataTable dt = new DataTable();
             SqlCommand Cmd = new SqlCommand();
-
+            /*
             using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
             {
                 Cmd.Connection = Cnx;
@@ -121,7 +120,7 @@ namespace FiltroLys.Repository.Contabilidad
                     Cnx.Dispose();
                     GC.SuppressFinalize(Cnx);
                 }
-            }
+            }*/
             return dt;
         }
 
@@ -131,7 +130,7 @@ namespace FiltroLys.Repository.Contabilidad
             
             DataTable dt = new DataTable();
             SqlCommand Cmd = new SqlCommand();
-
+            /*
             using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
             {
                 Cmd.Connection = Cnx;
@@ -167,7 +166,7 @@ namespace FiltroLys.Repository.Contabilidad
                     Cnx.Dispose();
                     GC.SuppressFinalize(Cnx);
                 }
-            }
+            }*/
             return dt;
         }
 
@@ -175,7 +174,7 @@ namespace FiltroLys.Repository.Contabilidad
         {
             DataTable dt = new DataTable();
             SqlCommand Cmd = new SqlCommand();
-
+            /*
             using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
             {
                 Cmd.Connection = Cnx;
@@ -198,7 +197,7 @@ namespace FiltroLys.Repository.Contabilidad
                     Cnx.Dispose();
                     GC.SuppressFinalize(Cnx);
                 }
-            }
+            }*/
             return dt;
         }
 
@@ -206,7 +205,7 @@ namespace FiltroLys.Repository.Contabilidad
         {
             DataTable dt = new DataTable();
             SqlCommand Cmd = new SqlCommand();
-
+            /*
             using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
             {
                 Cmd.Connection = Cnx;
@@ -229,7 +228,7 @@ namespace FiltroLys.Repository.Contabilidad
                     Cnx.Dispose();
                     GC.SuppressFinalize(Cnx);
                 }
-            }
+            }*/
             return dt;
         }
 
@@ -238,7 +237,7 @@ namespace FiltroLys.Repository.Contabilidad
         {
             DataTable dt = new DataTable();
             SqlCommand Cmd = new SqlCommand();
-
+            /*
             using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
             {
                 Cmd.Connection = Cnx;
@@ -267,7 +266,7 @@ namespace FiltroLys.Repository.Contabilidad
                     Cnx.Dispose();
                     GC.SuppressFinalize(Cnx);
                 }
-            }
+            }*/
             return dt;
         }
 

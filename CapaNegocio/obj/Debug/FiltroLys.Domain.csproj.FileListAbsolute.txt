@@ -55,11 +55,9 @@ D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaNegocio\bin\Debug\FiltroLys.Domain.pdb
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaNegocio\bin\Debug\FiltroLys.Model.dll
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaNegocio\bin\Debug\FiltroLys.Repository.dll
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaNegocio\bin\Debug\FiltroLys.Type.dll
-D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaNegocio\bin\Debug\FiltroLys.Query.dll
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaNegocio\bin\Debug\FiltroLys.Repository.pdb
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaNegocio\bin\Debug\FiltroLys.Model.pdb
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaNegocio\bin\Debug\FiltroLys.Type.pdb
-D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaNegocio\bin\Debug\FiltroLys.Query.pdb
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaNegocio\obj\Debug\FiltroLys.Domain.csprojResolveAssemblyReference.cache
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaNegocio\obj\Debug\FiltroLys.Domain.dll
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaNegocio\obj\Debug\FiltroLys.Domain.pdb

@@ -69,7 +69,7 @@ namespace FiltroLys.Model.Seguridad
             set { c_UltimoUsuarioMod = value; }
         }
 
-        public DateTime UltimoFechaMod
+        public DateTime UltimaFechaMod
         {
             get { return d_UltimaFechaMod; }
             set { d_UltimaFechaMod = value; }

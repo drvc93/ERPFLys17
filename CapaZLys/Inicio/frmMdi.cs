@@ -2,6 +2,8 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using DevExpress.LookAndFeel;
 using DevExpress.Tutorials.Controls;
@@ -22,6 +24,8 @@ using FiltroLys.ZLys.Sistema;
 using FiltroLys.ZLys.Funciones;
 using FiltroLys.ZLys.Controles.Formulario;
 using FiltroLys.ZLys.ModMaestro;
+using FiltroLys.Model.Seguridad;
+using FiltroLys.Domain.Seguridad;
 
 namespace FiltroLys.ZLys.Inicio
 {
@@ -65,6 +69,7 @@ namespace FiltroLys.ZLys.Inicio
             DevExpress.XtraBars.Helpers.SkinHelper.InitSkinGalleryDropDown(skins);
             iPaintStyle.DropDownControl = skins;            
             barEditItem1.EditValue = (Bitmap)DevExpress.Utils.ResourceImageHelper.CreateImageFromResources("FiltroLys.ZLys.online.gif", typeof(frmMdi).Assembly);
+            AccesoPrincipal();
         }
 
         private void frmMdi_FormClosing(object sender, FormClosingEventArgs e)
@@ -185,6 +190,11 @@ namespace FiltroLys.ZLys.Inicio
 
         private void biPrefSegUsuario_ItemClick(object sender, ItemClickEventArgs e)
         {
+            
+        }
+
+        private void biPrefSegEntity_ItemClick(object sender, ItemClickEventArgs e)
+        {
             frmListTabla frm = new frmListTabla();
             fnAddTab.FormOpen(frm);
         }
@@ -201,6 +211,17 @@ namespace FiltroLys.ZLys.Inicio
         private void biPrefExit_ItemClick(object sender, ItemClickEventArgs e)
         {
             this.Close();
+        }
+
+        private void biPrefSegMenu_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            
+        }
+
+        private void biPrefReporte_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FiltroLys.ZLys.ModReporte.frmReportesMain frmRpt = new FiltroLys.ZLys.ModReporte.frmReportesMain();            
+            fnAddTab.FormOpen(frmRpt);
         }
 
         #endregion
@@ -262,21 +283,68 @@ namespace FiltroLys.ZLys.Inicio
 
         #endregion
 
-        private void biPrefSegMenu_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            /*FiltroLys.ZLys.ModReporte.frmReportesMain frmRpt = new FiltroLys.ZLys.ModReporte.frmReportesMain();
-            //orpt.viewReport();
-            //frmInicioContabilidad frm = new frmInicioContabilidad();
-            fnAddTab.FormOpen(frmRpt); */
+        #region "Funciones Acceso"
+
+        private void AccesoPrincipal() {
+            AccesoxModulo();
         }
 
-        private void biPrefReporte_ItemClick(object sender, ItemClickEventArgs e)
+        private void AccesoxModulo()
         {
-            FiltroLys.ZLys.ModReporte.frmReportesMain frmRpt = new FiltroLys.ZLys.ModReporte.frmReportesMain();
-            //orpt.viewReport();
-            //frmInicioContabilidad frm = new frmInicioContabilidad();
-            fnAddTab.FormOpen(frmRpt); 
+            List<entAccesoModulo> LstA = negAccesoModulo.ListAccXUsuario(GlobalVar.UsuarioLogeo);
+            List<entAccesoModulo> LstB = LstA.Where(x => x.Estado.Equals("A")).ToList<entAccesoModulo>();
+            Boolean bValor = false;
+
+            nbarSistContabilidad.Visible = bValor;
+            nbarSistActivoFijo.Visible = bValor;
+            nbarSistCalidad.Visible = bValor;
+            nbarSistComercial.Visible = bValor;
+            nbarSistLogistica.Visible = bValor;
+            nbarSistMantenimiento.Visible = bValor;
+            nbarSistProduccion.Visible = bValor;
+            nbarSistRRHH.Visible = bValor;
+            nbarSistTesoreria.Visible = bValor;
+
+            bValor = true;
+            foreach (entAccesoModulo oEnt in LstB) {
+                String sMod = oEnt.Aplicacion;
+                switch (sMod) { 
+                    case "CB":
+                        nbarSistContabilidad.Visible = bValor;
+                        break;
+                    case "AF":
+                        nbarSistActivoFijo.Visible = bValor;
+                        break;               
+                    case "CC":
+                        nbarSistCalidad.Visible = bValor;
+                        break;
+                    case "CO":
+                        nbarSistComercial.Visible = bValor;
+                        break;
+                    case "IS":                        
+                        break;
+                    case "LO":
+                        nbarSistLogistica.Visible = bValor;
+                        break;
+                    case "MT":
+                        nbarSistMantenimiento.Visible = bValor;
+                        break;
+                    case "PC":
+                        nbarSistProduccion.Visible = bValor;
+                        break;
+                    case "PT":                        
+                        break;
+                    case "RH":
+                        nbarSistRRHH.Visible = bValor;
+                        break;
+                    case "TR":
+                        nbarSistTesoreria.Visible = bValor;
+                        break;
+                }
+            }
         }
+
+        #endregion
 
     }
     

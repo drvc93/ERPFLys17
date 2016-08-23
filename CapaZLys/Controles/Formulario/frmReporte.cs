@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraSplashScreen;
+using FiltroLys.ZLys.Funciones;
 
 namespace FiltroLys.ZLys.Controles.Formulario
 {
@@ -14,7 +15,7 @@ namespace FiltroLys.ZLys.Controles.Formulario
     {
         #region "==Propiedades=="
 
-        protected String xQuery = "";
+        protected Boolean bValidoExportar = true;
 
         #endregion
 
@@ -25,7 +26,7 @@ namespace FiltroLys.ZLys.Controles.Formulario
             InitializeComponent();
         }
 
-        private void frmRptLibroDiario_Load(object sender, EventArgs e){}
+        private void frmReporte_Load(object sender, EventArgs e) { }
 
         #endregion
         
@@ -68,8 +69,7 @@ namespace FiltroLys.ZLys.Controles.Formulario
             return true;
         }
         public virtual Boolean uf_validarExpExcel(){
-            if (String.IsNullOrEmpty(xQuery)) { return false; }
-            return true;
+            return bValidoExportar;
         }
         public virtual void ue_Buscar() {
             

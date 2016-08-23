@@ -74,6 +74,36 @@ namespace FiltroLys.Repository.Seguridad
             return dt;
         }
 
+        public static DataTable ListAccXUsuario(String Usuario)
+        {
+            DataTable dt = new DataTable();
+            SqlCommand Cmd = new SqlCommand();
+
+            using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
+            {
+                Cmd.Connection = Cnx;
+                Cmd.Connection.Open();
+                Cmd.CommandText = fnQuery.tsqAccesoModuloSys;
+                Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
+                Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = "ACCXUSU";
+                Cmd.Parameters.Add(new SqlParameter("@Usuario", SqlDbType.VarChar)).Value = Usuario;
+                
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = Cmd;
+                adapter.Fill(dt);
+                if (Cmd.Connection.State == ConnectionState.Open)
+                {
+                    Cmd.Connection.Close();
+                    Cmd.Connection.Dispose();
+                    Cnx.Close();
+                    Cnx.Dispose();
+                    GC.SuppressFinalize(Cnx);
+                }
+            }
+            return dt;
+        }
+
         public static entErrores MantFormID(entAccesoModulo Data)
         {
             SqlCommand Cmd = new SqlCommand();

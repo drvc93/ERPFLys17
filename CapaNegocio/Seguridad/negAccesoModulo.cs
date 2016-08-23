@@ -31,6 +31,13 @@ namespace FiltroLys.Domain.Seguridad
             return EObj;
         }
 
+        public static List<entAccesoModulo> ListAccXUsuario(String Usuario)
+        {
+            List<entAccesoModulo> ListObj = new List<entAccesoModulo>();
+            ListObj = datAccesoModulo.ListAccXUsuario(Usuario).ToList<entAccesoModulo>();
+            return ListObj;
+        }
+
         public static entErrores MantFormID(entAccesoModulo Data)
         {
             return datAccesoModulo.MantFormID(Data);

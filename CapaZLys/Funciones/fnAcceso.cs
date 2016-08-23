@@ -12,11 +12,7 @@ namespace FiltroLys.ZLys.Funciones
 {
     public class fnAcceso
     {
-        List<Controles> ListObj;
-
-        public fnAcceso(){
-            ListObj = new List<Controles>();
-        }
+        List<Controles> ListObj = new List<Controles>();
 
         public void addControl(Controles obj){
             ListObj.Add(obj);
@@ -81,6 +77,8 @@ namespace FiltroLys.ZLys.Funciones
 
     }
 
+    #region "EntControles"
+
     public class Controles{
         private SimpleButton btnOpcion;
         private String sNivel;
@@ -98,5 +96,7 @@ namespace FiltroLys.ZLys.Funciones
         public fnEnum.AccesoOpcion AccesoOpcion{get{return accesoOpcion;}}
         
     }
+
+    #endregion
 
 }

@@ -280,9 +280,7 @@ D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\bin\Debug\FiltroLys.Domain.dll
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\bin\Debug\FiltroLys.Model.dll
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\bin\Debug\FiltroLys.Type.dll
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\bin\Debug\FiltroLys.Repository.dll
-D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\bin\Debug\FiltroLys.Query.dll
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\bin\Debug\FiltroLys.Model.pdb
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\bin\Debug\FiltroLys.Domain.pdb
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\bin\Debug\FiltroLys.Type.pdb
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\bin\Debug\FiltroLys.Repository.pdb
-D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\bin\Debug\FiltroLys.Query.pdb

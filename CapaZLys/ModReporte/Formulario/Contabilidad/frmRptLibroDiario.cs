@@ -101,11 +101,23 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
 
         public override void ue_Buscar() {
             rptPrueba orpt = new rptPrueba();
-            xQuery = orpt.GenerarReport("00100000", "201406");
-            dvReport.DocumentSource = orpt;            
+            fnReport xPrm = new fnReport();
+
+            String sCia = cmbCompania.EditValue.ToString();
+            String sPer = txtPeriodo.Text.Trim().Replace("-", "");
+
+            xPrm.Parametros.Add(new entRepParam() { Propiedad = "Compania", Tipo = fnEnum.TDatoReportParam.sStrings, Valor = sCia });
+            xPrm.Parametros.Add(new entRepParam() { Propiedad = "Periodo", Tipo = fnEnum.TDatoReportParam.sStrings, Valor = sPer });
+            orpt.GenerarReport(xPrm);
+            dvReport.DocumentSource = orpt;       
+            
         }
 
-        public override void ue_ExportarDat() { }
+        public override void ue_ExportarDat() {
+            DataTable dt = new DataTable();
+            String sTexto = "SP_CB_REP_LIBRODIARIO '00100000','201605','L','E','N','1','A'";
+            dt = FiltroLys.Domain.Sistema.negBaseDatos.ListaDatosOfStoreProc(sTexto);        
+        }
 
         #endregion
         

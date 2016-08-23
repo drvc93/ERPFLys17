@@ -6,6 +6,7 @@ using DevExpress.XtraReports.UI;
 using System.Collections.Generic;
 using FiltroLys.Domain.Sistema;
 using System.Data;
+using FiltroLys.ZLys.Funciones;
 
 namespace FiltroLys.ZLys.ModReporte.Reporte
 {
@@ -13,17 +14,16 @@ namespace FiltroLys.ZLys.ModReporte.Reporte
     {
         public rptPrueba()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
-        public String GenerarReport(String sCia, String sPeriodo) {
-            String xcon = negConexion.getEntConexion().ConeccionString;
-            sqlConnRPT.Connection.ConnectionString = xcon;            
-            sqlConnRPT.Queries[0].Parameters[0].Value = sCia;
-            sqlConnRPT.Queries[0].Parameters[1].Value = sPeriodo;            
-            xrPeriodo.Text = sPeriodo;
+        public void GenerarReport(fnReport xParametro) {
+            sqlConnRPT.Connection.ConnectionString = xParametro.ConnString;
+            for (int nI = 0; nI < xParametro.Parametros.Count; nI++){
+                sqlConnRPT.Queries[0].Parameters[nI].Value = xParametro.Parametros[nI].Valor;                
+            }
+            //xrPeriodo.Text = xParametro.Parametros[4].Valor.ToString();
             CreateDocument();
-            return sqlConnRPT.Queries[0].Name;
         }
 
     }

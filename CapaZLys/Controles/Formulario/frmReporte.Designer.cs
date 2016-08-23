@@ -985,7 +985,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmReporte";
             this.Text = "frmReporte";
-            this.Load += new System.EventHandler(this.frmRptLibroDiario_Load);
+            this.Load += new System.EventHandler(this.frmReporte_Load);
             this.Controls.SetChildIndex(this.barDockControlTop, 0);
             this.Controls.SetChildIndex(this.barDockControlBottom, 0);
             this.Controls.SetChildIndex(this.barDockControlRight, 0);

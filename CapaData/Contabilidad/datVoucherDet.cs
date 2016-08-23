@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.ComponentModel;
-using FiltroLys.Query.Contabilidad;
 using FiltroLys.Model.Contabilidad;
 using FiltroLys.Model.Maestro.Contabilidad;
 using FiltroLys.Repository.Maestro.Contabilidad;

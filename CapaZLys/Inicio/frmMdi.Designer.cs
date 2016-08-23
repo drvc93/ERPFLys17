@@ -100,6 +100,7 @@ namespace FiltroLys.ZLys.Inicio
             this.nbiMaestro = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiReporte = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarOtros = new DevExpress.XtraNavBar.NavBarGroup();
+            this.biPrefSegEntity = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gddFont)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
@@ -203,10 +204,11 @@ namespace FiltroLys.ZLys.Inicio
             this.biPrefSegPerfiles,
             this.biMenuMantNuevo,
             this.biMenuMantGuardar,
-            this.biMenuMantCancelar});
+            this.biMenuMantCancelar,
+            this.biPrefSegEntity});
             this.ribbonControl1.LargeImages = this.imageCollection1;
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 290;
+            this.ribbonControl1.MaxItemId = 292;
             this.ribbonControl1.MiniToolbars.Add(this.selectionMiniToolbar);
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsTouch.ShowTouchUISelectorInQAT = true;
@@ -390,6 +392,7 @@ namespace FiltroLys.ZLys.Inicio
             this.bsiPrefSeguridad.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.biPrefSegAuditoria),
             new DevExpress.XtraBars.LinkPersistInfo(this.biPrefSegUsuario),
+            new DevExpress.XtraBars.LinkPersistInfo(this.biPrefSegEntity),
             new DevExpress.XtraBars.LinkPersistInfo(this.biPrefSegMenu),
             new DevExpress.XtraBars.LinkPersistInfo(this.biPrefSegReporte),
             new DevExpress.XtraBars.LinkPersistInfo(this.biPrefSegPerfiles)});
@@ -864,6 +867,13 @@ namespace FiltroLys.ZLys.Inicio
             this.navBarOtros.Name = "navBarOtros";
             this.navBarOtros.SmallImage = global::FiltroLys.ZLys.Properties.Resources.Other_16x16;
             // 
+            // biPrefSegEntity
+            // 
+            this.biPrefSegEntity.Caption = "Generar Layer";
+            this.biPrefSegEntity.Id = 291;
+            this.biPrefSegEntity.Name = "biPrefSegEntity";
+            this.biPrefSegEntity.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.biPrefSegEntity_ItemClick);
+            // 
             // frmMdi
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
@@ -989,5 +999,6 @@ namespace FiltroLys.ZLys.Inicio
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgMenuMantGrupo;
         private DevExpress.XtraNavBar.NavBarItem nbiMaestro;
         private DevExpress.XtraNavBar.NavBarItem nbiReporte;
+        private DevExpress.XtraBars.BarButtonItem biPrefSegEntity;
     }
 }
