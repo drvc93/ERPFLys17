@@ -116,10 +116,6 @@
       <Project>{caaf55cc-66b2-4dc0-9094-99a2d06f4f65}</Project>
       <Name>FiltroLys.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CapaQuery\FiltroLys.Query.csproj">
-      <Project>{03152e9c-123c-4cfd-a47b-b8fea49ce71d}</Project>
-      <Name>FiltroLys.Query</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CapaType\FiltroLys.Type.csproj">
       <Project>{ab9b3207-0709-4864-b891-8412f6926f9a}</Project>
       <Name>FiltroLys.Type</Name>
