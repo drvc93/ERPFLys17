@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraSplashScreen;
 using FiltroLys.ZLys.Funciones;
+using FiltroLys.Domain.Sistema;
+using System.IO;
 
 namespace FiltroLys.ZLys.Controles.Formulario
 {
@@ -16,6 +18,12 @@ namespace FiltroLys.ZLys.Controles.Formulario
         #region "==Propiedades=="
 
         protected Boolean bValidoExportar = true;
+        protected fnReport fnReportW = new fnReport();
+
+        public fnReport FnReportW{
+            get { return fnReportW; }
+            set { fnReportW = value; }
+        } 
 
         #endregion
 
@@ -66,16 +74,30 @@ namespace FiltroLys.ZLys.Controles.Formulario
         #region "==EventInherit=="
 
         public virtual Boolean uf_validarBuscar() {
-            return true;
+            return false;
         }
         public virtual Boolean uf_validarExpExcel(){
-            return bValidoExportar;
+            if (!fnReportW.TieneParametros) { return false; }
+            if (fnReportW.ContReg == 0) { return false; }
+            return true;
         }
         public virtual void ue_Buscar() {
             
         }
-        public virtual void ue_ExportarDat() { 
-
+        public virtual void ue_ExportarDat() {
+            DataSet oDs = negBaseDatos.ListaDatosOfStoreProc(FnReportW.GetQueryProcPK());
+            if (oDs.Tables.Count > 0) {
+                DataTable oDt = oDs.Tables[0];
+                SaveFileDialog sDialog = new SaveFileDialog();
+                sDialog.Filter = "Excel Files (*.xls)|*.xls";
+                sDialog.FilterIndex = 0;
+                sDialog.RestoreDirectory = true;
+                sDialog.Title = "Exportar Data en ruta..";
+                if (sDialog.ShowDialog() == DialogResult.OK) {
+                    CreateCSVFile(oDt, sDialog.FileName);
+                    fnMensaje.MensajeInfo("Se ha exportado la información correctamente");
+                }
+            }
         }
         public virtual void ue_DocumentChanged() {
             ppbiExpExcelDat.Enabled = true;
@@ -83,5 +105,33 @@ namespace FiltroLys.ZLys.Controles.Formulario
 
         #endregion
 
+        #region "==FuncionesForm=="
+
+        public void CreateCSVFile(DataTable dt, String strFilePath)
+        {
+            StreamWriter sWFile = new StreamWriter(strFilePath,false,Encoding.Unicode);
+            Int32 nCols = dt.Columns.Count;
+
+            for(int i = 0; i < nCols; i++){
+                sWFile.Write(dt.Columns[i]);
+                if (i < nCols - 1){sWFile.Write("\t");}
+            }
+
+            sWFile.Write(sWFile.NewLine);
+            
+            foreach (DataRow dr in dt.Rows){
+                for (int i = 0; i < nCols; i++){
+                    if (!Convert.IsDBNull(dr[i])){
+                        sWFile.Write(dr[i].ToString());
+                    }
+                    if (i < nCols - 1){sWFile.Write("\t");}
+                }
+                sWFile.Write(sWFile.NewLine);
+            }
+            sWFile.Close();
+        }
+
+        #endregion
+        
     }
 }

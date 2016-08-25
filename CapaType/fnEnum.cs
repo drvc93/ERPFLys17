@@ -82,10 +82,10 @@ namespace FiltroLys.Type
         }
 
         public enum TDatoReportParam{
-            sStrings = 1,
-            sInteger = 2,
-            sDecimal = 3,
-            sDateTim = 4            
+            String = 1,
+            Integer = 2,
+            Decimal = 3,
+            DateTime = 4            
         }
 
     }

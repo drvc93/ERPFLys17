@@ -12,18 +12,21 @@ namespace FiltroLys.ZLys.ModReporte.Reporte
 {
     public partial class rptPrueba : DevExpress.XtraReports.UI.XtraReport
     {
-        public rptPrueba()
-        {
+        public rptPrueba(){
             InitializeComponent();
         }
 
-        public void GenerarReport(fnReport xParametro) {
-            sqlConnRPT.Connection.ConnectionString = xParametro.ConnString;
-            for (int nI = 0; nI < xParametro.Parametros.Count; nI++){
-                sqlConnRPT.Queries[0].Parameters[nI].Value = xParametro.Parametros[nI].Valor;                
+        public void GenerarReport(ref fnReport EReportW) {
+            sqlConnRPT.Connection.ConnectionString = EReportW.ConnString;
+            List<entRepParam> oPrm = EReportW.GetParametrosPK();
+            for (int nI = 0; nI < oPrm.Count; nI++){
+                sqlConnRPT.Queries[0].Parameters[nI].Value = oPrm[nI].Valor;                
             }
-            //xrPeriodo.Text = xParametro.Parametros[4].Valor.ToString();
+            oPrm = null;
+            xrPeriodo.Text = EReportW.GetObject("Periodo").Valor.ToString();
+            EReportW.NombreStoreProc = sqlConnRPT.Queries[0].Name;
             CreateDocument();
+            EReportW.ContReg = this.RowCount;
         }
 
     }

@@ -83,7 +83,7 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
 
         public override Boolean uf_validarBuscar() {
             String sCia = cmbCompania.EditValue.ToString();
-            String sPer = txtPeriodo.Text.Trim().Replace("-", "");
+            String sPer = txtPeriodo.Text.Trim().Replace("-", "");            
 
             if (String.IsNullOrEmpty(sCia) || sCia.Equals(fnConst.TextVacio)) {
                 fnMensaje.MensajeInfo("Ingresar compañia por favor.");
@@ -97,26 +97,31 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
             return true;
         }
 
-        public override Boolean uf_validarExpExcel() { return true; }
-
         public override void ue_Buscar() {
-            rptPrueba orpt = new rptPrueba();
-            fnReport xPrm = new fnReport();
+            rptPrueba oRpt = new rptPrueba();
+            fnReport xPrmR = new fnReport();
 
             String sCia = cmbCompania.EditValue.ToString();
             String sPer = txtPeriodo.Text.Trim().Replace("-", "");
+            String sMon = cmbMoneda.EditValue.ToString();
+            String sTip = cmbTipoCuenta.EditValue.ToString();
+            String sInc = (chkIncluirPeriodoRelacionado.Checked) ? "S" : "N";
+            String sTRp = "1";
+            String sTcc = cmbTCCosto.EditValue.ToString();
 
-            xPrm.Parametros.Add(new entRepParam() { Propiedad = "Compania", Tipo = fnEnum.TDatoReportParam.sStrings, Valor = sCia });
-            xPrm.Parametros.Add(new entRepParam() { Propiedad = "Periodo", Tipo = fnEnum.TDatoReportParam.sStrings, Valor = sPer });
-            orpt.GenerarReport(xPrm);
-            dvReport.DocumentSource = orpt;       
+            xPrmR.AddParametro(new entRepParam() { Propiedad = "Compania", Valor = sCia });
+            xPrmR.AddParametro(new entRepParam() { Propiedad = "Periodo", Valor = sPer });
+            xPrmR.AddParametro(new entRepParam() { Propiedad = "Moneda", Valor = sMon });
+            xPrmR.AddParametro(new entRepParam() { Propiedad = "TipoCuenta", Valor = sTip });
+            xPrmR.AddParametro(new entRepParam() { Propiedad = "IncPeriodo", Valor = sInc });
+            xPrmR.AddParametro(new entRepParam() { Propiedad = "TipoReporte", Valor = sTRp });
+            xPrmR.AddParametro(new entRepParam() { Propiedad = "TCCosto", Valor = sTcc });
+
+            oRpt.GenerarReport(ref xPrmR);
+            dvReport.DocumentSource = oRpt;
+            FnReportW = xPrmR;
             
-        }
-
-        public override void ue_ExportarDat() {
-            DataTable dt = new DataTable();
-            String sTexto = "SP_CB_REP_LIBRODIARIO '00100000','201605','L','E','N','1','A'";
-            dt = FiltroLys.Domain.Sistema.negBaseDatos.ListaDatosOfStoreProc(sTexto);        
+            oRpt = null;
         }
 
         #endregion

@@ -37,7 +37,7 @@ namespace FiltroLys.Domain.Sistema
             return ListObj;
         }
 
-        public static DataTable ListaDatosOfStoreProc(String XsqlProcedure) {
+        public static DataSet ListaDatosOfStoreProc(String XsqlProcedure) {
             return datBaseDatos.ListaDatosOfStoreProc(XsqlProcedure);
         }
 
