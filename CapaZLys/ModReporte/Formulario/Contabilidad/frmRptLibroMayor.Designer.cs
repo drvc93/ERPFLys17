@@ -1,6 +1,6 @@
 ﻿namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
 {
-    partial class frmRptLibroDiario
+    partial class frmRptLibroMayor
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -40,8 +40,10 @@
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.cmbTCCosto = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.chkIncluirPeriodoRelacionado = new DevExpress.XtraEditors.CheckEdit();
             this.btnGenerarFileTXT = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.txtCuentaIni = new DevExpress.XtraEditors.TextEdit();
+            this.txtCuentaFin = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlFilter)).BeginInit();
             this.pnlFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlCuerpo)).BeginInit();
@@ -54,12 +56,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbTipoCuenta.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbVersion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTCCosto.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkIncluirPeriodoRelacionado.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCuentaIni.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCuentaFin.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlFilter
             // 
-            this.pnlFilter.Controls.Add(this.chkIncluirPeriodoRelacionado);
+            this.pnlFilter.Controls.Add(this.txtCuentaFin);
+            this.pnlFilter.Controls.Add(this.txtCuentaIni);
+            this.pnlFilter.Controls.Add(this.labelControl7);
             this.pnlFilter.Controls.Add(this.cmbVersion);
             this.pnlFilter.Controls.Add(this.labelControl5);
             this.pnlFilter.Controls.Add(this.cmbTCCosto);
@@ -99,7 +104,7 @@
             this.lblTitulo.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.lblTitulo.Size = new System.Drawing.Size(765, 25);
-            this.lblTitulo.Text = "LIBRO DIARIO";
+            this.lblTitulo.Text = "LIBRO MAYOR";
             // 
             // pnMain
             // 
@@ -217,18 +222,6 @@
             this.labelControl6.TabIndex = 8;
             this.labelControl6.Text = "T.CCosto:";
             // 
-            // chkIncluirPeriodoRelacionado
-            // 
-            this.chkIncluirPeriodoRelacionado.EditValue = true;
-            this.chkIncluirPeriodoRelacionado.Location = new System.Drawing.Point(10, 28);
-            this.chkIncluirPeriodoRelacionado.Name = "chkIncluirPeriodoRelacionado";
-            this.chkIncluirPeriodoRelacionado.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkIncluirPeriodoRelacionado.Properties.Appearance.Options.UseFont = true;
-            this.chkIncluirPeriodoRelacionado.Properties.Caption = "Incluir Periodo Relacionado";
-            this.chkIncluirPeriodoRelacionado.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.chkIncluirPeriodoRelacionado.Size = new System.Drawing.Size(175, 19);
-            this.chkIncluirPeriodoRelacionado.TabIndex = 7;
-            // 
             // btnGenerarFileTXT
             // 
             this.btnGenerarFileTXT.Location = new System.Drawing.Point(6, 82);
@@ -238,14 +231,40 @@
             this.btnGenerarFileTXT.Text = "Generar File TXT";
             this.btnGenerarFileTXT.Click += new System.EventHandler(this.btnGenerarFileTXT_Click);
             // 
-            // frmRptLibroDiario
+            // labelControl7
+            // 
+            this.labelControl7.Location = new System.Drawing.Point(11, 31);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(44, 13);
+            this.labelControl7.TabIndex = 11;
+            this.labelControl7.Text = "Cuentas:";
+            // 
+            // txtCuentaIni
+            // 
+            this.txtCuentaIni.EditValue = "";
+            this.txtCuentaIni.Location = new System.Drawing.Point(69, 29);
+            this.txtCuentaIni.Name = "txtCuentaIni";
+            this.txtCuentaIni.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtCuentaIni.Size = new System.Drawing.Size(68, 20);
+            this.txtCuentaIni.TabIndex = 12;
+            // 
+            // txtCuentaFin
+            // 
+            this.txtCuentaFin.EditValue = "";
+            this.txtCuentaFin.Location = new System.Drawing.Point(140, 29);
+            this.txtCuentaFin.Name = "txtCuentaFin";
+            this.txtCuentaFin.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtCuentaFin.Size = new System.Drawing.Size(68, 20);
+            this.txtCuentaFin.TabIndex = 13;
+            // 
+            // frmRptLibroMayor
             // 
             this.Appearance.BackColor = System.Drawing.SystemColors.Control;
             this.Appearance.Options.UseBackColor = true;
             this.ClientSize = new System.Drawing.Size(815, 496);
-            this.Name = "frmRptLibroDiario";
-            this.Text = "Libro Diario";
-            this.Load += new System.EventHandler(this.frmRptLibroDiario_Load);
+            this.Name = "frmRptLibroMayor";
+            this.Text = "Libro Mayor";
+            this.Load += new System.EventHandler(this.frmRptLibroMayor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pnlFilter)).EndInit();
             this.pnlFilter.ResumeLayout(false);
             this.pnlFilter.PerformLayout();
@@ -259,7 +278,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbTipoCuenta.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbVersion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTCCosto.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkIncluirPeriodoRelacionado.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCuentaIni.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCuentaFin.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,7 +289,6 @@
 
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LookUpEdit cmbCompania;
-        private DevExpress.XtraEditors.CheckEdit chkIncluirPeriodoRelacionado;
         private DevExpress.XtraEditors.LookUpEdit cmbVersion;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LookUpEdit cmbTCCosto;
@@ -281,5 +300,8 @@
         private DevExpress.XtraEditors.TextEdit txtPeriodo;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.SimpleButton btnGenerarFileTXT;
+        private DevExpress.XtraEditors.TextEdit txtCuentaIni;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.TextEdit txtCuentaFin;
     }
 }
