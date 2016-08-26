@@ -108,30 +108,34 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
             String sTcc = cmbTCCosto.EditValue.ToString();
             String sVer = cmbVersion.EditValue.ToString();
             
-            xPrmR.AddParametro(new entRepParam() { Propiedad = "Compania", Valor = sCia });
-            xPrmR.AddParametro(new entRepParam() { Propiedad = "Periodo", Valor = sPer });
-            xPrmR.AddParametro(new entRepParam() { Propiedad = "Moneda", Valor = sMon });
-            xPrmR.AddParametro(new entRepParam() { Propiedad = "TipoCuenta", Valor = sTip });
-            xPrmR.AddParametro(new entRepParam() { Propiedad = "IncPeriodo", Valor = sInc });
-            xPrmR.AddParametro(new entRepParam() { Propiedad = "TipoReporte", Valor = sTRp });
-            xPrmR.AddParametro(new entRepParam() { Propiedad = "TCCosto", Valor = sTcc });
+            try{
+                xPrmR.AddParametro(new entRepParam() { Propiedad = "Compania", Valor = sCia });
+                xPrmR.AddParametro(new entRepParam() { Propiedad = "Periodo", Valor = sPer });
+                xPrmR.AddParametro(new entRepParam() { Propiedad = "Moneda", Valor = sMon });
+                xPrmR.AddParametro(new entRepParam() { Propiedad = "TipoCuenta", Valor = sTip });
+                xPrmR.AddParametro(new entRepParam() { Propiedad = "IncPeriodo", Valor = sInc });
+                xPrmR.AddParametro(new entRepParam() { Propiedad = "TipoReporte", Valor = sTRp });
+                xPrmR.AddParametro(new entRepParam() { Propiedad = "TCCosto", Valor = sTcc });
 
-            switch(sVer){
-                case fnConst.RepVersionLBContableV409Cod:
-                    rpt_LibroDiario oRpt = new rpt_LibroDiario();
-                    oRpt.GenerarReport(ref xPrmR);
-                    dvReport.DocumentSource = oRpt;
-                    FnReportW = xPrmR;
-                    oRpt = null;
-                    break;
-                case fnConst.RepVersionLBContableV500Cod:
-                    rpt_LibroDiarioV500 oRptV = new rpt_LibroDiarioV500();
-                    oRptV.GenerarReport(ref xPrmR);
-                    dvReport.DocumentSource = oRptV;
-                    FnReportW = xPrmR;
-                    oRptV = null;
-                    break;
-            }            
+                switch(sVer){
+                    case fnConst.RepVersionLBContableV409Cod:
+                        rpt_LibroDiario oRpt = new rpt_LibroDiario();
+                        oRpt.GenerarReport(ref xPrmR);
+                        dvReport.DocumentSource = oRpt;
+                        FnReportW = xPrmR;
+                        oRpt = null;
+                        break;
+                    case fnConst.RepVersionLBContableV500Cod:
+                        rpt_LibroDiarioV500 oRptV = new rpt_LibroDiarioV500();
+                        oRptV.GenerarReport(ref xPrmR);
+                        dvReport.DocumentSource = oRptV;
+                        FnReportW = xPrmR;
+                        oRptV = null;
+                        break;
+                }
+            }catch(Exception ex){
+                    fnMensaje.MensajeInfo(ex.Message);            
+            }
         }
 
         #endregion
@@ -143,29 +147,37 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
             String sCia = "", sPer = "", sMon = "", sRuc="", sFil = "", sRut = "";
             
             if (uf_validarBuscar()) {
-                GenerarBuscar();
+                try{
+                    OpenFormEspere(this);
+                    ue_Buscar();
 
-                //Ruta a Guardar
-                sCia = FnReportW.GetValue("Compania").ToString();
-                sPer = FnReportW.GetValue("Periodo").ToString();
-                sMon = FnReportW.GetValue("Moneda").ToString();
-                sMon = (sMon.Equals("L")) ? "1" : "2";
+                    //Ruta a Guardar
+                    sCia = FnReportW.GetValue("Compania").ToString();
+                    sPer = FnReportW.GetValue("Periodo").ToString();
+                    sMon = FnReportW.GetValue("Moneda").ToString();
+                    sMon = (sMon.Equals("L")) ? "1" : "2";
 
-                sRuc = negCompania.GetDatosDocFiscal(sCia);
-                sFil = "LE" + sRuc + sPer + "000501" + "0000" + "11" + sMon + "1";
-                sRut = GlobalVar.DirRegSunat + sFil;
-                if (!fnFile.ExisteDirectorio(GlobalVar.DirRegSunat)) {
-                    fnMensaje.MensajeInfo("No existe Directorio donde exportar");
-                    return;
+                    sRuc = negCompania.GetDatosDocFiscal(sCia);
+                    sFil = "LE" + sRuc + sPer + "000501" + "0000" + "11" + sMon + "1";
+                    sRut = GlobalVar.DirRegSunat + sFil + ".txt";
+                    if (!fnFile.ExisteDirectorio(GlobalVar.DirRegSunat)) {
+                        fnMensaje.MensajeInfo("No existe Directorio donde exportar");
+                        CloseFormEspere();
+                        return;
+                    }
+
+                    //Exportar Informacion
+                    FnReportW.SetValue("TipoReporte", "2");
+                    Int32 nReturn = fnExportar.CreateTXTFile(FnReportW.GetQueryProcPK(), sRut, false);
+                    CloseFormEspere();
+                    if (nReturn != 1) {
+                        fnMensaje.MensajeInfo(fnExportar.MensajeError(nReturn));                    
+                        return;
+                    }
+                    fnMensaje.MensajeInfo("Archivo de TXT se generó satisfactoriamente. " + sRut);
+                }catch(Exception ex){
+                    fnMensaje.MensajeInfo(ex.Message);
                 }
-
-                FnReportW.SetValue("TipoReporte", "2");
-                Int32 nReturn = fnExportar.CreateTXTFile(FnReportW.GetQueryProcPK(),"D:\\midatos.txt",false);
-                if (nReturn != 1) {
-                    fnMensaje.MensajeInfo(fnExportar.MensajeError(nReturn));
-                    return;
-                }
-                fnMensaje.MensajeInfo("Archivo de TXT se generó satisfactoriamente. " + sRut);
             }
         }
 

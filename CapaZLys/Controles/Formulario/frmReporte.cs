@@ -59,6 +59,16 @@ namespace FiltroLys.ZLys.Controles.Formulario
 
         #region "FuncionesForm"
 
+        public static void OpenFormEspere(Form oFrm)
+        {
+            SplashScreenManager.ShowForm(oFrm, typeof(FiltroLys.ZLys.Inicio.frmEspere), true, true, false);
+        }
+
+        public static void CloseFormEspere()
+        {
+            SplashScreenManager.CloseForm(false);
+        }
+
         public void GenerarBuscar()
         {
             if (uf_validarBuscar()){
