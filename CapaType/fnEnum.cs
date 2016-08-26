@@ -88,5 +88,11 @@ namespace FiltroLys.Type
             DateTime = 4            
         }
 
+        public enum TipoArchivo
+        {
+            XLS = 1,
+            TXT = 2
+        }
+
     }
 }

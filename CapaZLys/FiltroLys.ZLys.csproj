@@ -321,6 +321,8 @@
     <Compile Include="Errores\frmErrMain.Designer.cs">
       <DependentUpon>frmErrMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Funciones\fnFile.cs" />
+    <Compile Include="Funciones\fnExportar.cs" />
     <Compile Include="Funciones\fnAcceso.cs" />
     <Compile Include="Funciones\fnAddTab.cs" />
     <Compile Include="Funciones\fnControl.cs" />
@@ -644,17 +646,23 @@
     <Compile Include="ModReporte\Formulario\Contabilidad\frmRptLibroDiario.Designer.cs">
       <DependentUpon>frmRptLibroDiario.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\rptPrueba.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroDiario.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\rptPrueba.Designer.cs">
-      <DependentUpon>rptPrueba.cs</DependentUpon>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroDiario.Designer.cs">
+      <DependentUpon>rpt_LibroDiario.cs</DependentUpon>
     </Compile>
     <Compile Include="ModReporte\frmReportesMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ModReporte\frmReportesMain.Designer.cs">
       <DependentUpon>frmReportesMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroDiarioV500.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroDiarioV500.Designer.cs">
+      <DependentUpon>rpt_LibroDiarioV500.cs</DependentUpon>
     </Compile>
     <Compile Include="Office.cs">
       <SubType>Component</SubType>
@@ -906,11 +914,14 @@
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptLibroDiario.resx">
       <DependentUpon>frmRptLibroDiario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\rptPrueba.resx">
-      <DependentUpon>rptPrueba.cs</DependentUpon>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_LibroDiario.resx">
+      <DependentUpon>rpt_LibroDiario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\frmReportesMain.resx">
       <DependentUpon>frmReportesMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_LibroDiarioV500.resx">
+      <DependentUpon>rpt_LibroDiarioV500.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="online.gif" />
     <EmbeddedResource Include="PrintRibbonControllerResources.resx">
@@ -1020,9 +1031,7 @@
       <Name>FiltroLys.Type</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ModReporte\Reporte\Contabilidad\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
   </PropertyGroup>

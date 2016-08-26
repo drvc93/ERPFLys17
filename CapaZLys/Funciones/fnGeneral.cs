@@ -45,6 +45,30 @@ namespace FiltroLys.ZLys.Funciones
             return Texto;
         }
 
+        public static DateTime FechaFinDeMes(String Periodo)
+        {
+            String sAnual="",sMes="";
+            Int32 nAnual=1, nMes=1;
+            DateTime dFec;
+
+            if (Periodo.Length >= 2) { sAnual = Periodo.Substring(0,4);}
+            if (Periodo.Length == 6) { sMes = Periodo.Substring(4,2);}
+
+            Int32.TryParse(sAnual, out nAnual);
+            Int32.TryParse(sMes, out nMes);
+
+            dFec = new DateTime(nAnual, nMes, 1);
+            dFec = dFec.AddMonths(1).AddSeconds(-1);
+            return dFec;
+        }
+
+        public static String FechaFinDeMesText(String Periodo) {
+            String xFec = "";
+            DateTime dFec = FechaFinDeMes(Periodo);
+            xFec = String.Format("{0:dd/MM/yyyy}", dFec);
+            return xFec;
+        }
+
     }
 
 }

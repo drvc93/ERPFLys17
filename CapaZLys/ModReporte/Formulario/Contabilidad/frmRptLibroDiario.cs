@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Linq;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using FiltroLys.Model.Maestro.General;
 using FiltroLys.Domain.Maestro.General;
+using FiltroLys.Domain.Sistema;
 using FiltroLys.Model.Objeto;
 using FiltroLys.Type;
 using FiltroLys.ZLys.Funciones;
-using FiltroLys.ZLys.ModReporte.Reporte;
+using FiltroLys.ZLys.ModReporte.Reporte.Contabilidad;
 
 namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
 {
@@ -98,9 +98,7 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
         }
 
         public override void ue_Buscar() {
-            rptPrueba oRpt = new rptPrueba();
             fnReport xPrmR = new fnReport();
-
             String sCia = cmbCompania.EditValue.ToString();
             String sPer = txtPeriodo.Text.Trim().Replace("-", "");
             String sMon = cmbMoneda.EditValue.ToString();
@@ -108,7 +106,8 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
             String sInc = (chkIncluirPeriodoRelacionado.Checked) ? "S" : "N";
             String sTRp = "1";
             String sTcc = cmbTCCosto.EditValue.ToString();
-
+            String sVer = cmbVersion.EditValue.ToString();
+            
             xPrmR.AddParametro(new entRepParam() { Propiedad = "Compania", Valor = sCia });
             xPrmR.AddParametro(new entRepParam() { Propiedad = "Periodo", Valor = sPer });
             xPrmR.AddParametro(new entRepParam() { Propiedad = "Moneda", Valor = sMon });
@@ -117,14 +116,60 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
             xPrmR.AddParametro(new entRepParam() { Propiedad = "TipoReporte", Valor = sTRp });
             xPrmR.AddParametro(new entRepParam() { Propiedad = "TCCosto", Valor = sTcc });
 
-            oRpt.GenerarReport(ref xPrmR);
-            dvReport.DocumentSource = oRpt;
-            FnReportW = xPrmR;
-            
-            oRpt = null;
+            switch(sVer){
+                case fnConst.RepVersionLBContableV409Cod:
+                    rpt_LibroDiario oRpt = new rpt_LibroDiario();
+                    oRpt.GenerarReport(ref xPrmR);
+                    dvReport.DocumentSource = oRpt;
+                    FnReportW = xPrmR;
+                    oRpt = null;
+                    break;
+                case fnConst.RepVersionLBContableV500Cod:
+                    rpt_LibroDiarioV500 oRptV = new rpt_LibroDiarioV500();
+                    oRptV.GenerarReport(ref xPrmR);
+                    dvReport.DocumentSource = oRptV;
+                    FnReportW = xPrmR;
+                    oRptV = null;
+                    break;
+            }            
         }
 
         #endregion
-        
+
+        #region "==EventObject=="
+
+        private void btnGenerarFileTXT_Click(object sender, EventArgs e)
+        {
+            String sCia = "", sPer = "", sMon = "", sRuc="", sFil = "", sRut = "";
+            
+            if (uf_validarBuscar()) {
+                GenerarBuscar();
+
+                //Ruta a Guardar
+                sCia = FnReportW.GetValue("Compania").ToString();
+                sPer = FnReportW.GetValue("Periodo").ToString();
+                sMon = FnReportW.GetValue("Moneda").ToString();
+                sMon = (sMon.Equals("L")) ? "1" : "2";
+
+                sRuc = negCompania.GetDatosDocFiscal(sCia);
+                sFil = "LE" + sRuc + sPer + "000501" + "0000" + "11" + sMon + "1";
+                sRut = GlobalVar.DirRegSunat + sFil;
+                if (!fnFile.ExisteDirectorio(GlobalVar.DirRegSunat)) {
+                    fnMensaje.MensajeInfo("No existe Directorio donde exportar");
+                    return;
+                }
+
+                FnReportW.SetValue("TipoReporte", "2");
+                Int32 nReturn = fnExportar.CreateTXTFile(FnReportW.GetQueryProcPK(),"D:\\midatos.txt",false);
+                if (nReturn != 1) {
+                    fnMensaje.MensajeInfo(fnExportar.MensajeError(nReturn));
+                    return;
+                }
+                fnMensaje.MensajeInfo("Archivo de TXT se generó satisfactoriamente. " + sRut);
+            }
+        }
+
+        #endregion
+
     }
 }

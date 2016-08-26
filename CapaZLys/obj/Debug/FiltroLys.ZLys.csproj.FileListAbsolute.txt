@@ -263,7 +263,6 @@ D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModMaestro.
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModMaestro.Tesoreria.frmTipoPago.resources
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.Controles.Formulario.frmReporte.resources
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.frmRptLibroDiario.resources
-D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.rptPrueba.resources
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.frmReportesMain.resources
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.PrintRibbonControllerResources.resources
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.Properties.Resources.resources
@@ -284,3 +283,5 @@ D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\bin\Debug\FiltroLys.Model.pdb
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\bin\Debug\FiltroLys.Domain.pdb
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\bin\Debug\FiltroLys.Type.pdb
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\bin\Debug\FiltroLys.Repository.pdb
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_LibroDiario.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_LibroDiarioV500.resources

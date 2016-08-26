@@ -13,7 +13,7 @@ namespace FiltroLys.Model.Maestro.General
         private String c_ActividadEconomica, c_CodigoSunat_Condicion, c_CodigoSunat_Via, c_CodigoSunat_Zona, c_CodigoSunat_TipoEstab;
         private String c_FlagEndoso = "N", c_CompaniaEndoso, c_SerieLetra, c_SectorCompania, c_Aplica_Ret = "N", c_MonedaMnt_Ret = "L";
         private String c_Serie_Ret, c_FlagReplica = "N", c_CompReplica, c_NameBd_o, c_NameBd_d, c_FlagCofilsa = "N";
-        private String c_CompBaseComision, c_ValidaNoHabNoHall = "N", c_mailDocElec, c_flagFactElec = "N";
+        private String c_CompBaseComision, c_ValidaNoHabNoHall = "N", c_MailDocElec, c_FlagFactElec = "N";
         private int n_Codigo = 0, n_Limite_Ret = 0, n_Org_Hoshin;
         private Decimal n_MntLimite_Ret = 0, n_Porcent_Ret = 0, n_MontoMinSolesBack = 0;
         private DateTime d_UltimaFechaModificacion = DateTime.Now;
@@ -261,14 +261,14 @@ namespace FiltroLys.Model.Maestro.General
 
         public String MailDocElec
         {
-            get { return c_mailDocElec; }
-            set { c_mailDocElec = value; }
+            get { return c_MailDocElec; }
+            set { c_MailDocElec = value; }
         }
 
         public String FlagFactElec
         {
-            get { return c_flagFactElec; }
-            set { c_flagFactElec = value; }
+            get { return c_FlagFactElec; }
+            set { c_FlagFactElec = value; }
         }        
     }
 }

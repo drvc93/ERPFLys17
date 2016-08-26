@@ -56,6 +56,20 @@ namespace FiltroLys.ZLys.Funciones
             return LParametros[nInd];
         }
 
+        public void SetValue(String Nombre, Object Valor)
+        {
+            var nindex = LParametros.FindIndex(x => x.Propiedad.ToUpper().Equals(Nombre.ToUpper()));
+            Int32 nInd = (Int32)nindex;
+            LParametros[nInd].Valor = Valor;
+        }
+
+        public Object GetValue(String Nombre)
+        {
+            var nindex = LParametros.FindIndex(x => x.Propiedad.ToUpper().Equals(Nombre.ToUpper()));
+            Int32 nInd = (Int32)nindex;
+            return LParametros[nInd].Valor;
+        }
+
         public void AddParametro(entRepParam oEnt) {
             LParametros.Add(oEnt);
         }

@@ -41,6 +41,7 @@
             this.cmbTCCosto = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.chkIncluirPeriodoRelacionado = new DevExpress.XtraEditors.CheckEdit();
+            this.btnGenerarFileTXT = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.pnlFilter)).BeginInit();
             this.pnlFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlCuerpo)).BeginInit();
@@ -74,11 +75,12 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(687, 54);
+            this.btnBuscar.Location = new System.Drawing.Point(680, 83);
+            this.btnBuscar.Size = new System.Drawing.Size(63, 23);
             // 
             // dvReport
             // 
-            this.dvReport.Size = new System.Drawing.Size(770, 378);
+            this.dvReport.Size = new System.Drawing.Size(765, 355);
             // 
             // pbBarInferior
             // 
@@ -88,18 +90,21 @@
             // 
             // pnlCuerpo
             // 
-            this.pnlCuerpo.Size = new System.Drawing.Size(770, 465);
+            this.pnlCuerpo.Panel1.Controls.Add(this.btnGenerarFileTXT);
+            this.pnlCuerpo.Size = new System.Drawing.Size(765, 466);
+            this.pnlCuerpo.SplitterPosition = 106;
             // 
             // lblTitulo
             // 
             this.lblTitulo.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.lblTitulo.Size = new System.Drawing.Size(770, 25);
+            this.lblTitulo.Size = new System.Drawing.Size(765, 25);
+            this.lblTitulo.Text = "LIBRO DIARIO";
             // 
             // pnMain
             // 
-            this.pnMain.Location = new System.Drawing.Point(41, 0);
-            this.pnMain.Size = new System.Drawing.Size(774, 469);
+            this.pnMain.Location = new System.Drawing.Point(46, 0);
+            this.pnMain.Size = new System.Drawing.Size(769, 470);
             // 
             // labelControl1
             // 
@@ -224,6 +229,15 @@
             this.chkIncluirPeriodoRelacionado.Size = new System.Drawing.Size(175, 19);
             this.chkIncluirPeriodoRelacionado.TabIndex = 7;
             // 
+            // btnGenerarFileTXT
+            // 
+            this.btnGenerarFileTXT.Location = new System.Drawing.Point(6, 82);
+            this.btnGenerarFileTXT.Name = "btnGenerarFileTXT";
+            this.btnGenerarFileTXT.Size = new System.Drawing.Size(99, 24);
+            this.btnGenerarFileTXT.TabIndex = 7;
+            this.btnGenerarFileTXT.Text = "Generar File TXT";
+            this.btnGenerarFileTXT.Click += new System.EventHandler(this.btnGenerarFileTXT_Click);
+            // 
             // frmRptLibroDiario
             // 
             this.Appearance.BackColor = System.Drawing.SystemColors.Control;
@@ -266,5 +280,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.TextEdit txtPeriodo;
         private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.SimpleButton btnGenerarFileTXT;
     }
 }

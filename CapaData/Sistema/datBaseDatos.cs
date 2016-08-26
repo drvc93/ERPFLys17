@@ -104,11 +104,11 @@ namespace FiltroLys.Repository.Sistema
             return dt;
         }
 
-        public static DataSet ListaDatosOfStoreProc(String XsqlProcedure)
+        public static DataTable ListaDatosOfStoreProc(String XsqlProcedure)
         {
-            DataSet dt = new DataSet();
+            DataTable dt = new DataTable();
             SqlCommand Cmd = new SqlCommand();
-
+            
             using (SqlConnection Cnx = new SqlConnection(Configuracion.getCadConexion()))
             {
                 Cmd.Connection = Cnx;
