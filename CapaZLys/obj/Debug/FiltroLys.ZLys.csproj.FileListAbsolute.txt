@@ -285,3 +285,5 @@ D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\bin\Debug\FiltroLys.Type.pdb
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\bin\Debug\FiltroLys.Repository.pdb
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_LibroDiario.resources
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_LibroDiarioV500.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.frmRptLibroMayor.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_LibroMayor.resources

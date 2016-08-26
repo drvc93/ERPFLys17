@@ -41,10 +41,14 @@
             DevExpress.DataAccess.Sql.QueryParameter queryParameter8 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter9 = new DevExpress.DataAccess.Sql.QueryParameter();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rpt_LibroMayor));
+            DevExpress.XtraReports.UI.XRSummary xrSummary3 = new DevExpress.XtraReports.UI.XRSummary();
+            DevExpress.XtraReports.UI.XRSummary xrSummary4 = new DevExpress.XtraReports.UI.XRSummary();
+            DevExpress.XtraReports.UI.XRSummary xrSummary2 = new DevExpress.XtraReports.UI.XRSummary();
+            DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
-            this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
+            this.sqlConnRPT = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.xrCCosto = new DevExpress.XtraReports.UI.XRLabel();
             this.xrDebe = new DevExpress.XtraReports.UI.XRLabel();
             this.xrDocumento = new DevExpress.XtraReports.UI.XRLabel();
@@ -101,9 +105,13 @@
             this.PieCuenta = new DevExpress.XtraReports.UI.GroupFooterBand();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrGRCuentaDebe = new DevExpress.XtraReports.UI.XRLabel();
             this.VoucherDebe = new DevExpress.XtraReports.UI.CalculatedField();
             this.VoucherHaber = new DevExpress.XtraReports.UI.CalculatedField();
+            this.xrGRVoucherHaber = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrGRVoucherDebe = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrGRCuentaDebe = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrGRCuentaHaber = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -139,14 +147,14 @@
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
-            // sqlDataSource1
+            // sqlConnRPT
             // 
-            this.sqlDataSource1.ConnectionName = "ibserver_29_lys_Connection";
+            this.sqlConnRPT.ConnectionName = "ibserver_29_lys_Connection";
             msSqlConnectionParameters1.AuthorizationType = DevExpress.DataAccess.ConnectionParameters.MsSqlAuthorizationType.SqlServer;
             msSqlConnectionParameters1.DatabaseName = "lys";
             msSqlConnectionParameters1.ServerName = "ibserver_29";
-            this.sqlDataSource1.ConnectionParameters = msSqlConnectionParameters1;
-            this.sqlDataSource1.Name = "sqlDataSource1";
+            this.sqlConnRPT.ConnectionParameters = msSqlConnectionParameters1;
+            this.sqlConnRPT.Name = "sqlConnRPT";
             storedProcQuery1.Name = "SP_CB_REP_LIBROMAYOR";
             queryParameter1.Name = "@compania";
             queryParameter1.Type = typeof(DevExpress.DataAccess.Expression);
@@ -185,9 +193,9 @@
             storedProcQuery1.Parameters.Add(queryParameter8);
             storedProcQuery1.Parameters.Add(queryParameter9);
             storedProcQuery1.StoredProcName = "SP_CB_REP_LIBROMAYOR";
-            this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
+            this.sqlConnRPT.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             storedProcQuery1});
-            this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
+            this.sqlConnRPT.ResultSchemaSerializable = resources.GetString("sqlConnRPT.ResultSchemaSerializable");
             // 
             // xrCCosto
             // 
@@ -206,14 +214,14 @@
             // 
             this.xrDebe.CanGrow = false;
             this.xrDebe.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBROMAYOR.debe", "{0:C2}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBROMAYOR.debe", "{0:n2}")});
             this.xrDebe.Font = new System.Drawing.Font("Arial", 6F);
             this.xrDebe.LocationFloat = new DevExpress.Utils.PointFloat(583.2307F, 0F);
             this.xrDebe.Name = "xrDebe";
             this.xrDebe.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
             this.xrDebe.SizeF = new System.Drawing.SizeF(81.15424F, 18F);
             this.xrDebe.StylePriority.UseFont = false;
-            this.xrDebe.Text = "xrDebe";
+            this.xrDebe.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrDebe_BeforePrint);
             // 
             // xrDocumento
             // 
@@ -232,27 +240,26 @@
             // 
             this.xrFecha.CanGrow = false;
             this.xrFecha.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBROMAYOR.fecha")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBROMAYOR.fecha", "{0:dd/MM/yyyy}")});
             this.xrFecha.Font = new System.Drawing.Font("Arial", 6F);
             this.xrFecha.LocationFloat = new DevExpress.Utils.PointFloat(4.900424F, 0F);
             this.xrFecha.Name = "xrFecha";
             this.xrFecha.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
             this.xrFecha.SizeF = new System.Drawing.SizeF(43.75839F, 18F);
             this.xrFecha.StylePriority.UseFont = false;
-            this.xrFecha.Text = "xrFecha";
             // 
             // xrHaber
             // 
             this.xrHaber.CanGrow = false;
             this.xrHaber.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBROMAYOR.haber", "{0:C2}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBROMAYOR.haber", "{0:n2}")});
             this.xrHaber.Font = new System.Drawing.Font("Arial", 6F);
             this.xrHaber.LocationFloat = new DevExpress.Utils.PointFloat(664.3849F, 0F);
             this.xrHaber.Name = "xrHaber";
             this.xrHaber.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
             this.xrHaber.SizeF = new System.Drawing.SizeF(74.61517F, 18F);
             this.xrHaber.StylePriority.UseFont = false;
-            this.xrHaber.Text = "xrHaber";
+            this.xrHaber.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrHaber_BeforePrint);
             // 
             // xrPersona
             // 
@@ -623,7 +630,8 @@
             // 
             this.xrLabel66.BackColor = System.Drawing.Color.Transparent;
             this.xrLabel66.BorderColor = System.Drawing.Color.Black;
-            this.xrLabel66.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Top | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLabel66.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLabel66.BorderWidth = 1F;
             this.xrLabel66.CanGrow = false;
             this.xrLabel66.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
@@ -791,7 +799,8 @@
             // 
             this.xrLabel53.BackColor = System.Drawing.Color.Transparent;
             this.xrLabel53.BorderColor = System.Drawing.Color.Black;
-            this.xrLabel53.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Top | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLabel53.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLabel53.BorderWidth = 1F;
             this.xrLabel53.CanGrow = false;
             this.xrLabel53.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
@@ -820,7 +829,7 @@
             // 
             // PieCuenta2
             // 
-            this.PieCuenta2.HeightF = 100F;
+            this.PieCuenta2.HeightF = 22.91667F;
             this.PieCuenta2.Level = 1;
             this.PieCuenta2.Name = "PieCuenta2";
             // 
@@ -839,9 +848,13 @@
             // PieCuenta
             // 
             this.PieCuenta.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrGRCuentaDebe});
+            this.xrLabel3,
+            this.xrGRCuentaHaber,
+            this.xrGRCuentaDebe,
+            this.xrGRVoucherHaber,
+            this.xrGRVoucherDebe});
             this.PieCuenta.Font = new System.Drawing.Font("Arial", 6F, System.Drawing.FontStyle.Bold);
-            this.PieCuenta.HeightF = 100F;
+            this.PieCuenta.HeightF = 41.66667F;
             this.PieCuenta.Name = "PieCuenta";
             this.PieCuenta.StylePriority.UseFont = false;
             // 
@@ -863,15 +876,6 @@
             this.xrLabel2.SizeF = new System.Drawing.SizeF(84.375F, 15.70833F);
             this.xrLabel2.Text = "xrLabel2";
             // 
-            // xrGRCuentaDebe
-            // 
-            this.xrGRCuentaDebe.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBROMAYOR.debe")});
-            this.xrGRCuentaDebe.LocationFloat = new DevExpress.Utils.PointFloat(583.2307F, 0F);
-            this.xrGRCuentaDebe.Name = "xrGRCuentaDebe";
-            this.xrGRCuentaDebe.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrGRCuentaDebe.SizeF = new System.Drawing.SizeF(81.1543F, 15.70833F);
-            // 
             // VoucherDebe
             // 
             this.VoucherDebe.DataMember = "SP_CB_REP_LIBROMAYOR";
@@ -883,6 +887,60 @@
             this.VoucherHaber.DataMember = "SP_CB_REP_LIBROMAYOR";
             this.VoucherHaber.Expression = "iif([voucher]=\'\',0,[haber])";
             this.VoucherHaber.Name = "VoucherHaber";
+            // 
+            // xrGRVoucherHaber
+            // 
+            this.xrGRVoucherHaber.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBROMAYOR.VoucherHaber")});
+            this.xrGRVoucherHaber.LocationFloat = new DevExpress.Utils.PointFloat(656.4848F, 0F);
+            this.xrGRVoucherHaber.Name = "xrGRVoucherHaber";
+            this.xrGRVoucherHaber.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrGRVoucherHaber.SizeF = new System.Drawing.SizeF(81.1543F, 15.70833F);
+            xrSummary3.Running = DevExpress.XtraReports.UI.SummaryRunning.Group;
+            this.xrGRVoucherHaber.Summary = xrSummary3;
+            // 
+            // xrGRVoucherDebe
+            // 
+            this.xrGRVoucherDebe.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBROMAYOR.VoucherDebe")});
+            this.xrGRVoucherDebe.LocationFloat = new DevExpress.Utils.PointFloat(575.3305F, 0F);
+            this.xrGRVoucherDebe.Name = "xrGRVoucherDebe";
+            this.xrGRVoucherDebe.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrGRVoucherDebe.SizeF = new System.Drawing.SizeF(81.1543F, 15.70833F);
+            xrSummary4.Running = DevExpress.XtraReports.UI.SummaryRunning.Group;
+            this.xrGRVoucherDebe.Summary = xrSummary4;
+            // 
+            // xrGRCuentaDebe
+            // 
+            this.xrGRCuentaDebe.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBROMAYOR.debe")});
+            this.xrGRCuentaDebe.LocationFloat = new DevExpress.Utils.PointFloat(319.7917F, 0F);
+            this.xrGRCuentaDebe.Name = "xrGRCuentaDebe";
+            this.xrGRCuentaDebe.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrGRCuentaDebe.SizeF = new System.Drawing.SizeF(60.41666F, 12.58333F);
+            xrSummary2.Running = DevExpress.XtraReports.UI.SummaryRunning.Group;
+            this.xrGRCuentaDebe.Summary = xrSummary2;
+            // 
+            // xrGRCuentaHaber
+            // 
+            this.xrGRCuentaHaber.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBROMAYOR.haber")});
+            this.xrGRCuentaHaber.LocationFloat = new DevExpress.Utils.PointFloat(380.2083F, 0F);
+            this.xrGRCuentaHaber.Name = "xrGRCuentaHaber";
+            this.xrGRCuentaHaber.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrGRCuentaHaber.SizeF = new System.Drawing.SizeF(64.58334F, 12.58333F);
+            xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Group;
+            this.xrGRCuentaHaber.Summary = xrSummary1;
+            // 
+            // xrLabel3
+            // 
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(3.999996F, 0F);
+            this.xrLabel3.Name = "xrLabel3";
+            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrLabel3.SizeF = new System.Drawing.SizeF(145.5163F, 15.70833F);
+            this.xrLabel3.StylePriority.UseTextAlignment = false;
+            this.xrLabel3.Text = "Total Movimiento del Mes  ---> ";
+            this.xrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             // 
             // rpt_LibroMayor
             // 
@@ -903,9 +961,9 @@
             this.VoucherDebe,
             this.VoucherHaber});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
-            this.sqlDataSource1});
+            this.sqlConnRPT});
             this.DataMember = "SP_CB_REP_LIBROMAYOR";
-            this.DataSource = this.sqlDataSource1;
+            this.DataSource = this.sqlConnRPT;
             this.Margins = new System.Drawing.Printing.Margins(41, 47, 26, 59);
             this.PageHeight = 1169;
             this.PageWidth = 827;
@@ -945,7 +1003,7 @@
         private DevExpress.XtraReports.UI.XRLabel xrTipoPago;
         private DevExpress.XtraReports.UI.XRLabel xrDescripV;
         private DevExpress.XtraReports.UI.XRLabel xrVoucher;
-        private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource1;
+        private DevExpress.DataAccess.Sql.SqlDataSource sqlConnRPT;
         private DevExpress.XtraReports.UI.PageFooterBand pageFooterBand1;
         private DevExpress.XtraReports.UI.ReportHeaderBand reportHeaderBand1;
         private DevExpress.XtraReports.UI.GroupFooterBand groupFooterBand1;
@@ -992,8 +1050,12 @@
         private DevExpress.XtraReports.UI.GroupFooterBand PieCuenta;
         private DevExpress.XtraReports.UI.XRLabel xrLabel1;
         private DevExpress.XtraReports.UI.XRLabel xrLabel2;
-        private DevExpress.XtraReports.UI.XRLabel xrGRCuentaDebe;
         private DevExpress.XtraReports.UI.CalculatedField VoucherDebe;
         private DevExpress.XtraReports.UI.CalculatedField VoucherHaber;
+        private DevExpress.XtraReports.UI.XRLabel xrGRVoucherHaber;
+        private DevExpress.XtraReports.UI.XRLabel xrGRVoucherDebe;
+        private DevExpress.XtraReports.UI.XRLabel xrGRCuentaHaber;
+        private DevExpress.XtraReports.UI.XRLabel xrGRCuentaDebe;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel3;
     }
 }

@@ -123,7 +123,7 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
 
                 switch(sVer){
                     case fnConst.RepVersionLBContableV409Cod:
-                        rpt_LibroDiario oRpt = new rpt_LibroDiario();
+                        rpt_LibroMayor oRpt = new rpt_LibroMayor();
                         oRpt.GenerarReport(ref xPrmR);
                         dvReport.DocumentSource = oRpt;
                         FnReportW = xPrmR;
