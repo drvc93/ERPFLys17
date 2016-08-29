@@ -236,6 +236,22 @@ namespace FiltroLys.ZLys.Funciones
             return Lista;
         }
 
+        public static List<entComboList> ListRptBCTipo()
+        {
+            List<entComboList> Lista = new List<entComboList>();
+            Lista.Add(new entComboList() { Codigo = fnConst.RepBCTipoMayCod, Nombre = fnConst.RepBCTipoMayNom });
+            Lista.Add(new entComboList() { Codigo = fnConst.RepBCTipoCtaCod, Nombre = fnConst.RepBCTipoCtaNom });
+            return Lista;
+        }
+
+        public static List<entComboList> ListRptBCFormato()
+        {
+            List<entComboList> Lista = new List<entComboList>();
+            Lista.Add(new entComboList() { Codigo = fnConst.RepBCFormatoSAcumCod, Nombre = fnConst.RepBCFormatoSAcumNom });
+            Lista.Add(new entComboList() { Codigo = fnConst.RepBCFormatoSalIniCod, Nombre = fnConst.RepBCFormatoSalIniNom });
+            return Lista;
+        }
+
         #endregion
 
         #region =="Lista RRHH=="

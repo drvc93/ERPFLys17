@@ -640,6 +640,12 @@
     <Compile Include="Controles\Formulario\frmReporte.Designer.cs">
       <DependentUpon>frmReporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptBalanceComp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptBalanceComp.Designer.cs">
+      <DependentUpon>frmRptBalanceComp.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModReporte\Formulario\Contabilidad\frmRptLibroMayor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -651,6 +657,30 @@
     </Compile>
     <Compile Include="ModReporte\Formulario\Contabilidad\frmRptLibroDiario.Designer.cs">
       <DependentUpon>frmRptLibroDiario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobMayF2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobMayF2.Designer.cs">
+      <DependentUpon>rpt_BalComprobMayF2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobCtaF2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobCtaF2.Designer.cs">
+      <DependentUpon>rpt_BalComprobCtaF2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobCtaF1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobCtaF1.Designer.cs">
+      <DependentUpon>rpt_BalComprobCtaF1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobMayF1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobMayF1.Designer.cs">
+      <DependentUpon>rpt_BalComprobMayF1.cs</DependentUpon>
     </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroDiario.cs">
       <SubType>Component</SubType>
@@ -675,6 +705,12 @@
     </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroMayor.Designer.cs">
       <DependentUpon>rpt_LibroMayor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroMayorV500.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroMayorV500.Designer.cs">
+      <DependentUpon>rpt_LibroMayorV500.cs</DependentUpon>
     </Compile>
     <Compile Include="Office.cs">
       <SubType>Component</SubType>
@@ -923,11 +959,26 @@
     <EmbeddedResource Include="Controles\Formulario\frmReporte.resx">
       <DependentUpon>frmReporte.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptBalanceComp.resx">
+      <DependentUpon>frmRptBalanceComp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptLibroMayor.resx">
       <DependentUpon>frmRptLibroMayor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptLibroDiario.resx">
       <DependentUpon>frmRptLibroDiario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobMayF2.resx">
+      <DependentUpon>rpt_BalComprobMayF2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobCtaF2.resx">
+      <DependentUpon>rpt_BalComprobCtaF2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobCtaF1.resx">
+      <DependentUpon>rpt_BalComprobCtaF1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobMayF1.resx">
+      <DependentUpon>rpt_BalComprobMayF1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_LibroDiario.resx">
       <DependentUpon>rpt_LibroDiario.cs</DependentUpon>
@@ -940,6 +991,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_LibroMayor.resx">
       <DependentUpon>rpt_LibroMayor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_LibroMayorV500.resx">
+      <DependentUpon>rpt_LibroMayorV500.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="online.gif" />
     <EmbeddedResource Include="PrintRibbonControllerResources.resx">

@@ -40,6 +40,7 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad
         private void xrDebe_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             Decimal nDebe = 0;
+            if (GetCurrentColumnValue("n_debe") == null) { return; }
             Decimal.TryParse(GetCurrentColumnValue("n_debe").ToString(), out nDebe);
             xrDebe.ForeColor = Color.Black;
             if (nDebe == 0) { xrDebe.ForeColor = Color.Transparent; }
@@ -48,6 +49,7 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad
         private void xrHaber_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             Decimal nHaber = 0;
+            if (GetCurrentColumnValue("n_haber") == null) { return; }
             Decimal.TryParse(GetCurrentColumnValue("n_haber").ToString(), out nHaber);
             xrHaber.ForeColor = Color.Black;
             if (nHaber == 0) { xrHaber.ForeColor = Color.Transparent; }

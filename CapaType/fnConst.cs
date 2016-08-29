@@ -208,6 +208,16 @@ namespace FiltroLys.Type
         public const String ListaCondUpd = "UPD";
         public const String ListaCondSelUpd = "SELUPD";
 
+        public const String RepBCTipoMayCod = "M";
+        public const String RepBCTipoMayNom = "Cta Mayor";
+        public const String RepBCTipoCtaCod = "C";
+        public const String RepBCTipoCtaNom = "Cuentas";
+
+        public const String RepBCFormatoSAcumCod = "A";
+        public const String RepBCFormatoSAcumNom = "S. Acumulados";
+        public const String RepBCFormatoSalIniCod = "B";
+        public const String RepBCFormatoSalIniNom = "S. Iniciales 00";
+
         public const String MensajeDeleteMaestro = "Se eliminará el registro seleccionado, desea continuar";
 
     }
