@@ -646,6 +646,18 @@
     <Compile Include="Controles\Formulario\frmReporte.Designer.cs">
       <DependentUpon>frmReporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptDocumentoPend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptDocumentoPend.Designer.cs">
+      <DependentUpon>frmRptDocumentoPend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptCuentaCteProv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptCuentaCteProv.Designer.cs">
+      <DependentUpon>frmRptCuentaCteProv.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModReporte\Formulario\Contabilidad\frmRptCuentaCCosto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -682,6 +694,12 @@
     <Compile Include="ModReporte\Formulario\Contabilidad\frmRptLibroDiario.Designer.cs">
       <DependentUpon>frmRptLibroDiario.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_SaldoPendienteRes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_SaldoPendienteRes.Designer.cs">
+      <DependentUpon>rpt_SaldoPendienteRes.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobMayF2.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -711,6 +729,12 @@
     </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\rpt_CuentaCCosto.Designer.cs">
       <DependentUpon>rpt_CuentaCCosto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_CuentaCCteProv.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_CuentaCCteProv.Designer.cs">
+      <DependentUpon>rpt_CuentaCCteProv.cs</DependentUpon>
     </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroBanco.cs">
       <SubType>Component</SubType>
@@ -753,6 +777,12 @@
     </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroMayorV500.Designer.cs">
       <DependentUpon>rpt_LibroMayorV500.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_SaldoPendienteDet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_SaldoPendienteDet.Designer.cs">
+      <DependentUpon>rpt_SaldoPendienteDet.cs</DependentUpon>
     </Compile>
     <Compile Include="Office.cs">
       <SubType>Component</SubType>
@@ -1004,6 +1034,12 @@
     <EmbeddedResource Include="Controles\Formulario\frmReporte.resx">
       <DependentUpon>frmReporte.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptDocumentoPend.resx">
+      <DependentUpon>frmRptDocumentoPend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptCuentaCteProv.resx">
+      <DependentUpon>frmRptCuentaCteProv.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptCuentaCCosto.resx">
       <DependentUpon>frmRptCuentaCCosto.cs</DependentUpon>
     </EmbeddedResource>
@@ -1022,6 +1058,9 @@
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptLibroDiario.resx">
       <DependentUpon>frmRptLibroDiario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_SaldoPendienteRes.resx">
+      <DependentUpon>rpt_SaldoPendienteRes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobMayF2.resx">
       <DependentUpon>rpt_BalComprobMayF2.cs</DependentUpon>
     </EmbeddedResource>
@@ -1036,6 +1075,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_CuentaCCosto.resx">
       <DependentUpon>rpt_CuentaCCosto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_CuentaCCteProv.resx">
+      <DependentUpon>rpt_CuentaCCteProv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_LibroBanco.resx">
       <DependentUpon>rpt_LibroBanco.cs</DependentUpon>
@@ -1057,6 +1099,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_LibroMayorV500.resx">
       <DependentUpon>rpt_LibroMayorV500.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_SaldoPendienteDet.resx">
+      <DependentUpon>rpt_SaldoPendienteDet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="online.gif" />
     <EmbeddedResource Include="PrintRibbonControllerResources.resx">

@@ -89,7 +89,7 @@ namespace FiltroLys.ZLys.Funciones
             String sQuery = "";
             List<entRepParam> oLst = new List<entRepParam>();
             foreach (entRepParam eXn in LParametros){
-                if (!eXn.SubReporte){
+                if (!eXn.SubReporte && !eXn.OtrosDatos){
                     Object oTip = eXn.Valor;
                     System.Type tCode = oTip.GetType();
                     if(tCode.Equals(typeof(String))){

@@ -66,7 +66,7 @@
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
-            this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
+            this.sqlConnRPT = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.xrCuenta = new DevExpress.XtraReports.UI.XRLabel();
             this.xrCuentaDesc = new DevExpress.XtraReports.UI.XRLabel();
             this.xrEnero = new DevExpress.XtraReports.UI.XRLabel();
@@ -199,14 +199,14 @@
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
-            // sqlDataSource1
+            // sqlConnRPT
             // 
-            this.sqlDataSource1.ConnectionName = "ibserver_29_lys_Connection";
+            this.sqlConnRPT.ConnectionName = "ibserver_29_lys_Connection";
             msSqlConnectionParameters1.AuthorizationType = DevExpress.DataAccess.ConnectionParameters.MsSqlAuthorizationType.SqlServer;
             msSqlConnectionParameters1.DatabaseName = "lys";
             msSqlConnectionParameters1.ServerName = "ibserver_29";
-            this.sqlDataSource1.ConnectionParameters = msSqlConnectionParameters1;
-            this.sqlDataSource1.Name = "sqlDataSource1";
+            this.sqlConnRPT.ConnectionParameters = msSqlConnectionParameters1;
+            this.sqlConnRPT.Name = "sqlConnRPT";
             storedProcQuery1.Name = "sp_cb_gastos_ccto";
             queryParameter1.Name = "@Compania";
             queryParameter1.Type = typeof(DevExpress.DataAccess.Expression);
@@ -229,9 +229,9 @@
             storedProcQuery1.Parameters.Add(queryParameter4);
             storedProcQuery1.Parameters.Add(queryParameter5);
             storedProcQuery1.StoredProcName = "sp_cb_gastos_ccto";
-            this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
+            this.sqlConnRPT.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             storedProcQuery1});
-            this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
+            this.sqlConnRPT.ResultSchemaSerializable = resources.GetString("sqlConnRPT.ResultSchemaSerializable");
             // 
             // xrCuenta
             // 
@@ -1383,9 +1383,9 @@
             this.PieTitMayor,
             this.PieTitCCosto});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
-            this.sqlDataSource1});
+            this.sqlConnRPT});
             this.DataMember = "sp_cb_gastos_ccto";
-            this.DataSource = this.sqlDataSource1;
+            this.DataSource = this.sqlConnRPT;
             this.Landscape = true;
             this.Margins = new System.Drawing.Printing.Margins(31, 35, 30, 59);
             this.PageHeight = 827;
@@ -1427,7 +1427,7 @@
         private DevExpress.XtraReports.UI.XRLabel xrNoviembre;
         private DevExpress.XtraReports.UI.XRLabel xrDiciembre;
         private DevExpress.XtraReports.UI.XRLabel xrTotal;
-        private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource1;
+        private DevExpress.DataAccess.Sql.SqlDataSource sqlConnRPT;
         private DevExpress.XtraReports.UI.PageFooterBand pageFooterBand1;
         private DevExpress.XtraReports.UI.ReportHeaderBand reportHeaderBand1;
         private DevExpress.XtraReports.UI.GroupFooterBand groupFooterBand1;

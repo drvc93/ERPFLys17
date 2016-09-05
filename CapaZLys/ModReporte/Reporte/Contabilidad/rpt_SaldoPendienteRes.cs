@@ -9,9 +9,9 @@ using FiltroLys.Domain.Sistema;
 
 namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad
 {
-    public partial class rpt_CuentaCCosto : DevExpress.XtraReports.UI.XtraReport
+    public partial class rpt_SaldoPendienteRes : DevExpress.XtraReports.UI.XtraReport
     {
-        public rpt_CuentaCCosto()
+        public rpt_SaldoPendienteRes()
         {
             InitializeComponent();
         }
@@ -24,16 +24,14 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad
 
             prmCompania.Value = EReportW.GetObject("Compania").Valor;
             prmPeriodo.Value = EReportW.GetObject("Periodo").Valor;
-            prmCuentaIni.Value = EReportW.GetObject("CuentaIni").Valor;
-            prmCuentaFin.Value = EReportW.GetObject("CuentaFin").Valor;
-            prmCCosto.Value = EReportW.GetObject("CentroCosto").Valor;
+            prmCuenta.Value = EReportW.GetObject("Cuenta").Valor;
+            prmTipoReporte.Value = EReportW.GetObject("TipoRep").Valor;
+            xrCompaniaNom.Text = sCiaNombre;
             oPrm = null;
 
-            xrTitCompania.Text = "COMPAÑIA: " + sCiaNombre;
             EReportW.NombreStoreProc = sqlConnRPT.Queries[0].Name;
             CreateDocument();
             EReportW.ContReg = this.RowCount;
         }
-
     }
 }

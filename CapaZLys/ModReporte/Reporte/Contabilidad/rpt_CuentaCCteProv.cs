@@ -9,9 +9,9 @@ using FiltroLys.Domain.Sistema;
 
 namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad
 {
-    public partial class rpt_CuentaCCosto : DevExpress.XtraReports.UI.XtraReport
+    public partial class rpt_CuentaCCteProv : DevExpress.XtraReports.UI.XtraReport
     {
-        public rpt_CuentaCCosto()
+        public rpt_CuentaCCteProv()
         {
             InitializeComponent();
         }
@@ -20,16 +20,18 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad
         {
             sqlConnRPT.Connection.ConnectionString = EReportW.ConnString;
             List<entRepParam> oPrm = EReportW.GetParametrosPK();
-            String sCiaNombre = EReportW.GetObject("CompaniaNombre").Valor.ToString();
-
+            
             prmCompania.Value = EReportW.GetObject("Compania").Valor;
-            prmPeriodo.Value = EReportW.GetObject("Periodo").Valor;
-            prmCuentaIni.Value = EReportW.GetObject("CuentaIni").Valor;
-            prmCuentaFin.Value = EReportW.GetObject("CuentaFin").Valor;
-            prmCCosto.Value = EReportW.GetObject("CentroCosto").Valor;
+            prmPerIni.Value = EReportW.GetObject("PerIni").Valor;
+            prmPerFin.Value = EReportW.GetObject("PerFin").Valor;
+            prmCtaIni.Value = EReportW.GetObject("CuentaIni").Valor;
+            prmCtaFin.Value = EReportW.GetObject("CuentaFin").Valor;
+            prmMoneda.Value = EReportW.GetObject("Moneda").Valor;
+            prmProveedor.Value = EReportW.GetObject("Proveedor").Valor;
+            prmCCosto.Value = EReportW.GetObject("CCosto").Valor;
+            prmPendiente.Value = EReportW.GetObject("Pendiente").Valor;            
             oPrm = null;
-
-            xrTitCompania.Text = "COMPAÑIA: " + sCiaNombre;
+            
             EReportW.NombreStoreProc = sqlConnRPT.Queries[0].Name;
             CreateDocument();
             EReportW.ContReg = this.RowCount;

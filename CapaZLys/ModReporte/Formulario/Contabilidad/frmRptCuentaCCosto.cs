@@ -115,16 +115,18 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
             String sCCosto = txtCCosto.Text.Trim();
             String sMayDesde = txtMayorDesde.Text.Trim();
             String sMayHasta = txtMayorHasta.Text.Trim();
+            String sNCia = cmbCompania.Text.Trim();
             sCCosto = (chkCCosto.Checked) ? "T" : sCCosto;
-
+            
             try{
                 xPrmR.AddParametro(new entRepParam() { Propiedad = "Compania", Valor = sCia });
                 xPrmR.AddParametro(new entRepParam() { Propiedad = "Periodo", Valor = sPer });
                 xPrmR.AddParametro(new entRepParam() { Propiedad = "CuentaIni", Valor = sMayDesde });
                 xPrmR.AddParametro(new entRepParam() { Propiedad = "CuentaFin", Valor = sMayHasta });
                 xPrmR.AddParametro(new entRepParam() { Propiedad = "CentroCosto", Valor = sCCosto });
+                xPrmR.AddParametro(new entRepParam() { Propiedad = "CompaniaNombre", Valor = sNCia, OtrosDatos = true });
 
-                rpt_LibroBanco oRpt = new rpt_LibroBanco();
+                rpt_CuentaCCosto oRpt = new rpt_CuentaCCosto();
                 oRpt.GenerarReport(ref xPrmR);
                 dvReport.DocumentSource = oRpt;
                 FnReportW = xPrmR;
