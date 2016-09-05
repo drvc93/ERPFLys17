@@ -50,12 +50,12 @@ namespace FiltroLys.ZLys.Busqueda.General
 
         private void fxRecuperarData(){
             if (gvDatos.SelectedRowsCount == 0) { return; }
-            List<entCuentaContable> Lst = new List<entCuentaContable>();
+            List<entCuentaMayor> Lst = new List<entCuentaMayor>();
             int[] rowSel = gvDatos.GetSelectedRows();
             for (int i = 0; i < rowSel.Length; i++){
-                Lst.Add((entCuentaContable)gvDatos.GetRow(rowSel[i]));
+                Lst.Add((entCuentaMayor)gvDatos.GetRow(rowSel[i]));
             }
-            EstructuraForm.ObjX = Funciones.fnConvert.EntityToObject<entCuentaContable, Object>(Lst);
+            EstructuraForm.ObjX = Funciones.fnConvert.EntityToObject<entCuentaMayor, Object>(Lst);
             this.DialogResult = DialogResult.OK;
         }
 

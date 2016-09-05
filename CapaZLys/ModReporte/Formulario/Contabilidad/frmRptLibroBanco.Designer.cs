@@ -69,7 +69,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(680, 52);
+            this.btnBuscar.Location = new System.Drawing.Point(674, 52);
             this.btnBuscar.Size = new System.Drawing.Size(63, 23);
             // 
             // dvReport
@@ -91,7 +91,7 @@
             this.lblTitulo.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.lblTitulo.Size = new System.Drawing.Size(765, 25);
-            this.lblTitulo.Text = "LIBRO CAJA";
+            this.lblTitulo.Text = "LIBRO BANCO";
             // 
             // pnMain
             // 
@@ -203,7 +203,7 @@
             this.Appearance.Options.UseBackColor = true;
             this.ClientSize = new System.Drawing.Size(815, 496);
             this.Name = "frmRptLibroBanco";
-            this.Text = "Libro Caja";
+            this.Text = "Libro Banco";
             this.Load += new System.EventHandler(this.frmRptLibroBanco_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pnlFilter)).EndInit();
             this.pnlFilter.ResumeLayout(false);

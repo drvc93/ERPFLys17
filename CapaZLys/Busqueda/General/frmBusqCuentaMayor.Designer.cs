@@ -97,7 +97,7 @@
             // Nombres
             // 
             this.Nombres.Caption = "Descripcion";
-            this.Nombres.FieldName = "Nombres";
+            this.Nombres.FieldName = "Descripcion";
             this.Nombres.Name = "Nombres";
             this.Nombres.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Nombres", "{0}  Fila(s).")});

@@ -646,6 +646,12 @@
     <Compile Include="Controles\Formulario\frmReporte.Designer.cs">
       <DependentUpon>frmReporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptCuentaCCosto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptCuentaCCosto.Designer.cs">
+      <DependentUpon>frmRptCuentaCCosto.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModReporte\Formulario\Contabilidad\frmRptLibroBanco.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -699,6 +705,12 @@
     </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobMayF1.Designer.cs">
       <DependentUpon>rpt_BalComprobMayF1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_CuentaCCosto.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_CuentaCCosto.Designer.cs">
+      <DependentUpon>rpt_CuentaCCosto.cs</DependentUpon>
     </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroBanco.cs">
       <SubType>Component</SubType>
@@ -992,6 +1004,9 @@
     <EmbeddedResource Include="Controles\Formulario\frmReporte.resx">
       <DependentUpon>frmReporte.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptCuentaCCosto.resx">
+      <DependentUpon>frmRptCuentaCCosto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptLibroBanco.resx">
       <DependentUpon>frmRptLibroBanco.cs</DependentUpon>
     </EmbeddedResource>
@@ -1018,6 +1033,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobMayF1.resx">
       <DependentUpon>rpt_BalComprobMayF1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_CuentaCCosto.resx">
+      <DependentUpon>rpt_CuentaCCosto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_LibroBanco.resx">
       <DependentUpon>rpt_LibroBanco.cs</DependentUpon>

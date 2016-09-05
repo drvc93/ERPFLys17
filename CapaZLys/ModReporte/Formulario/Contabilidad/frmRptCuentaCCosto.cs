@@ -115,14 +115,14 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
             String sCCosto = txtCCosto.Text.Trim();
             String sMayDesde = txtMayorDesde.Text.Trim();
             String sMayHasta = txtMayorHasta.Text.Trim();
-            
-            /*try{
+            sCCosto = (chkCCosto.Checked) ? "T" : sCCosto;
+
+            try{
                 xPrmR.AddParametro(new entRepParam() { Propiedad = "Compania", Valor = sCia });
                 xPrmR.AddParametro(new entRepParam() { Propiedad = "Periodo", Valor = sPer });
-                xPrmR.AddParametro(new entRepParam() { Propiedad = "Moneda", Valor = sMon });
-                xPrmR.AddParametro(new entRepParam() { Propiedad = "CuentaIni", Valor = sCtI });
-                xPrmR.AddParametro(new entRepParam() { Propiedad = "CuentaFin", Valor = sCtF });
-                xPrmR.AddParametro(new entRepParam() { Propiedad = "TipoCuenta", Valor = sTip });
+                xPrmR.AddParametro(new entRepParam() { Propiedad = "CuentaIni", Valor = sMayDesde });
+                xPrmR.AddParametro(new entRepParam() { Propiedad = "CuentaFin", Valor = sMayHasta });
+                xPrmR.AddParametro(new entRepParam() { Propiedad = "CentroCosto", Valor = sCCosto });
 
                 rpt_LibroBanco oRpt = new rpt_LibroBanco();
                 oRpt.GenerarReport(ref xPrmR);
@@ -132,7 +132,7 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
                
             }catch(Exception ex){
                 fnMensaje.MensajeInfo(ex.Message);            
-            }*/
+            }
         }
 
         #endregion
@@ -183,8 +183,8 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
             frm.SoloActivo = true;
             if (frm.ShowDialog() == DialogResult.OK){
                 entCuentaMayor objE = fnConvert.ObjectToEntity<entCuentaMayor>(frm.EstructuraForm.ObjX)[0];
-                txtMayorDesde.Text = objE.CuentaMayor;
-                txtMayorDesdeNom.Text = objE.Descripcion;
+                txtMayorHasta.Text = objE.CuentaMayor;
+                txtMayorHastaNom.Text = objE.Descripcion;
                 objE = null;
             }
             frm = null;
