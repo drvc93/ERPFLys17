@@ -13,6 +13,7 @@ using FiltroLys.Type;
 using FiltroLys.ZLys.ModContabilidad;
 using FiltroLys.ZLys.Funciones;
 using FiltroLys.Model.Sistema;
+using FiltroLys.ZLys.ModReporte.Formulario.Contabilidad;
 using System.Linq;
 
 namespace FiltroLys.ZLys.ModContabilidad
@@ -152,24 +153,27 @@ namespace FiltroLys.ZLys.ModContabilidad
 
         private void btnDetalleCta_Click(object sender, EventArgs e)
         {
-            /*int cont = 0, row = 0;
-            cont = gvCuenta.Rows.Count;
-            if (cont == 0) { return; }
-            row = gvCuenta.CurrentRow.Index;
-            if (row < 0) { return; }
-            entCierreMesCuenta objE = (entCierreMesCuenta)gvCuenta.CurrentRow.DataBoundItem;
-            if (objE.FooterList) { return; }
+            String sCia, sPer, sCta;
+            Int32 nCont = 0, nRow = 0;
+          
+            nCont = gvDatosCuenta.DataRowCount;
+            if (nCont == 0) { return; }
+            nRow = gvDatosCuenta.FocusedRowHandle;
+            if (nRow < 0) { return; }
 
-            frmReportModal frm = new frmReportModal();
-            frm.NombreReporte = "Rpt_SaldosXCuentaResumenPeriodo.rpt";
-            frm.SubRuta = fnConst.ReporteDirContabilidad;
-            frm.Parametros.Add(new entReporte() { Parametro = "c_compania", Value = objE.Compania });
-            frm.Parametros.Add(new entReporte() { Parametro = "c_periodo", Value = objE.Periodo });
-            frm.Parametros.Add(new entReporte() { Parametro = "c_cuenta", Value = objE.Cuenta });
-            frm.Parametros.Add(new entReporte() { Parametro = "cianombre", Value = negCompania.getNombreCia(objE.Compania), ParmTipo = fnEnum.ParameterCRTipo.Formula });
-            frm.ShowDialog();
+            entCierreMesCuenta objE = (entCierreMesCuenta)gvDatosCuenta.GetRow(nRow);
+            sCia = objE.Compania;
+            sPer = objE.Periodo;
+            sCta = objE.Cuenta;
             objE = null;
-            frm = null;*/
+
+            //frmrpt
+            frmRptSaldoContableDet frm = new frmRptSaldoContableDet();
+            frm.EstructuraForm.StrX.Insert(0, sCia);
+            frm.EstructuraForm.StrX.Insert(1, sPer);
+            frm.EstructuraForm.StrX.Insert(2, sCta);
+            frm.ShowDialog();
+            frm = null;
         }
 
         private void gvDatosMayor_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)

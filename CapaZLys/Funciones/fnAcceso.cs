@@ -53,7 +53,7 @@ namespace FiltroLys.ZLys.Funciones
         public static Boolean ExisteAcceso(String Usuario, String Aplicacion, String Niveles, fnEnum.AccesoOpcion AccesoOpcion) {
             Boolean valor = false;
             entAccesoMenu oEnt = negAccesoMenu.GetFormID(Usuario, Aplicacion, Niveles);            
-            if (oEnt != null) {
+            if (oEnt.ResultadoBusqueda) {                
                 switch (AccesoOpcion){
                     case fnEnum.AccesoOpcion.Acceso:
                         valor = (oEnt.Acceso.Equals("S")) ? true : false;

@@ -305,3 +305,8 @@ D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.frmRptDocumentoPend.resources
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_SaldoPendienteRes.resources
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_SaldoPendienteDet.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.frmRptSaldoContableDet.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_SaldoContableDet.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.frmRptRegistroCompa.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_RegistroCompraV409.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_RegistroCompraV500.resources

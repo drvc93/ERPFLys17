@@ -114,6 +114,16 @@ namespace FiltroLys.ZLys.ModReporte
                             sForm = sForm + "Produccion";
                             break;
                     }
+
+                    //Restricciones
+                    if (oEnt.Modulo.Equals("CB") && oEnt.Menu == 1 && oEnt.Reporte == 10) {
+                        ModContabilidad.frmSaldoxCuenta frmRestr = new ModContabilidad.frmSaldoxCuenta();
+                        fnAddTab.FormOpen(frmRestr);
+                        return;
+                    }
+
+                    //Fin Restricciones
+
                     sForm = sForm + "." + oEnt.FormNet;
                     Form frm = (Form)System.Activator.CreateInstance(System.Type.GetType(sForm));
                     Funciones.fnAddTab.FormOpen(frm, "Reporte", true);                    

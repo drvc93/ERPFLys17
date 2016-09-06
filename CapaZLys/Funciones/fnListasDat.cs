@@ -267,5 +267,19 @@ namespace FiltroLys.ZLys.Funciones
 
         #endregion
 
+        #region "==Lista Logistica=="
+
+        public static List<entComboList> ListNoHabNoHallado()
+        {
+            List<entComboList> Lista = new List<entComboList>();
+            Lista.Add(new entComboList() { Codigo = fnConst.TextRaya3, Nombre = fnConst.TextSeleccioneNom });
+            Lista.Add(new entComboList() { Codigo = fnConst.DatoProvNoHalladoCod, Nombre = fnConst.DatoProvNoHalladoNom });
+            Lista.Add(new entComboList() { Codigo = fnConst.DatoProvNoHabidoCod, Nombre = fnConst.DatoProvNoHabidoNom });
+            Lista.Add(new entComboList() { Codigo = fnConst.DatoProvNoHallHabCod, Nombre = fnConst.DatoProvNoHallHabNom });
+            return Lista;
+        }
+
+        #endregion
+
     }
 }

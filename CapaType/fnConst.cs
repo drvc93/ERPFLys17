@@ -218,6 +218,13 @@ namespace FiltroLys.Type
         public const String RepBCFormatoSalIniCod = "B";
         public const String RepBCFormatoSalIniNom = "S. Iniciales 00";
 
+        public const String DatoProvNoHalladoCod = "L";
+        public const String DatoProvNoHalladoNom = "No Hallado";
+        public const String DatoProvNoHabidoCod = "B";
+        public const String DatoProvNoHabidoNom = "No Habido";
+        public const String DatoProvNoHallHabCod = "H";
+        public const String DatoProvNoHallHabNom = "No Hall/Hab";
+
         public const String MensajeDeleteMaestro = "Se eliminará el registro seleccionado, desea continuar";
 
     }

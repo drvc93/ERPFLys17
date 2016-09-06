@@ -69,6 +69,27 @@ namespace FiltroLys.ZLys.Funciones
             return xFec;
         }
 
+        public static String PeriodoAnt(String Periodo) {
+            String sPer = "";
+            Int32 nAnual = 0, nMes = 0;
+
+            Periodo = Periodo.Trim();
+            Periodo = Periodo.Replace("-", "");
+            if (Periodo.Length >= 4) { Int32.TryParse(Periodo.Substring(0,4),out nAnual);}
+            if (Periodo.Length == 6) { Int32.TryParse(Periodo.Substring(4,2),out nMes); }
+            if (nAnual > 0 || nMes > 0) {
+                sPer = FormatoDateTime(new DateTime(nAnual, nMes, 1).AddSeconds(-1), fnEnum.FormatFecha.FechaPeriodo);
+            }
+            return sPer;
+        }
+
+        public static String PeriodoAnt(DateTime Fecha)
+        {
+            String sPer = "";
+            sPer = FormatoDateTime(new DateTime(Fecha.Year,Fecha.Month,1).AddSeconds(-1), fnEnum.FormatFecha.FechaPeriodo);
+            return sPer;
+        }
+
     }
 
 }
