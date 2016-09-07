@@ -1,6 +1,6 @@
 ﻿namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
 {
-    partial class frmRptDocumentoPend
+    partial class frmRptRegistroVenta
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -28,17 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRptDocumentoPend));
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.cmbCompania = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txtPeriodo = new DevExpress.XtraEditors.TextEdit();
-            this.cmbFormato = new DevExpress.XtraEditors.LookUpEdit();
+            this.cmbConsulta = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.cmbVersion = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.btnCuenta = new DevExpress.XtraEditors.SimpleButton();
-            this.txtCuentaNombre = new DevExpress.XtraEditors.TextEdit();
-            this.txtCuenta = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.btnGenerarFileTXT = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.pnlFilter)).BeginInit();
             this.pnlFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlCuerpo)).BeginInit();
@@ -47,19 +45,16 @@
             this.pnMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCompania.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeriodo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbFormato.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCuentaNombre.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCuenta.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbConsulta.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbVersion.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlFilter
             // 
-            this.pnlFilter.Controls.Add(this.btnCuenta);
-            this.pnlFilter.Controls.Add(this.txtCuentaNombre);
-            this.pnlFilter.Controls.Add(this.txtCuenta);
-            this.pnlFilter.Controls.Add(this.labelControl8);
-            this.pnlFilter.Controls.Add(this.cmbFormato);
+            this.pnlFilter.Controls.Add(this.cmbVersion);
             this.pnlFilter.Controls.Add(this.labelControl5);
+            this.pnlFilter.Controls.Add(this.cmbConsulta);
+            this.pnlFilter.Controls.Add(this.labelControl4);
             this.pnlFilter.Controls.Add(this.txtPeriodo);
             this.pnlFilter.Controls.Add(this.labelControl2);
             this.pnlFilter.Controls.Add(this.cmbCompania);
@@ -67,12 +62,12 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(695, 54);
+            this.btnBuscar.Location = new System.Drawing.Point(680, 83);
             this.btnBuscar.Size = new System.Drawing.Size(63, 23);
             // 
             // dvReport
             // 
-            this.dvReport.Size = new System.Drawing.Size(765, 382);
+            this.dvReport.Size = new System.Drawing.Size(765, 355);
             // 
             // pbBarInferior
             // 
@@ -82,14 +77,16 @@
             // 
             // pnlCuerpo
             // 
+            this.pnlCuerpo.Panel1.Controls.Add(this.btnGenerarFileTXT);
             this.pnlCuerpo.Size = new System.Drawing.Size(765, 466);
+            this.pnlCuerpo.SplitterPosition = 106;
             // 
             // lblTitulo
             // 
             this.lblTitulo.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.lblTitulo.Size = new System.Drawing.Size(765, 25);
-            this.lblTitulo.Text = "INVENTARIOS DE DOCUMENTOS PENDIENTES";
+            this.lblTitulo.Text = "REGISTRO DE VENTAS";
             // 
             // pnMain
             // 
@@ -113,12 +110,12 @@
             this.cmbCompania.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Compania", 40, "Compania"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombres", 100, "Descripcion")});
-            this.cmbCompania.Size = new System.Drawing.Size(157, 20);
+            this.cmbCompania.Size = new System.Drawing.Size(169, 20);
             this.cmbCompania.TabIndex = 1;
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(245, 8);
+            this.labelControl2.Location = new System.Drawing.Point(257, 9);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(40, 13);
             this.labelControl2.TabIndex = 2;
@@ -126,78 +123,72 @@
             // 
             // txtPeriodo
             // 
-            this.txtPeriodo.Location = new System.Drawing.Point(298, 6);
+            this.txtPeriodo.Location = new System.Drawing.Point(302, 7);
             this.txtPeriodo.Name = "txtPeriodo";
+            this.txtPeriodo.Properties.Mask.EditMask = "0000-00";
+            this.txtPeriodo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.txtPeriodo.Size = new System.Drawing.Size(59, 20);
             this.txtPeriodo.TabIndex = 2;
             // 
-            // cmbFormato
+            // cmbConsulta
             // 
-            this.cmbFormato.Location = new System.Drawing.Point(547, 5);
-            this.cmbFormato.Name = "cmbFormato";
-            this.cmbFormato.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cmbConsulta.Location = new System.Drawing.Point(453, 6);
+            this.cmbConsulta.Name = "cmbConsulta";
+            this.cmbConsulta.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbFormato.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            this.cmbConsulta.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", 100, "Nombre")});
-            this.cmbFormato.Properties.DropDownRows = 4;
-            this.cmbFormato.Properties.PopupFormMinSize = new System.Drawing.Size(95, 0);
-            this.cmbFormato.Size = new System.Drawing.Size(93, 20);
-            this.cmbFormato.TabIndex = 6;
+            this.cmbConsulta.Properties.PopupFormMinSize = new System.Drawing.Size(185, 0);
+            this.cmbConsulta.Properties.ReadOnly = true;
+            this.cmbConsulta.Size = new System.Drawing.Size(185, 20);
+            this.cmbConsulta.TabIndex = 4;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(406, 10);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(46, 13);
+            this.labelControl4.TabIndex = 6;
+            this.labelControl4.Text = "Consulta:";
+            // 
+            // cmbVersion
+            // 
+            this.cmbVersion.Location = new System.Drawing.Point(69, 29);
+            this.cmbVersion.Name = "cmbVersion";
+            this.cmbVersion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbVersion.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", 100, "Nombre")});
+            this.cmbVersion.Properties.DropDownRows = 4;
+            this.cmbVersion.Properties.PopupFormMinSize = new System.Drawing.Size(103, 0);
+            this.cmbVersion.Size = new System.Drawing.Size(103, 20);
+            this.cmbVersion.TabIndex = 6;
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(497, 7);
+            this.labelControl5.Location = new System.Drawing.Point(11, 31);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(44, 13);
+            this.labelControl5.Size = new System.Drawing.Size(39, 13);
             this.labelControl5.TabIndex = 10;
-            this.labelControl5.Text = "Formato:";
+            this.labelControl5.Text = "Versión:";
             // 
-            // btnCuenta
+            // btnGenerarFileTXT
             // 
-            this.btnCuenta.Image = ((System.Drawing.Image)(resources.GetObject("btnCuenta.Image")));
-            this.btnCuenta.Location = new System.Drawing.Point(359, 29);
-            this.btnCuenta.Name = "btnCuenta";
-            this.btnCuenta.Size = new System.Drawing.Size(26, 21);
-            this.btnCuenta.TabIndex = 108;
-            this.btnCuenta.Click += new System.EventHandler(this.btnCuenta_Click);
+            this.btnGenerarFileTXT.Location = new System.Drawing.Point(6, 82);
+            this.btnGenerarFileTXT.Name = "btnGenerarFileTXT";
+            this.btnGenerarFileTXT.Size = new System.Drawing.Size(99, 24);
+            this.btnGenerarFileTXT.TabIndex = 7;
+            this.btnGenerarFileTXT.Text = "Generar File TXT";
+            this.btnGenerarFileTXT.Click += new System.EventHandler(this.btnGenerarFileTXT_Click);
             // 
-            // txtCuentaNombre
-            // 
-            this.txtCuentaNombre.EditValue = "";
-            this.txtCuentaNombre.Location = new System.Drawing.Point(138, 29);
-            this.txtCuentaNombre.Name = "txtCuentaNombre";
-            this.txtCuentaNombre.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtCuentaNombre.Properties.ReadOnly = true;
-            this.txtCuentaNombre.Size = new System.Drawing.Size(219, 20);
-            this.txtCuentaNombre.TabIndex = 109;
-            // 
-            // txtCuenta
-            // 
-            this.txtCuenta.EditValue = "";
-            this.txtCuenta.Location = new System.Drawing.Point(69, 29);
-            this.txtCuenta.Name = "txtCuenta";
-            this.txtCuenta.Properties.Mask.EditMask = "\\d+";
-            this.txtCuenta.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-            this.txtCuenta.Size = new System.Drawing.Size(68, 20);
-            this.txtCuenta.TabIndex = 107;
-            this.txtCuenta.EditValueChanged += new System.EventHandler(this.txtCuenta_EditValueChanged);
-            // 
-            // labelControl8
-            // 
-            this.labelControl8.Location = new System.Drawing.Point(11, 33);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(39, 13);
-            this.labelControl8.TabIndex = 110;
-            this.labelControl8.Text = "Cuenta:";
-            // 
-            // frmRptDocumentoPend
+            // frmRptRegistroVenta
             // 
             this.Appearance.BackColor = System.Drawing.SystemColors.Control;
             this.Appearance.Options.UseBackColor = true;
             this.ClientSize = new System.Drawing.Size(815, 496);
-            this.Name = "frmRptDocumentoPend";
-            this.Text = "Inventario de Documentos Pendientes";
-            this.Load += new System.EventHandler(this.frmRptDocumentoPend_Load);
+            this.Name = "frmRptRegistroVenta";
+            this.Text = "Registro de Ventas";
+            this.Load += new System.EventHandler(this.frmRptRegistroVenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pnlFilter)).EndInit();
             this.pnlFilter.ResumeLayout(false);
             this.pnlFilter.PerformLayout();
@@ -207,9 +198,8 @@
             this.pnMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cmbCompania.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeriodo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbFormato.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCuentaNombre.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCuenta.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbConsulta.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbVersion.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,13 +209,12 @@
 
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LookUpEdit cmbCompania;
-        private DevExpress.XtraEditors.LookUpEdit cmbFormato;
+        private DevExpress.XtraEditors.LookUpEdit cmbVersion;
         private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.LookUpEdit cmbConsulta;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit txtPeriodo;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.SimpleButton btnCuenta;
-        private DevExpress.XtraEditors.TextEdit txtCuentaNombre;
-        private DevExpress.XtraEditors.TextEdit txtCuenta;
-        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.SimpleButton btnGenerarFileTXT;
     }
 }

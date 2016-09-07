@@ -162,6 +162,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbMoneda.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", 100, "Nombre")});
+            this.cmbMoneda.Properties.DropDownRows = 4;
+            this.cmbMoneda.Properties.PopupFormMinSize = new System.Drawing.Size(86, 0);
             this.cmbMoneda.Size = new System.Drawing.Size(86, 20);
             this.cmbMoneda.TabIndex = 3;
             // 
@@ -173,6 +175,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbTipoCuenta.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", 100, "Nombre")});
+            this.cmbTipoCuenta.Properties.DropDownRows = 4;
+            this.cmbTipoCuenta.Properties.PopupFormMinSize = new System.Drawing.Size(93, 0);
             this.cmbTipoCuenta.Size = new System.Drawing.Size(93, 20);
             this.cmbTipoCuenta.TabIndex = 4;
             // 
@@ -192,6 +196,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbVersion.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", 100, "Nombre")});
+            this.cmbVersion.Properties.DropDownRows = 4;
+            this.cmbVersion.Properties.PopupFormMinSize = new System.Drawing.Size(93, 0);
             this.cmbVersion.Size = new System.Drawing.Size(93, 20);
             this.cmbVersion.TabIndex = 6;
             // 
@@ -211,6 +217,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbTCCosto.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", 100, "Nombre")});
+            this.cmbTCCosto.Properties.DropDownRows = 4;
+            this.cmbTCCosto.Properties.PopupFormMinSize = new System.Drawing.Size(86, 0);
             this.cmbTCCosto.Size = new System.Drawing.Size(86, 20);
             this.cmbTCCosto.TabIndex = 5;
             // 

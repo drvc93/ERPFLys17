@@ -20,7 +20,7 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad
         {
             sqlConnRPT.Connection.ConnectionString = EReportW.ConnString;
             List<entRepParam> oPrm = EReportW.GetParametrosPK();
-            String sPeriodo = EReportW.GetObject("Periodo").Valor.ToString();
+            String sPeriodo = EReportW.GetObject("PerIni").Valor.ToString();
 
             prmCompania.Value = EReportW.GetObject("Compania").Valor;
             prmPerIni.Value = EReportW.GetObject("PerIni").Valor;
@@ -39,6 +39,17 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad
             EReportW.NombreStoreProc = sqlConnRPT.Queries[0].Name;
             CreateDocument();
             EReportW.ContReg = this.RowCount;
+        }
+
+        private void Detail_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            String sFlgRet = "N";
+            xrFlgRet.Checked = false;
+
+            if (GetCurrentColumnValue("c_flagretencion") != null){
+                sFlgRet = GetCurrentColumnValue("c_flagretencion").ToString();
+                if (sFlgRet.Equals("S")) { xrFlgRet.Checked = true; }           
+            }    
         }
     }
 }

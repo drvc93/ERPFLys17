@@ -48,8 +48,7 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad
                 nValor = 0; Decimal.TryParse(GetCurrentColumnValue("n_importe").ToString(), out nValor);
                 if (nValor == 0) { xrDebe.ForeColor = Color.Transparent; }
                 if (nValor == 0) { xrHaber.ForeColor = Color.Transparent; }
-            }            
-
+            }
         }
 
         private void xrDebeGR_SummaryReset(object sender, EventArgs e)

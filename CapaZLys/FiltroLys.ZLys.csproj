@@ -646,6 +646,12 @@
     <Compile Include="Controles\Formulario\frmReporte.Designer.cs">
       <DependentUpon>frmReporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptRegistroVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptRegistroVenta.Designer.cs">
+      <DependentUpon>frmRptRegistroVenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModReporte\Formulario\Contabilidad\frmRptRegistroCompa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -706,6 +712,12 @@
     <Compile Include="ModReporte\Formulario\Contabilidad\frmRptLibroDiario.Designer.cs">
       <DependentUpon>frmRptLibroDiario.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaV409.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaV409.Designer.cs">
+      <DependentUpon>rpt_RegistroVentaV409.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraV409.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -717,6 +729,18 @@
     </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraV500.Designer.cs">
       <DependentUpon>rpt_RegistroCompraV500.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraV500NoDom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraV500NoDom.Designer.cs">
+      <DependentUpon>rpt_RegistroCompraV500NoDom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaV500.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaV500.Designer.cs">
+      <DependentUpon>rpt_RegistroVentaV500.cs</DependentUpon>
     </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\rpt_SaldoContableDet.cs">
       <SubType>Component</SubType>
@@ -1064,6 +1088,9 @@
     <EmbeddedResource Include="Controles\Formulario\frmReporte.resx">
       <DependentUpon>frmReporte.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptRegistroVenta.resx">
+      <DependentUpon>frmRptRegistroVenta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptRegistroCompa.resx">
       <DependentUpon>frmRptRegistroCompa.cs</DependentUpon>
     </EmbeddedResource>
@@ -1094,11 +1121,20 @@
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptLibroDiario.resx">
       <DependentUpon>frmRptLibroDiario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaV409.resx">
+      <DependentUpon>rpt_RegistroVentaV409.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraV409.resx">
       <DependentUpon>rpt_RegistroCompraV409.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraV500.resx">
       <DependentUpon>rpt_RegistroCompraV500.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraV500NoDom.resx">
+      <DependentUpon>rpt_RegistroCompraV500NoDom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaV500.resx">
+      <DependentUpon>rpt_RegistroVentaV500.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_SaldoContableDet.resx">
       <DependentUpon>rpt_SaldoContableDet.cs</DependentUpon>

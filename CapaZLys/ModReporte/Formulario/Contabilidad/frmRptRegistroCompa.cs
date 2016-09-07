@@ -11,6 +11,7 @@ using FiltroLys.Domain.Sistema;
 using FiltroLys.Model.Objeto;
 using FiltroLys.Type;
 using FiltroLys.ZLys.Funciones;
+using FiltroLys.ZLys.Busqueda.General;
 using FiltroLys.ZLys.ModReporte.Reporte.Contabilidad;
 
 namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
@@ -169,7 +170,7 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
                 if (sConsult.Equals("RC"))
                 {
                     if (sVersion.Equals(fnConst.RepVersionLBContableV409Cod)) {
-                        rpt_CuentaCCteProv oRpt = new rpt_CuentaCCteProv();
+                        rpt_RegistroCompraV409 oRpt = new rpt_RegistroCompraV409();
                         oRpt.GenerarReport(ref xPrmR);
                         dvReport.DocumentSource = oRpt;
                         FnReportW = xPrmR;
@@ -186,7 +187,7 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
                 }
                 else {
                     if (sVersion.Equals(fnConst.RepVersionLBContableV409Cod)){
-                        rpt_CuentaCCteProv oRpt = new rpt_CuentaCCteProv();
+                        rpt_RegistroCompraV500NoDom oRpt = new rpt_RegistroCompraV500NoDom();
                         oRpt.GenerarReport(ref xPrmR);
                         dvReport.DocumentSource = oRpt;
                         FnReportW = xPrmR;
@@ -194,7 +195,7 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
                     }
 
                     if (sVersion.Equals(fnConst.RepVersionLBContableV500Cod)){
-                        rpt_CuentaCCteProv oRpt = new rpt_CuentaCCteProv();
+                        rpt_RegistroCompraV500NoDom oRpt = new rpt_RegistroCompraV500NoDom();
                         oRpt.GenerarReport(ref xPrmR);
                         dvReport.DocumentSource = oRpt;
                         FnReportW = xPrmR;
@@ -221,9 +222,8 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
 
                     //Ruta a Guardar
                     sCia = FnReportW.GetValue("Compania").ToString();
-                    sPer = FnReportW.GetValue("Periodo").ToString();
-                    sMon = FnReportW.GetValue("Moneda").ToString();
-                    sMon = (sMon.Equals("L")) ? "1" : "2";
+                    sPer = FnReportW.GetValue("PerIni").ToString();
+                    sMon = "1";                    
                     sConsulta = cmbConsulta.EditValue.ToString();
                     sVersion = cmbVersion.EditValue.ToString();
                     sConInf = (FnReportW.ContReg > 0) ? "1" : "0";
@@ -254,7 +254,76 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
             }
         }
 
-        #endregion
+        private void chkDatoProv_CheckedChanged(object sender, EventArgs e)
+        {
+            cmbDatoProv.ReadOnly = chkDatoProv.Checked;
+        }
+        
+        private void chkProveedor_CheckedChanged(object sender, EventArgs e)
+        {
+            txtProveedor.ReadOnly = chkProveedor.Checked;
+            txtProveedor.Text = String.Empty;
+            txtProveedorNom.Text = String.Empty;
+        }
+                
+        private void btnProveedor_Click(object sender, EventArgs e)
+        {
+            if (chkProveedor.Checked) { return; }
+            String sCia = cmbCompania.EditValue.ToString();
+            
+            if (String.IsNullOrEmpty(sCia) || sCia.Equals(fnConst.TextVacio)) {
+                fnMensaje.MensajeInfo("Compañia no seleccionada.");
+                return;
+            }
 
+            frmBusqPersona frm = new frmBusqPersona();
+            frm.MultipleSelect = false;
+            frm.SoloActivo = true;
+            frm.Compania = sCia;
+            frm.VerEmpleado = false;
+            frm.VerCliente = false;
+            frm.VerProveedor = true;
+            frm.SoloActivo = true;
+            if (frm.ShowDialog() == DialogResult.OK){
+                entPersona oEnt = fnConvert.ObjectToEntity<entPersona>(frm.EstructuraForm.ObjX)[0];
+                txtProveedor.Text = oEnt.Persona.ToString();
+                entProveedor OProv = negProveedor.GetFormID(sCia,oEnt.Persona);
+                if (OProv.ResultadoBusqueda) {
+                    txtProveedorNom.Text = OProv.Nombres.Trim();
+                }
+                txtProveedorNom.Text = oEnt.NombreCompleto.Trim();
+                oEnt = null;
+                OProv = null;
+            }            
+            frm = null;
+        }
+        
+        private void txtProveedor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13) {
+                String sCia = cmbCompania.EditValue.ToString();
+                String sProv = txtProveedor.Text.Trim();
+                String sNombre = String.Empty;
+                Int32 nProv = 0;
+                Int32.TryParse(sProv, out nProv);
+
+                if (String.IsNullOrEmpty(sCia) || sCia.Equals(fnConst.TextVacio)){
+                    fnMensaje.MensajeInfo("Compañia no seleccionada.");
+                    return;
+                }
+
+                txtProveedorNom.Text = String.Empty;
+                if (nProv > 0){
+                    entProveedor oEnt = negProveedor.GetFormID(sCia, nProv);
+                    if (!oEnt.ResultadoBusqueda){
+                        fnMensaje.MensajeInfo("El código del proveedor es invalido");
+                        return;
+                    }
+                    sProv = oEnt.Nombres.Trim();
+                }
+            }
+        }
+
+        #endregion
     }
 }

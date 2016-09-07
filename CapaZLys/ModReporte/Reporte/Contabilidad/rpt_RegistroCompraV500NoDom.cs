@@ -6,12 +6,11 @@ using System.ComponentModel;
 using DevExpress.XtraReports.UI;
 using FiltroLys.ZLys.Funciones;
 using FiltroLys.Domain.Sistema;
-
 namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad
 {
-    public partial class rpt_RegistroCompraV409 : DevExpress.XtraReports.UI.XtraReport
+    public partial class rpt_RegistroCompraV500NoDom : DevExpress.XtraReports.UI.XtraReport
     {
-        public rpt_RegistroCompraV409()
+        public rpt_RegistroCompraV500NoDom()
         {
             InitializeComponent();
         }
@@ -35,21 +34,11 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad
             prmTipoReporte.Value = EReportW.GetObject("TipoReporte").Valor;
             oPrm = null;
 
-            xrFechaFinMes.Text = fnGeneral.FechaFinDeMesText(sPeriodo);
+            //xrFechaFinMes.Text = fnGeneral.FechaFinDeMesText(sPeriodo);
             EReportW.NombreStoreProc = sqlConnRPT.Queries[0].Name;
             CreateDocument();
             EReportW.ContReg = this.RowCount;
         }
 
-        private void Detail_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
-        {
-            String sFlgRet = "N";
-            xrFlgRet.Checked = false;
-
-            if (GetCurrentColumnValue("c_flagretencion") != null){
-                sFlgRet = GetCurrentColumnValue("c_flagretencion").ToString();
-                if (sFlgRet.Equals("S")) { xrFlgRet.Checked = true; }                
-            }
-        }
     }
 }

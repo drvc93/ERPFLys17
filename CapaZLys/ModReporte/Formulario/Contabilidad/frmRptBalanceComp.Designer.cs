@@ -71,7 +71,7 @@
             // 
             // btnBuscar
             // 
-            //this.btnBuscar.Location = new System.Drawing.Point(680, 54);
+            this.btnBuscar.Location = new System.Drawing.Point(695, 54);
             this.btnBuscar.Size = new System.Drawing.Size(63, 23);
             // 
             // dvReport
@@ -86,7 +86,7 @@
             // 
             // pnlCuerpo
             // 
-            //this.pnlCuerpo.Size = new System.Drawing.Size(765, 466);
+            this.pnlCuerpo.Size = new System.Drawing.Size(765, 466);
             // 
             // lblTitulo
             // 
@@ -97,8 +97,8 @@
             // 
             // pnMain
             // 
-            //this.pnMain.Location = new System.Drawing.Point(46, 0);
-            //this.pnMain.Size = new System.Drawing.Size(769, 470);
+            this.pnMain.Location = new System.Drawing.Point(46, 0);
+            this.pnMain.Size = new System.Drawing.Size(769, 470);
             // 
             // labelControl1
             // 
@@ -151,6 +151,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbMoneda.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", 100, "Nombre")});
+            this.cmbMoneda.Properties.DropDownRows = 4;
+            this.cmbMoneda.Properties.PopupFormMinSize = new System.Drawing.Size(93, 0);
             this.cmbMoneda.Size = new System.Drawing.Size(93, 20);
             this.cmbMoneda.TabIndex = 3;
             // 
@@ -162,6 +164,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbTipoCuenta.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", 100, "Nombre")});
+            this.cmbTipoCuenta.Properties.DropDownRows = 4;
+            this.cmbTipoCuenta.Properties.PopupFormMinSize = new System.Drawing.Size(93, 0);
             this.cmbTipoCuenta.Size = new System.Drawing.Size(93, 20);
             this.cmbTipoCuenta.TabIndex = 4;
             // 
@@ -181,6 +185,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbFormato.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", 100, "Nombre")});
+            this.cmbFormato.Properties.DropDownRows = 4;
+            this.cmbFormato.Properties.PopupFormMinSize = new System.Drawing.Size(93, 0);
             this.cmbFormato.Size = new System.Drawing.Size(93, 20);
             this.cmbFormato.TabIndex = 6;
             // 
@@ -200,6 +206,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbTipoBC.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", 100, "Nombre")});
+            this.cmbTipoBC.Properties.DropDownRows = 4;
+            this.cmbTipoBC.Properties.PopupFormMinSize = new System.Drawing.Size(88, 0);
             this.cmbTipoBC.Size = new System.Drawing.Size(86, 20);
             this.cmbTipoBC.TabIndex = 5;
             // 

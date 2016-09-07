@@ -40,7 +40,7 @@
             this.chkProveedor = new DevExpress.XtraEditors.CheckEdit();
             this.txtProveedor = new DevExpress.XtraEditors.TextEdit();
             this.txtProveedorNom = new DevExpress.XtraEditors.TextEdit();
-            this.btnCCosto = new DevExpress.XtraEditors.SimpleButton();
+            this.btnProveedor = new DevExpress.XtraEditors.SimpleButton();
             this.chkMayorUIT = new DevExpress.XtraEditors.CheckEdit();
             this.chkDatoProv = new DevExpress.XtraEditors.CheckEdit();
             this.cmbDatoProv = new DevExpress.XtraEditors.LookUpEdit();
@@ -78,7 +78,7 @@
             this.pnlFilter.Controls.Add(this.cmbDatoProv);
             this.pnlFilter.Controls.Add(this.chkDatoProv);
             this.pnlFilter.Controls.Add(this.chkMayorUIT);
-            this.pnlFilter.Controls.Add(this.btnCCosto);
+            this.pnlFilter.Controls.Add(this.btnProveedor);
             this.pnlFilter.Controls.Add(this.txtProveedorNom);
             this.pnlFilter.Controls.Add(this.txtProveedor);
             this.pnlFilter.Controls.Add(this.chkProveedor);
@@ -161,6 +161,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbConsulta.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", 100, "Nombre")});
+            this.cmbConsulta.Properties.DropDownRows = 5;
             this.cmbConsulta.Size = new System.Drawing.Size(197, 20);
             this.cmbConsulta.TabIndex = 2;
             // 
@@ -206,20 +207,21 @@
             this.chkProveedor.Location = new System.Drawing.Point(69, 29);
             this.chkProveedor.Name = "chkProveedor";
             this.chkProveedor.Properties.Caption = "";
-            this.chkProveedor.Properties.ReadOnly = true;
             this.chkProveedor.Size = new System.Drawing.Size(16, 19);
             this.chkProveedor.TabIndex = 7;
+            this.chkProveedor.CheckedChanged += new System.EventHandler(this.chkProveedor_CheckedChanged);
             // 
             // txtProveedor
             // 
             this.txtProveedor.EditValue = "";
             this.txtProveedor.Location = new System.Drawing.Point(87, 29);
             this.txtProveedor.Name = "txtProveedor";
-            this.txtProveedor.Properties.Mask.EditMask = "d";
-            this.txtProveedor.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtProveedor.Properties.Mask.EditMask = "\\d+";
+            this.txtProveedor.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.txtProveedor.Properties.ReadOnly = true;
             this.txtProveedor.Size = new System.Drawing.Size(58, 20);
             this.txtProveedor.TabIndex = 8;
+            this.txtProveedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProveedor_KeyPress);
             // 
             // txtProveedorNom
             // 
@@ -231,13 +233,14 @@
             this.txtProveedorNom.Size = new System.Drawing.Size(200, 20);
             this.txtProveedorNom.TabIndex = 11;
             // 
-            // btnCCosto
+            // btnProveedor
             // 
-            this.btnCCosto.Image = ((System.Drawing.Image)(resources.GetObject("btnCCosto.Image")));
-            this.btnCCosto.Location = new System.Drawing.Point(349, 28);
-            this.btnCCosto.Name = "btnCCosto";
-            this.btnCCosto.Size = new System.Drawing.Size(26, 21);
-            this.btnCCosto.TabIndex = 9;
+            this.btnProveedor.Image = ((System.Drawing.Image)(resources.GetObject("btnProveedor.Image")));
+            this.btnProveedor.Location = new System.Drawing.Point(349, 28);
+            this.btnProveedor.Name = "btnProveedor";
+            this.btnProveedor.Size = new System.Drawing.Size(26, 21);
+            this.btnProveedor.TabIndex = 9;
+            this.btnProveedor.Click += new System.EventHandler(this.btnProveedor_Click);
             // 
             // chkMayorUIT
             // 
@@ -258,6 +261,7 @@
             this.chkDatoProv.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chkDatoProv.Size = new System.Drawing.Size(76, 19);
             this.chkDatoProv.TabIndex = 107;
+            this.chkDatoProv.CheckedChanged += new System.EventHandler(this.chkDatoProv_CheckedChanged);
             // 
             // cmbDatoProv
             // 
@@ -267,6 +271,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbDatoProv.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", 100, "Nombre")});
+            this.cmbDatoProv.Properties.DropDownRows = 4;
+            this.cmbDatoProv.Properties.PopupFormMinSize = new System.Drawing.Size(100, 0);
             this.cmbDatoProv.Properties.ReadOnly = true;
             this.cmbDatoProv.Size = new System.Drawing.Size(99, 20);
             this.cmbDatoProv.TabIndex = 108;
@@ -287,7 +293,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbVersion.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", 100, "Nombre")});
-            this.cmbVersion.Properties.PopupFormMinSize = new System.Drawing.Size(105, 0);
+            this.cmbVersion.Properties.DropDownRows = 4;
+            this.cmbVersion.Properties.PopupFormMinSize = new System.Drawing.Size(100, 0);
             this.cmbVersion.Size = new System.Drawing.Size(99, 20);
             this.cmbVersion.TabIndex = 110;
             // 
@@ -367,7 +374,7 @@
         private DevExpress.XtraEditors.TextEdit txtProveedor;
         private DevExpress.XtraEditors.CheckEdit chkProveedor;
         private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.SimpleButton btnCCosto;
+        private DevExpress.XtraEditors.SimpleButton btnProveedor;
         private DevExpress.XtraEditors.CheckEdit chkMayorUIT;
         private DevExpress.XtraEditors.LookUpEdit cmbVersion;
         private DevExpress.XtraEditors.LabelControl labelControl9;
