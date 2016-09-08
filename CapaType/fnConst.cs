@@ -225,6 +225,16 @@ namespace FiltroLys.Type
         public const String DatoProvNoHallHabCod = "H";
         public const String DatoProvNoHallHabNom = "No Hall/Hab";
 
+        public const String RetencionOrigenOBCod = "O";
+        public const String RetencionOrigenOBNom = "x Oblig.";
+        public const String RetencionOrigenRGCod = "R";
+        public const String RetencionOrigenRGNom = "x RG/CH";
+
+        public const String RetencionTipoExpPDTCod = "01";
+        public const String RetencionTipoExpPDTNom = "PDT";
+        public const String RetencionTipoExpLINCod = "02";
+        public const String RetencionTipoExpLINNom = "Sunt En Linea";
+
         public const String MensajeDeleteMaestro = "Se eliminará el registro seleccionado, desea continuar";
 
     }

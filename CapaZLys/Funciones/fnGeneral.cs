@@ -34,6 +34,9 @@ namespace FiltroLys.ZLys.Funciones
                     case fnEnum.FormatFecha.FechaTexto:
                         sFecha = String.Format("{0:yyyyMM}", dFecha);
                         break;
+                    case fnEnum.FormatFecha.FechaYMDALL:
+                        sFecha = String.Format("{0:yyyyMMdd}", dFecha);
+                        break;
                 }
             }
             return sFecha;    
@@ -88,6 +91,18 @@ namespace FiltroLys.ZLys.Funciones
             String sPer = "";
             sPer = FormatoDateTime(new DateTime(Fecha.Year,Fecha.Month,1).AddSeconds(-1), fnEnum.FormatFecha.FechaPeriodo);
             return sPer;
+        }
+
+        public static String PeriodoActual()
+        {
+            String sPer = "";
+            sPer = FormatoDateTime(DateTime.Today, fnEnum.FormatFecha.FechaPeriodo);
+            return sPer;
+        }
+
+        public static DateTime FechaRepNULL()
+        {
+            return (DateTime) System.Data.SqlTypes.SqlDateTime.MinValue; 
         }
 
     }

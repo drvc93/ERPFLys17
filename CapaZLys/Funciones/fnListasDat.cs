@@ -252,6 +252,23 @@ namespace FiltroLys.ZLys.Funciones
             return Lista;
         }
 
+        public static List<entComboList> ListRetencionTipoExp()
+        {
+            List<entComboList> Lista = new List<entComboList>();
+            Lista.Add(new entComboList() { Codigo = fnConst.RetencionTipoExpPDTCod, Nombre = fnConst.RetencionTipoExpPDTNom });
+            Lista.Add(new entComboList() { Codigo = fnConst.RetencionTipoExpLINCod, Nombre = fnConst.RetencionTipoExpLINNom });
+            return Lista;
+        }
+
+        public static List<entComboList> ListRetencionOrigen()
+        {
+            List<entComboList> Lista = new List<entComboList>();
+            Lista.Add(new entComboList() { Codigo = fnConst.TextRaya3, Nombre = fnConst.TextSeleccioneNom });
+            Lista.Add(new entComboList() { Codigo = fnConst.RetencionOrigenOBCod, Nombre = fnConst.RetencionOrigenOBNom });
+            Lista.Add(new entComboList() { Codigo = fnConst.RetencionOrigenRGCod, Nombre = fnConst.RetencionOrigenRGNom });
+            return Lista;
+        }
+
         #endregion
 
         #region =="Lista RRHH=="

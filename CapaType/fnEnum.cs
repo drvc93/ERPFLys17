@@ -67,7 +67,8 @@ namespace FiltroLys.Type
             FechaLarga = 1,
             FechaCorta = 2,
             FechaPeriodo = 3,
-            FechaTexto = 4            
+            FechaTexto = 4 , 
+            FechaYMDALL = 5
         }
 
         public enum ParameterCRTipo { 
