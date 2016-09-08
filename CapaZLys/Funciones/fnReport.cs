@@ -96,7 +96,12 @@ namespace FiltroLys.ZLys.Funciones
                         sQuery = sQuery + "'" + oTip.ToString() + "',";
                     }
                     else if (tCode.Equals(typeof(DateTime))){
-                        sQuery = sQuery + "'" + oTip.ToString() + "',";
+                        DateTime dT = Convert.ToDateTime(oTip);
+                        if (dT == DateTime.MinValue) { 
+                            sQuery = sQuery + "null" + ",";
+                        }else{
+                            sQuery = sQuery + "'" + fnGeneral.FormatoDateTime(dT,fnEnum.FormatFecha.FechaLargaSP) + "',";
+                        }
                     }
                     else{
                         sQuery = sQuery + oTip.ToString() + ",";

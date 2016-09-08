@@ -20,6 +20,7 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad
         {
             sqlConnRPT.Connection.ConnectionString = EReportW.ConnString;
             List<entRepParam> oPrm = EReportW.GetParametrosPK();
+            String sCiaNombre = EReportW.GetObject("CompaniaNombre").Valor.ToString();
 
             prmCompania.Value = EReportW.GetObject("Compania").Valor;
             prmFlagPeriodo.Value = EReportW.GetObject("FlagPeriodo").Valor;
@@ -42,7 +43,8 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad
             if (Convert.ToDateTime(EReportW.GetObject("FechaRetencion").Valor) == DateTime.MinValue){
                 prmFecRet.Value = fnGeneral.FechaRepNULL();
             }
-            
+
+            xrCompaniaNombre.Text = sCiaNombre;
             prmFlagTipo.Value = EReportW.GetObject("FlagTipo").Valor;
             prmTipo.Value = EReportW.GetObject("Tipo").Valor;
             prmRetNum.Value = EReportW.GetObject("RetencionNum").Valor;
@@ -57,6 +59,17 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad
             EReportW.NombreStoreProc = sqlConnRPT.Queries[0].Name;
             CreateDocument();
             EReportW.ContReg = this.RowCount;
+        }
+
+        private void Detail_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            String sFactAnt = "N";
+            xrchkFactAnt.Checked = false;
+
+            if (GetCurrentColumnValue("c_factoryant") != null){
+                sFactAnt = GetCurrentColumnValue("c_factoryant").ToString();
+                if (sFactAnt.Equals("S")) { xrchkFactAnt.Checked = true; }
+            } 
         }
 
     }

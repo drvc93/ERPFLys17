@@ -125,6 +125,7 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
             String sExcAN = (chkExcAnul.Checked) ? "S" : "N";
             String sFlgFPago = (chkFecPago.Checked) ? "S" : "N";
             String sFlgOrig = (chkOrigenRet.Checked) ? "S" : "N";
+            String sNCia = cmbCompania.Text.Trim();
 
             if (dFFin != DateTime.MinValue) { dFFin = dFFin.AddDays(1).AddSeconds(-1);}
             
@@ -147,6 +148,7 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
                 xPrmR.AddParametro(new entRepParam() { Propiedad = "Origen", Valor = sOrig });
                 xPrmR.AddParametro(new entRepParam() { Propiedad = "TipoExp", Valor = sTExp });
                 xPrmR.AddParametro(new entRepParam() { Propiedad = "FechaRetencion", Valor = dFRet });
+                xPrmR.AddParametro(new entRepParam() { Propiedad = "CompaniaNombre", Valor = sNCia, OtrosDatos = true });
 
                 rpt_RetencionProveedor oRptV = new rpt_RetencionProveedor();
                 oRptV.GenerarReport(ref xPrmR);
@@ -205,6 +207,7 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
                     //Exportar Informacion
                     FnReportW.SetValue("TipoExp", sTipExp);
                     Int32 nReturn = fnExportar.CreateTXTFile(FnReportW.GetQueryProcPK(), sRut, false);
+                    FnReportW.SetValue("TipoExp", "N");
                     CloseFormEspere();
                     if (nReturn != 1) {
                         fnMensaje.MensajeInfo(fnExportar.MensajeError(nReturn));                    

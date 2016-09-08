@@ -37,6 +37,9 @@ namespace FiltroLys.ZLys.Funciones
                     case fnEnum.FormatFecha.FechaYMDALL:
                         sFecha = String.Format("{0:yyyyMMdd}", dFecha);
                         break;
+                    case fnEnum.FormatFecha.FechaLargaSP:
+                        sFecha = String.Format("{0:yyyyMMdd HH:mm:ss}", dFecha);
+                        break;
                 }
             }
             return sFecha;    
