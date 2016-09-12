@@ -724,6 +724,18 @@
     <Compile Include="ModReporte\Formulario\Contabilidad\frmRptLibroDiario.Designer.cs">
       <DependentUpon>frmRptLibroDiario.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_AnalisisVentaCostoRes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_AnalisisVentaCostoRes.Designer.cs">
+      <DependentUpon>rpt_AnalisisVentaCostoRes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_AnalisisVentaCostoDet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_AnalisisVentaCostoDet.Designer.cs">
+      <DependentUpon>rpt_AnalisisVentaCostoDet.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaV409.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1150,6 +1162,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptLibroDiario.resx">
       <DependentUpon>frmRptLibroDiario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_AnalisisVentaCostoRes.resx">
+      <DependentUpon>rpt_AnalisisVentaCostoRes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_AnalisisVentaCostoDet.resx">
+      <DependentUpon>rpt_AnalisisVentaCostoDet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaV409.resx">
       <DependentUpon>rpt_RegistroVentaV409.cs</DependentUpon>

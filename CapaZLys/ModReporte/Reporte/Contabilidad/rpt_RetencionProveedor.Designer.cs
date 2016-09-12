@@ -73,6 +73,11 @@
             this.xrMontoRet = new DevExpress.XtraReports.UI.XRLabel();
             this.xrMontoPG = new DevExpress.XtraReports.UI.XRLabel();
             this.xrOrdenes = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrRegMonDoc = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrRegMonPago = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrRegEstado = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrchkFactAnt = new DevExpress.XtraReports.UI.XRCheckBox();
+            this.xrLabel26 = new DevExpress.XtraReports.UI.XRLabel();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.sqlConnRPT = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
@@ -150,14 +155,9 @@
             this.xrLabel54 = new DevExpress.XtraReports.UI.XRLabel();
             this.pieRegistro = new DevExpress.XtraReports.UI.CalculatedField();
             this.regMonDoc = new DevExpress.XtraReports.UI.CalculatedField();
-            this.xrRegMonDoc = new DevExpress.XtraReports.UI.XRLabel();
             this.regMonPago = new DevExpress.XtraReports.UI.CalculatedField();
-            this.xrRegMonPago = new DevExpress.XtraReports.UI.XRLabel();
             this.regEstado = new DevExpress.XtraReports.UI.CalculatedField();
-            this.xrRegEstado = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrchkFactAnt = new DevExpress.XtraReports.UI.XRCheckBox();
             this.retTipRet = new DevExpress.XtraReports.UI.CalculatedField();
-            this.xrLabel26 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -746,6 +746,66 @@
             this.xrOrdenes.Text = "xrTableCell56";
             this.xrOrdenes.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
+            // xrRegMonDoc
+            // 
+            this.xrRegMonDoc.CanGrow = false;
+            this.xrRegMonDoc.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBRORETENCION.regMonDoc")});
+            this.xrRegMonDoc.Font = new System.Drawing.Font("Arial", 7F);
+            this.xrRegMonDoc.LocationFloat = new DevExpress.Utils.PointFloat(362.4374F, 0.9999911F);
+            this.xrRegMonDoc.Name = "xrRegMonDoc";
+            this.xrRegMonDoc.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrRegMonDoc.SizeF = new System.Drawing.SizeF(28F, 14.99999F);
+            this.xrRegMonDoc.StylePriority.UseFont = false;
+            this.xrRegMonDoc.Text = "xrRegMonDoc";
+            // 
+            // xrRegMonPago
+            // 
+            this.xrRegMonPago.CanGrow = false;
+            this.xrRegMonPago.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBRORETENCION.regMonPago")});
+            this.xrRegMonPago.Font = new System.Drawing.Font("Arial", 7F);
+            this.xrRegMonPago.LocationFloat = new DevExpress.Utils.PointFloat(390.4374F, 0.9999911F);
+            this.xrRegMonPago.Name = "xrRegMonPago";
+            this.xrRegMonPago.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrRegMonPago.SizeF = new System.Drawing.SizeF(26F, 15F);
+            this.xrRegMonPago.StylePriority.UseFont = false;
+            this.xrRegMonPago.Text = "xrRegMonPago";
+            // 
+            // xrRegEstado
+            // 
+            this.xrRegEstado.CanGrow = false;
+            this.xrRegEstado.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBRORETENCION.regEstado")});
+            this.xrRegEstado.Font = new System.Drawing.Font("Arial", 7F);
+            this.xrRegEstado.LocationFloat = new DevExpress.Utils.PointFloat(449.4373F, 0.9999911F);
+            this.xrRegEstado.Name = "xrRegEstado";
+            this.xrRegEstado.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrRegEstado.SizeF = new System.Drawing.SizeF(40F, 14.99999F);
+            this.xrRegEstado.StylePriority.UseFont = false;
+            this.xrRegEstado.Text = "xrRegEstado";
+            // 
+            // xrchkFactAnt
+            // 
+            this.xrchkFactAnt.LocationFloat = new DevExpress.Utils.PointFloat(1065.474F, 1F);
+            this.xrchkFactAnt.Name = "xrchkFactAnt";
+            this.xrchkFactAnt.SizeF = new System.Drawing.SizeF(15F, 15F);
+            this.xrchkFactAnt.StylePriority.UseTextAlignment = false;
+            this.xrchkFactAnt.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // xrLabel26
+            // 
+            this.xrLabel26.CanGrow = false;
+            this.xrLabel26.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBRORETENCION.retTipRet")});
+            this.xrLabel26.Font = new System.Drawing.Font("Arial", 7F);
+            this.xrLabel26.LocationFloat = new DevExpress.Utils.PointFloat(493.2081F, 1.041658F);
+            this.xrLabel26.Name = "xrLabel26";
+            this.xrLabel26.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel26.SizeF = new System.Drawing.SizeF(17.22903F, 14.99999F);
+            this.xrLabel26.StylePriority.UseFont = false;
+            this.xrLabel26.Text = "xrLabel26";
+            // 
             // TopMargin
             // 
             this.TopMargin.HeightF = 32.29167F;
@@ -901,13 +961,14 @@
             // 
             // xrTitFecHoy
             // 
+            this.xrTitFecHoy.CanGrow = false;
             this.xrTitFecHoy.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBRORETENCION.titFecHoy")});
             this.xrTitFecHoy.Font = new System.Drawing.Font("Arial", 8F);
             this.xrTitFecHoy.LocationFloat = new DevExpress.Utils.PointFloat(978.7314F, 18.70832F);
             this.xrTitFecHoy.Name = "xrTitFecHoy";
             this.xrTitFecHoy.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrTitFecHoy.SizeF = new System.Drawing.SizeF(105.7424F, 15.29167F);
+            this.xrTitFecHoy.SizeF = new System.Drawing.SizeF(179.7007F, 15.29167F);
             this.xrTitFecHoy.StylePriority.UseFont = false;
             this.xrTitFecHoy.Text = "xrTitFecHoy";
             // 
@@ -1911,35 +1972,11 @@
             this.regMonDoc.Expression = "iif(IsNullOrEmpty([c_monedadoc]),\'\',iif([c_monedadoc]=\'L\',\'Loc.\',\'Ext.\'))";
             this.regMonDoc.Name = "regMonDoc";
             // 
-            // xrRegMonDoc
-            // 
-            this.xrRegMonDoc.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBRORETENCION.regMonDoc")});
-            this.xrRegMonDoc.Font = new System.Drawing.Font("Arial", 7F);
-            this.xrRegMonDoc.LocationFloat = new DevExpress.Utils.PointFloat(362.4374F, 0.9999911F);
-            this.xrRegMonDoc.Name = "xrRegMonDoc";
-            this.xrRegMonDoc.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrRegMonDoc.SizeF = new System.Drawing.SizeF(28F, 14.99999F);
-            this.xrRegMonDoc.StylePriority.UseFont = false;
-            this.xrRegMonDoc.Text = "xrRegMonDoc";
-            // 
             // regMonPago
             // 
             this.regMonPago.DataMember = "SP_CB_REP_LIBRORETENCION";
             this.regMonPago.Expression = "iif(IsNullOrEmpty([c_monedapago]),\'\',iif([c_monedapago]=\'L\',\'Loc.\',\'Ext.\'))";
             this.regMonPago.Name = "regMonPago";
-            // 
-            // xrRegMonPago
-            // 
-            this.xrRegMonPago.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBRORETENCION.regMonPago")});
-            this.xrRegMonPago.Font = new System.Drawing.Font("Arial", 7F);
-            this.xrRegMonPago.LocationFloat = new DevExpress.Utils.PointFloat(390.4374F, 0.9999911F);
-            this.xrRegMonPago.Name = "xrRegMonPago";
-            this.xrRegMonPago.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrRegMonPago.SizeF = new System.Drawing.SizeF(26F, 15F);
-            this.xrRegMonPago.StylePriority.UseFont = false;
-            this.xrRegMonPago.Text = "xrRegMonPago";
             // 
             // regEstado
             // 
@@ -1949,44 +1986,12 @@
     "))";
             this.regEstado.Name = "regEstado";
             // 
-            // xrRegEstado
-            // 
-            this.xrRegEstado.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBRORETENCION.regEstado")});
-            this.xrRegEstado.Font = new System.Drawing.Font("Arial", 7F);
-            this.xrRegEstado.LocationFloat = new DevExpress.Utils.PointFloat(449.4373F, 0.9999911F);
-            this.xrRegEstado.Name = "xrRegEstado";
-            this.xrRegEstado.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrRegEstado.SizeF = new System.Drawing.SizeF(40F, 14.99999F);
-            this.xrRegEstado.StylePriority.UseFont = false;
-            this.xrRegEstado.Text = "xrRegEstado";
-            // 
-            // xrchkFactAnt
-            // 
-            this.xrchkFactAnt.LocationFloat = new DevExpress.Utils.PointFloat(1065.474F, 1F);
-            this.xrchkFactAnt.Name = "xrchkFactAnt";
-            this.xrchkFactAnt.SizeF = new System.Drawing.SizeF(15F, 15F);
-            this.xrchkFactAnt.StylePriority.UseTextAlignment = false;
-            this.xrchkFactAnt.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
             // retTipRet
             // 
             this.retTipRet.DataMember = "SP_CB_REP_LIBRORETENCION";
             this.retTipRet.Expression = "iif(IsNullOrEmpty([c_flagtiporet]),\'\',iif([c_flagtiporet]=\'S\',\'F\',[c_flagtiporet]" +
     "))";
             this.retTipRet.Name = "retTipRet";
-            // 
-            // xrLabel26
-            // 
-            this.xrLabel26.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REP_LIBRORETENCION.retTipRet")});
-            this.xrLabel26.Font = new System.Drawing.Font("Arial", 7F);
-            this.xrLabel26.LocationFloat = new DevExpress.Utils.PointFloat(493.2081F, 1.041658F);
-            this.xrLabel26.Name = "xrLabel26";
-            this.xrLabel26.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel26.SizeF = new System.Drawing.SizeF(17.22903F, 14.99999F);
-            this.xrLabel26.StylePriority.UseFont = false;
-            this.xrLabel26.Text = "xrLabel26";
             // 
             // rpt_RetencionProveedor
             // 
