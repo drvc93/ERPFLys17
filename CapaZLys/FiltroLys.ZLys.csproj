@@ -646,6 +646,18 @@
     <Compile Include="Controles\Formulario\frmReporte.Designer.cs">
       <DependentUpon>frmReporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptGastoConsolidado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptGastoConsolidado.Designer.cs">
+      <DependentUpon>frmRptGastoConsolidado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptVentaConsolidada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptVentaConsolidada.Designer.cs">
+      <DependentUpon>frmRptVentaConsolidada.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModReporte\Formulario\Contabilidad\frmRptRegistroRetencion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -765,6 +777,18 @@
     </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaV500.Designer.cs">
       <DependentUpon>rpt_RegistroVentaV500.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_ReporteGastoAnual.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_ReporteGastoAnual.Designer.cs">
+      <DependentUpon>rpt_ReporteGastoAnual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_ReporteGastoConsolcs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_ReporteGastoConsolcs.Designer.cs">
+      <DependentUpon>rpt_ReporteGastoConsolcs.cs</DependentUpon>
     </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RetencionProveedor.cs">
       <SubType>Component</SubType>
@@ -1124,6 +1148,12 @@
     <EmbeddedResource Include="Controles\Formulario\frmReporte.resx">
       <DependentUpon>frmReporte.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptGastoConsolidado.resx">
+      <DependentUpon>frmRptGastoConsolidado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptVentaConsolidada.resx">
+      <DependentUpon>frmRptVentaConsolidada.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptRegistroRetencion.resx">
       <DependentUpon>frmRptRegistroRetencion.cs</DependentUpon>
     </EmbeddedResource>
@@ -1183,6 +1213,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaV500.resx">
       <DependentUpon>rpt_RegistroVentaV500.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_ReporteGastoAnual.resx">
+      <DependentUpon>rpt_ReporteGastoAnual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_ReporteGastoConsolcs.resx">
+      <DependentUpon>rpt_ReporteGastoConsolcs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RetencionProveedor.resx">
       <DependentUpon>rpt_RetencionProveedor.cs</DependentUpon>

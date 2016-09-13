@@ -1,6 +1,6 @@
 ﻿namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
 {
-    partial class frmRptVentaConsolidada
+    partial class frmRptGastoConsolidado
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -36,6 +36,8 @@
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.cmbMoneda = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.cmbTipo = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.pnlFilter)).BeginInit();
             this.pnlFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlCuerpo)).BeginInit();
@@ -46,10 +48,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeriodo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbConsulta.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbMoneda.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTipo.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlFilter
             // 
+            this.pnlFilter.Controls.Add(this.cmbTipo);
+            this.pnlFilter.Controls.Add(this.labelControl3);
             this.pnlFilter.Controls.Add(this.cmbMoneda);
             this.pnlFilter.Controls.Add(this.labelControl5);
             this.pnlFilter.Controls.Add(this.cmbConsulta);
@@ -83,7 +88,7 @@
             this.lblTitulo.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.lblTitulo.Size = new System.Drawing.Size(765, 25);
-            this.lblTitulo.Text = "VENTAS Y COSTOS CONSOLIDADOS";
+            this.lblTitulo.Text = "GASTOS CONSOLIDADOS";
             // 
             // pnMain
             // 
@@ -168,14 +173,35 @@
             this.labelControl5.TabIndex = 10;
             this.labelControl5.Text = "Moneda:";
             // 
-            // frmRptVentaConsolidada
+            // cmbTipo
+            // 
+            this.cmbTipo.Location = new System.Drawing.Point(453, 28);
+            this.cmbTipo.Name = "cmbTipo";
+            this.cmbTipo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbTipo.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", 100, "Nombre")});
+            this.cmbTipo.Properties.DropDownRows = 4;
+            this.cmbTipo.Properties.PopupFormMinSize = new System.Drawing.Size(103, 0);
+            this.cmbTipo.Size = new System.Drawing.Size(103, 20);
+            this.cmbTipo.TabIndex = 11;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(405, 32);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(44, 13);
+            this.labelControl3.TabIndex = 12;
+            this.labelControl3.Text = "Tipo Inf: ";
+            // 
+            // frmRptGastoConsolidado
             // 
             this.Appearance.BackColor = System.Drawing.SystemColors.Control;
             this.Appearance.Options.UseBackColor = true;
             this.ClientSize = new System.Drawing.Size(815, 496);
-            this.Name = "frmRptVentaConsolidada";
-            this.Text = "Ventas y Costos Consolidados";
-            this.Load += new System.EventHandler(this.frmRptVentaConsolidada_Load);
+            this.Name = "frmRptGastoConsolidado";
+            this.Text = "Gastos Consolidados";
+            this.Load += new System.EventHandler(this.frmRptGastoConsolidado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pnlFilter)).EndInit();
             this.pnlFilter.ResumeLayout(false);
             this.pnlFilter.PerformLayout();
@@ -187,6 +213,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeriodo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbConsulta.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbMoneda.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTipo.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,5 +229,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit txtPeriodo;
         private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LookUpEdit cmbTipo;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
     }
 }

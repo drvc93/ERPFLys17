@@ -15,16 +15,16 @@ using FiltroLys.ZLys.ModReporte.Reporte.Contabilidad;
 
 namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
 {
-    public partial class frmRptVentaConsolidada : FiltroLys.ZLys.Controles.Formulario.frmReporte
+    public partial class frmRptGastoConsolidado : FiltroLys.ZLys.Controles.Formulario.frmReporte
     {
         #region "==EventForm=="
 
-        public frmRptVentaConsolidada()
+        public frmRptGastoConsolidado()
         {
             InitializeComponent();
         }
 
-        private void frmRptVentaConsolidada_Load(object sender, EventArgs e)
+        private void frmRptGastoConsolidado_Load(object sender, EventArgs e)
         {
             fxCargarCombos();
             fxCargarCombosXCia();
@@ -51,12 +51,25 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
 
             //Consultas
             List<entComboList> LstB = new List<entComboList>();
-            LstB.Add(new entComboList() { Codigo = "1", Nombre = "Detalle Venta consolidada" });
-            LstB.Add(new entComboList() { Codigo = "2", Nombre = "Resumen Venta consolidada" });
+            LstB.Add(new entComboList() { Codigo = "1", Nombre = "Clasificacion" });
+            LstB.Add(new entComboList() { Codigo = "2", Nombre = "Rubro de gasto (Resumido)" });
+            LstB.Add(new entComboList() { Codigo = "3", Nombre = "Rubro de gasto (Detalle)" });
+            LstB.Add(new entComboList() { Codigo = "4", Nombre = "Gastos fijos y variables (Resumen)" });
+            LstB.Add(new entComboList() { Codigo = "5", Nombre = "Gastos fijos y variables (Detalle)" });
             cmbConsulta.Properties.DataSource = LstB;
             cmbConsulta.Properties.DisplayMember = "Nombre";
             cmbConsulta.Properties.ValueMember = "Codigo";
             LstB = null;
+
+            //Tipo
+            List<entComboList> LstC = new List<entComboList>();
+            LstC.Add(new entComboList() { Codigo = "C", Nombre = "Acumulado" });
+            LstC.Add(new entComboList() { Codigo = "M", Nombre = "Mensual" });
+            LstC.Add(new entComboList() { Codigo = "A", Nombre = "Anual detallado" });
+            cmbTipo.Properties.DataSource = LstC;
+            cmbTipo.Properties.DisplayMember = "Nombre";
+            cmbTipo.Properties.ValueMember = "Codigo";
+            LstC = null;
         }
 
         private void fxCargarCombosXCia() { }
@@ -68,6 +81,7 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
             cmbCompania.EditValue = (nCont > 0) ? GlobalVar.Compania : fnConst.TextVacio;
             cmbMoneda.EditValue = fnConst.MonedaLocalCod;
             cmbConsulta.EditValue = "1";
+            cmbTipo.EditValue = "C";
             txtPeriodo.Text = sPerAnt;
         }
 

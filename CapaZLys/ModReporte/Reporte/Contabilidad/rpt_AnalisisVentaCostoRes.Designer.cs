@@ -64,6 +64,7 @@
             this.prmPeriodo = new DevExpress.XtraReports.Parameters.Parameter();
             this.prmMoneda = new DevExpress.XtraReports.Parameters.Parameter();
             this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
+            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrTitMoneda = new DevExpress.XtraReports.UI.XRLabel();
             this.xrTitGeneral = new DevExpress.XtraReports.UI.XRLabel();
             this.xrPageInfo3 = new DevExpress.XtraReports.UI.XRPageInfo();
@@ -72,7 +73,6 @@
             this.titMoneda = new DevExpress.XtraReports.UI.CalculatedField();
             this.titGrTipo = new DevExpress.XtraReports.UI.CalculatedField();
             this.titGrFooterTipo = new DevExpress.XtraReports.UI.CalculatedField();
-            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -259,12 +259,14 @@
             this.xrLabel14.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_ANALISIS_ventas.valor", "{0:C2}")});
             this.xrLabel14.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.xrLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.xrLabel14.LocationFloat = new DevExpress.Utils.PointFloat(426.8033F, 4.999987F);
             this.xrLabel14.Name = "xrLabel14";
             this.xrLabel14.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel14.SizeF = new System.Drawing.SizeF(93.34692F, 18F);
             this.xrLabel14.StyleName = "FieldCaption";
             this.xrLabel14.StylePriority.UseFont = false;
+            this.xrLabel14.StylePriority.UseForeColor = false;
             this.xrLabel14.StylePriority.UseTextAlignment = false;
             xrSummary1.FormatString = "{0:#,#}";
             xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Group;
@@ -346,6 +348,16 @@
             this.PageHeader.Name = "PageHeader";
             this.PageHeader.StylePriority.UseFont = false;
             // 
+            // xrLabel1
+            // 
+            this.xrLabel1.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_ANALISIS_ventas.titFecHoy")});
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(569.403F, 26.70835F);
+            this.xrLabel1.Name = "xrLabel1";
+            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(166.597F, 16.41665F);
+            this.xrLabel1.Text = "xrLabel1";
+            // 
             // xrTitMoneda
             // 
             this.xrTitMoneda.CanGrow = false;
@@ -421,16 +433,6 @@
             this.titGrFooterTipo.Expression = "\'TOTAL \'+iif( [c_tipo]=\'1\',\'UNIDADES VENDIDAS\',iif( [c_tipo] =\'2\',\'VALOR VENDIDO\'" +
     ",\'COSTO DE VENTAS\'))";
             this.titGrFooterTipo.Name = "titGrFooterTipo";
-            // 
-            // xrLabel1
-            // 
-            this.xrLabel1.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_ANALISIS_ventas.titFecHoy")});
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(569.403F, 26.70835F);
-            this.xrLabel1.Name = "xrLabel1";
-            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel1.SizeF = new System.Drawing.SizeF(166.597F, 16.41665F);
-            this.xrLabel1.Text = "xrLabel1";
             // 
             // rpt_AnalisisVentaCostoRes
             // 
