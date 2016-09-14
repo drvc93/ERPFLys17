@@ -9,9 +9,9 @@ using FiltroLys.Domain.Sistema;
 
 namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad
 {
-    public partial class rpt_ReporteGastoConsolcs : DevExpress.XtraReports.UI.XtraReport
+    public partial class rpt_RubroDetalleCta : DevExpress.XtraReports.UI.XtraReport
     {
-        public rpt_ReporteGastoConsolcs()
+        public rpt_RubroDetalleCta()
         {
             InitializeComponent();
         }
@@ -24,6 +24,7 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad
 
             prmCompania.Value = EReportW.GetObject("Compania").Valor;
             prmPeriodo.Value = EReportW.GetObject("Periodo").Valor;
+            prmTipoConsulta.Value = EReportW.GetObject("Consulta").Valor;
             prmConsulta.Value = EReportW.GetObject("SubConsulta").Valor;
             xrTitCompania.Text = sCiaNombre;
             oPrm = null;

@@ -36,11 +36,6 @@
             DevExpress.DataAccess.Sql.QueryParameter queryParameter3 = new DevExpress.DataAccess.Sql.QueryParameter();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rpt_ReporteGastoAnual));
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
-            this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
-            this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
-            this.sqlConnRPT = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
-            this.GrupoClasificacion = new DevExpress.XtraReports.UI.GroupHeaderBand();
-            this.xrGrClasific = new DevExpress.XtraReports.UI.XRLabel();
             this.xrCuenta = new DevExpress.XtraReports.UI.XRLabel();
             this.xrDescripcion = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel33 = new DevExpress.XtraReports.UI.XRLabel();
@@ -69,6 +64,11 @@
             this.xrLabel56 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel57 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel58 = new DevExpress.XtraReports.UI.XRLabel();
+            this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
+            this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
+            this.sqlConnRPT = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
+            this.GrupoClasificacion = new DevExpress.XtraReports.UI.GroupHeaderBand();
+            this.xrGrClasific = new DevExpress.XtraReports.UI.XRLabel();
             this.pageFooterBand1 = new DevExpress.XtraReports.UI.PageFooterBand();
             this.reportHeaderBand1 = new DevExpress.XtraReports.UI.ReportHeaderBand();
             this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -79,15 +79,15 @@
             this.prmPeriodo = new DevExpress.XtraReports.Parameters.Parameter();
             this.prmMoneda = new DevExpress.XtraReports.Parameters.Parameter();
             this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
+            this.xrLabel26 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrTitPeriodo = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrTitCompania = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel61 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrTitulo = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrTitFecHoy = new DevExpress.XtraReports.UI.XRLabel();
             this.xrPageInfo3 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.titFecHoy = new DevExpress.XtraReports.UI.CalculatedField();
-            this.xrLabel59 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrTitulo = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel61 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrTitCompania = new DevExpress.XtraReports.UI.XRLabel();
             this.titPeriodo = new DevExpress.XtraReports.UI.CalculatedField();
-            this.xrTitPeriodo = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel26 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -126,6 +126,396 @@
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.StyleName = "DataField";
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrCuenta
+            // 
+            this.xrCuenta.CanGrow = false;
+            this.xrCuenta.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.c_cuenta")});
+            this.xrCuenta.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrCuenta.LocationFloat = new DevExpress.Utils.PointFloat(5.000001F, 0.9999911F);
+            this.xrCuenta.Name = "xrCuenta";
+            this.xrCuenta.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrCuenta.SizeF = new System.Drawing.SizeF(47.26701F, 14.12501F);
+            this.xrCuenta.StylePriority.UseFont = false;
+            this.xrCuenta.Text = "xrCuenta";
+            // 
+            // xrDescripcion
+            // 
+            this.xrDescripcion.CanGrow = false;
+            this.xrDescripcion.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.c_descripcion")});
+            this.xrDescripcion.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrDescripcion.LocationFloat = new DevExpress.Utils.PointFloat(52.26701F, 0.9999911F);
+            this.xrDescripcion.Name = "xrDescripcion";
+            this.xrDescripcion.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrDescripcion.SizeF = new System.Drawing.SizeF(214.5521F, 14.12501F);
+            this.xrDescripcion.StylePriority.UseFont = false;
+            this.xrDescripcion.Text = "xrDescripcion";
+            // 
+            // xrLabel33
+            // 
+            this.xrLabel33.CanGrow = false;
+            this.xrLabel33.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M1", "{0:n2}")});
+            this.xrLabel33.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel33.LocationFloat = new DevExpress.Utils.PointFloat(269.2723F, 0.9999911F);
+            this.xrLabel33.Name = "xrLabel33";
+            this.xrLabel33.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel33.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel33.StylePriority.UseFont = false;
+            this.xrLabel33.StylePriority.UseTextAlignment = false;
+            this.xrLabel33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel34
+            // 
+            this.xrLabel34.CanGrow = false;
+            this.xrLabel34.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M1", "{0:n2}")});
+            this.xrLabel34.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel34.LocationFloat = new DevExpress.Utils.PointFloat(316.2723F, 0.9999911F);
+            this.xrLabel34.Name = "xrLabel34";
+            this.xrLabel34.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel34.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel34.StylePriority.UseFont = false;
+            this.xrLabel34.StylePriority.UseTextAlignment = false;
+            this.xrLabel34.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel35
+            // 
+            this.xrLabel35.CanGrow = false;
+            this.xrLabel35.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M2", "{0:n2}")});
+            this.xrLabel35.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel35.LocationFloat = new DevExpress.Utils.PointFloat(363.2723F, 0.9999911F);
+            this.xrLabel35.Name = "xrLabel35";
+            this.xrLabel35.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel35.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel35.StylePriority.UseFont = false;
+            this.xrLabel35.StylePriority.UseTextAlignment = false;
+            this.xrLabel35.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel36
+            // 
+            this.xrLabel36.CanGrow = false;
+            this.xrLabel36.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M2", "{0:n2}")});
+            this.xrLabel36.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel36.LocationFloat = new DevExpress.Utils.PointFloat(410.2723F, 0.9999911F);
+            this.xrLabel36.Name = "xrLabel36";
+            this.xrLabel36.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel36.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel36.StylePriority.UseFont = false;
+            this.xrLabel36.StylePriority.UseTextAlignment = false;
+            this.xrLabel36.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel37
+            // 
+            this.xrLabel37.CanGrow = false;
+            this.xrLabel37.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M3", "{0:n2}")});
+            this.xrLabel37.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel37.LocationFloat = new DevExpress.Utils.PointFloat(457.2723F, 0.9999911F);
+            this.xrLabel37.Name = "xrLabel37";
+            this.xrLabel37.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel37.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel37.StylePriority.UseFont = false;
+            this.xrLabel37.StylePriority.UseTextAlignment = false;
+            this.xrLabel37.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel38
+            // 
+            this.xrLabel38.CanGrow = false;
+            this.xrLabel38.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M3", "{0:n2}")});
+            this.xrLabel38.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel38.LocationFloat = new DevExpress.Utils.PointFloat(504.2723F, 0.9999911F);
+            this.xrLabel38.Name = "xrLabel38";
+            this.xrLabel38.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel38.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel38.StylePriority.UseFont = false;
+            this.xrLabel38.StylePriority.UseTextAlignment = false;
+            this.xrLabel38.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel39
+            // 
+            this.xrLabel39.CanGrow = false;
+            this.xrLabel39.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M4", "{0:n2}")});
+            this.xrLabel39.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel39.LocationFloat = new DevExpress.Utils.PointFloat(551.2723F, 0.9999911F);
+            this.xrLabel39.Name = "xrLabel39";
+            this.xrLabel39.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel39.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel39.StylePriority.UseFont = false;
+            this.xrLabel39.StylePriority.UseTextAlignment = false;
+            this.xrLabel39.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel40
+            // 
+            this.xrLabel40.CanGrow = false;
+            this.xrLabel40.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M4", "{0:n2}")});
+            this.xrLabel40.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel40.LocationFloat = new DevExpress.Utils.PointFloat(598.2723F, 0.9999911F);
+            this.xrLabel40.Name = "xrLabel40";
+            this.xrLabel40.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel40.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel40.StylePriority.UseFont = false;
+            this.xrLabel40.StylePriority.UseTextAlignment = false;
+            this.xrLabel40.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel41
+            // 
+            this.xrLabel41.CanGrow = false;
+            this.xrLabel41.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M5", "{0:n2}")});
+            this.xrLabel41.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel41.LocationFloat = new DevExpress.Utils.PointFloat(645.2723F, 0.9999911F);
+            this.xrLabel41.Name = "xrLabel41";
+            this.xrLabel41.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel41.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel41.StylePriority.UseFont = false;
+            this.xrLabel41.StylePriority.UseTextAlignment = false;
+            this.xrLabel41.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel42
+            // 
+            this.xrLabel42.CanGrow = false;
+            this.xrLabel42.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M5", "{0:n2}")});
+            this.xrLabel42.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel42.LocationFloat = new DevExpress.Utils.PointFloat(692.2723F, 0.9999911F);
+            this.xrLabel42.Name = "xrLabel42";
+            this.xrLabel42.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel42.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel42.StylePriority.UseFont = false;
+            this.xrLabel42.StylePriority.UseTextAlignment = false;
+            this.xrLabel42.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel43
+            // 
+            this.xrLabel43.CanGrow = false;
+            this.xrLabel43.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M6", "{0:n2}")});
+            this.xrLabel43.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel43.LocationFloat = new DevExpress.Utils.PointFloat(739.2722F, 0.9999911F);
+            this.xrLabel43.Name = "xrLabel43";
+            this.xrLabel43.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel43.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel43.StylePriority.UseFont = false;
+            this.xrLabel43.StylePriority.UseTextAlignment = false;
+            this.xrLabel43.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel44
+            // 
+            this.xrLabel44.CanGrow = false;
+            this.xrLabel44.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M6", "{0:n2}")});
+            this.xrLabel44.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel44.LocationFloat = new DevExpress.Utils.PointFloat(786.2722F, 0.9999911F);
+            this.xrLabel44.Name = "xrLabel44";
+            this.xrLabel44.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel44.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel44.StylePriority.UseFont = false;
+            this.xrLabel44.StylePriority.UseTextAlignment = false;
+            this.xrLabel44.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel45
+            // 
+            this.xrLabel45.CanGrow = false;
+            this.xrLabel45.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M7", "{0:n2}")});
+            this.xrLabel45.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel45.LocationFloat = new DevExpress.Utils.PointFloat(833.2722F, 0.9999911F);
+            this.xrLabel45.Name = "xrLabel45";
+            this.xrLabel45.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel45.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel45.StylePriority.UseFont = false;
+            this.xrLabel45.StylePriority.UseTextAlignment = false;
+            this.xrLabel45.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel46
+            // 
+            this.xrLabel46.CanGrow = false;
+            this.xrLabel46.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M7", "{0:n2}")});
+            this.xrLabel46.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel46.LocationFloat = new DevExpress.Utils.PointFloat(880.2722F, 0.9999911F);
+            this.xrLabel46.Name = "xrLabel46";
+            this.xrLabel46.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel46.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel46.StylePriority.UseFont = false;
+            this.xrLabel46.StylePriority.UseTextAlignment = false;
+            this.xrLabel46.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel47
+            // 
+            this.xrLabel47.CanGrow = false;
+            this.xrLabel47.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M8", "{0:n2}")});
+            this.xrLabel47.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel47.LocationFloat = new DevExpress.Utils.PointFloat(928.522F, 0.9999911F);
+            this.xrLabel47.Name = "xrLabel47";
+            this.xrLabel47.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel47.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel47.StylePriority.UseFont = false;
+            this.xrLabel47.StylePriority.UseTextAlignment = false;
+            this.xrLabel47.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel48
+            // 
+            this.xrLabel48.CanGrow = false;
+            this.xrLabel48.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M8", "{0:n2}")});
+            this.xrLabel48.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel48.LocationFloat = new DevExpress.Utils.PointFloat(975.522F, 0.9999911F);
+            this.xrLabel48.Name = "xrLabel48";
+            this.xrLabel48.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel48.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel48.StylePriority.UseFont = false;
+            this.xrLabel48.StylePriority.UseTextAlignment = false;
+            this.xrLabel48.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel49
+            // 
+            this.xrLabel49.CanGrow = false;
+            this.xrLabel49.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M9", "{0:n2}")});
+            this.xrLabel49.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel49.LocationFloat = new DevExpress.Utils.PointFloat(420.7358F, 15.12499F);
+            this.xrLabel49.Name = "xrLabel49";
+            this.xrLabel49.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel49.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel49.StylePriority.UseFont = false;
+            this.xrLabel49.StylePriority.UseTextAlignment = false;
+            this.xrLabel49.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel50
+            // 
+            this.xrLabel50.CanGrow = false;
+            this.xrLabel50.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M9", "{0:n2}")});
+            this.xrLabel50.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel50.LocationFloat = new DevExpress.Utils.PointFloat(467.7358F, 15.12499F);
+            this.xrLabel50.Name = "xrLabel50";
+            this.xrLabel50.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel50.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel50.StylePriority.UseFont = false;
+            this.xrLabel50.StylePriority.UseTextAlignment = false;
+            this.xrLabel50.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel51
+            // 
+            this.xrLabel51.CanGrow = false;
+            this.xrLabel51.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M10", "{0:n2}")});
+            this.xrLabel51.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel51.LocationFloat = new DevExpress.Utils.PointFloat(514.7358F, 15.12499F);
+            this.xrLabel51.Name = "xrLabel51";
+            this.xrLabel51.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel51.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel51.StylePriority.UseFont = false;
+            this.xrLabel51.StylePriority.UseTextAlignment = false;
+            this.xrLabel51.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel52
+            // 
+            this.xrLabel52.CanGrow = false;
+            this.xrLabel52.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M10", "{0:n2}")});
+            this.xrLabel52.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel52.LocationFloat = new DevExpress.Utils.PointFloat(571.2369F, 15.12499F);
+            this.xrLabel52.Name = "xrLabel52";
+            this.xrLabel52.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel52.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel52.StylePriority.UseFont = false;
+            this.xrLabel52.StylePriority.UseTextAlignment = false;
+            this.xrLabel52.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel53
+            // 
+            this.xrLabel53.CanGrow = false;
+            this.xrLabel53.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M11", "{0:n2}")});
+            this.xrLabel53.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel53.LocationFloat = new DevExpress.Utils.PointFloat(618.2369F, 15.12499F);
+            this.xrLabel53.Name = "xrLabel53";
+            this.xrLabel53.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel53.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel53.StylePriority.UseFont = false;
+            this.xrLabel53.StylePriority.UseTextAlignment = false;
+            this.xrLabel53.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel54
+            // 
+            this.xrLabel54.CanGrow = false;
+            this.xrLabel54.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M11", "{0:n2}")});
+            this.xrLabel54.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel54.LocationFloat = new DevExpress.Utils.PointFloat(665.2369F, 15.12499F);
+            this.xrLabel54.Name = "xrLabel54";
+            this.xrLabel54.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel54.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel54.StylePriority.UseFont = false;
+            this.xrLabel54.StylePriority.UseTextAlignment = false;
+            this.xrLabel54.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel55
+            // 
+            this.xrLabel55.CanGrow = false;
+            this.xrLabel55.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M12", "{0:n2}")});
+            this.xrLabel55.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel55.LocationFloat = new DevExpress.Utils.PointFloat(712.2369F, 15.12499F);
+            this.xrLabel55.Name = "xrLabel55";
+            this.xrLabel55.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel55.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel55.StylePriority.UseFont = false;
+            this.xrLabel55.StylePriority.UseTextAlignment = false;
+            this.xrLabel55.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel56
+            // 
+            this.xrLabel56.CanGrow = false;
+            this.xrLabel56.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M12", "{0:n2}")});
+            this.xrLabel56.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel56.LocationFloat = new DevExpress.Utils.PointFloat(759.2368F, 15.12499F);
+            this.xrLabel56.Name = "xrLabel56";
+            this.xrLabel56.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel56.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel56.StylePriority.UseFont = false;
+            this.xrLabel56.StylePriority.UseTextAlignment = false;
+            this.xrLabel56.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel57
+            // 
+            this.xrLabel57.CanGrow = false;
+            this.xrLabel57.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_total", "{0:n2}")});
+            this.xrLabel57.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel57.LocationFloat = new DevExpress.Utils.PointFloat(806.2369F, 15.12499F);
+            this.xrLabel57.Name = "xrLabel57";
+            this.xrLabel57.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel57.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel57.StylePriority.UseFont = false;
+            this.xrLabel57.StylePriority.UseTextAlignment = false;
+            this.xrLabel57.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // xrLabel58
+            // 
+            this.xrLabel58.CanGrow = false;
+            this.xrLabel58.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_total", "{0:n2}")});
+            this.xrLabel58.Font = new System.Drawing.Font("Arial", 6F);
+            this.xrLabel58.LocationFloat = new DevExpress.Utils.PointFloat(853.2368F, 15.12499F);
+            this.xrLabel58.Name = "xrLabel58";
+            this.xrLabel58.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel58.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
+            this.xrLabel58.StylePriority.UseFont = false;
+            this.xrLabel58.StylePriority.UseTextAlignment = false;
+            this.xrLabel58.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             // 
             // TopMargin
             // 
@@ -191,396 +581,6 @@
             this.xrGrClasific.StyleName = "DataField";
             this.xrGrClasific.StylePriority.UseFont = false;
             this.xrGrClasific.Text = "xrGrClasific";
-            // 
-            // xrCuenta
-            // 
-            this.xrCuenta.CanGrow = false;
-            this.xrCuenta.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.c_cuenta")});
-            this.xrCuenta.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrCuenta.LocationFloat = new DevExpress.Utils.PointFloat(5.000001F, 0.9999911F);
-            this.xrCuenta.Name = "xrCuenta";
-            this.xrCuenta.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrCuenta.SizeF = new System.Drawing.SizeF(47.26701F, 14.12501F);
-            this.xrCuenta.StylePriority.UseFont = false;
-            this.xrCuenta.Text = "xrCuenta";
-            // 
-            // xrDescripcion
-            // 
-            this.xrDescripcion.CanGrow = false;
-            this.xrDescripcion.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.c_descripcion")});
-            this.xrDescripcion.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrDescripcion.LocationFloat = new DevExpress.Utils.PointFloat(52.26701F, 0.9999911F);
-            this.xrDescripcion.Name = "xrDescripcion";
-            this.xrDescripcion.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrDescripcion.SizeF = new System.Drawing.SizeF(214.5521F, 14.12501F);
-            this.xrDescripcion.StylePriority.UseFont = false;
-            this.xrDescripcion.Text = "xrDescripcion";
-            // 
-            // xrLabel33
-            // 
-            this.xrLabel33.CanGrow = false;
-            this.xrLabel33.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M1", "{0:#,#}")});
-            this.xrLabel33.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel33.LocationFloat = new DevExpress.Utils.PointFloat(269.2723F, 0.9999911F);
-            this.xrLabel33.Name = "xrLabel33";
-            this.xrLabel33.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel33.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel33.StylePriority.UseFont = false;
-            this.xrLabel33.StylePriority.UseTextAlignment = false;
-            this.xrLabel33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel34
-            // 
-            this.xrLabel34.CanGrow = false;
-            this.xrLabel34.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M1", "{0:#,#}")});
-            this.xrLabel34.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel34.LocationFloat = new DevExpress.Utils.PointFloat(316.2723F, 0.9999911F);
-            this.xrLabel34.Name = "xrLabel34";
-            this.xrLabel34.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel34.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel34.StylePriority.UseFont = false;
-            this.xrLabel34.StylePriority.UseTextAlignment = false;
-            this.xrLabel34.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel35
-            // 
-            this.xrLabel35.CanGrow = false;
-            this.xrLabel35.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M2", "{0:#,#}")});
-            this.xrLabel35.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel35.LocationFloat = new DevExpress.Utils.PointFloat(363.2723F, 0.9999911F);
-            this.xrLabel35.Name = "xrLabel35";
-            this.xrLabel35.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel35.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel35.StylePriority.UseFont = false;
-            this.xrLabel35.StylePriority.UseTextAlignment = false;
-            this.xrLabel35.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel36
-            // 
-            this.xrLabel36.CanGrow = false;
-            this.xrLabel36.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M2", "{0:#,#}")});
-            this.xrLabel36.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel36.LocationFloat = new DevExpress.Utils.PointFloat(410.2723F, 0.9999911F);
-            this.xrLabel36.Name = "xrLabel36";
-            this.xrLabel36.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel36.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel36.StylePriority.UseFont = false;
-            this.xrLabel36.StylePriority.UseTextAlignment = false;
-            this.xrLabel36.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel37
-            // 
-            this.xrLabel37.CanGrow = false;
-            this.xrLabel37.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M3", "{0:#,#}")});
-            this.xrLabel37.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel37.LocationFloat = new DevExpress.Utils.PointFloat(457.2723F, 0.9999911F);
-            this.xrLabel37.Name = "xrLabel37";
-            this.xrLabel37.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel37.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel37.StylePriority.UseFont = false;
-            this.xrLabel37.StylePriority.UseTextAlignment = false;
-            this.xrLabel37.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel38
-            // 
-            this.xrLabel38.CanGrow = false;
-            this.xrLabel38.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M3", "{0:#,#}")});
-            this.xrLabel38.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel38.LocationFloat = new DevExpress.Utils.PointFloat(504.2723F, 0.9999911F);
-            this.xrLabel38.Name = "xrLabel38";
-            this.xrLabel38.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel38.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel38.StylePriority.UseFont = false;
-            this.xrLabel38.StylePriority.UseTextAlignment = false;
-            this.xrLabel38.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel39
-            // 
-            this.xrLabel39.CanGrow = false;
-            this.xrLabel39.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M4", "{0:#,#}")});
-            this.xrLabel39.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel39.LocationFloat = new DevExpress.Utils.PointFloat(551.2723F, 0.9999911F);
-            this.xrLabel39.Name = "xrLabel39";
-            this.xrLabel39.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel39.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel39.StylePriority.UseFont = false;
-            this.xrLabel39.StylePriority.UseTextAlignment = false;
-            this.xrLabel39.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel40
-            // 
-            this.xrLabel40.CanGrow = false;
-            this.xrLabel40.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M4", "{0:#,#}")});
-            this.xrLabel40.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel40.LocationFloat = new DevExpress.Utils.PointFloat(598.2723F, 0.9999911F);
-            this.xrLabel40.Name = "xrLabel40";
-            this.xrLabel40.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel40.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel40.StylePriority.UseFont = false;
-            this.xrLabel40.StylePriority.UseTextAlignment = false;
-            this.xrLabel40.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel41
-            // 
-            this.xrLabel41.CanGrow = false;
-            this.xrLabel41.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M5", "{0:#,#}")});
-            this.xrLabel41.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel41.LocationFloat = new DevExpress.Utils.PointFloat(645.2723F, 0.9999911F);
-            this.xrLabel41.Name = "xrLabel41";
-            this.xrLabel41.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel41.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel41.StylePriority.UseFont = false;
-            this.xrLabel41.StylePriority.UseTextAlignment = false;
-            this.xrLabel41.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel42
-            // 
-            this.xrLabel42.CanGrow = false;
-            this.xrLabel42.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M5", "{0:#,#}")});
-            this.xrLabel42.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel42.LocationFloat = new DevExpress.Utils.PointFloat(692.2723F, 0.9999911F);
-            this.xrLabel42.Name = "xrLabel42";
-            this.xrLabel42.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel42.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel42.StylePriority.UseFont = false;
-            this.xrLabel42.StylePriority.UseTextAlignment = false;
-            this.xrLabel42.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel43
-            // 
-            this.xrLabel43.CanGrow = false;
-            this.xrLabel43.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M6", "{0:#,#}")});
-            this.xrLabel43.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel43.LocationFloat = new DevExpress.Utils.PointFloat(739.2722F, 0.9999911F);
-            this.xrLabel43.Name = "xrLabel43";
-            this.xrLabel43.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel43.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel43.StylePriority.UseFont = false;
-            this.xrLabel43.StylePriority.UseTextAlignment = false;
-            this.xrLabel43.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel44
-            // 
-            this.xrLabel44.CanGrow = false;
-            this.xrLabel44.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M6", "{0:#,#}")});
-            this.xrLabel44.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel44.LocationFloat = new DevExpress.Utils.PointFloat(786.2722F, 0.9999911F);
-            this.xrLabel44.Name = "xrLabel44";
-            this.xrLabel44.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel44.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel44.StylePriority.UseFont = false;
-            this.xrLabel44.StylePriority.UseTextAlignment = false;
-            this.xrLabel44.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel45
-            // 
-            this.xrLabel45.CanGrow = false;
-            this.xrLabel45.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M7", "{0:#,#}")});
-            this.xrLabel45.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel45.LocationFloat = new DevExpress.Utils.PointFloat(833.2722F, 0.9999911F);
-            this.xrLabel45.Name = "xrLabel45";
-            this.xrLabel45.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel45.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel45.StylePriority.UseFont = false;
-            this.xrLabel45.StylePriority.UseTextAlignment = false;
-            this.xrLabel45.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel46
-            // 
-            this.xrLabel46.CanGrow = false;
-            this.xrLabel46.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M7", "{0:#,#}")});
-            this.xrLabel46.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel46.LocationFloat = new DevExpress.Utils.PointFloat(880.2722F, 0.9999911F);
-            this.xrLabel46.Name = "xrLabel46";
-            this.xrLabel46.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel46.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel46.StylePriority.UseFont = false;
-            this.xrLabel46.StylePriority.UseTextAlignment = false;
-            this.xrLabel46.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel47
-            // 
-            this.xrLabel47.CanGrow = false;
-            this.xrLabel47.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M8", "{0:#,#}")});
-            this.xrLabel47.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel47.LocationFloat = new DevExpress.Utils.PointFloat(928.522F, 0.9999911F);
-            this.xrLabel47.Name = "xrLabel47";
-            this.xrLabel47.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel47.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel47.StylePriority.UseFont = false;
-            this.xrLabel47.StylePriority.UseTextAlignment = false;
-            this.xrLabel47.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel48
-            // 
-            this.xrLabel48.CanGrow = false;
-            this.xrLabel48.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M8", "{0:#,#}")});
-            this.xrLabel48.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel48.LocationFloat = new DevExpress.Utils.PointFloat(975.522F, 0.9999911F);
-            this.xrLabel48.Name = "xrLabel48";
-            this.xrLabel48.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel48.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel48.StylePriority.UseFont = false;
-            this.xrLabel48.StylePriority.UseTextAlignment = false;
-            this.xrLabel48.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel49
-            // 
-            this.xrLabel49.CanGrow = false;
-            this.xrLabel49.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M9", "{0:#,#}")});
-            this.xrLabel49.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel49.LocationFloat = new DevExpress.Utils.PointFloat(420.7358F, 15.12499F);
-            this.xrLabel49.Name = "xrLabel49";
-            this.xrLabel49.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel49.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel49.StylePriority.UseFont = false;
-            this.xrLabel49.StylePriority.UseTextAlignment = false;
-            this.xrLabel49.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel50
-            // 
-            this.xrLabel50.CanGrow = false;
-            this.xrLabel50.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M9", "{0:#,#}")});
-            this.xrLabel50.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel50.LocationFloat = new DevExpress.Utils.PointFloat(467.7358F, 15.12499F);
-            this.xrLabel50.Name = "xrLabel50";
-            this.xrLabel50.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel50.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel50.StylePriority.UseFont = false;
-            this.xrLabel50.StylePriority.UseTextAlignment = false;
-            this.xrLabel50.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel51
-            // 
-            this.xrLabel51.CanGrow = false;
-            this.xrLabel51.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M10", "{0:#,#}")});
-            this.xrLabel51.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel51.LocationFloat = new DevExpress.Utils.PointFloat(514.7358F, 15.12499F);
-            this.xrLabel51.Name = "xrLabel51";
-            this.xrLabel51.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel51.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel51.StylePriority.UseFont = false;
-            this.xrLabel51.StylePriority.UseTextAlignment = false;
-            this.xrLabel51.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel52
-            // 
-            this.xrLabel52.CanGrow = false;
-            this.xrLabel52.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M10", "{0:#,#}")});
-            this.xrLabel52.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel52.LocationFloat = new DevExpress.Utils.PointFloat(571.2369F, 15.12499F);
-            this.xrLabel52.Name = "xrLabel52";
-            this.xrLabel52.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel52.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel52.StylePriority.UseFont = false;
-            this.xrLabel52.StylePriority.UseTextAlignment = false;
-            this.xrLabel52.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel53
-            // 
-            this.xrLabel53.CanGrow = false;
-            this.xrLabel53.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M11", "{0:#,#}")});
-            this.xrLabel53.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel53.LocationFloat = new DevExpress.Utils.PointFloat(618.2369F, 15.12499F);
-            this.xrLabel53.Name = "xrLabel53";
-            this.xrLabel53.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel53.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel53.StylePriority.UseFont = false;
-            this.xrLabel53.StylePriority.UseTextAlignment = false;
-            this.xrLabel53.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel54
-            // 
-            this.xrLabel54.CanGrow = false;
-            this.xrLabel54.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M11", "{0:#,#}")});
-            this.xrLabel54.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel54.LocationFloat = new DevExpress.Utils.PointFloat(665.2369F, 15.12499F);
-            this.xrLabel54.Name = "xrLabel54";
-            this.xrLabel54.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel54.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel54.StylePriority.UseFont = false;
-            this.xrLabel54.StylePriority.UseTextAlignment = false;
-            this.xrLabel54.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel55
-            // 
-            this.xrLabel55.CanGrow = false;
-            this.xrLabel55.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_M12", "{0:#,#}")});
-            this.xrLabel55.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel55.LocationFloat = new DevExpress.Utils.PointFloat(712.2369F, 15.12499F);
-            this.xrLabel55.Name = "xrLabel55";
-            this.xrLabel55.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel55.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel55.StylePriority.UseFont = false;
-            this.xrLabel55.StylePriority.UseTextAlignment = false;
-            this.xrLabel55.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel56
-            // 
-            this.xrLabel56.CanGrow = false;
-            this.xrLabel56.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_M12", "{0:#,#}")});
-            this.xrLabel56.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel56.LocationFloat = new DevExpress.Utils.PointFloat(759.2368F, 15.12499F);
-            this.xrLabel56.Name = "xrLabel56";
-            this.xrLabel56.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel56.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel56.StylePriority.UseFont = false;
-            this.xrLabel56.StylePriority.UseTextAlignment = false;
-            this.xrLabel56.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel57
-            // 
-            this.xrLabel57.CanGrow = false;
-            this.xrLabel57.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.a_total", "{0:#,#}")});
-            this.xrLabel57.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel57.LocationFloat = new DevExpress.Utils.PointFloat(806.2369F, 15.12499F);
-            this.xrLabel57.Name = "xrLabel57";
-            this.xrLabel57.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel57.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel57.StylePriority.UseFont = false;
-            this.xrLabel57.StylePriority.UseTextAlignment = false;
-            this.xrLabel57.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            // 
-            // xrLabel58
-            // 
-            this.xrLabel58.CanGrow = false;
-            this.xrLabel58.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.d_total", "{0:#,#}")});
-            this.xrLabel58.Font = new System.Drawing.Font("Arial", 6F);
-            this.xrLabel58.LocationFloat = new DevExpress.Utils.PointFloat(853.2368F, 15.12499F);
-            this.xrLabel58.Name = "xrLabel58";
-            this.xrLabel58.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel58.SizeF = new System.Drawing.SizeF(47F, 14.12501F);
-            this.xrLabel58.StylePriority.UseFont = false;
-            this.xrLabel58.StylePriority.UseTextAlignment = false;
-            this.xrLabel58.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             // 
             // pageFooterBand1
             // 
@@ -653,12 +653,73 @@
             this.xrTitCompania,
             this.xrLabel61,
             this.xrTitulo,
-            this.xrLabel59,
+            this.xrTitFecHoy,
             this.xrPageInfo3});
             this.PageHeader.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.PageHeader.HeightF = 68.75F;
             this.PageHeader.Name = "PageHeader";
             this.PageHeader.StylePriority.UseFont = false;
+            // 
+            // xrLabel26
+            // 
+            this.xrLabel26.Font = new System.Drawing.Font("Arial", 8F);
+            this.xrLabel26.LocationFloat = new DevExpress.Utils.PointFloat(963.0219F, 0F);
+            this.xrLabel26.Name = "xrLabel26";
+            this.xrLabel26.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel26.SizeF = new System.Drawing.SizeF(40.62506F, 16.74999F);
+            this.xrLabel26.StylePriority.UseFont = false;
+            this.xrLabel26.Text = "Fecha:";
+            // 
+            // xrTitPeriodo
+            // 
+            this.xrTitPeriodo.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.titPeriodo")});
+            this.xrTitPeriodo.LocationFloat = new DevExpress.Utils.PointFloat(126.1047F, 38.75001F);
+            this.xrTitPeriodo.Name = "xrTitPeriodo";
+            this.xrTitPeriodo.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrTitPeriodo.SizeF = new System.Drawing.SizeF(786.65F, 21F);
+            this.xrTitPeriodo.StylePriority.UseTextAlignment = false;
+            this.xrTitPeriodo.Text = "xrTitPeriodo";
+            this.xrTitPeriodo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            // 
+            // xrTitCompania
+            // 
+            this.xrTitCompania.LocationFloat = new DevExpress.Utils.PointFloat(91.25F, 3.000005F);
+            this.xrTitCompania.Name = "xrTitCompania";
+            this.xrTitCompania.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrTitCompania.SizeF = new System.Drawing.SizeF(275F, 16.75F);
+            this.xrTitCompania.Text = "---";
+            // 
+            // xrLabel61
+            // 
+            this.xrLabel61.LocationFloat = new DevExpress.Utils.PointFloat(7.000001F, 3.000005F);
+            this.xrLabel61.Name = "xrLabel61";
+            this.xrLabel61.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel61.SizeF = new System.Drawing.SizeF(81.25F, 16.75F);
+            this.xrLabel61.Text = "EMPRESA :";
+            // 
+            // xrTitulo
+            // 
+            this.xrTitulo.LocationFloat = new DevExpress.Utils.PointFloat(126.1047F, 20.75001F);
+            this.xrTitulo.Name = "xrTitulo";
+            this.xrTitulo.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrTitulo.SizeF = new System.Drawing.SizeF(786.65F, 18F);
+            this.xrTitulo.StylePriority.UseTextAlignment = false;
+            this.xrTitulo.Text = "REPORTE DE CUENTAS DE GASTOS";
+            this.xrTitulo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            // 
+            // xrTitFecHoy
+            // 
+            this.xrTitFecHoy.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.titFecHoy", "{0:dd/MM/yyyy}")});
+            this.xrTitFecHoy.Font = new System.Drawing.Font("Arial", 8F);
+            this.xrTitFecHoy.LocationFloat = new DevExpress.Utils.PointFloat(1003.647F, 0F);
+            this.xrTitFecHoy.Name = "xrTitFecHoy";
+            this.xrTitFecHoy.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrTitFecHoy.SizeF = new System.Drawing.SizeF(69.35291F, 16.75F);
+            this.xrTitFecHoy.StylePriority.UseFont = false;
+            this.xrTitFecHoy.StylePriority.UseTextAlignment = false;
+            this.xrTitFecHoy.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             // 
             // xrPageInfo3
             // 
@@ -678,72 +739,12 @@
             this.titFecHoy.Expression = "today()";
             this.titFecHoy.Name = "titFecHoy";
             // 
-            // xrLabel59
-            // 
-            this.xrLabel59.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.titFecHoy")});
-            this.xrLabel59.Font = new System.Drawing.Font("Arial", 8F);
-            this.xrLabel59.LocationFloat = new DevExpress.Utils.PointFloat(975.522F, 0F);
-            this.xrLabel59.Name = "xrLabel59";
-            this.xrLabel59.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel59.SizeF = new System.Drawing.SizeF(97.47791F, 16.75F);
-            this.xrLabel59.StylePriority.UseFont = false;
-            this.xrLabel59.Text = "xrLabel59";
-            // 
-            // xrTitulo
-            // 
-            this.xrTitulo.LocationFloat = new DevExpress.Utils.PointFloat(126.1047F, 20.75001F);
-            this.xrTitulo.Name = "xrTitulo";
-            this.xrTitulo.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrTitulo.SizeF = new System.Drawing.SizeF(786.65F, 18F);
-            this.xrTitulo.StylePriority.UseTextAlignment = false;
-            this.xrTitulo.Text = "REPORTE DE CUENTAS DE GASTOS";
-            this.xrTitulo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            // 
-            // xrLabel61
-            // 
-            this.xrLabel61.LocationFloat = new DevExpress.Utils.PointFloat(7.000001F, 3.000005F);
-            this.xrLabel61.Name = "xrLabel61";
-            this.xrLabel61.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel61.SizeF = new System.Drawing.SizeF(81.25F, 16.75F);
-            this.xrLabel61.Text = "EMPRESA :";
-            // 
-            // xrTitCompania
-            // 
-            this.xrTitCompania.LocationFloat = new DevExpress.Utils.PointFloat(91.25F, 3.000005F);
-            this.xrTitCompania.Name = "xrTitCompania";
-            this.xrTitCompania.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrTitCompania.SizeF = new System.Drawing.SizeF(275F, 16.75F);
-            this.xrTitCompania.Text = "---";
-            // 
             // titPeriodo
             // 
             this.titPeriodo.DataMember = "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual";
             this.titPeriodo.Expression = "\'COMPARATIVO ENTRE EL AÑO \'+ [c_periodoIni] +\' Y EL AÑO \'+substring([Parameters.p" +
     "rmPeriodo] ,0,4)";
             this.titPeriodo.Name = "titPeriodo";
-            // 
-            // xrTitPeriodo
-            // 
-            this.xrTitPeriodo.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SP_CB_REPORTE_GASTOS_CLASIFICACION_anual.titPeriodo")});
-            this.xrTitPeriodo.LocationFloat = new DevExpress.Utils.PointFloat(126.1047F, 38.75001F);
-            this.xrTitPeriodo.Name = "xrTitPeriodo";
-            this.xrTitPeriodo.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrTitPeriodo.SizeF = new System.Drawing.SizeF(786.65F, 21F);
-            this.xrTitPeriodo.StylePriority.UseTextAlignment = false;
-            this.xrTitPeriodo.Text = "xrTitPeriodo";
-            this.xrTitPeriodo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            // 
-            // xrLabel26
-            // 
-            this.xrLabel26.Font = new System.Drawing.Font("Arial", 8F);
-            this.xrLabel26.LocationFloat = new DevExpress.Utils.PointFloat(934.8969F, 0F);
-            this.xrLabel26.Name = "xrLabel26";
-            this.xrLabel26.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel26.SizeF = new System.Drawing.SizeF(40.62506F, 16.74999F);
-            this.xrLabel26.StylePriority.UseFont = false;
-            this.xrLabel26.Text = "Fecha:";
             // 
             // rpt_ReporteGastoAnual
             // 
@@ -828,7 +829,7 @@
         private DevExpress.XtraReports.Parameters.Parameter prmMoneda;
         private DevExpress.XtraReports.UI.PageHeaderBand PageHeader;
         private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo3;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel59;
+        private DevExpress.XtraReports.UI.XRLabel xrTitFecHoy;
         private DevExpress.XtraReports.UI.CalculatedField titFecHoy;
         private DevExpress.XtraReports.UI.XRLabel xrLabel61;
         private DevExpress.XtraReports.UI.XRLabel xrTitulo;

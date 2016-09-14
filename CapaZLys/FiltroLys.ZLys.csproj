@@ -736,6 +736,12 @@
     <Compile Include="ModReporte\Formulario\Contabilidad\frmRptLibroDiario.Designer.cs">
       <DependentUpon>frmRptLibroDiario.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RubroResumenCta.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RubroResumenCta.Designer.cs">
+      <DependentUpon>rpt_RubroResumenCta.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\rpt_AnalisisVentaCostoRes.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -795,6 +801,12 @@
     </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RetencionProveedor.Designer.cs">
       <DependentUpon>rpt_RetencionProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RubroDetalleCta.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RubroDetalleCta.Designer.cs">
+      <DependentUpon>rpt_RubroDetalleCta.cs</DependentUpon>
     </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\rpt_SaldoContableDet.cs">
       <SubType>Component</SubType>
@@ -1193,6 +1205,9 @@
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptLibroDiario.resx">
       <DependentUpon>frmRptLibroDiario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RubroResumenCta.resx">
+      <DependentUpon>rpt_RubroResumenCta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_AnalisisVentaCostoRes.resx">
       <DependentUpon>rpt_AnalisisVentaCostoRes.cs</DependentUpon>
     </EmbeddedResource>
@@ -1222,6 +1237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RetencionProveedor.resx">
       <DependentUpon>rpt_RetencionProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RubroDetalleCta.resx">
+      <DependentUpon>rpt_RubroDetalleCta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_SaldoContableDet.resx">
       <DependentUpon>rpt_SaldoContableDet.cs</DependentUpon>

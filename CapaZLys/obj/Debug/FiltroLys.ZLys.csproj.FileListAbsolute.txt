@@ -321,3 +321,8 @@ D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.frmRptVentaConsolidada.resources
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_AnalisisVentaCostoRes.resources
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_AnalisisVentaCostoDet.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.frmRptGastoConsolidado.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_RubroResumenCta.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_ReporteGastoAnual.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_ReporteGastoConsolcs.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_RubroDetalleCta.resources

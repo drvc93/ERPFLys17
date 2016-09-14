@@ -92,6 +92,8 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
         public override Boolean uf_validarBuscar() {
             String sCia = cmbCompania.EditValue.ToString();
             String sPer = txtPeriodo.Text.Trim().Replace("-", "");            
+            String sTRp = cmbConsulta.EditValue.ToString();            
+            String sTInf = cmbTipo.EditValue.ToString();
 
             if (String.IsNullOrEmpty(sCia) || sCia.Equals(fnConst.TextVacio)) {
                 fnMensaje.MensajeInfo("Ingresar compañia por favor.");
@@ -102,6 +104,13 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
                 fnMensaje.MensajeInfo("Debe ingresar un periodo válido.");
                 return false;
             }
+
+            if (!sTRp.Equals("1")) {
+                if (sTInf.Equals("A")) {
+                    fnMensaje.MensajeInfo("No Permitido en esta Consulta.");
+                    return false;
+                }
+            }
             return true;
         }
 
@@ -111,26 +120,57 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
             String sPer = txtPeriodo.Text.Trim().Replace("-", "");
             String sTRp = cmbConsulta.EditValue.ToString();            
             String sMon = cmbMoneda.EditValue.ToString();
-            
+            String sTInf = cmbTipo.EditValue.ToString();
+            String sNCia = cmbCompania.Text.Trim();
             try{
-                xPrmR.AddParametro(new entRepParam() { Propiedad = "Compania", Valor = sCia });
-                xPrmR.AddParametro(new entRepParam() { Propiedad = "Consulta", Valor = sTRp });
-                xPrmR.AddParametro(new entRepParam() { Propiedad = "Periodo", Valor = sPer });
-                xPrmR.AddParametro(new entRepParam() { Propiedad = "Moneda", Valor = sMon });
+                xPrmR.AddParametro(new entRepParam() { Propiedad = "CompaniaNombre", Valor = sNCia, OtrosDatos = true });
                 switch(sTRp){
                     case "1":
-                        rpt_AnalisisVentaCostoDet oRpt = new rpt_AnalisisVentaCostoDet();
-                        oRpt.GenerarReport(ref xPrmR);
-                        dvReport.DocumentSource = oRpt;
-                        FnReportW = xPrmR;
-                        oRpt = null;
+                        if (sTInf.Equals("A")) {
+                            xPrmR.AddParametro(new entRepParam() { Propiedad = "Compania", Valor = sCia });
+                            xPrmR.AddParametro(new entRepParam() { Propiedad = "Periodo", Valor = sPer });
+                            xPrmR.AddParametro(new entRepParam() { Propiedad = "Moneda", Valor = sMon });
+
+                            rpt_ReporteGastoAnual oRpt = new rpt_ReporteGastoAnual();
+                            oRpt.GenerarReport(ref xPrmR);
+                            dvReport.DocumentSource = oRpt;
+                            FnReportW = xPrmR;
+                            oRpt = null;
+                        }else{
+                            xPrmR.AddParametro(new entRepParam() { Propiedad = "Compania", Valor = sCia });
+                            xPrmR.AddParametro(new entRepParam() { Propiedad = "Periodo", Valor = sPer });
+                            xPrmR.AddParametro(new entRepParam() { Propiedad = "SubConsulta", Valor = sTInf });
+
+                            rpt_ReporteGastoConsolcs oRpt = new rpt_ReporteGastoConsolcs();
+                            oRpt.GenerarReport(ref xPrmR);
+                            dvReport.DocumentSource = oRpt;
+                            FnReportW = xPrmR;
+                            oRpt = null;
+                        }
+                        
                         break;
-                    case "2":
-                        rpt_AnalisisVentaCostoRes oRptV = new rpt_AnalisisVentaCostoRes();
-                        oRptV.GenerarReport(ref xPrmR);
-                        dvReport.DocumentSource = oRptV;
-                        FnReportW = xPrmR;
-                        oRptV = null;
+                    default:
+                        if (sTInf.Equals("A")) { }
+                        else {
+                            xPrmR.AddParametro(new entRepParam() { Propiedad = "Compania", Valor = sCia });
+                            xPrmR.AddParametro(new entRepParam() { Propiedad = "Periodo", Valor = sPer });
+                            xPrmR.AddParametro(new entRepParam() { Propiedad = "Consulta", Valor = sTRp });
+                            xPrmR.AddParametro(new entRepParam() { Propiedad = "SubConsulta", Valor = sTInf });
+
+                            if (sTRp.Equals("2") || sTRp.Equals("4")) {
+                                rpt_RubroResumenCta oRpt = new rpt_RubroResumenCta();
+                                oRpt.GenerarReport(ref xPrmR);
+                                dvReport.DocumentSource = oRpt;
+                                FnReportW = xPrmR;
+                                oRpt = null;
+                            }else{
+                                rpt_RubroDetalleCta oRpt = new rpt_RubroDetalleCta();
+                                oRpt.GenerarReport(ref xPrmR);
+                                dvReport.DocumentSource = oRpt;
+                                FnReportW = xPrmR;
+                                oRpt = null;
+                            }
+                        }
                         break;
                 }
             }catch(Exception ex){
