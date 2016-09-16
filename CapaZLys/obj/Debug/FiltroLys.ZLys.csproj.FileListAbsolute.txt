@@ -326,3 +326,8 @@ D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_ReporteGastoAnual.resources
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_ReporteGastoConsolcs.resources
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_RubroDetalleCta.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.frmRptRegistroDaot.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_RegistroVentaDaotDet.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_RegistroVentaDaotRes.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_RegistroCompraDaotDet.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.rpt_RegistroCompraDaotRes.resources

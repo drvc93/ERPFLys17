@@ -646,6 +646,12 @@
     <Compile Include="Controles\Formulario\frmReporte.Designer.cs">
       <DependentUpon>frmReporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptRegistroDaot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptRegistroDaot.Designer.cs">
+      <DependentUpon>frmRptRegistroDaot.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModReporte\Formulario\Contabilidad\frmRptGastoConsolidado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -735,6 +741,30 @@
     </Compile>
     <Compile Include="ModReporte\Formulario\Contabilidad\frmRptLibroDiario.Designer.cs">
       <DependentUpon>frmRptLibroDiario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraDaotDet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraDaotDet.Designer.cs">
+      <DependentUpon>rpt_RegistroCompraDaotDet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraDaotRes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraDaotRes.Designer.cs">
+      <DependentUpon>rpt_RegistroCompraDaotRes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaDaotDet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaDaotDet.Designer.cs">
+      <DependentUpon>rpt_RegistroVentaDaotDet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaDaotRes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaDaotRes.Designer.cs">
+      <DependentUpon>rpt_RegistroVentaDaotRes.cs</DependentUpon>
     </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RubroResumenCta.cs">
       <SubType>Component</SubType>
@@ -1160,6 +1190,9 @@
     <EmbeddedResource Include="Controles\Formulario\frmReporte.resx">
       <DependentUpon>frmReporte.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptRegistroDaot.resx">
+      <DependentUpon>frmRptRegistroDaot.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptGastoConsolidado.resx">
       <DependentUpon>frmRptGastoConsolidado.cs</DependentUpon>
     </EmbeddedResource>
@@ -1204,6 +1237,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptLibroDiario.resx">
       <DependentUpon>frmRptLibroDiario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraDaotDet.resx">
+      <DependentUpon>rpt_RegistroCompraDaotDet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraDaotRes.resx">
+      <DependentUpon>rpt_RegistroCompraDaotRes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaDaotDet.resx">
+      <DependentUpon>rpt_RegistroVentaDaotDet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaDaotRes.resx">
+      <DependentUpon>rpt_RegistroVentaDaotRes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RubroResumenCta.resx">
       <DependentUpon>rpt_RubroResumenCta.cs</DependentUpon>
