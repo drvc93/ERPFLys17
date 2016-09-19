@@ -82,39 +82,9 @@ namespace FiltroLys.ZLys.ModReporte
         {
             entAccesoReporte oEnt = (entAccesoReporte)tvReporte.FocusedNode.Tag;
             if (oEnt != null){
-                if (!(String.IsNullOrEmpty(oEnt.FormNet))){
-                    String sForm = "FiltroLys.ZLys.ModReporte.Formulario.";
-                    switch (oEnt.Modulo)
-                    {
-                        case "CB":
-                            sForm = sForm + "Contabilidad";
-                            break;
-                        case "LO":
-                            sForm = sForm + "Logistica";
-                            break;
-                        case "CO":
-                            sForm = sForm + "Comercial";
-                            break;
-                        case "RH":
-                            sForm = sForm + "RRHH";
-                            break;
-                        case "TR":
-                            sForm = sForm + "Tesoreria";
-                            break;
-                        case "MT":
-                            sForm = sForm + "Mantenimiento";
-                            break;
-                        case "PT":
-                            sForm = sForm + "Presupuesto";
-                            break;
-                        case "CA":
-                            sForm = sForm + "Calidad";
-                            break;
-                        case "PC":
-                            sForm = sForm + "Produccion";
-                            break;
-                    }
-
+                if (!(String.IsNullOrEmpty(oEnt.NameSpaceRpt))){
+                    String sForm = oEnt.NameSpaceRpt;
+                    
                     //Restricciones
                     if (oEnt.Modulo.Equals("CB") && oEnt.Menu == 1 && oEnt.Reporte == 10) {
                         ModContabilidad.frmSaldoxCuenta frmRestr = new ModContabilidad.frmSaldoxCuenta();
@@ -123,8 +93,6 @@ namespace FiltroLys.ZLys.ModReporte
                     }
 
                     //Fin Restricciones
-
-                    sForm = sForm + "." + oEnt.FormNet;
                     Form frm = (Form)System.Activator.CreateInstance(System.Type.GetType(sForm));
                     Funciones.fnAddTab.FormOpen(frm, "Reporte", true);                    
                 }

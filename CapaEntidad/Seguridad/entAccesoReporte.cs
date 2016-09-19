@@ -13,7 +13,7 @@ namespace FiltroLys.Model.Seguridad
         private DateTime d_UltimaFechaMod = DateTime.Now;
         private String c_NombreModulo, c_NombreReporte, c_CodReporte;
         private String c_Nivel, c_CodReg, c_Padre, c_NombreAplicacion;
-        private String c_Descripcion, c_FormNet, c_Modulo = "--";
+        private String c_Descripcion, c_FormNet, c_Modulo = "--", c_NameSpaceRpt = "";
 
         public String Usuario
         {
@@ -122,8 +122,12 @@ namespace FiltroLys.Model.Seguridad
             get { return c_Modulo; }
             set { c_Modulo = value; }
         }
-        
-        
+
+        public String NameSpaceRpt
+        {
+            get { return c_NameSpaceRpt; }
+            set { c_NameSpaceRpt = value; }
+        }
 
     }
 }

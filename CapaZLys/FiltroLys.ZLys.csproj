@@ -646,262 +646,262 @@
     <Compile Include="Controles\Formulario\frmReporte.Designer.cs">
       <DependentUpon>frmReporte.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptRegistroDaot.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\Varios\frmRptRegistroDaot.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptRegistroDaot.Designer.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\Varios\frmRptRegistroDaot.Designer.cs">
       <DependentUpon>frmRptRegistroDaot.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptGastoConsolidado.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\Varios\frmRptGastoConsolidado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptGastoConsolidado.Designer.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\Varios\frmRptGastoConsolidado.Designer.cs">
       <DependentUpon>frmRptGastoConsolidado.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptVentaConsolidada.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\Varios\frmRptVentaConsolidada.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptVentaConsolidada.Designer.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\Varios\frmRptVentaConsolidada.Designer.cs">
       <DependentUpon>frmRptVentaConsolidada.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptRegistroRetencion.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptRegistroRetencion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptRegistroRetencion.Designer.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptRegistroRetencion.Designer.cs">
       <DependentUpon>frmRptRegistroRetencion.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptDetalleCuenta.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptDetalleCuenta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptDetalleCuenta.Designer.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptDetalleCuenta.Designer.cs">
       <DependentUpon>frmRptDetalleCuenta.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptRegistroVenta.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptRegistroVenta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptRegistroVenta.Designer.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptRegistroVenta.Designer.cs">
       <DependentUpon>frmRptRegistroVenta.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptRegistroCompa.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptRegistroCompa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptRegistroCompa.Designer.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptRegistroCompa.Designer.cs">
       <DependentUpon>frmRptRegistroCompa.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptSaldoContableDet.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptSaldoContableDet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptSaldoContableDet.Designer.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptSaldoContableDet.Designer.cs">
       <DependentUpon>frmRptSaldoContableDet.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptDocumentoPend.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptDocumentoPend.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptDocumentoPend.Designer.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptDocumentoPend.Designer.cs">
       <DependentUpon>frmRptDocumentoPend.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptCuentaCteProv.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptCuentaCteProv.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptCuentaCteProv.Designer.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptCuentaCteProv.Designer.cs">
       <DependentUpon>frmRptCuentaCteProv.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptCuentaCCosto.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptCuentaCCosto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptCuentaCCosto.Designer.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptCuentaCCosto.Designer.cs">
       <DependentUpon>frmRptCuentaCCosto.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptLibroBanco.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptLibroBanco.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptLibroBanco.Designer.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptLibroBanco.Designer.cs">
       <DependentUpon>frmRptLibroBanco.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptLibroCaja.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptLibroCaja.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptLibroCaja.Designer.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptLibroCaja.Designer.cs">
       <DependentUpon>frmRptLibroCaja.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptBalanceComp.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptBalanceComp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptBalanceComp.Designer.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptBalanceComp.Designer.cs">
       <DependentUpon>frmRptBalanceComp.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptLibroMayor.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptLibroMayor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptLibroMayor.Designer.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptLibroMayor.Designer.cs">
       <DependentUpon>frmRptLibroMayor.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptLibroDiario.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptLibroDiario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\frmRptLibroDiario.Designer.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptLibroDiario.Designer.cs">
       <DependentUpon>frmRptLibroDiario.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraDaotDet.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_RegistroCompraDaotDet.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraDaotDet.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_RegistroCompraDaotDet.Designer.cs">
       <DependentUpon>rpt_RegistroCompraDaotDet.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraDaotRes.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_RegistroCompraDaotRes.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraDaotRes.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_RegistroCompraDaotRes.Designer.cs">
       <DependentUpon>rpt_RegistroCompraDaotRes.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaDaotDet.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_RegistroVentaDaotDet.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaDaotDet.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_RegistroVentaDaotDet.Designer.cs">
       <DependentUpon>rpt_RegistroVentaDaotDet.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaDaotRes.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_RegistroVentaDaotRes.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaDaotRes.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_RegistroVentaDaotRes.Designer.cs">
       <DependentUpon>rpt_RegistroVentaDaotRes.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RubroResumenCta.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_RubroResumenCta.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RubroResumenCta.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_RubroResumenCta.Designer.cs">
       <DependentUpon>rpt_RubroResumenCta.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_AnalisisVentaCostoRes.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_AnalisisVentaCostoRes.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_AnalisisVentaCostoRes.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_AnalisisVentaCostoRes.Designer.cs">
       <DependentUpon>rpt_AnalisisVentaCostoRes.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_AnalisisVentaCostoDet.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_AnalisisVentaCostoDet.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_AnalisisVentaCostoDet.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_AnalisisVentaCostoDet.Designer.cs">
       <DependentUpon>rpt_AnalisisVentaCostoDet.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaV409.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_RegistroVentaV409.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaV409.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_RegistroVentaV409.Designer.cs">
       <DependentUpon>rpt_RegistroVentaV409.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraV409.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_RegistroCompraV409.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraV409.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_RegistroCompraV409.Designer.cs">
       <DependentUpon>rpt_RegistroCompraV409.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraV500.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_RegistroCompraV500.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraV500.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_RegistroCompraV500.Designer.cs">
       <DependentUpon>rpt_RegistroCompraV500.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraV500NoDom.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_RegistroCompraV500NoDom.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraV500NoDom.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_RegistroCompraV500NoDom.Designer.cs">
       <DependentUpon>rpt_RegistroCompraV500NoDom.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaV500.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_RegistroVentaV500.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaV500.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_RegistroVentaV500.Designer.cs">
       <DependentUpon>rpt_RegistroVentaV500.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_ReporteGastoAnual.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_ReporteGastoAnual.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_ReporteGastoAnual.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_ReporteGastoAnual.Designer.cs">
       <DependentUpon>rpt_ReporteGastoAnual.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_ReporteGastoConsolcs.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_ReporteGastoConsolcs.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_ReporteGastoConsolcs.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_ReporteGastoConsolcs.Designer.cs">
       <DependentUpon>rpt_ReporteGastoConsolcs.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RetencionProveedor.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_RetencionProveedor.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RetencionProveedor.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_RetencionProveedor.Designer.cs">
       <DependentUpon>rpt_RetencionProveedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RubroDetalleCta.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_RubroDetalleCta.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_RubroDetalleCta.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_RubroDetalleCta.Designer.cs">
       <DependentUpon>rpt_RubroDetalleCta.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_SaldoContableDet.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_SaldoContableDet.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_SaldoContableDet.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_SaldoContableDet.Designer.cs">
       <DependentUpon>rpt_SaldoContableDet.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_SaldoPendienteRes.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_SaldoPendienteRes.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_SaldoPendienteRes.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_SaldoPendienteRes.Designer.cs">
       <DependentUpon>rpt_SaldoPendienteRes.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobMayF2.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_BalComprobMayF2.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobMayF2.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_BalComprobMayF2.Designer.cs">
       <DependentUpon>rpt_BalComprobMayF2.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobCtaF2.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_BalComprobCtaF2.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobCtaF2.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_BalComprobCtaF2.Designer.cs">
       <DependentUpon>rpt_BalComprobCtaF2.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobCtaF1.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_BalComprobCtaF1.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobCtaF1.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_BalComprobCtaF1.Designer.cs">
       <DependentUpon>rpt_BalComprobCtaF1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobMayF1.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_BalComprobMayF1.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobMayF1.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_BalComprobMayF1.Designer.cs">
       <DependentUpon>rpt_BalComprobMayF1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_CuentaCCosto.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_CuentaCCosto.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_CuentaCCosto.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_CuentaCCosto.Designer.cs">
       <DependentUpon>rpt_CuentaCCosto.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_CuentaCCteProv.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_CuentaCCteProv.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_CuentaCCteProv.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_CuentaCCteProv.Designer.cs">
       <DependentUpon>rpt_CuentaCCteProv.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroBanco.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_LibroBanco.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroBanco.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_LibroBanco.Designer.cs">
       <DependentUpon>rpt_LibroBanco.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroCaja.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_LibroCaja.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroCaja.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_LibroCaja.Designer.cs">
       <DependentUpon>rpt_LibroCaja.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroDiario.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_LibroDiario.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroDiario.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_LibroDiario.Designer.cs">
       <DependentUpon>rpt_LibroDiario.cs</DependentUpon>
     </Compile>
     <Compile Include="ModReporte\frmReportesMain.cs">
@@ -910,34 +910,34 @@
     <Compile Include="ModReporte\frmReportesMain.Designer.cs">
       <DependentUpon>frmReportesMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroDiarioV500.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_LibroDiarioV500.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroDiarioV500.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_LibroDiarioV500.Designer.cs">
       <DependentUpon>rpt_LibroDiarioV500.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroMayor.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_LibroMayor.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroMayor.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_LibroMayor.Designer.cs">
       <DependentUpon>rpt_LibroMayor.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroMayorV500.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_LibroMayorV500.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_LibroMayorV500.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_LibroMayorV500.Designer.cs">
       <DependentUpon>rpt_LibroMayorV500.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_SaldoPendienteDet.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_SaldoPendienteDet.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_SaldoPendienteDet.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_SaldoPendienteDet.Designer.cs">
       <DependentUpon>rpt_SaldoPendienteDet.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_DetalleVouchers.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_DetalleVouchers.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\rpt_DetalleVouchers.Designer.cs">
+    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_DetalleVouchers.Designer.cs">
       <DependentUpon>rpt_DetalleVouchers.cs</DependentUpon>
     </Compile>
     <Compile Include="Office.cs">
@@ -1190,151 +1190,151 @@
     <EmbeddedResource Include="Controles\Formulario\frmReporte.resx">
       <DependentUpon>frmReporte.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptRegistroDaot.resx">
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\Varios\frmRptRegistroDaot.resx">
       <DependentUpon>frmRptRegistroDaot.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptGastoConsolidado.resx">
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\Varios\frmRptGastoConsolidado.resx">
       <DependentUpon>frmRptGastoConsolidado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptVentaConsolidada.resx">
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\Varios\frmRptVentaConsolidada.resx">
       <DependentUpon>frmRptVentaConsolidada.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptRegistroRetencion.resx">
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptRegistroRetencion.resx">
       <DependentUpon>frmRptRegistroRetencion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptDetalleCuenta.resx">
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptDetalleCuenta.resx">
       <DependentUpon>frmRptDetalleCuenta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptRegistroVenta.resx">
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptRegistroVenta.resx">
       <DependentUpon>frmRptRegistroVenta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptRegistroCompa.resx">
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptRegistroCompa.resx">
       <DependentUpon>frmRptRegistroCompa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptSaldoContableDet.resx">
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptSaldoContableDet.resx">
       <DependentUpon>frmRptSaldoContableDet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptDocumentoPend.resx">
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptDocumentoPend.resx">
       <DependentUpon>frmRptDocumentoPend.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptCuentaCteProv.resx">
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptCuentaCteProv.resx">
       <DependentUpon>frmRptCuentaCteProv.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptCuentaCCosto.resx">
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptCuentaCCosto.resx">
       <DependentUpon>frmRptCuentaCCosto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptLibroBanco.resx">
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptLibroBanco.resx">
       <DependentUpon>frmRptLibroBanco.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptLibroCaja.resx">
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptLibroCaja.resx">
       <DependentUpon>frmRptLibroCaja.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptBalanceComp.resx">
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptBalanceComp.resx">
       <DependentUpon>frmRptBalanceComp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptLibroMayor.resx">
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptLibroMayor.resx">
       <DependentUpon>frmRptLibroMayor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\frmRptLibroDiario.resx">
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptLibroDiario.resx">
       <DependentUpon>frmRptLibroDiario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraDaotDet.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\Varios\rpt_RegistroCompraDaotDet.resx">
       <DependentUpon>rpt_RegistroCompraDaotDet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraDaotRes.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\Varios\rpt_RegistroCompraDaotRes.resx">
       <DependentUpon>rpt_RegistroCompraDaotRes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaDaotDet.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\Varios\rpt_RegistroVentaDaotDet.resx">
       <DependentUpon>rpt_RegistroVentaDaotDet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaDaotRes.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\Varios\rpt_RegistroVentaDaotRes.resx">
       <DependentUpon>rpt_RegistroVentaDaotRes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RubroResumenCta.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\Varios\rpt_RubroResumenCta.resx">
       <DependentUpon>rpt_RubroResumenCta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_AnalisisVentaCostoRes.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\Varios\rpt_AnalisisVentaCostoRes.resx">
       <DependentUpon>rpt_AnalisisVentaCostoRes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_AnalisisVentaCostoDet.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\Varios\rpt_AnalisisVentaCostoDet.resx">
       <DependentUpon>rpt_AnalisisVentaCostoDet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaV409.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_RegistroVentaV409.resx">
       <DependentUpon>rpt_RegistroVentaV409.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraV409.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_RegistroCompraV409.resx">
       <DependentUpon>rpt_RegistroCompraV409.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraV500.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_RegistroCompraV500.resx">
       <DependentUpon>rpt_RegistroCompraV500.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroCompraV500NoDom.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_RegistroCompraV500NoDom.resx">
       <DependentUpon>rpt_RegistroCompraV500NoDom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RegistroVentaV500.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_RegistroVentaV500.resx">
       <DependentUpon>rpt_RegistroVentaV500.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_ReporteGastoAnual.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\Varios\rpt_ReporteGastoAnual.resx">
       <DependentUpon>rpt_ReporteGastoAnual.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_ReporteGastoConsolcs.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\Varios\rpt_ReporteGastoConsolcs.resx">
       <DependentUpon>rpt_ReporteGastoConsolcs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RetencionProveedor.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_RetencionProveedor.resx">
       <DependentUpon>rpt_RetencionProveedor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_RubroDetalleCta.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\Varios\rpt_RubroDetalleCta.resx">
       <DependentUpon>rpt_RubroDetalleCta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_SaldoContableDet.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_SaldoContableDet.resx">
       <DependentUpon>rpt_SaldoContableDet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_SaldoPendienteRes.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_SaldoPendienteRes.resx">
       <DependentUpon>rpt_SaldoPendienteRes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobMayF2.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_BalComprobMayF2.resx">
       <DependentUpon>rpt_BalComprobMayF2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobCtaF2.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_BalComprobCtaF2.resx">
       <DependentUpon>rpt_BalComprobCtaF2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobCtaF1.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_BalComprobCtaF1.resx">
       <DependentUpon>rpt_BalComprobCtaF1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_BalComprobMayF1.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_BalComprobMayF1.resx">
       <DependentUpon>rpt_BalComprobMayF1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_CuentaCCosto.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_CuentaCCosto.resx">
       <DependentUpon>rpt_CuentaCCosto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_CuentaCCteProv.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_CuentaCCteProv.resx">
       <DependentUpon>rpt_CuentaCCteProv.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_LibroBanco.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_LibroBanco.resx">
       <DependentUpon>rpt_LibroBanco.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_LibroCaja.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_LibroCaja.resx">
       <DependentUpon>rpt_LibroCaja.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_LibroDiario.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_LibroDiario.resx">
       <DependentUpon>rpt_LibroDiario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\frmReportesMain.resx">
       <DependentUpon>frmReportesMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_LibroDiarioV500.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_LibroDiarioV500.resx">
       <DependentUpon>rpt_LibroDiarioV500.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_LibroMayor.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_LibroMayor.resx">
       <DependentUpon>rpt_LibroMayor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_LibroMayorV500.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_LibroMayorV500.resx">
       <DependentUpon>rpt_LibroMayorV500.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_SaldoPendienteDet.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_SaldoPendienteDet.resx">
       <DependentUpon>rpt_SaldoPendienteDet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\rpt_DetalleVouchers.resx">
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_DetalleVouchers.resx">
       <DependentUpon>rpt_DetalleVouchers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="online.gif" />
