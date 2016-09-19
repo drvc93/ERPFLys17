@@ -13,7 +13,7 @@ using FiltroLys.Type;
 using FiltroLys.ZLys.ModContabilidad;
 using FiltroLys.ZLys.Funciones;
 using FiltroLys.Model.Sistema;
-using FiltroLys.ZLys.ModReporte.Formulario.Contabilidad;
+using FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.LibrosContables;
 using System.Linq;
 
 namespace FiltroLys.ZLys.ModContabilidad

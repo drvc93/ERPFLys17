@@ -59,11 +59,9 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.LibrosContables
         private void xrDebeGR_SummaryRowChanged(object sender, EventArgs e)
         {
             Int32 nLinea = 0;
-            nLinea = Convert.ToInt32(GetCurrentColumnValue("linea"));
-            nValor = Convert.ToDecimal(GetCurrentColumnValue("n_importe"));
-            if (nLinea != 0 && nValor > 0){
-                nDebeGR += nValor;
-            }
+            if (GetCurrentColumnValue("linea")!=DBNull.Value){nLinea = Convert.ToInt32(GetCurrentColumnValue("linea"));}
+            if (GetCurrentColumnValue("n_importe") != DBNull.Value) { nValor = Convert.ToDecimal(GetCurrentColumnValue("n_importe")); }
+            if (nLinea != 0 && nValor > 0){nDebeGR += nValor;}
         }
 
         private void xrDebeGR_SummaryGetResult(object sender, SummaryGetResultEventArgs e)
@@ -80,11 +78,9 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.LibrosContables
         private void xrHaberGR_SummaryRowChanged(object sender, EventArgs e)
         {
             Int32 nLinea = 0;
-            nLinea = Convert.ToInt32(GetCurrentColumnValue("linea"));
-            nValor = Convert.ToDecimal(GetCurrentColumnValue("n_importe"));
-            if (nLinea != 0 && nValor < 0){
-                nHaberGR += nValor;
-            }
+            if(GetCurrentColumnValue("linea")!=DBNull.Value){ nLinea = Convert.ToInt32(GetCurrentColumnValue("linea"));}
+            if(GetCurrentColumnValue("n_importe")!= DBNull.Value){nValor = Convert.ToDecimal(GetCurrentColumnValue("n_importe"));}
+            if (nLinea != 0 && nValor < 0){nHaberGR += nValor;}
         }
 
         private void xrHaberGR_SummaryGetResult(object sender, SummaryGetResultEventArgs e)

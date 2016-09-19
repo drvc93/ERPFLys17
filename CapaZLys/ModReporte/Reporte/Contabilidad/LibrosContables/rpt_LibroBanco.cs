@@ -46,10 +46,8 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.LibrosContables
         private void xrDebeGR_SummaryRowChanged(object sender, EventArgs e)
         {
             String sVouch = "";
-            sVouch = GetCurrentColumnValue("voucher").ToString();
-            if (sVouch.Length > 0){
-                nDebeGR += Convert.ToDecimal(GetCurrentColumnValue("debe"));
-            }
+            if (GetCurrentColumnValue("voucher")!=DBNull.Value) { sVouch = GetCurrentColumnValue("voucher").ToString();}
+            if (sVouch.Length > 0){nDebeGR += Convert.ToDecimal(GetCurrentColumnValue("debe"));}
         }
 
         private void xrDebeGR_SummaryGetResult(object sender, SummaryGetResultEventArgs e)
@@ -66,10 +64,8 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.LibrosContables
         private void xrHaberGR_SummaryRowChanged(object sender, EventArgs e)
         {
             String sVouch = "";
-            sVouch = GetCurrentColumnValue("voucher").ToString();
-            if (sVouch.Length > 0){
-                nHaberGR += Convert.ToDecimal(GetCurrentColumnValue("haber"));
-            }
+            if(GetCurrentColumnValue("voucher")!=DBNull.Value){sVouch = GetCurrentColumnValue("voucher").ToString();}
+            if (sVouch.Length > 0){nHaberGR += Convert.ToDecimal(GetCurrentColumnValue("haber"));}
         }
 
         private void xrHaberGR_SummaryGetResult(object sender, SummaryGetResultEventArgs e)

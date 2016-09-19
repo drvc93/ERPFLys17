@@ -12,9 +12,9 @@ using FiltroLys.Model.Objeto;
 using FiltroLys.Type;
 using FiltroLys.ZLys.Funciones;
 using FiltroLys.ZLys.Busqueda.General;
-using FiltroLys.ZLys.ModReporte.Reporte.Contabilidad;
+using FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.LibrosContables;
 
-namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
+namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.LibrosContables
 {
     public partial class frmRptRegistroCompa : FiltroLys.ZLys.Controles.Formulario.frmReporte
     {

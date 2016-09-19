@@ -11,9 +11,9 @@ using FiltroLys.Domain.Sistema;
 using FiltroLys.Model.Objeto;
 using FiltroLys.Type;
 using FiltroLys.ZLys.Funciones;
-using FiltroLys.ZLys.ModReporte.Reporte.Contabilidad;
+using FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.Varios;
 
-namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
+namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.Varios
 {
     public partial class frmRptGastoConsolidado : FiltroLys.ZLys.Controles.Formulario.frmReporte
     {

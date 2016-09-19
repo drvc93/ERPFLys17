@@ -1,4 +1,4 @@
-﻿namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad
+﻿namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.Varios
 {
     partial class frmRptVentaConsolidada
     {
