@@ -87,6 +87,15 @@ namespace FiltroLys.ZLys.Funciones
             return Lista;
         }
 
+        public static List<entComboList> ListEstadoActInacSel()
+        {
+            List<entComboList> Lista = new List<entComboList>();
+            Lista.Add(new entComboList() { Codigo = fnConst.TextRaya3, Nombre = fnConst.TextSeleccioneNom });
+            Lista.Add(new entComboList() { Codigo = fnConst.EstadoActivoCod, Nombre = fnConst.EstadoActivoNom });
+            Lista.Add(new entComboList() { Codigo = fnConst.EstadoInactivoCod, Nombre = fnConst.EstadoInactivoNom });
+            return Lista;
+        }
+
         public static List<entComboList> ListParametroTipo()
         {
             List<entComboList> Lista = new List<entComboList>();

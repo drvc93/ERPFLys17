@@ -331,3 +331,5 @@ D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.LibrosContables.rpt_LibroMayorV500.resources
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.LibrosContables.rpt_SaldoPendienteDet.resources
 D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.LibrosContables.rpt_DetalleVouchers.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.Varios.frmRptPlanCuenta.resources
+D:\DATA MIGUEL\ERPLysRed\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.Varios.rpt_PlanCuenta.resources
