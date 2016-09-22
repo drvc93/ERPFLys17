@@ -85,14 +85,6 @@ namespace FiltroLys.ZLys.ModReporte
                 if (!(String.IsNullOrEmpty(oEnt.NameSpaceRpt))){
                     String sForm = oEnt.NameSpaceRpt;
                     
-                    //Restricciones
-                    if (oEnt.Modulo.Equals("CB") && oEnt.Menu == 1 && oEnt.Reporte == 10) {
-                        ModContabilidad.frmSaldoxCuenta frmRestr = new ModContabilidad.frmSaldoxCuenta();
-                        fnAddTab.FormOpen(frmRestr);
-                        return;
-                    }
-
-                    //Fin Restricciones
                     Form frm = (Form)System.Activator.CreateInstance(System.Type.GetType(sForm));
                     Funciones.fnAddTab.FormOpen(frm, "Reporte", true);                    
                 }

@@ -1463,7 +1463,10 @@
       <Name>FiltroLys.Type</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ModReporte\Formulario\Contabilidad\Estadistico\" />
+    <Folder Include="ModReporte\Reporte\Contabilidad\Estadistico\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
   </PropertyGroup>
