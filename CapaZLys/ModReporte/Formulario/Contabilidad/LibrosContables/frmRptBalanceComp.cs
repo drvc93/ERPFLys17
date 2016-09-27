@@ -13,7 +13,7 @@ using FiltroLys.Type;
 using FiltroLys.ZLys.Funciones;
 using FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.LibrosContables;
 
-namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.LibrosContables
+namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.Estadistico
 {
     public partial class frmRptBalanceComp : FiltroLys.ZLys.Controles.Formulario.frmReporte
     {
@@ -39,7 +39,7 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.LibrosContables
         {
             //Compania
             List<entCompania> LstA = negCompania.ListaXUsuario(fnConst.ModContabilidadCod, GlobalVar.UsuarioLogeo,fnConst.StringT, new String[] { fnConst.TextNingunoCod, fnConst.TextSeleccioneNom});
-            cmbCompania.Properties.DataSource = LstA;
+              cmbCompania.Properties.DataSource = LstA;
             cmbCompania.Properties.DisplayMember = "Nombres";
             cmbCompania.Properties.ValueMember = "Compania";
             LstA = null;

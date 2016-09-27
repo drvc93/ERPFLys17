@@ -72,3 +72,14 @@ D:\DATA MIGUEL\ERPLys17\ERPFLys17\CapaNegocio\bin\Debug\FiltroLys.Type.pdb
 D:\DATA MIGUEL\ERPLys17\ERPFLys17\CapaNegocio\obj\Debug\FiltroLys.Domain.csprojResolveAssemblyReference.cache
 D:\DATA MIGUEL\ERPLys17\ERPFLys17\CapaNegocio\obj\Debug\FiltroLys.Domain.dll
 D:\DATA MIGUEL\ERPLys17\ERPFLys17\CapaNegocio\obj\Debug\FiltroLys.Domain.pdb
+D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaNegocio\bin\Debug\FiltroLys.Domain.dll
+D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaNegocio\bin\Debug\FiltroLys.Domain.pdb
+D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaNegocio\bin\Debug\FiltroLys.Model.dll
+D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaNegocio\bin\Debug\FiltroLys.Repository.dll
+D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaNegocio\bin\Debug\FiltroLys.Type.dll
+D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaNegocio\bin\Debug\FiltroLys.Repository.pdb
+D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaNegocio\bin\Debug\FiltroLys.Model.pdb
+D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaNegocio\bin\Debug\FiltroLys.Type.pdb
+D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaNegocio\obj\Debug\FiltroLys.Domain.csprojResolveAssemblyReference.cache
+D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaNegocio\obj\Debug\FiltroLys.Domain.dll
+D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaNegocio\obj\Debug\FiltroLys.Domain.pdb
