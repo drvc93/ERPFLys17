@@ -228,8 +228,8 @@ namespace FiltroLys.Repository.Contabilidad
                         Cmd.ExecuteNonQuery();
                     }
 
-                    Trs.Commit();                    
-                    entErr.Resultado = true;
+                    Trs.Commit();
+                    entErr.Resultado = true;                    
                 }
                 catch (Exception ex)
                 {

@@ -1460,7 +1460,7 @@ namespace FiltroLys.ZLys.ModContabilidad
                 return bOk;
             }
 
-            entErrores oErr = negCuentaContable.GetValidaEstructuraCuenta(Compania, LstDetVoucher);
+            entErrores oErr = negVoucherDet.GetValidaEstructuraCuenta(Compania, LstDetVoucher);
             /*foreach (entVoucherDet oDet in LstDetVoucher){
                 if (!oDet.OrigenDoc.Equals("MN")){
                     if (oDet.CodigoDoc == 0 || oDet.CodigoDoc == Int32.MinValue){
