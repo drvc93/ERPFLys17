@@ -1,19 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using DevExpress.XtraReports.UI;
 using FiltroLys.ZLys.Funciones;
+using System.Collections.Generic;
 
-namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.Estadistico
+namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.LibrosContables
 {
-    public partial class rpt_CtaCteProveedorCons : DevExpress.XtraReports.UI.XtraReport
+    public partial class rpt_GastosMensualDet : DevExpress.XtraReports.UI.XtraReport
     {
-        public rpt_CtaCteProveedorCons()
+        public rpt_GastosMensualDet()
         {
             InitializeComponent();
         }
+
 
         public void GenerarReport(ref fnReport EReportW)
         {
@@ -22,8 +23,8 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.Estadistico
 
 
             prmCompania.Value = EReportW.GetObject("Compania").Valor;
-            prmPerIni.Value = EReportW.GetObject("PerIni").Valor;
-            prmPerFin.Value = EReportW.GetObject("PerFin").Valor;
+            prmPerInicial.Value = EReportW.GetObject("PerIni").Valor;
+            prmPerFinal.Value = EReportW.GetObject("PerFin").Valor;
             prmCtaIni.Value = EReportW.GetObject("CuentaIni").Valor;
             prmCtaFin.Value = EReportW.GetObject("CuentaFin").Valor;
             prmFlagProv.Value = EReportW.GetObject("FlagProv").Valor;
@@ -45,6 +46,5 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.Estadistico
             CreateDocument();
             EReportW.ContReg = this.RowCount;
         }
-
     }
 }

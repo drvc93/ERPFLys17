@@ -300,7 +300,8 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.LibrosContables
         
         private void txtProveedor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13) {
+            if (e.KeyChar == 13) 
+            {
                 String sCia = cmbCompania.EditValue.ToString();
                 String sProv = txtProveedor.Text.Trim();
                 String sNombre = String.Empty;
