@@ -12,6 +12,7 @@ namespace FiltroLys.Model.Objeto
         private List<entFail> s_error = new List<entFail>();
         private String s_CodigoGen;
         private Int32 n_CodigoGen;
+        private Boolean b_errCuenta;
 
         public Boolean Resultado {
             get { return b_resultado; }
@@ -32,6 +33,12 @@ namespace FiltroLys.Model.Objeto
         public Int32 CodigoGeneradoInt {
             get { return n_CodigoGen; }
             set { n_CodigoGen = value; }
+        }
+
+        public Boolean ErrorCuenta
+        {
+            get { return b_errCuenta; }
+            set { b_errCuenta = value; }
         }
 
     }

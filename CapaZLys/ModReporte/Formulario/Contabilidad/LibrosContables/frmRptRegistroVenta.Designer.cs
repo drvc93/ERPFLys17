@@ -64,16 +64,11 @@
             // 
             this.btnBuscar.Location = new System.Drawing.Point(680, 83);
             this.btnBuscar.Size = new System.Drawing.Size(63, 23);
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // dvReport
             // 
             this.dvReport.Size = new System.Drawing.Size(765, 355);
-            // 
-            // pbBarInferior
-            // 
-            this.pbBarInferior.OptionsBar.AllowQuickCustomization = false;
-            this.pbBarInferior.OptionsBar.DrawDragBorder = false;
-            this.pbBarInferior.OptionsBar.UseWholeRow = true;
             // 
             // pnlCuerpo
             // 

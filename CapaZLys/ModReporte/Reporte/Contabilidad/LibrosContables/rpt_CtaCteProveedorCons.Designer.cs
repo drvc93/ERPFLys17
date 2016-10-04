@@ -1,4 +1,4 @@
-﻿namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.Estadistico
+﻿namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.LibrosContables
 {
     partial class rpt_CtaCteProveedorCons
     {
