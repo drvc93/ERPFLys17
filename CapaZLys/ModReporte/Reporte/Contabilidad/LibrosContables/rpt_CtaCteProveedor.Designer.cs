@@ -1,4 +1,4 @@
-﻿namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.Estadistico
+﻿namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.LibrosContables
 {
     partial class rpt_CtaCteProveedor
     {
@@ -53,7 +53,6 @@
             this.xrLabel16 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel14 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel12 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel8 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
@@ -83,7 +82,6 @@
             this.xrTableCell5 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell6 = new DevExpress.XtraReports.UI.XRTableCell();
             this.pageFooterBand1 = new DevExpress.XtraReports.UI.PageFooterBand();
-            this.reportHeaderBand1 = new DevExpress.XtraReports.UI.ReportHeaderBand();
             this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
             this.FieldCaption = new DevExpress.XtraReports.UI.XRControlStyle();
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -118,21 +116,25 @@
             this.Periodo = new DevExpress.XtraReports.UI.CalculatedField();
             this.FechaHoy = new DevExpress.XtraReports.UI.CalculatedField();
             this.NPagina = new DevExpress.XtraReports.UI.CalculatedField();
+            this.Voucher = new DevExpress.XtraReports.UI.CalculatedField();
+            this.xrLabel8 = new DevExpress.XtraReports.UI.XRLabel();
+            this.prmNomCompania = new DevExpress.XtraReports.Parameters.Parameter();
+            this.xrLabel27 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
             // 
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel8,
             this.xrLabel10,
             this.xrLabel18,
             this.xrLabel16,
             this.xrLabel14,
             this.xrLabel12,
-            this.xrLabel8,
             this.xrLabel6,
             this.xrLabel4,
             this.xrLabel2});
-            this.Detail.HeightF = 14.66668F;
+            this.Detail.HeightF = 13.30172F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -200,18 +202,6 @@
             this.xrLabel12.StyleName = "xrControlStyle1";
             this.xrLabel12.Text = "xrLabel12";
             // 
-            // xrLabel8
-            // 
-            this.xrLabel8.CanGrow = false;
-            this.xrLabel8.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "sp_cb_ccte_prov.c_numerovoucher")});
-            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(102.5F, 0F);
-            this.xrLabel8.Name = "xrLabel8";
-            this.xrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel8.SizeF = new System.Drawing.SizeF(43.74993F, 13F);
-            this.xrLabel8.StyleName = "xrControlStyle1";
-            this.xrLabel8.Text = "xrLabel8";
-            // 
             // xrLabel6
             // 
             this.xrLabel6.CanGrow = false;
@@ -235,7 +225,7 @@
             this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(54.99999F, 0F);
             this.xrLabel4.Name = "xrLabel4";
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel4.SizeF = new System.Drawing.SizeF(47.5F, 13F);
+            this.xrLabel4.SizeF = new System.Drawing.SizeF(37.08333F, 13F);
             this.xrLabel4.StylePriority.UseFont = false;
             this.xrLabel4.Text = "xrLabel4";
             // 
@@ -336,6 +326,7 @@
             // pageHeaderBand1
             // 
             this.pageHeaderBand1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel27,
             this.xrLabel19,
             this.xrLabel17,
             this.xrLabel15,
@@ -461,10 +452,10 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLabel7.Font = new System.Drawing.Font("Arial", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel7.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(102.5F, 69.79166F);
+            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(92.08333F, 69.79166F);
             this.xrLabel7.Name = "xrLabel7";
             this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel7.SizeF = new System.Drawing.SizeF(43.74998F, 12.75F);
+            this.xrLabel7.SizeF = new System.Drawing.SizeF(54.16664F, 12.75F);
             this.xrLabel7.StyleName = "Title";
             this.xrLabel7.StylePriority.UseBorders = false;
             this.xrLabel7.StylePriority.UseFont = false;
@@ -481,12 +472,12 @@
             this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(54.99999F, 69.79166F);
             this.xrLabel5.Name = "xrLabel5";
             this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel5.SizeF = new System.Drawing.SizeF(47.49999F, 12.75F);
+            this.xrLabel5.SizeF = new System.Drawing.SizeF(37.08334F, 12.75F);
             this.xrLabel5.StyleName = "Title";
             this.xrLabel5.StylePriority.UseBorders = false;
             this.xrLabel5.StylePriority.UseFont = false;
             this.xrLabel5.StylePriority.UseForeColor = false;
-            this.xrLabel5.Text = "Periodo";
+            this.xrLabel5.Text = "Period";
             // 
             // xrLabel3
             // 
@@ -614,14 +605,6 @@
             // 
             this.pageFooterBand1.HeightF = 0F;
             this.pageFooterBand1.Name = "pageFooterBand1";
-            // 
-            // reportHeaderBand1
-            // 
-            this.reportHeaderBand1.Expanded = false;
-            this.reportHeaderBand1.HeightF = 75.99999F;
-            this.reportHeaderBand1.Name = "reportHeaderBand1";
-            this.reportHeaderBand1.StylePriority.UseTextAlignment = false;
-            this.reportHeaderBand1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             // 
             // Title
             // 
@@ -893,6 +876,41 @@
             // 
             this.NPagina.Name = "NPagina";
             // 
+            // Voucher
+            // 
+            this.Voucher.DataMember = "sp_cb_ccte_prov";
+            this.Voucher.Expression = "Concat([c_tipovoucher],[c_numerovoucher] )";
+            this.Voucher.Name = "Voucher";
+            // 
+            // xrLabel8
+            // 
+            this.xrLabel8.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "sp_cb_ccte_prov.Voucher")});
+            this.xrLabel8.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(92.08333F, 0F);
+            this.xrLabel8.Name = "xrLabel8";
+            this.xrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrLabel8.SizeF = new System.Drawing.SizeF(54.16667F, 13.30172F);
+            this.xrLabel8.StylePriority.UseFont = false;
+            this.xrLabel8.Text = "xrLabel8";
+            // 
+            // prmNomCompania
+            // 
+            this.prmNomCompania.Description = "Nombre Compania";
+            this.prmNomCompania.Name = "prmNomCompania";
+            // 
+            // xrLabel27
+            // 
+            this.xrLabel27.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding(this.prmNomCompania, "Text", "")});
+            this.xrLabel27.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel27.LocationFloat = new DevExpress.Utils.PointFloat(6.00001F, 0F);
+            this.xrLabel27.Name = "xrLabel27";
+            this.xrLabel27.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrLabel27.SizeF = new System.Drawing.SizeF(140.25F, 23F);
+            this.xrLabel27.StylePriority.UseFont = false;
+            this.xrLabel27.Text = "xrLabel27";
+            // 
             // rpt_CtaCteProveedor
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -901,7 +919,6 @@
             this.BottomMargin,
             this.pageHeaderBand1,
             this.pageFooterBand1,
-            this.reportHeaderBand1,
             this.GroupHeader1,
             this.GroupFooter1});
             this.CalculatedFields.AddRange(new DevExpress.XtraReports.UI.CalculatedField[] {
@@ -910,7 +927,8 @@
             this.SumImpDolar,
             this.Periodo,
             this.FechaHoy,
-            this.NPagina});
+            this.NPagina,
+            this.Voucher});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.sqlConnRPT});
             this.DataMember = "sp_cb_ccte_prov";
@@ -929,7 +947,8 @@
             this.prmCtaDestino,
             this.prmDocPend,
             this.prmOrdenar,
-            this.prmConsulta});
+            this.prmConsulta,
+            this.prmNomCompania});
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
             this.FieldCaption,
@@ -957,7 +976,6 @@
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell5;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell6;
         private DevExpress.XtraReports.UI.PageFooterBand pageFooterBand1;
-        private DevExpress.XtraReports.UI.ReportHeaderBand reportHeaderBand1;
         private DevExpress.XtraReports.UI.XRControlStyle Title;
         private DevExpress.XtraReports.UI.XRControlStyle FieldCaption;
         private DevExpress.XtraReports.UI.XRControlStyle PageInfo;
@@ -983,7 +1001,6 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel9;
         private DevExpress.XtraReports.UI.XRControlStyle xrControlStyle1;
         private DevExpress.XtraReports.UI.CalculatedField nomMoneda;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel8;
         private DevExpress.XtraReports.UI.XRLabel xrLabel6;
         private DevExpress.XtraReports.UI.XRLabel xrLabel12;
         private DevExpress.XtraReports.UI.XRLabel xrLabel13;
@@ -1014,5 +1031,9 @@
         private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo3;
         private DevExpress.XtraReports.UI.XRLabel xrLabel26;
         private DevExpress.XtraReports.UI.XRLabel xrLabel10;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel8;
+        private DevExpress.XtraReports.UI.CalculatedField Voucher;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel27;
+        private DevExpress.XtraReports.Parameters.Parameter prmNomCompania;
     }
 }

@@ -119,7 +119,7 @@ namespace FiltroLys.Repository.Maestro.Mantenimiento
                 Cmd.Parameters.Add(new SqlParameter("@Accion", SqlDbType.VarChar)).Value = fnConst.OperaAccionLst;
                 Cmd.Parameters.Add(new SqlParameter("@Opcion", SqlDbType.VarChar)).Value = fnConst.OperLstBusqueda;
                 Cmd.Parameters.Add(new SqlParameter("@Compania", SqlDbType.VarChar)).Value = Compania;
-                Cmd.Parameters.Add(new SqlParameter("@Maquina", SqlDbType.Int)).Value = Maquina;
+                Cmd.Parameters.Add(new SqlParameter("@Maquina", SqlDbType.VarChar)).Value = Maquina;
                 Cmd.Parameters.Add(new SqlParameter("@Descripcion", SqlDbType.VarChar)).Value = Descripcion;
                 Cmd.Parameters.Add(new SqlParameter("@Estado", SqlDbType.VarChar)).Value = Estado;                
                 SqlDataAdapter adapter = new SqlDataAdapter();

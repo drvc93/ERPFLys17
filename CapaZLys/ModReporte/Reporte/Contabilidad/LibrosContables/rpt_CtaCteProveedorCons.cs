@@ -34,6 +34,7 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.LibrosContables
             prmDocPend.Value = EReportW.GetObject("Pendiente").Valor;
             prmOrdenar.Value = EReportW.GetObject("Ordenar").Valor;
             prmConsulta.Value = EReportW.GetObject("Consulta").Valor;
+            prmNomCompania.Value = EReportW.GetObject("NomCompania").Valor;
 
 
 

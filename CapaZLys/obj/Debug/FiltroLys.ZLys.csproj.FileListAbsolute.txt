@@ -620,7 +620,7 @@ D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Fo
 D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.Estadistico.frmRptBalanceComp.resources
 D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.Estadistico.rpt_BalMensual.resources
 D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.Estadistico.rpt_BalMensual2D.resources
-D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.Estadistico.rpt_CtaCteProveedor.resources
 D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.Estadistico.rpt_GastosMensualDet.resources
 D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.LibrosContables.rpt_CtaCteProveedorCons.resources
 D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.LibrosContables.rpt_GastosMensualDet.resources
+D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaZLys\obj\Debug\FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.LibrosContables.rpt_CtaCteProveedor.resources
