@@ -652,12 +652,6 @@
     <Compile Include="ModReporte\Formulario\Contabilidad\Estadistico\frmRptBalanceMensual.Designer.cs">
       <DependentUpon>frmRptBalanceMensual.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptCuentaCteProv.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptCuentaCteProv.Designer.cs">
-      <DependentUpon>frmRptCuentaCteProv.cs</DependentUpon>
-    </Compile>
     <Compile Include="ModReporte\Formulario\Contabilidad\Varios\frmRptPlanCuenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -700,10 +694,10 @@
     <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptRegistroVenta.Designer.cs">
       <DependentUpon>frmRptRegistroVenta.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\frmRptRegistroCompa.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptRegistroCompa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\frmRptRegistroCompa.Designer.cs">
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptRegistroCompa.Designer.cs">
       <DependentUpon>frmRptRegistroCompa.cs</DependentUpon>
     </Compile>
     <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptSaldoContableDet.cs">
@@ -717,6 +711,12 @@
     </Compile>
     <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptDocumentoPend.Designer.cs">
       <DependentUpon>frmRptDocumentoPend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptCuentaCteProv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptCuentaCteProv.Designer.cs">
+      <DependentUpon>frmRptCuentaCteProv.cs</DependentUpon>
     </Compile>
     <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptCuentaCCosto.cs">
       <SubType>Form</SubType>
@@ -765,30 +765,6 @@
     </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\Estadistico\rpt_BalMensual2D.Designer.cs">
       <DependentUpon>rpt_BalMensual2D.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\Estadistico\rpt_GastosMensualDet.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\Estadistico\rpt_GastosMensualDet.Designer.cs">
-      <DependentUpon>rpt_GastosMensualDet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_CtaCteProveedor.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_CtaCteProveedor.Designer.cs">
-      <DependentUpon>rpt_CtaCteProveedor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_CtaCteProveedorCons.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_CtaCteProveedorCons.Designer.cs">
-      <DependentUpon>rpt_CtaCteProveedorCons.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_GastosMensualDet.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_GastosMensualDet.Designer.cs">
-      <DependentUpon>rpt_GastosMensualDet.cs</DependentUpon>
     </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_PlanCuenta.cs">
       <SubType>Component</SubType>
@@ -1247,9 +1223,6 @@
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\Estadistico\frmRptBalanceMensual.resx">
       <DependentUpon>frmRptBalanceMensual.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptCuentaCteProv.resx">
-      <DependentUpon>frmRptCuentaCteProv.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\Varios\frmRptPlanCuenta.resx">
       <DependentUpon>frmRptPlanCuenta.cs</DependentUpon>
     </EmbeddedResource>
@@ -1271,7 +1244,7 @@
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptRegistroVenta.resx">
       <DependentUpon>frmRptRegistroVenta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\frmRptRegistroCompa.resx">
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptRegistroCompa.resx">
       <DependentUpon>frmRptRegistroCompa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptSaldoContableDet.resx">
@@ -1279,6 +1252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptDocumentoPend.resx">
       <DependentUpon>frmRptDocumentoPend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptCuentaCteProv.resx">
+      <DependentUpon>frmRptCuentaCteProv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptCuentaCCosto.resx">
       <DependentUpon>frmRptCuentaCCosto.cs</DependentUpon>
@@ -1303,18 +1279,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\Estadistico\rpt_BalMensual2D.resx">
       <DependentUpon>rpt_BalMensual2D.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\Estadistico\rpt_GastosMensualDet.resx">
-      <DependentUpon>rpt_GastosMensualDet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_CtaCteProveedor.resx">
-      <DependentUpon>rpt_CtaCteProveedor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_CtaCteProveedorCons.resx">
-      <DependentUpon>rpt_CtaCteProveedorCons.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\LibrosContables\rpt_GastosMensualDet.resx">
-      <DependentUpon>rpt_GastosMensualDet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\Varios\rpt_PlanCuenta.resx">
       <DependentUpon>rpt_PlanCuenta.cs</DependentUpon>

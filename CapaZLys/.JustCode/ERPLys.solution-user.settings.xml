@@ -48,13 +48,6 @@
           <TextualIdentifier>3794764991838997246</TextualIdentifier>
         </IgnoredElement>
       </FilePath>
-      <FilePath>
-        <FileRelativePath>ModReporte/Reporte/Contabilidad/Estadistico/rpt_CtaCteProveedor.cs</FileRelativePath>
-        <ProjectRelativePath>FiltroLys.ZLys.csproj</ProjectRelativePath>
-        <IgnoredElement>
-          <TextualIdentifier>10079415496948281211</TextualIdentifier>
-        </IgnoredElement>
-      </FilePath>
     </IgnoredErrorsAndWarnings>
   </IgnoredErrorsAndWarningsSettings>
 </JustCodeSettings>

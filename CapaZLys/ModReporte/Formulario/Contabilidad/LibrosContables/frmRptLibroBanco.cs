@@ -115,10 +115,5 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.LibrosContables
 
         #endregion
 
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }
