@@ -1,4 +1,4 @@
-﻿namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.LibrosContables
+﻿namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.Estadistico
 {
     partial class frmRptBalanceComp
     {

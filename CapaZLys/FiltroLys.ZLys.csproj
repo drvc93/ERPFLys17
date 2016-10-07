@@ -646,6 +646,12 @@
     <Compile Include="Controles\Formulario\frmReporte.Designer.cs">
       <DependentUpon>frmReporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\Estadistico\frmRptBalanceMensual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Formulario\Contabilidad\Estadistico\frmRptBalanceMensual.Designer.cs">
+      <DependentUpon>frmRptBalanceMensual.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModReporte\Formulario\Contabilidad\Varios\frmRptPlanCuenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -747,6 +753,18 @@
     </Compile>
     <Compile Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptLibroDiario.Designer.cs">
       <DependentUpon>frmRptLibroDiario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\Estadistico\rpt_BalMensual.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\Estadistico\rpt_BalMensual.Designer.cs">
+      <DependentUpon>rpt_BalMensual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\Estadistico\rpt_BalMensual2D.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModReporte\Reporte\Contabilidad\Estadistico\rpt_BalMensual2D.Designer.cs">
+      <DependentUpon>rpt_BalMensual2D.cs</DependentUpon>
     </Compile>
     <Compile Include="ModReporte\Reporte\Contabilidad\Varios\rpt_PlanCuenta.cs">
       <SubType>Component</SubType>
@@ -1202,6 +1220,9 @@
     <EmbeddedResource Include="Controles\Formulario\frmReporte.resx">
       <DependentUpon>frmReporte.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\Estadistico\frmRptBalanceMensual.resx">
+      <DependentUpon>frmRptBalanceMensual.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\Varios\frmRptPlanCuenta.resx">
       <DependentUpon>frmRptPlanCuenta.cs</DependentUpon>
     </EmbeddedResource>
@@ -1252,6 +1273,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Formulario\Contabilidad\LibrosContables\frmRptLibroDiario.resx">
       <DependentUpon>frmRptLibroDiario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\Estadistico\rpt_BalMensual.resx">
+      <DependentUpon>rpt_BalMensual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\Estadistico\rpt_BalMensual2D.resx">
+      <DependentUpon>rpt_BalMensual2D.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModReporte\Reporte\Contabilidad\Varios\rpt_PlanCuenta.resx">
       <DependentUpon>rpt_PlanCuenta.cs</DependentUpon>
@@ -1463,10 +1490,7 @@
       <Name>FiltroLys.Type</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ModReporte\Formulario\Contabilidad\Estadistico\" />
-    <Folder Include="ModReporte\Reporte\Contabilidad\Estadistico\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
   </PropertyGroup>

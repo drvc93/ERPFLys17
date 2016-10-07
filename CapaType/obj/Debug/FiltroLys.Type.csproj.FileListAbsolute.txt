@@ -28,3 +28,8 @@ D:\DATA MIGUEL\ERPLys17\ERPFLys17\CapaType\bin\Debug\FiltroLys.Type.pdb
 D:\DATA MIGUEL\ERPLys17\ERPFLys17\CapaType\obj\Debug\FiltroLys.Type.csprojResolveAssemblyReference.cache
 D:\DATA MIGUEL\ERPLys17\ERPFLys17\CapaType\obj\Debug\FiltroLys.Type.dll
 D:\DATA MIGUEL\ERPLys17\ERPFLys17\CapaType\obj\Debug\FiltroLys.Type.pdb
+D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaType\bin\Debug\FiltroLys.Type.dll
+D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaType\bin\Debug\FiltroLys.Type.pdb
+D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaType\obj\Debug\FiltroLys.Type.csprojResolveAssemblyReference.cache
+D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaType\obj\Debug\FiltroLys.Type.dll
+D:\DVILLANUEVA\ERPLysR\ERPFLys17\CapaType\obj\Debug\FiltroLys.Type.pdb

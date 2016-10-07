@@ -245,7 +245,7 @@
             this.xrSalIniDebe.StylePriority.UseForeColor = false;
             this.xrSalIniDebe.StylePriority.UsePadding = false;
             this.xrSalIniDebe.StylePriority.UseTextAlignment = false;
-            this.xrSalIniDebe.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.xrSalIniDebe.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrSalIniHaber
             // 
@@ -272,7 +272,7 @@
             this.xrSalIniHaber.StylePriority.UseForeColor = false;
             this.xrSalIniHaber.StylePriority.UsePadding = false;
             this.xrSalIniHaber.StylePriority.UseTextAlignment = false;
-            this.xrSalIniHaber.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.xrSalIniHaber.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrMovDebe
             // 
@@ -299,7 +299,7 @@
             this.xrMovDebe.StylePriority.UseForeColor = false;
             this.xrMovDebe.StylePriority.UsePadding = false;
             this.xrMovDebe.StylePriority.UseTextAlignment = false;
-            this.xrMovDebe.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.xrMovDebe.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrMovHaber
             // 
@@ -326,7 +326,7 @@
             this.xrMovHaber.StylePriority.UseForeColor = false;
             this.xrMovHaber.StylePriority.UsePadding = false;
             this.xrMovHaber.StylePriority.UseTextAlignment = false;
-            this.xrMovHaber.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.xrMovHaber.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrSalFinDebe
             // 
@@ -353,7 +353,7 @@
             this.xrSalFinDebe.StylePriority.UseForeColor = false;
             this.xrSalFinDebe.StylePriority.UsePadding = false;
             this.xrSalFinDebe.StylePriority.UseTextAlignment = false;
-            this.xrSalFinDebe.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.xrSalFinDebe.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrSalFinHaber
             // 
@@ -380,7 +380,7 @@
             this.xrSalFinHaber.StylePriority.UseForeColor = false;
             this.xrSalFinHaber.StylePriority.UsePadding = false;
             this.xrSalFinHaber.StylePriority.UseTextAlignment = false;
-            this.xrSalFinHaber.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.xrSalFinHaber.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrInvDebe
             // 
@@ -407,7 +407,7 @@
             this.xrInvDebe.StylePriority.UseForeColor = false;
             this.xrInvDebe.StylePriority.UsePadding = false;
             this.xrInvDebe.StylePriority.UseTextAlignment = false;
-            this.xrInvDebe.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.xrInvDebe.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrInvHaber
             // 
@@ -434,7 +434,7 @@
             this.xrInvHaber.StylePriority.UseForeColor = false;
             this.xrInvHaber.StylePriority.UsePadding = false;
             this.xrInvHaber.StylePriority.UseTextAlignment = false;
-            this.xrInvHaber.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.xrInvHaber.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrFunDebe
             // 
@@ -461,7 +461,7 @@
             this.xrFunDebe.StylePriority.UseForeColor = false;
             this.xrFunDebe.StylePriority.UsePadding = false;
             this.xrFunDebe.StylePriority.UseTextAlignment = false;
-            this.xrFunDebe.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.xrFunDebe.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrFunHaber
             // 
@@ -488,7 +488,7 @@
             this.xrFunHaber.StylePriority.UseForeColor = false;
             this.xrFunHaber.StylePriority.UsePadding = false;
             this.xrFunHaber.StylePriority.UseTextAlignment = false;
-            this.xrFunHaber.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.xrFunHaber.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrNatDebe
             // 
@@ -515,7 +515,7 @@
             this.xrNatDebe.StylePriority.UseForeColor = false;
             this.xrNatDebe.StylePriority.UsePadding = false;
             this.xrNatDebe.StylePriority.UseTextAlignment = false;
-            this.xrNatDebe.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.xrNatDebe.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrNatHaber
             // 
@@ -542,7 +542,7 @@
             this.xrNatHaber.StylePriority.UseForeColor = false;
             this.xrNatHaber.StylePriority.UsePadding = false;
             this.xrNatHaber.StylePriority.UseTextAlignment = false;
-            this.xrNatHaber.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.xrNatHaber.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel35
             // 
@@ -555,7 +555,9 @@
             this.xrLabel35.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel35.SizeF = new System.Drawing.SizeF(157.875F, 14.66668F);
             this.xrLabel35.StylePriority.UseFont = false;
+            this.xrLabel35.StylePriority.UseTextAlignment = false;
             this.xrLabel35.Text = "xrLabel35";
+            this.xrLabel35.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // TopMargin
             // 
