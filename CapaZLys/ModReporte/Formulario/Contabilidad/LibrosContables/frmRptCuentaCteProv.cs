@@ -46,9 +46,15 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.LibrosContables
             LstA = null;
             
             //Moneda
-            cmbMoneda.Properties.DataSource = fnListasDat.ListMoneda();
+            List<entComboList> litcmbMnd = fnListasDat.ListMoneda();
+            entComboList item = new entComboList();
+            item.Codigo = "%";
+            item.Nombre = "Ambos";
+            litcmbMnd.Add(item);
+            cmbMoneda.Properties.DataSource = litcmbMnd;//fnListasDat.ListMoneda();
             cmbMoneda.Properties.DisplayMember = "Nombre";
             cmbMoneda.Properties.ValueMember = "Codigo";
+           //cmbMoneda.Properties.
             
             cmbConsulta.Properties.Items.AddRange(new string[] { "Cuenta corriente Detallada", "Cuenta corriente Consolidado", "Gastos Mensuales Detallado" });
             cmbOrdenar.Properties.Items.AddRange(new string[] { "Monto", "Fecha", "Documento" });
@@ -141,7 +147,7 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.LibrosContables
             String sChkPend = (chkDocPendiente.Checked) ? "S" : "N";
             String sOrdenar = cmbOrdenar.EditValue.ToString().Substring(0, 1);
             String sConsulta = (cmbConsulta.SelectedIndex + 1).ToString("00");
-            
+            String sNomCompania = cmbCompania.Text;
             try
             {
                 xPrmR.AddParametro(new entRepParam() { Propiedad = "Compania", Valor = sCia });
@@ -157,14 +163,14 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.LibrosContables
                 xPrmR.AddParametro(new entRepParam() { Propiedad = "Pendiente", Valor = sChkPend });
                 xPrmR.AddParametro(new entRepParam() { Propiedad = "Ordenar", Valor = sOrdenar });
                 xPrmR.AddParametro(new entRepParam() { Propiedad = "Consulta", Valor = sConsulta });
-                
-                //  Consulta :00 > reporte de cuenta corriente prov detallado
-                // Consulta :01 > reporte de cuenta corriente prov consolidado
-                // Consulta :02 > reporte de gastos mensuales
+                xPrmR.AddParametro(new entRepParam() { Propiedad = "NomCompania", Valor = sNomCompania });
+                //  Consulta :01 > reporte de cuenta corriente prov detallado
+                // Consulta :02 > reporte de cuenta corriente prov consolidado
+                // Consulta :03 > reporte de gastos mensuales
                 
                 if (sConsulta == "01")
                 {
-                    rpt_CtaCteProveedorCons oRpt = new rpt_CtaCteProveedorCons();
+                    rpt_CtaCteProveedor oRpt = new rpt_CtaCteProveedor();
                     
                     oRpt.GenerarReport(ref xPrmR);
                     dvReport.DocumentSource = oRpt;

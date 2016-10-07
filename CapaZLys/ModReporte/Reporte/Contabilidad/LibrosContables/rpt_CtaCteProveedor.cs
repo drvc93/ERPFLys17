@@ -6,7 +6,7 @@ using System.ComponentModel;
 using DevExpress.XtraReports.UI;
 using FiltroLys.ZLys.Funciones;
 
-namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.Estadistico
+namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.LibrosContables
 {
     public partial class rpt_CtaCteProveedor : DevExpress.XtraReports.UI.XtraReport
     {
@@ -34,6 +34,7 @@ namespace FiltroLys.ZLys.ModReporte.Reporte.Contabilidad.Estadistico
             prmDocPend.Value = EReportW.GetObject("Pendiente").Valor;
             prmOrdenar.Value = EReportW.GetObject("Ordenar").Valor;
             prmConsulta.Value = EReportW.GetObject("Consulta").Valor;
+            prmNomCompania.Value = EReportW.GetObject("NomCompania").Valor;
 
         
 

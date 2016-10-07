@@ -140,6 +140,7 @@
             this.lblTitulo.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.Appearance.ForeColor = System.Drawing.Color.Navy;
             this.lblTitulo.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.lblTitulo.Size = new System.Drawing.Size(760, 24);
             this.lblTitulo.Text = "VOUCHER";
             // 
             // pnMain
@@ -158,7 +159,7 @@
             this.pnMain.Controls.Add(this.btnEliminar);
             this.pnMain.Controls.Add(this.btnAgregar);
             this.pnMain.Controls.Add(this.panelControl1);
-            this.pnMain.Size = new System.Drawing.Size(609, 437);
+            this.pnMain.Size = new System.Drawing.Size(774, 437);
             this.pnMain.Controls.SetChildIndex(this.lblTitulo, 0);
             this.pnMain.Controls.SetChildIndex(this.panelControl1, 0);
             this.pnMain.Controls.SetChildIndex(this.btnAgregar, 0);
@@ -627,7 +628,7 @@
             this.riteMayus,
             this.rideFecha,
             this.riteMonto});
-            this.grControl.Size = new System.Drawing.Size(597, 245);
+            this.grControl.Size = new System.Drawing.Size(762, 245);
             this.grControl.TabIndex = 25;
             this.grControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDetalle});
@@ -696,7 +697,6 @@
             // Linea
             // 
             this.Linea.Caption = "#";
-            this.Linea.FieldName = "Linea";
             this.Linea.Name = "Linea";
             this.Linea.OptionsColumn.AllowEdit = false;
             this.Linea.OptionsColumn.ReadOnly = true;
@@ -904,7 +904,7 @@
             // 
             this.Appearance.BackColor = System.Drawing.SystemColors.Control;
             this.Appearance.Options.UseBackColor = true;
-            this.ClientSize = new System.Drawing.Size(609, 437);
+            this.ClientSize = new System.Drawing.Size(774, 437);
             this.Name = "frmVoucherMant";
             this.Text = "Voucher";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmVoucherMant_FormClosing);

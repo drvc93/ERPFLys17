@@ -70,10 +70,13 @@
             this.fieldcmoneda = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.fieldccuenta = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.fieldcrazonsocial = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
-            this.fieldnimpdolar = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
+            this.fieldnimportedollar = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.fieldccentrocosto = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
-            this.fieldnimplocal = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
+            this.fieldnimportelocal = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
+            this.fieldctipoccostonombre = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.fieldcnombrecta = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
+            this.fieldnproveedor = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
+            this.fieldctipogastonombre = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
             this.FieldCaption = new DevExpress.XtraReports.UI.XRControlStyle();
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -95,6 +98,9 @@
             this.nonMoneda = new DevExpress.XtraReports.UI.CalculatedField();
             this.nroPagina = new DevExpress.XtraReports.UI.CalculatedField();
             this.FechaHoy = new DevExpress.XtraReports.UI.CalculatedField();
+            this.prmNomCompania = new DevExpress.XtraReports.Parameters.Parameter();
+            this.nomCompania = new DevExpress.XtraReports.UI.CalculatedField();
+            this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -109,7 +115,8 @@
             // 
             this.TopMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrLabel3,
-            this.xrPageInfo3});
+            this.xrPageInfo3,
+            this.xrLabel4});
             this.TopMargin.HeightF = 35F;
             this.TopMargin.Name = "TopMargin";
             this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
@@ -120,18 +127,20 @@
             this.xrLabel3.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "sp_cb_ccte_prov.FechaHoy")});
             this.xrLabel3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(890.8315F, 0F);
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(804.3732F, 0F);
             this.xrLabel3.Name = "xrLabel3";
             this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel3.SizeF = new System.Drawing.SizeF(157.5851F, 14.91668F);
             this.xrLabel3.StylePriority.UseFont = false;
+            this.xrLabel3.StylePriority.UseTextAlignment = false;
             this.xrLabel3.Text = "xrLabel3";
+            this.xrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             // 
             // xrPageInfo3
             // 
             this.xrPageInfo3.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
             this.xrPageInfo3.Format = "Página {0} de {1}";
-            this.xrPageInfo3.LocationFloat = new DevExpress.Utils.PointFloat(890.8315F, 14.91667F);
+            this.xrPageInfo3.LocationFloat = new DevExpress.Utils.PointFloat(804.3732F, 19.29165F);
             this.xrPageInfo3.Name = "xrPageInfo3";
             this.xrPageInfo3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrPageInfo3.SizeF = new System.Drawing.SizeF(157.5851F, 15.70834F);
@@ -294,10 +303,10 @@
             this.xrLabel2.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "nonMoneda")});
             this.xrLabel2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(333.5833F, 68.79167F);
+            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(387.9807F, 51.29168F);
             this.xrLabel2.Name = "xrLabel2";
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel2.SizeF = new System.Drawing.SizeF(313.5417F, 23F);
+            this.xrLabel2.SizeF = new System.Drawing.SizeF(313.5417F, 15.70833F);
             this.xrLabel2.StylePriority.UseFont = false;
             this.xrLabel2.Text = "Todas las monedas";
             // 
@@ -306,7 +315,7 @@
             this.xrLabel1.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "sp_cb_ccte_prov.intervaloPeriodos")});
             this.xrLabel1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(333.5833F, 48.91667F);
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(387.9807F, 31.41668F);
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel1.SizeF = new System.Drawing.SizeF(313.5416F, 19.875F);
@@ -328,28 +337,33 @@
             // xrPivotGrid1
             // 
             this.xrPivotGrid1.AnchorHorizontal = DevExpress.XtraReports.UI.HorizontalAnchorStyles.Left;
+            this.xrPivotGrid1.DataMember = "sp_cb_ccte_prov";
+            this.xrPivotGrid1.DataSource = this.sqlConnRPT;
             this.xrPivotGrid1.Fields.AddRange(new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField[] {
             this.fieldcperiodo,
             this.fieldcmoneda,
             this.fieldccuenta,
             this.fieldcrazonsocial,
-            this.fieldnimpdolar,
+            this.fieldnimportedollar,
             this.fieldccentrocosto,
-            this.fieldnimplocal,
-            this.fieldcnombrecta});
-            this.xrPivotGrid1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 117.7083F);
+            this.fieldnimportelocal,
+            this.fieldctipoccostonombre,
+            this.fieldcnombrecta,
+            this.fieldnproveedor,
+            this.fieldctipogastonombre});
+            this.xrPivotGrid1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 77.20833F);
             this.xrPivotGrid1.Name = "xrPivotGrid1";
             this.xrPivotGrid1.OptionsPrint.FilterSeparatorBarPadding = 3;
             this.xrPivotGrid1.OptionsView.ShowColumnHeaders = false;
             this.xrPivotGrid1.OptionsView.ShowDataHeaders = false;
             this.xrPivotGrid1.OptionsView.ShowFilterHeaders = false;
-            this.xrPivotGrid1.SizeF = new System.Drawing.SizeF(1073F, 210.5417F);
+            this.xrPivotGrid1.SizeF = new System.Drawing.SizeF(1073F, 277.1769F);
             // 
             // fieldcperiodo
             // 
             this.fieldcperiodo.Appearance.Cell.TextHorizontalAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.fieldcperiodo.Appearance.Cell.TextVerticalAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.fieldcperiodo.Appearance.FieldValue.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.fieldcperiodo.Appearance.FieldValue.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
             this.fieldcperiodo.Appearance.FieldValue.TextHorizontalAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.fieldcperiodo.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
             this.fieldcperiodo.AreaIndex = 0;
@@ -361,6 +375,8 @@
             // 
             // fieldcmoneda
             // 
+            this.fieldcmoneda.Appearance.FieldValue.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.fieldcmoneda.Appearance.FieldValue.TextHorizontalAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.fieldcmoneda.AreaIndex = 0;
             this.fieldcmoneda.FieldName = "c_moneda";
             this.fieldcmoneda.Name = "fieldcmoneda";
@@ -371,7 +387,6 @@
             this.fieldccuenta.Appearance.Cell.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
             this.fieldccuenta.Appearance.FieldHeader.Font = new System.Drawing.Font("Arial", 6.75F);
             this.fieldccuenta.Appearance.FieldHeader.TextHorizontalAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.fieldccuenta.Appearance.FieldHeader.TextVerticalAlignment = DevExpress.Utils.VertAlignment.Center;
             this.fieldccuenta.Appearance.FieldValue.Font = new System.Drawing.Font("Arial", 6.75F);
             this.fieldccuenta.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
             this.fieldccuenta.AreaIndex = 0;
@@ -380,61 +395,77 @@
             this.fieldccuenta.Name = "fieldccuenta";
             this.fieldccuenta.TotalValueFormat.FormatString = "n2";
             this.fieldccuenta.TotalValueFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.fieldccuenta.Width = 50;
             // 
             // fieldcrazonsocial
             // 
-            this.fieldcrazonsocial.Appearance.FieldHeader.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fieldcrazonsocial.Appearance.FieldHeader.Font = new System.Drawing.Font("Arial", 6.75F);
             this.fieldcrazonsocial.Appearance.FieldHeader.TextHorizontalAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.fieldcrazonsocial.Appearance.FieldValue.Font = new System.Drawing.Font("Arial", 6.75F);
             this.fieldcrazonsocial.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
-            this.fieldcrazonsocial.AreaIndex = 1;
-            this.fieldcrazonsocial.Caption = "Prov.";
+            this.fieldcrazonsocial.AreaIndex = 2;
+            this.fieldcrazonsocial.Caption = "Raz.Social";
             this.fieldcrazonsocial.FieldName = "c_razonsocial";
             this.fieldcrazonsocial.Name = "fieldcrazonsocial";
+            this.fieldcrazonsocial.Width = 91;
             // 
-            // fieldnimpdolar
+            // fieldnimportedollar
             // 
-            this.fieldnimpdolar.Appearance.Cell.BorderWidth = 0F;
-            this.fieldnimpdolar.Appearance.Cell.Font = new System.Drawing.Font("Arial", 6.75F);
-            this.fieldnimpdolar.Appearance.FieldHeader.Font = new System.Drawing.Font("Arial", 6.75F);
-            this.fieldnimpdolar.Appearance.FieldHeader.TextHorizontalAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.fieldnimpdolar.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
-            this.fieldnimpdolar.AreaIndex = 1;
-            this.fieldnimpdolar.Caption = "Dolares";
-            this.fieldnimpdolar.CellFormat.FormatString = "n2";
-            this.fieldnimpdolar.CellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.fieldnimpdolar.FieldName = "n_impdolar";
-            this.fieldnimpdolar.Name = "fieldnimpdolar";
-            this.fieldnimpdolar.ValueFormat.FormatString = "\"{0:#,#.00}\"";
-            this.fieldnimpdolar.ValueFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.fieldnimpdolar.Width = 50;
+            this.fieldnimportedollar.Appearance.Cell.Font = new System.Drawing.Font("Arial", 6.75F);
+            this.fieldnimportedollar.Appearance.FieldHeader.TextHorizontalAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.fieldnimportedollar.Appearance.FieldValue.Font = new System.Drawing.Font("Arial", 6.75F);
+            this.fieldnimportedollar.Appearance.TotalCell.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold);
+            this.fieldnimportedollar.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
+            this.fieldnimportedollar.AreaIndex = 1;
+            this.fieldnimportedollar.Caption = "Dolares";
+            this.fieldnimportedollar.CellFormat.FormatString = "n2";
+            this.fieldnimportedollar.CellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.fieldnimportedollar.FieldName = "n_importedollar";
+            this.fieldnimportedollar.Name = "fieldnimportedollar";
+            this.fieldnimportedollar.ValueFormat.FormatString = "\"{0:#,#.00}\"";
+            this.fieldnimportedollar.ValueFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.fieldnimportedollar.Width = 50;
             // 
             // fieldccentrocosto
             // 
             this.fieldccentrocosto.Appearance.FieldHeader.Font = new System.Drawing.Font("Arial", 6.75F);
+            this.fieldccentrocosto.Appearance.FieldHeader.TextHorizontalAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.fieldccentrocosto.Appearance.FieldValue.Font = new System.Drawing.Font("Arial", 6.75F);
             this.fieldccentrocosto.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
-            this.fieldccentrocosto.AreaIndex = 2;
+            this.fieldccentrocosto.AreaIndex = 3;
             this.fieldccentrocosto.Caption = "C.Costo";
             this.fieldccentrocosto.FieldName = "c_centrocosto";
             this.fieldccentrocosto.Name = "fieldccentrocosto";
             this.fieldccentrocosto.Width = 40;
             // 
-            // fieldnimplocal
+            // fieldnimportelocal
             // 
-            this.fieldnimplocal.Appearance.Cell.Font = new System.Drawing.Font("Arial", 6.75F);
-            this.fieldnimplocal.Appearance.FieldHeader.Font = new System.Drawing.Font("Arial", 6.75F);
-            this.fieldnimplocal.Appearance.FieldHeader.TextHorizontalAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.fieldnimplocal.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
-            this.fieldnimplocal.AreaIndex = 0;
-            this.fieldnimplocal.Caption = "Soles";
-            this.fieldnimplocal.CellFormat.FormatString = "n2";
-            this.fieldnimplocal.CellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.fieldnimplocal.FieldName = "n_implocal";
-            this.fieldnimplocal.Name = "fieldnimplocal";
-            this.fieldnimplocal.ValueFormat.FormatString = "\"{0:#,#.00}\"";
-            this.fieldnimplocal.ValueFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.fieldnimplocal.Width = 50;
+            this.fieldnimportelocal.Appearance.Cell.Font = new System.Drawing.Font("Arial", 6.75F);
+            this.fieldnimportelocal.Appearance.FieldHeader.TextHorizontalAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.fieldnimportelocal.Appearance.FieldValue.Font = new System.Drawing.Font("Arial", 6.75F);
+            this.fieldnimportelocal.Appearance.TotalCell.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold);
+            this.fieldnimportelocal.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
+            this.fieldnimportelocal.AreaIndex = 0;
+            this.fieldnimportelocal.Caption = "Soles";
+            this.fieldnimportelocal.CellFormat.FormatString = "n2";
+            this.fieldnimportelocal.CellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.fieldnimportelocal.FieldName = "n_importelocal";
+            this.fieldnimportelocal.Name = "fieldnimportelocal";
+            this.fieldnimportelocal.ValueFormat.FormatString = "\"{0:#,#.00}\"";
+            this.fieldnimportelocal.ValueFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.fieldnimportelocal.Width = 50;
+            // 
+            // fieldctipoccostonombre
+            // 
+            this.fieldctipoccostonombre.Appearance.FieldHeader.Font = new System.Drawing.Font("Arial", 6.75F);
+            this.fieldctipoccostonombre.Appearance.FieldHeader.TextHorizontalAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.fieldctipoccostonombre.Appearance.FieldValue.Font = new System.Drawing.Font("Arial", 6.75F);
+            this.fieldctipoccostonombre.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
+            this.fieldctipoccostonombre.AreaIndex = 4;
+            this.fieldctipoccostonombre.Caption = "T.CCosto";
+            this.fieldctipoccostonombre.FieldName = "c_tipoccostonombre";
+            this.fieldctipoccostonombre.Name = "fieldctipoccostonombre";
+            this.fieldctipoccostonombre.Width = 59;
             // 
             // fieldcnombrecta
             // 
@@ -442,6 +473,31 @@
             this.fieldcnombrecta.AreaIndex = 1;
             this.fieldcnombrecta.FieldName = "c_nombrecta";
             this.fieldcnombrecta.Name = "fieldcnombrecta";
+            // 
+            // fieldnproveedor
+            // 
+            this.fieldnproveedor.Appearance.FieldHeader.Font = new System.Drawing.Font("Arial", 6.75F);
+            this.fieldnproveedor.Appearance.FieldHeader.TextHorizontalAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.fieldnproveedor.Appearance.FieldValue.Font = new System.Drawing.Font("Arial", 6.75F);
+            this.fieldnproveedor.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
+            this.fieldnproveedor.AreaIndex = 1;
+            this.fieldnproveedor.Caption = "Prov.";
+            this.fieldnproveedor.FieldName = "n_proveedor";
+            this.fieldnproveedor.Name = "fieldnproveedor";
+            this.fieldnproveedor.SortOrder = DevExpress.XtraPivotGrid.PivotSortOrder.Descending;
+            this.fieldnproveedor.Width = 45;
+            // 
+            // fieldctipogastonombre
+            // 
+            this.fieldctipogastonombre.Appearance.FieldHeader.Font = new System.Drawing.Font("Arial", 6.75F);
+            this.fieldctipogastonombre.Appearance.FieldHeader.TextHorizontalAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.fieldctipogastonombre.Appearance.FieldValue.Font = new System.Drawing.Font("Arial", 6.75F);
+            this.fieldctipogastonombre.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
+            this.fieldctipogastonombre.AreaIndex = 5;
+            this.fieldctipogastonombre.Caption = "T.Gasto";
+            this.fieldctipogastonombre.FieldName = "c_tipogastonombre";
+            this.fieldctipogastonombre.Name = "fieldctipogastonombre";
+            this.fieldctipogastonombre.Width = 42;
             // 
             // Title
             // 
@@ -487,7 +543,7 @@
             // prmCompania
             // 
             this.prmCompania.Name = "prmCompania";
-            this.prmCompania.ValueInfo = "00100000";
+            this.prmCompania.ValueInfo = "00400000";
             // 
             // prmPerInicial
             // 
@@ -497,7 +553,7 @@
             // prmPerFinal
             // 
             this.prmPerFinal.Name = "prmPerFinal";
-            this.prmPerFinal.ValueInfo = "201508";
+            this.prmPerFinal.ValueInfo = "201504";
             // 
             // prmCtaIni
             // 
@@ -573,6 +629,28 @@
             this.FechaHoy.Expression = "Today()";
             this.FechaHoy.Name = "FechaHoy";
             // 
+            // prmNomCompania
+            // 
+            this.prmNomCompania.Description = "Parameter1";
+            this.prmNomCompania.Name = "prmNomCompania";
+            // 
+            // nomCompania
+            // 
+            this.nomCompania.Expression = "Upper([Parameters.prmNomCompania])";
+            this.nomCompania.Name = "nomCompania";
+            // 
+            // xrLabel4
+            // 
+            this.xrLabel4.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "nomCompania")});
+            this.xrLabel4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(10F, 20F);
+            this.xrLabel4.Name = "xrLabel4";
+            this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel4.SizeF = new System.Drawing.SizeF(246.875F, 15F);
+            this.xrLabel4.StylePriority.UseFont = false;
+            this.xrLabel4.Text = "xrLabel4";
+            // 
             // rpt_GastosMensualDet
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -586,7 +664,8 @@
             this.intervaloPeriodos,
             this.nonMoneda,
             this.nroPagina,
-            this.FechaHoy});
+            this.FechaHoy,
+            this.nomCompania});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.sqlConnRPT});
             this.DataMember = "sp_cb_ccte_prov";
@@ -608,7 +687,9 @@
             this.prmCtaDestino,
             this.prmDocPend,
             this.prmOrdenar,
-            this.prmConsulta});
+            this.prmConsulta,
+            this.prmNomCompania});
+            this.Scripts.OnFillEmptySpace = "rpt_GastosMensualDet_FillEmptySpace";
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
             this.FieldCaption,
@@ -657,8 +738,6 @@
         private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldcperiodo;
         private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldccuenta;
         private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldcrazonsocial;
-        private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldnimpdolar;
-        private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldnimplocal;
         private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldcnombrecta;
         private DevExpress.XtraReports.Parameters.Parameter prmPerInicial;
         private DevExpress.XtraReports.UI.XRLabel xrLabel23;
@@ -671,5 +750,13 @@
         private DevExpress.XtraReports.UI.CalculatedField FechaHoy;
         private DevExpress.XtraReports.UI.XRLabel xrLabel3;
         private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo3;
+        private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldnimportedollar;
+        private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldnimportelocal;
+        private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldnproveedor;
+        private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldctipoccostonombre;
+        private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField fieldctipogastonombre;
+        private DevExpress.XtraReports.Parameters.Parameter prmNomCompania;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel4;
+        private DevExpress.XtraReports.UI.CalculatedField nomCompania;
     }
 }
