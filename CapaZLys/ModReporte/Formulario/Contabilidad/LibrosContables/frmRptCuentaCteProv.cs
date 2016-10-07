@@ -74,7 +74,7 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.LibrosContables
         }
         
         #endregion
-        
+        // TEST  GIT
         #region "==EventInherit=="
         
         public override Boolean uf_validarBuscar()
