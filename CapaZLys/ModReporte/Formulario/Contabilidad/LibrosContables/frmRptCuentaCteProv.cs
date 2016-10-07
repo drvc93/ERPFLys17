@@ -209,7 +209,7 @@ namespace FiltroLys.ZLys.ModReporte.Formulario.Contabilidad.LibrosContables
         #endregion
         
         private void chkProveedor_CheckedChanged(object sender, EventArgs e)
-        {
+        {//LUIS ES PUTO
         }
         
         private void chkProv_CheckedChanged(object sender, EventArgs e)
